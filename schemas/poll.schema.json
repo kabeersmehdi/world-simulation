@@ -3,31 +3,104 @@
   "title": "Poll series",
   "description": "Approval or leader-preference polls for one leader or race, each row sourced.",
   "type": "object",
-  "required": ["id", "country", "measure", "description", "rows"],
+  "required": [
+    "id",
+    "country",
+    "measure",
+    "description",
+    "rows"
+  ],
   "additionalProperties": false,
   "properties": {
-    "id": {"type": "string", "pattern": "^poll-[a-z0-9-]+$"},
-    "country": {"type": "string", "enum": ["united-states", "israel"]},
-    "measure": {"type": "string", "enum": ["job_approval", "preferred_prime_minister"]},
-    "description": {"type": "string", "minLength": 10},
-    "where_to_update": {"type": "array", "items": {"type": "string", "format": "uri"}},
+    "id": {
+      "type": "string",
+      "pattern": "^poll-[a-z0-9-]+$"
+    },
+    "country": {
+      "type": "string",
+      "enum": [
+        "united-states",
+        "israel"
+      ]
+    },
+    "measure": {
+      "type": "string",
+      "enum": [
+        "job_approval",
+        "preferred_prime_minister",
+        "knesset_seats"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10
+    },
+    "where_to_update": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
     "rows": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["fieldwork_end", "pollster", "values", "source_url", "accessed_at", "verified"],
+        "required": [
+          "fieldwork_end",
+          "pollster",
+          "values",
+          "source_url",
+          "accessed_at",
+          "verified"
+        ],
         "additionalProperties": false,
         "properties": {
-          "fieldwork_start": {"type": ["string", "null"], "format": "date"},
-          "fieldwork_end": {"type": "string", "format": "date"},
-          "pollster": {"type": "string", "minLength": 2},
-          "outlet": {"type": ["string", "null"]},
-          "values": {"type": "object"},
-          "source_url": {"type": "string", "format": "uri"},
-          "accessed_at": {"type": "string", "format": "date"},
-          "verified": {"type": "boolean"}
+          "fieldwork_start": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "fieldwork_end": {
+            "type": "string",
+            "format": "date"
+          },
+          "pollster": {
+            "type": "string",
+            "minLength": 2
+          },
+          "outlet": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "values": {
+            "type": "object"
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "accessed_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "verified": {
+            "type": "boolean"
+          }
         }
       }
+    },
+    "blocs": {
+      "type": "object",
+      "description": "Bloc name -> list of party keys whose seats are summed."
+    },
+    "blocs_source": {
+      "type": "string",
+      "format": "uri"
     }
   }
 }

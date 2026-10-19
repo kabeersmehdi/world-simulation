@@ -61,6 +61,13 @@ class KnowledgeLockTests(unittest.TestCase):
         from worldsim.scoring import MIN_RESOLVED_FOR_CLAIMS
         self.assertIn(f"at least {MIN_RESOLVED_FOR_CLAIMS} forecasts", (ROOT / "docs" / "forecasting-policy.md").read_text())
 
+    def test_timing_constants_match_doc(self):
+        from worldsim import backtest, timing
+        doc = (ROOT / "docs" / "timing-and-accuracy.md").read_text()
+        self.assertIn(f"`SHRINK = {timing.SHRINK}`", doc)
+        self.assertIn(f"within {backtest.SETTLED} of 0 or 1", doc)
+        self.assertIn(", ".join(str(h) for h in backtest.HORIZONS[:2]) + f" and {backtest.HORIZONS[2]} days", doc)
+
     def test_small_sample_matches_doc(self):
         from worldsim.baserates import SMALL_SAMPLE
         self.assertIn(f"Fewer than {SMALL_SAMPLE} events", (ROOT / "docs" / "base-rates.md").read_text())

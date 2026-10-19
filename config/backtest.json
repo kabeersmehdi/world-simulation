@@ -1,0 +1,6 @@
+{
+  "note": "Searches for resolved Polymarket markets on this tool's topics. Markets under min_volume (US dollars traded) are skipped as too thin to mean anything.",
+  "queries": ["iran", "israel", "ceasefire", "hezbollah", "houthi", "gaza", "netanyahu", "hormuz", "lebanon", "strike iran", "knesset"],
+  "min_volume": 10000,
+  "ceasefire_words": ["ceasefire", "strike", "military action", "attack"]
+}

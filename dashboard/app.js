@@ -175,11 +175,17 @@
   function pollsView() {
     return "<h2>Leader polls</h2>" + D.polls.map(function (p) {
       var keys = Array.from(new Set([].concat.apply([], p.rows.map(function (r) { return Object.keys(r.values); }))));
-      return '<div class="card" style="margin-bottom:16px"><div class="kicker">' + esc(p.country) + " &middot; " + esc(p.measure.replace(/_/g, " ")) + "</div><p>" + esc(p.description) + "</p>" +
+      var blocNames = p.blocs ? Object.keys(p.blocs) : [];
+      var blocHtml = blocNames.length ? '<div class="grid" style="margin-bottom:12px">' + blocNames.map(function (n) {
+        return '<div><div class="kicker">' + esc(n) + ' average</div><div class="big">' + esc(p.bloc_average[n]) + '</div><div class="small muted">' + esc(p.bloc_average_without_channel_14[n]) + " without Channel 14 &middot; 61 needed</div></div>";
+      }).join("") + '<div><div class="kicker">Largest party</div><div class="big">' + esc(Object.keys(p.largest_party_count).sort(function (a, b) { return p.largest_party_count[b] - p.largest_party_count[a]; })[0]) + '</div><div class="small muted">' +
+        Object.keys(p.largest_party_count).map(function (k) { return esc(k) + " in " + p.largest_party_count[k] + " of " + p.rows.length + " polls"; }).join(", ") + "</div></div></div>" +
+        '<p class="small muted">Blocs as defined by ' + link(p.blocs_source, "the Polymarket bloc market") + ": " + blocNames.map(function (n) { return "<strong>" + esc(n) + "</strong> = " + p.blocs[n].map(esc).join(", "); }).join("; ") + ". Other parties are not counted.</p>" : "";
+      return '<div class="card" style="margin-bottom:16px"><div class="kicker">' + esc(p.country) + " &middot; " + esc(p.measure.replace(/_/g, " ")) + "</div><p>" + esc(p.description) + "</p>" + blocHtml +
         (p.rows.length ? '<div class="tablewrap"><table><thead><tr><th>Fieldwork</th><th>Pollster</th><th>Outlet</th>' + keys.map(function (k) { return '<th class="num">' + esc(k) + "</th>"; }).join("") + "<th>Source</th></tr></thead><tbody>" +
           p.rows.map(function (r) {
             return "<tr><td>" + day(r.fieldwork_end) + "</td><td>" + esc(r.pollster) + "</td><td>" + esc(r.outlet || "") + "</td>" +
-              keys.map(function (k) { return '<td class="num">' + (r.values[k] == null ? "n/a" : esc(r.values[k]) + "%") + "</td>"; }).join("") +
+              keys.map(function (k) { return '<td class="num">' + (r.values[k] == null ? "n/a" : esc(r.values[k]) + (p.measure === "knesset_seats" ? "" : "%")) + "</td>"; }).join("") +
               "<td>" + link(r.source_url, r.verified ? "verified" : "reference, verify") + "</td></tr>";
           }).join("") + "</tbody></table></div>"
           : '<p class="muted">No rows yet. Update from: ' + (p.where_to_update || []).map(function (u) { return link(u, new URL(u).hostname); }).join(", ") + "</p>") + "</div>";
@@ -279,9 +285,51 @@
     return h;
   }
 
+
+  function timingView() {
+    var h = '<h2>When: ceasefire and war-ending curves</h2><p class="muted small">Built from dated Polymarket ladders. "Market" reads the prices as they are. "Calibrated" adjusts each price by how often similar prices on resolved ceasefire and strike markets actually came true (see Accuracy), shrunk toward the market where the past sample is thin. Both are probabilities, not facts.</p>';
+    if (!D.timing || !D.timing.length) return h + '<div class="banner">No ladder prices yet. Run <code>python -m worldsim collect</code>.</div>';
+    return h + D.timing.map(function (c) {
+      var cal = c.calibrated;
+      var head = c.kind === "survival" ? "Chance it breaks in each window" : "Chance it happens in each window";
+      var rows = c.rows.map(function (r) {
+        return "<tr><td>" + day(r.from) + " to " + day(r.to) + '</td><td class="num">' + pct(r.in_window) + '</td><td class="num">' + pct(r.by_date) + "</td>" +
+          (cal ? '<td class="num">' + pct(r.calibrated_in_window) + '</td><td class="num">' + pct(r.calibrated_by_date) + "</td>" : "") +
+          '<td><div class="bar"><span style="width:' + Math.round(r.by_date * 100) + '%"></span></div></td></tr>';
+      }).join("");
+      var lastTo = c.rows.length ? day(c.rows[c.rows.length - 1].to) : "";
+      return '<div class="card" style="margin-bottom:16px"><div class="kicker">' + esc(c.kind === "survival" ? "holds until broken by " + c.event : "waiting for " + c.event) + '</div><h3>' + esc(c.title) + "</h3>" +
+        '<div class="grid"><div><div class="kicker">Median date (market)</div><div class="big">' + (c.median_date ? day(c.median_date) : "after " + lastTo) + "</div></div>" +
+        (cal ? '<div><div class="kicker">Median date (calibrated)</div><div class="big">' + (cal.median_date ? day(cal.median_date) : "after " + lastTo) + "</div></div>" : "") +
+        '<div><div class="kicker">' + (c.kind === "survival" ? "Still holding after " : "Not yet by ") + lastTo + '</div><div class="big">' + pct(c.after_last) + (cal ? ' <span class="small muted">calibrated ' + pct(cal.after_last) + "</span>" : "") + "</div></div></div>" +
+        (c.adjusted ? '<p class="small muted">Some prices disagreed with each other and were smoothed so the curve only moves one way.</p>' : "") +
+        '<div class="tablewrap"><table><thead><tr><th>Window</th><th class="num">' + head + '</th><th class="num">By end of window</th>' + (cal ? '<th class="num">Calibrated, window</th><th class="num">Calibrated, by end</th>' : "") + "<th></th></tr></thead><tbody>" + rows + "</tbody></table></div></div>";
+    }).join("");
+  }
+
+  function accuracyView() {
+    var A = D.accuracy;
+    var h = '<h2>Accuracy: how good is the market baseline?</h2>';
+    if (!A) return h + '<div class="banner">No backtest yet. Run <code>python -m worldsim backtest</code>.</div>';
+    h += '<p class="muted small">' + esc(A.note) + " Run " + when(A.run_at) + ". Lower Brier is better: 0 is perfect, 0.25 is a coin flip.</p>";
+    h += A.summary.map(function (s) {
+      var hz = Object.keys(s.horizons).sort(function (a, b) { return b - a; });
+      var cal = s.horizons["7"] && s.horizons["7"].calibration ? s.horizons["7"].calibration.filter(function (b) { return b.count; }) : [];
+      return '<div class="card" style="margin-bottom:16px"><h3>' + esc(s.label) + '</h3><p class="small muted">' + s.markets + " resolved markets across " + s.events + " events. " + pct(s.yes_share) + " resolved yes.</p>" +
+        '<div class="tablewrap"><table><thead><tr><th>Price taken</th><th class="num">Markets</th><th class="num">Market Brier</th><th class="num">Base-rate Brier</th><th class="num">Coin flip</th><th class="num">Right side of 50%</th></tr></thead><tbody>' +
+        hz.map(function (k) { var v = s.horizons[k]; return v.n ? "<tr><td>" + k + ' days before close</td><td class="num">' + v.n + '</td><td class="num">' + num(v.market_brier) + '</td><td class="num">' + num(v.base_rate_brier) + '</td><td class="num">0.250</td><td class="num">' + pct(v.hit_rate) + "</td></tr>" : ""; }).join("") +
+        "</tbody></table></div>" +
+        '<h3 style="margin-top:12px">Calibration, 7 days out</h3><div class="tablewrap"><table><thead><tr><th>Price band</th><th class="num">Markets</th><th class="num">Average price</th><th class="num">Actually happened</th></tr></thead><tbody>' +
+        cal.map(function (b) { return "<tr><td>" + esc(b.band) + '</td><td class="num">' + b.count + '</td><td class="num">' + pct(b.mean_price) + '</td><td class="num">' + pct(b.happened) + "</td></tr>"; }).join("") + "</tbody></table></div></div>";
+    }).join("");
+    h += '<div class="card"><h3>Recently resolved</h3><div class="tablewrap"><table><thead><tr><th>Closed</th><th>Market</th><th class="num">7 days out</th><th>Outcome</th></tr></thead><tbody>' +
+      A.recent.slice(0, 40).map(function (r) { return "<tr><td>" + day(r.closed) + "</td><td>" + link("https://polymarket.com/market/" + r.slug, r.question) + '</td><td class="num">' + pct(r.p7) + "</td><td>" + (r.outcome ? "Yes" : "No") + "</td></tr>"; }).join("") + "</tbody></table></div></div>";
+    return h;
+  }
+
   var VIEWS = [
     ["overview", "Overview", overview], ["watch", "Indicators", watch], ["feed", "News feed", feed],
-    ["markets", "Markets", marketsView], ["forecasts", "Forecasts", forecastsView], ["polls", "Polls", pollsView],
+    ["markets", "Markets", marketsView], ["timing", "When", timingView], ["accuracy", "Accuracy", accuracyView], ["forecasts", "Forecasts", forecastsView], ["polls", "Polls", pollsView],
     ["countries", "Countries", countriesView], ["timeline", "Timeline", timelineView], ["backers", "Backers", backersView],
     ["baserates", "Base rates", baseratesView], ["scenarios", "Scenarios", scenariosView], ["scorecard", "Scorecard", scorecardView],
     ["sources", "Sources", sourcesView]

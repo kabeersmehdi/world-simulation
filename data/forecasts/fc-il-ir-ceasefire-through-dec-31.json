@@ -1,0 +1,39 @@
+{
+  "id": "fc-il-ir-ceasefire-through-dec-31",
+  "question": "Will the Israel-Iran ceasefire hold through December 31, 2026?",
+  "resolution_criteria": "Yes if neither Israel nor Iran carries out an air strike or surface-to-surface missile strike that impacts the other country's territory through December 31, 2026, 11:59 PM Iran time. Intercepted munitions, artillery, cyber attacks and ground raids do not count. Same rules as the Polymarket market.",
+  "countries": [
+    "israel",
+    "iran"
+  ],
+  "topic": "military",
+  "created_at": "2026-10-19T03:10:55+00:00",
+  "deadline": "2027-01-01T00:00:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "israel-x-iran-ceasefire-continues-through-december-31-415",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [
+    "airspace",
+    "home_front",
+    "us_military_moves",
+    "late_night_cabinet"
+  ],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T03:10:55+00:00",
+      "probability": 0.475,
+      "rationale": "starting at market, will adjust. Calibration-adjusted reading of the same price is 46.8%.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.475
+    }
+  ],
+  "resolution": null
+}

@@ -23,6 +23,10 @@ class BuildTests(unittest.TestCase):
         self.assertTrue(all(f["illustrative"] for f in data["forecasts"]["demo"]))
         self.assertTrue(data["timeline"][0]["date"] >= data["timeline"][-1]["date"])
         self.assertTrue(data["relationships"])
+        seats = next(p for p in data["polls"] if p["measure"] == "knesset_seats")
+        self.assertEqual(seats["largest_party_count"]["Yashar"], 5)
+        self.assertTrue(all(sum(r["values"].values()) == 120 for r in seats["rows"]))
+        self.assertIn("timing", data)
 
     def test_frontmatter_lists_and_nesting(self):
         root = isolated_root()

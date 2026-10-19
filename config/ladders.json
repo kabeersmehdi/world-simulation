@@ -1,0 +1,61 @@
+{
+  "note": "Dated Polymarket ladders turned into 'when' curves by worldsim/timing.py. Slugs checked open on 2026-10-18. Market rules: a qualifying air or missile strike that impacts the other country ends a ceasefire; intercepted munitions, artillery, cyber and ground raids do not.",
+  "ladders": [
+    {
+      "id": "israel-iran-quiet",
+      "title": "Israel-Iran ceasefire holds",
+      "kind": "survival",
+      "event": "an Israeli or Iranian air or missile strike that hits the other country",
+      "steps": [
+        {"date": "2026-10-21", "slug": "israel-x-iran-ceasefire-continues-through-october-21"},
+        {"date": "2026-10-31", "slug": "israel-x-iran-ceasefire-continues-through-october-31"},
+        {"date": "2026-11-15", "slug": "israel-x-iran-ceasefire-continues-through-november-15"},
+        {"date": "2026-11-30", "slug": "israel-x-iran-ceasefire-continues-through-november-30"},
+        {"date": "2026-12-31", "slug": "israel-x-iran-ceasefire-continues-through-december-31-415"}
+      ]
+    },
+    {
+      "id": "us-iran-no-strike-midterms",
+      "title": "No US strike on Iran through the midterms",
+      "kind": "survival",
+      "event": "a US air or missile strike that hits Iran",
+      "steps": [
+        {"date": "2026-11-03", "slug": "us-iran-ceasefire-continues-through-the-midterms"}
+      ]
+    },
+    {
+      "id": "us-ends-blockade",
+      "title": "US announces end of the Iran blockade",
+      "kind": "cumulative",
+      "event": "the US announcing an end to its naval blockade of Iran",
+      "steps": [
+        {"date": "2026-10-31", "slug": "us-announces-end-of-iranian-blockade-by-october-31-2026-20260727171711632-895-372-622-413-171-454-592-696"},
+        {"date": "2026-11-30", "slug": "us-announces-end-of-iranian-blockade-by-november-30-2026"},
+        {"date": "2026-12-31", "slug": "us-announces-end-of-iranian-blockade-by-december-31-2026-20260727171803489-375-949-645-919-269-157-255-857"},
+        {"date": "2027-03-31", "slug": "us-announces-end-of-iranian-blockade-by-march-31-2027"}
+      ]
+    },
+    {
+      "id": "us-iran-hormuz-deal",
+      "title": "US-Iran agreement on the Strait of Hormuz",
+      "kind": "cumulative",
+      "event": "a US-Iran agreement on the Strait of Hormuz",
+      "steps": [
+        {"date": "2026-10-31", "slug": "us-iran-hormuz-agreement-by-october-31"},
+        {"date": "2026-11-30", "slug": "us-iran-hormuz-agreement-by-november-30"},
+        {"date": "2026-12-31", "slug": "us-iran-hormuz-agreement-by-december-31"}
+      ]
+    },
+    {
+      "id": "us-iran-nuclear-deal",
+      "title": "Final US-Iran nuclear deal",
+      "kind": "cumulative",
+      "event": "a final US-Iran nuclear deal",
+      "steps": [
+        {"date": "2026-10-31", "slug": "us-iran-final-nuclear-deal-by-october-31-2026"},
+        {"date": "2026-11-30", "slug": "us-iran-final-nuclear-deal-by-november-30-2026"},
+        {"date": "2026-12-31", "slug": "us-iran-final-nuclear-deal-by-december-31-2026-191"}
+      ]
+    }
+  ]
+}

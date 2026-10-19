@@ -5,7 +5,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import ROOT, baserates, forecasts, markets, polls, scoring, store
+from . import ROOT, backtest, baserates, forecasts, markets, polls, scoring, store, timing
 from .contracts import validate
 from .watch import watch_status
 
@@ -37,6 +37,16 @@ def read_frontmatter(path):
 COUNTRY_ORDER = ["united-states", "israel", "iran"]
 
 
+def calibration_bands(accuracy, label="Ceasefire and strike markets", horizon="7"):
+    """The backtest's calibration bands used to adjust ladder prices, or None."""
+    if not accuracy:
+        return None
+    for s in accuracy["summary"]:
+        if s["label"] == label:
+            return s["horizons"].get(horizon, {}).get("calibration")
+    return None
+
+
 def _load_json_folder(folder, schema=None, root=ROOT):
     out = []
     for path in sorted(Path(folder).glob("*.json")):
@@ -66,6 +76,8 @@ def build(root=ROOT, now=None, out_path=None):
         })
     countries.sort(key=lambda c: COUNTRY_ORDER.index(c["id"]) if c["id"] in COUNTRY_ORDER else 99)
 
+    accuracy = backtest.load(root)
+
     def fc_view(f):
         return {**f, "current_probability": forecasts.current_probability(f)}
 
@@ -82,6 +94,8 @@ def build(root=ROOT, now=None, out_path=None):
         "feed": [o for o in observations if o["collector"] in ("rss", "telegram")][:400],
         "signals": [o for o in observations if o["collector"] in ("adsb", "fleet", "advisory")][:100],
         "markets": markets.board(root, now),
+        "accuracy": accuracy,
+        "timing": timing.board(root, now, calibration_bands(accuracy)),
         "polls": polls.load_all(root),
         "baserates": baserates.load_all(root),
         "scenarios": _load_json_folder(root / "data" / "scenarios"),

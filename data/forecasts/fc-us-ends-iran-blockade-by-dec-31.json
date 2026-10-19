@@ -1,0 +1,39 @@
+{
+  "id": "fc-us-ends-iran-blockade-by-dec-31",
+  "question": "Will the US announce an end to its naval blockade of Iran by December 31, 2026?",
+  "resolution_criteria": "Yes if the US government officially announces the end of its naval blockade of Iranian ports by December 31, 2026, 11:59 PM US Eastern, per the Polymarket market rules.",
+  "countries": [
+    "united-states",
+    "iran"
+  ],
+  "topic": "military",
+  "created_at": "2026-10-19T03:10:55+00:00",
+  "deadline": "2027-01-01T05:00:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "us-announces-end-of-iranian-blockade-by-december-31-2026-20260727171803489-375-949-645-919-269-157-255-857",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [
+    "airspace",
+    "home_front",
+    "us_military_moves",
+    "late_night_cabinet"
+  ],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T03:10:55+00:00",
+      "probability": 0.387,
+      "rationale": "starting at market, will adjust. Calibration-adjusted reading of the same price is 48.1%.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.387
+    }
+  ],
+  "resolution": null
+}

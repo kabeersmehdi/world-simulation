@@ -1,0 +1,172 @@
+{
+  "id": "poll-il-knesset-seats",
+  "country": "israel",
+  "measure": "knesset_seats",
+  "description": "Projected Knesset seats per party (120 total). A 0 means the party polled below the 3.25% threshold or was not listed. Channel 14 is widely seen as pro-government and is an outlier here.",
+  "where_to_update": [
+    "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election"
+  ],
+  "blocs": {
+    "Netanyahu bloc": [
+      "Likud",
+      "Otzma Yehudit",
+      "RZP-Zehut",
+      "Amcha Yisrael",
+      "UTJ",
+      "Shas"
+    ],
+    "Opposition bloc": [
+      "The Democrats",
+      "Yashar",
+      "Together",
+      "Yisrael Beiteinu"
+    ]
+  },
+  "blocs_source": "https://polymarket.com/event/israel-election-which-bloc-wins-more-seats",
+  "rows": [
+    {
+      "fieldwork_start": null,
+      "fieldwork_end": "2026-10-15",
+      "pollster": "LRI+P4A",
+      "outlet": "Maariv",
+      "values": {
+        "Likud": 18,
+        "Together": 13,
+        "Yashar": 21,
+        "Shas": 7,
+        "UTJ": 8,
+        "Yisrael Beiteinu": 8,
+        "Otzma Yehudit": 8,
+        "RZP-Zehut": 6,
+        "The Democrats": 9,
+        "Ra'am": 6,
+        "Joint List": 8,
+        "Amcha Yisrael": 4,
+        "Reservists-NEP": 4
+      },
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "accessed_at": "2026-10-18",
+      "verified": false
+    },
+    {
+      "fieldwork_start": null,
+      "fieldwork_end": "2026-10-15",
+      "pollster": "Tatika",
+      "outlet": "Zman Yisrael",
+      "values": {
+        "Likud": 20,
+        "Together": 11,
+        "Yashar": 26,
+        "Shas": 8,
+        "UTJ": 8,
+        "Yisrael Beiteinu": 9,
+        "Otzma Yehudit": 7,
+        "RZP-Zehut": 6,
+        "The Democrats": 8,
+        "Ra'am": 5,
+        "Joint List": 8,
+        "Amcha Yisrael": 0,
+        "Reservists-NEP": 4
+      },
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "accessed_at": "2026-10-18",
+      "verified": false
+    },
+    {
+      "fieldwork_start": null,
+      "fieldwork_end": "2026-10-14",
+      "pollster": "MP+TM+SN+A",
+      "outlet": "Channel 13",
+      "values": {
+        "Likud": 18,
+        "Together": 12,
+        "Yashar": 20,
+        "Shas": 7,
+        "UTJ": 8,
+        "Yisrael Beiteinu": 9,
+        "Otzma Yehudit": 8,
+        "RZP-Zehut": 6,
+        "The Democrats": 9,
+        "Ra'am": 6,
+        "Joint List": 9,
+        "Amcha Yisrael": 4,
+        "Reservists-NEP": 4
+      },
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "accessed_at": "2026-10-18",
+      "verified": false
+    },
+    {
+      "fieldwork_start": null,
+      "fieldwork_end": "2026-10-13",
+      "pollster": "Maagar Mochot",
+      "outlet": "Channel 16",
+      "values": {
+        "Likud": 18,
+        "Together": 13,
+        "Yashar": 21,
+        "Shas": 7,
+        "UTJ": 8,
+        "Yisrael Beiteinu": 7,
+        "Otzma Yehudit": 9,
+        "RZP-Zehut": 6,
+        "The Democrats": 9,
+        "Ra'am": 5,
+        "Joint List": 8,
+        "Amcha Yisrael": 4,
+        "Reservists-NEP": 5
+      },
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "accessed_at": "2026-10-18",
+      "verified": false
+    },
+    {
+      "fieldwork_start": null,
+      "fieldwork_end": "2026-10-12",
+      "pollster": "LRI+P4A",
+      "outlet": "Walla",
+      "values": {
+        "Likud": 20,
+        "Together": 13,
+        "Yashar": 22,
+        "Shas": 7,
+        "UTJ": 8,
+        "Yisrael Beiteinu": 9,
+        "Otzma Yehudit": 8,
+        "RZP-Zehut": 6,
+        "The Democrats": 10,
+        "Ra'am": 5,
+        "Joint List": 8,
+        "Amcha Yisrael": 0,
+        "Reservists-NEP": 4
+      },
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "accessed_at": "2026-10-18",
+      "verified": false
+    },
+    {
+      "fieldwork_start": null,
+      "fieldwork_end": "2026-10-12",
+      "pollster": "SF+ND",
+      "outlet": "Channel 14",
+      "values": {
+        "Likud": 29,
+        "Together": 7,
+        "Yashar": 20,
+        "Shas": 10,
+        "UTJ": 8,
+        "Yisrael Beiteinu": 5,
+        "Otzma Yehudit": 7,
+        "RZP-Zehut": 7,
+        "The Democrats": 10,
+        "Ra'am": 5,
+        "Joint List": 8,
+        "Amcha Yisrael": 0,
+        "Reservists-NEP": 4
+      },
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "accessed_at": "2026-10-18",
+      "verified": false
+    }
+  ]
+}

@@ -22,7 +22,7 @@ def isolated_root():
     tmp = Path(tempfile.mkdtemp(prefix="worldsim-test-"))
     for d in ["schemas", "config", "countries", "docs"]:
         shutil.copytree(ROOT / d, tmp / d)
-    for d in ["evidence", "demo", "baserates", "scenarios", "polls", "timeline", "relationships"]:
+    for d in ["evidence", "demo", "baserates", "scenarios", "polls", "timeline", "relationships", "markets"]:
         shutil.copytree(ROOT / "data" / d, tmp / "data" / d)
     (tmp / "data" / "forecasts").mkdir(parents=True)
     return tmp

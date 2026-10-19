@@ -4,6 +4,7 @@
   build          rebuild dashboard/data.json from what is saved
   validate       check every forecast, evidence, poll and base-rate file
   score          print the scorecard
+  backtest       score resolved Polymarket markets on our topics (how good is the baseline?)
   new-forecast   write a forecast skeleton, optionally pre-filled from a Polymarket slug
 """
 
@@ -14,7 +15,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from . import ROOT, build, collectors, forecasts, markets, scoring, store
+from . import ROOT, backtest, build, collectors, forecasts, markets, scoring, store, timing
 from .contracts import ContractError
 
 
@@ -24,8 +25,9 @@ def cmd_collect(args):
     added = store.save(obs, ROOT)
     if not only:
         rows, mreport = markets.collect(ROOT)
-        markets.save(rows, ROOT)
-        report += mreport
+        lrows, lreport = timing.collect(ROOT)
+        markets.save(rows + lrows, ROOT)
+        report += mreport + lreport
     failed = [r for r in report if not r["ok"]]
     for r in report:
         mark = "ok  " if r["ok"] else "FAIL"
@@ -61,6 +63,20 @@ def cmd_score(args):
     print(json.dumps({k: v for k, v in card.items() if k != "rows"}, indent=2))
     if not card["enough_data"]:
         print(f"\nOnly {card['resolved']} resolved. No claim of an edge until {card['min_resolved_for_claims']}.")
+    return 0
+
+
+def cmd_backtest(args):
+    print("Scoring resolved Polymarket markets (a few minutes)...")
+    result = backtest.run(ROOT)
+    for s in result["summary"]:
+        print(f"\n{s['label']}: {s['markets']} markets across {s['events']} events")
+        for h, v in s["horizons"].items():
+            if v["n"]:
+                print(f"  {h:>2} days before close: n={v['n']}, market Brier {v['market_brier']:.3f}, "
+                      f"base rate {v['base_rate_brier']:.3f}, coin flip 0.250, right side {v['hit_rate']:.0%}")
+    build.build(ROOT)
+    print("\nSaved data/backtests/polymarket-geopolitics.json and rebuilt the dashboard.")
     return 0
 
 
@@ -111,12 +127,13 @@ def main(argv=None):
     v = sub.add_parser("validate")
     v.add_argument("--out", help="write the test build here instead of dashboard/data.json")
     sub.add_parser("score")
+    sub.add_parser("backtest")
     n = sub.add_parser("new-forecast")
     n.add_argument("--question")
     n.add_argument("--market", help="Polymarket slug to pre-fill question, deadline and market price")
     args = p.parse_args(argv)
     return {"collect": cmd_collect, "build": cmd_build, "validate": cmd_validate,
-            "score": cmd_score, "new-forecast": cmd_new_forecast}[args.cmd](args)
+            "score": cmd_score, "backtest": cmd_backtest, "new-forecast": cmd_new_forecast}[args.cmd](args)
 
 
 if __name__ == "__main__":
