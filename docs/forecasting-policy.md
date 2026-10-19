@@ -25,6 +25,7 @@ generated:
 | `guard_append_only` | Any change to an earlier history entry (no hindsight edits) |
 | `guard_resolution` | A resolved forecast with no outcome source, or an open one with a resolution |
 | `guard_no_illustrative_in_live` | An illustrative forecast saved in `data/forecasts/` |
+| `guard_exclusive_groups` | Open forecasts in one `exclusive_group` (for example rival candidates) adding up to more than 100% |
 
 Each guard has a red-team test that feeds it a bad record and checks it is rejected.
 

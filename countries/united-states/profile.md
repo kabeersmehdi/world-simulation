@@ -14,7 +14,7 @@ sources:
 
 # United States
 
-> Refreshed 2026-10-18. Goes stale on 2026-11-10, a week after the midterms. Refresh after the vote.
+> Refreshed 10/18/2026. Goes stale on 11/10/2026, a week after the midterms. Refresh after the vote.
 
 ## Leadership and institutions
 - **President:** Donald J. Trump. **Vice President:** JD Vance (ev-us-president-vp, official source).

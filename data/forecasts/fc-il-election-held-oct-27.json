@@ -1,0 +1,37 @@
+{
+  "id": "fc-il-election-held-oct-27",
+  "question": "Will nationwide voting for the 26th Knesset take place on October 27, 2026?",
+  "resolution_criteria": "Yes if nationwide election-day voting for the 26th Knesset takes place on October 27, 2026, per the Central Elections Committee or a consensus of credible reporting. Disruption in a few localities still counts as yes. No if voting is moved to another date.",
+  "countries": [
+    "israel"
+  ],
+  "topic": "election",
+  "created_at": "2026-10-19T02:53:57+00:00",
+  "deadline": "2026-10-28T21:00:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "will-israel-election-happen-as-scheduled-20260720204824362",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [
+    "airspace",
+    "home_front",
+    "reserves"
+  ],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T02:53:57+00:00",
+      "probability": 0.9545,
+      "rationale": "starting at market, will adjust",
+      "evidence_ids": [],
+      "benchmark_probability": 0.9545
+    }
+  ],
+  "resolution": null
+}

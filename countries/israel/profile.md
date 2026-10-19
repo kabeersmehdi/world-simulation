@@ -14,7 +14,7 @@ sources:
 
 # Israel
 
-> Refreshed 2026-10-18. Goes stale on 2026-11-04, when official election results are due. Refresh after the vote.
+> Refreshed 10/18/2026. Goes stale on 11/04/2026, when official election results are due. Refresh after the vote.
 
 ## Leadership and institutions
 - **Prime Minister:** Benjamin Netanyahu, Likud, heading the 37th government (ev-il-pm-netanyahu, reference source; confirm with an official source).
@@ -22,6 +22,7 @@ sources:
 - **Election:** October 27, 2026, the last date the law allowed. The Knesset dissolved on July 17, 2026 (ev-il-election-2026-10-27).
 - **Threshold:** a party list needs 3.25% of valid votes to enter the Knesset (ev-il-threshold).
 - **Official results:** due to be confirmed on November 4, 2026 (ev-il-results-11-04, reference source).
+- **Market favorite:** on 10/18/2026 Polymarket priced Gadi Eisenkot (Yashar list) at 46.9% to be the next prime minister sworn in, ahead of Netanyahu (29.5%) and Bennett (11.5%). The market's bloc definition counts Yashar with the opposition (Democrats, Yashar, Together, Yisrael Beiteinu) against Likud, Otzma Yehudit, Religious Zionism-Zehut, Amcha Yisrael, United Torah Judaism and Shas. Arab parties and Blue and White are not counted in either bloc.
 - **Coalition pressure:** from May 2026, recurring coalition crises over Haredi military conscription were reported (ev-il-haredi-draft-crisis, reference source).
 
 Open research: the real decision chain on security (prime minister, security cabinet, defense minister, chief of staff, Mossad and Shin Bet heads), and which coalition partners hold veto power.

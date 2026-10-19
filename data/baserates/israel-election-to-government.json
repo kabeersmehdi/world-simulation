@@ -1,0 +1,98 @@
+{
+  "id": "br-israel-election-to-government",
+  "description": "Israeli Knesset elections and whether a new government won a confidence vote afterwards, and how long it took.",
+  "question_shape": "Will a new government win a Knesset confidence vote within N days of election day?",
+  "inclusion_rule": "Every Knesset election from 2013 onward. Day count runs from election day to the confidence vote and swearing-in.",
+  "windows_days": [
+    30,
+    45,
+    65,
+    90
+  ],
+  "events": [
+    {
+      "id": "2013",
+      "trigger_date": "2013-01-22",
+      "trigger": "Knesset election (2013)",
+      "responded": true,
+      "response_date": "2013-03-18",
+      "response": "Thirty-third government of Israel sworn in",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Thirty-third_government_of_Israel"
+      ]
+    },
+    {
+      "id": "2015",
+      "trigger_date": "2015-03-17",
+      "trigger": "Knesset election (2015)",
+      "responded": true,
+      "response_date": "2015-05-14",
+      "response": "Thirty-fourth government of Israel sworn in",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Thirty-fourth_government_of_Israel"
+      ]
+    },
+    {
+      "id": "April-2019",
+      "trigger_date": "2019-04-09",
+      "trigger": "Knesset election (April-2019)",
+      "responded": false,
+      "response_date": null,
+      "response": "No government formed; another election called",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/April_2019_Israeli_legislative_election"
+      ]
+    },
+    {
+      "id": "September-2019",
+      "trigger_date": "2019-09-17",
+      "trigger": "Knesset election (September-2019)",
+      "responded": false,
+      "response_date": null,
+      "response": "No government formed; another election called",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/September_2019_Israeli_legislative_election"
+      ]
+    },
+    {
+      "id": "2020",
+      "trigger_date": "2020-03-02",
+      "trigger": "Knesset election (2020)",
+      "responded": true,
+      "response_date": "2020-05-17",
+      "response": "Thirty-fifth government of Israel sworn in",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Thirty-fifth_government_of_Israel"
+      ]
+    },
+    {
+      "id": "2021",
+      "trigger_date": "2021-03-23",
+      "trigger": "Knesset election (2021)",
+      "responded": true,
+      "response_date": "2021-06-13",
+      "response": "Thirty-sixth government of Israel sworn in",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Thirty-sixth_government_of_Israel"
+      ]
+    },
+    {
+      "id": "2022",
+      "trigger_date": "2022-11-01",
+      "trigger": "Knesset election (2022)",
+      "responded": true,
+      "response_date": "2022-12-29",
+      "response": "Thirty-seventh government of Israel sworn in",
+      "verified": true,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Thirty-seventh_government_of_Israel"
+      ]
+    }
+  ]
+}

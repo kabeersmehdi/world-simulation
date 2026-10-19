@@ -69,6 +69,14 @@ class GuardTests(unittest.TestCase):
         with self.assertRaises(F.GuardError):
             F.guard_no_illustrative_in_live(good_forecast(), live=False)
 
+    def test_rejects_rival_candidates_over_100_percent(self):
+        a = good_forecast(id="fc-a", exclusive_group="next-pm")
+        b = good_forecast(id="fc-b", exclusive_group="next-pm",
+                          history=[{"at": "2026-10-01T00:00:00+00:00", "probability": 0.7, "rationale": "Too high next to the other."}])
+        with self.assertRaises(F.GuardError):
+            F.guard_exclusive_groups([a, b])
+        F.guard_exclusive_groups([a, good_forecast(id="fc-c", exclusive_group="next-pm")])
+
     def test_new_forecast_skeleton_fails_until_filled(self):
         fc = good_forecast(history=[{"at": "2026-10-01T00:00:00+00:00", "probability": -1, "rationale": "WRITE THIS: why this number."}])
         with self.assertRaises(Exception):

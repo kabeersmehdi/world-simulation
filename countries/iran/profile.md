@@ -14,7 +14,7 @@ sources:
 
 # Iran
 
-> Refreshed 2026-10-18. Modeled as the main outside player. A US-Israeli war on Iran began on February 28, 2026 and limited strikes continue.
+> Refreshed 10/18/2026. Modeled as the main outside player. A US-Israeli war on Iran began on February 28, 2026 and limited strikes continue.
 
 ## Leadership and institutions
 - **Supreme Leader:** Ali Khamenei was killed in the opening strikes on February 28, 2026 (ev-ir-khamenei-killed). A temporary leadership council was announced on March 1. Confirm the successor from an official source before recording it.

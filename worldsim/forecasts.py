@@ -67,6 +67,18 @@ def guard_no_illustrative_in_live(fc, live):
         raise GuardError(f"{fc['id']}: demo forecasts must be marked illustrative")
 
 
+def guard_exclusive_groups(fcs):
+    """Outcomes that cannot both happen cannot add up to more than 100%."""
+    groups = {}
+    for fc in fcs:
+        if fc.get("exclusive_group") and fc["status"] == "open":
+            groups.setdefault(fc["exclusive_group"], []).append(fc)
+    for name, members in groups.items():
+        total = sum(current_probability(f) for f in members)
+        if total > 1.0 + 1e-9:
+            raise GuardError(f"group '{name}' adds up to {total:.0%}: {', '.join(f['id'] for f in members)}")
+
+
 def check(fc, live, root=ROOT, previous=None):
     validate(fc, "forecast", root)
     guard_probability_bounds(fc)
@@ -92,6 +104,7 @@ def load_all(root=ROOT, previous=None):
     root = Path(root)
     live = load_folder(root / "data" / "forecasts", True, root, previous)
     demo = load_folder(root / "data" / "demo", False, root, previous)
+    guard_exclusive_groups(live)
     return live, demo
 
 

@@ -1,0 +1,33 @@
+{
+  "id": "fc-il-next-pm-bennett",
+  "question": "Will Naftali Bennett be the next prime minister sworn in after the 2026 Knesset election?",
+  "resolution_criteria": "Yes if Naftali Bennett is the next individual formally sworn in as Prime Minister of Israel following the 2026 election, by December 31, 2027. Interim or caretaker prime ministers do not count.",
+  "countries": [
+    "israel"
+  ],
+  "topic": "election",
+  "created_at": "2026-10-19T02:53:57+00:00",
+  "deadline": "2027-12-31T23:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": "il-next-pm-2026",
+  "market": {
+    "source": "polymarket",
+    "slug": "will-naftali-bennett-be-the-next-prime-minister-of-israel",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T02:53:57+00:00",
+      "probability": 0.115,
+      "rationale": "starting at market, will adjust",
+      "evidence_ids": [],
+      "benchmark_probability": 0.115
+    }
+  ],
+  "resolution": null
+}

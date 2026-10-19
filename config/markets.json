@@ -2,6 +2,7 @@
   "note": "Polymarket markets tracked as the crowd baseline. Slugs checked open on 2026-10-18. outcome_index picks which outcome's price is the probability (0 = the first outcome, usually Yes).",
   "markets": [
     {"slug": "will-benjamin-netanyahu-be-the-next-prime-minister-of-israel", "label": "Netanyahu is the next prime minister", "countries": ["israel"], "topic": "election", "outcome_index": 0},
+    {"slug": "will-gadi-eizenkot-be-the-next-prime-minister-of-israel", "label": "Eisenkot is the next prime minister", "countries": ["israel"], "topic": "election", "outcome_index": 0},
     {"slug": "will-naftali-bennett-be-the-next-prime-minister-of-israel", "label": "Bennett is the next prime minister", "countries": ["israel"], "topic": "election", "outcome_index": 0},
     {"slug": "israel-election-which-bloc-wins-more-seats", "label": "Netanyahu's bloc wins more seats than the opposition", "countries": ["israel"], "topic": "election", "outcome_index": 0},
     {"slug": "will-israel-election-happen-as-scheduled-20260720204824362", "label": "Israel's election happens as scheduled", "countries": ["israel"], "topic": "election", "outcome_index": 0},

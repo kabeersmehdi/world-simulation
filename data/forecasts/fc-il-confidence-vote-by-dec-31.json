@@ -1,0 +1,37 @@
+{
+  "id": "fc-il-confidence-vote-by-dec-31",
+  "question": "Will a new Israeli government win a Knesset confidence vote by December 31, 2026?",
+  "resolution_criteria": "Yes if the Knesset passes a vote of confidence in a new government and it is constituted by December 31, 2026, 11:59 PM US Eastern. A failed vote or the caretaker government continuing does not count.",
+  "countries": [
+    "israel"
+  ],
+  "topic": "coalition",
+  "created_at": "2026-10-19T02:53:57+00:00",
+  "deadline": "2027-01-01T04:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": {
+    "description": "Israeli elections since 2013 where a government won a confidence vote within 65 days of election day",
+    "base_rate": 0.444,
+    "baserate_id": "br-israel-election-to-government"
+  },
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "vote-of-confidence-passes-in-knesset-by-december-31",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T02:53:57+00:00",
+      "probability": 0.48,
+      "rationale": "starting at market, will adjust",
+      "evidence_ids": [],
+      "benchmark_probability": 0.48
+    }
+  ],
+  "resolution": null
+}

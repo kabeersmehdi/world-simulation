@@ -16,9 +16,15 @@
   function when(iso) {
     if (!iso) return "";
     var d = new Date(iso);
-    return isNaN(d) ? esc(iso) : d.toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+    if (isNaN(d)) return esc(iso);
+    var p2 = function (n) { return (n < 10 ? "0" : "") + n; };
+    return p2(d.getMonth() + 1) + "/" + p2(d.getDate()) + "/" + d.getFullYear() + " " + p2(d.getHours()) + ":" + p2(d.getMinutes());
   }
-  function day(iso) { return iso ? esc(String(iso).slice(0, 10)) : ""; }
+  // Dates show as MM/DD/YYYY everywhere on the site.
+  function day(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ""));
+    return m ? m[2] + "/" + m[3] + "/" + m[1] : esc(iso || "");
+  }
   function money(x) { return x == null ? "" : "$" + (x >= 1e9 ? (x / 1e9).toFixed(1) + "B" : (x / 1e6).toFixed(1) + "M"); }
   var LABEL_CLASS = { established_fact: "ok", official_position: "", observed_behavior: "ok", evidence_backed_inference: "warn", hypothesis: "warn", speculation: "bad" };
   function label(l) { return '<span class="pill ' + (LABEL_CLASS[l] || "") + '">' + esc(String(l).replace(/_/g, " ")) + "</span>"; }
@@ -136,7 +142,7 @@
       return '<div class="card"><div class="kicker">' + esc(m.topic) + " &middot; " + esc(m.countries.join(", ")) + "</div><h3>" + link(m.url, m.label) + "</h3>" +
         '<div class="big">' + pct(m.probability) + "</div>" +
         '<div class="small muted">' + (m.change != null ? (m.change >= 0 ? "+" : "") + Math.round(m.change * 1000) / 10 + " pts since first logged &middot; " : "") +
-        (m.end_date ? "ends " + esc(m.end_date) : "") + (m.as_of ? " &middot; as of " + when(m.as_of) : " &middot; not yet collected") + "</div>" + spark(m.series) + "</div>";
+        (m.end_date ? "ends " + day(m.end_date) : "") + (m.as_of ? " &middot; as of " + when(m.as_of) : " &middot; not yet collected") + "</div>" + spark(m.series) + "</div>";
     }).join("");
     return h + "</div>";
   }
@@ -187,7 +193,7 @@
     setTimeout(function () {
       function show(i) {
         var c = D.countries[i];
-        $("#cbody").innerHTML = '<div class="card prose"><div class="kicker">' + esc(c.status) + " &middot; refreshed " + esc(c.refreshed) + " &middot; stale after " + esc(c.stale_after) +
+        $("#cbody").innerHTML = '<div class="card prose"><div class="kicker">' + esc(c.status) + " &middot; refreshed " + day(c.refreshed) + " &middot; stale after " + day(c.stale_after) +
           (c.is_stale ? ' <span class="pill bad">stale</span>' : "") + "</div><h2>" + esc(c.title) + "</h2>" + md(c.body) +
           '<p class="small muted">Sources: ' + srcList(c.sources) + "</p></div>";
       }
@@ -223,14 +229,14 @@
         '<div class="grid"><div><div class="kicker">Response rate (smoothed)</div><div class="big">' + pct(b.response_rate) + '</div></div><div><div class="kicker">Median lag</div><div class="big">' + esc(b.lag_days.median) + ' days</div><div class="small muted">range ' + esc(b.lag_days.min) + " to " + esc(b.lag_days.max) + "</div></div>" +
         Object.keys(b.chance_within_days).map(function (k) { return '<div><div class="kicker">Within ' + esc(k) + ' days</div><div class="big">' + pct(b.chance_within_days[k]) + "</div></div>"; }).join("") + "</div>" +
         '<div class="tablewrap"><table><thead><tr><th>Trigger</th><th>Response</th><th class="num">Lag</th><th>Source</th></tr></thead><tbody>' + b.rows.map(function (r) {
-          return "<tr><td>" + day(r.trigger_date) + " " + esc(r.trigger) + "</td><td>" + (r.responded ? day(r.response_date) + " " + esc(r.response) : "No response") + '</td><td class="num">' + (r.lag_days == null ? "n/a" : r.lag_days + "d") + "</td><td>" + srcList(r.sources) + (r.verified ? "" : ' <span class="pill warn">verify</span>') + "</td></tr>";
+          return "<tr><td>" + day(r.trigger_date) + " " + esc(r.trigger) + "</td><td>" + (r.responded ? day(r.response_date) + " " + esc(r.response) : esc(r.response || "No response")) + '</td><td class="num">' + (r.lag_days == null ? "n/a" : r.lag_days + "d") + "</td><td>" + srcList(r.sources) + (r.verified ? "" : ' <span class="pill warn">verify</span>') + "</td></tr>";
         }).join("") + "</tbody></table></div></div>";
     }).join("");
   }
 
   function scenariosView() {
     return "<h2>Scenarios</h2>" + D.scenarios.map(function (s) {
-      return '<div class="card" style="margin-bottom:16px"><div class="kicker"><span class="pill warn">modeled, not fact</span> as of ' + esc(s.as_of) + "</div><h3>" + esc(s.title) + '</h3><p class="small muted">' + esc(s.note) + "</p>" +
+      return '<div class="card" style="margin-bottom:16px"><div class="kicker"><span class="pill warn">modeled, not fact</span> as of ' + day(s.as_of) + "</div><h3>" + esc(s.title) + '</h3><p class="small muted">' + esc(s.note) + "</p>" +
         '<div class="grid">' + s.pathways.map(function (p) {
           return '<div class="card"><h3>' + esc(p.name) + '</h3><p class="small">' + esc(p.how) + '</p><p class="small muted"><strong>Watch:</strong> ' + p.watch.map(esc).join("; ") + "<br><strong>Markets:</strong> " + esc(p.markets) + "</p></div>";
         }).join("") + "</div>" +

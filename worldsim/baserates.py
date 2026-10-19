@@ -59,5 +59,5 @@ def load_all(root=ROOT):
     out = []
     for path in sorted((Path(root) / "data" / "baserates").glob("*.json")):
         ref = validate(json.loads(path.read_text(encoding="utf-8")), "baserate", root)
-        out.append(summarize(ref))
+        out.append(summarize(ref, tuple(ref.get("windows_days") or (1, 7, 14, 30))))
     return out
