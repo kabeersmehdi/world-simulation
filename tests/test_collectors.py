@@ -178,6 +178,36 @@ class FirmsTests(unittest.TestCase):
         self.assertEqual(report, [{"source": "firms-israel", "ok": True, "skipped": "not configured (FIRMS_MAP_KEY not set)"}])
 
 
+class FallbackTests(unittest.TestCase):
+    def test_blocked_feed_falls_back_to_google_news(self):
+        def fake(url):
+            if "timesofisrael.com/feed" in url:
+                raise OSError("HTTP Error 403: Forbidden")
+            return fixture("google_news_toi.xml")
+        obs, report = collectors.run(isolated_root(), fetch=fake, now=NOW, only={"times-of-israel"}, env={})
+        self.assertTrue(report[0]["ok"])
+        self.assertIn("403", report[0]["via"])
+        self.assertEqual(len(obs), 3)
+        self.assertEqual(obs[0]["title"], "Headline 0 about Iran")  # suffix stripped
+        self.assertIn("iran", obs[0]["tags"])
+
+    def test_direct_feed_used_when_it_works(self):
+        urls = []
+
+        def fake(url):
+            urls.append(url)
+            return fixture("ynet.xml")
+        _, report = collectors.run(isolated_root(), fetch=fake, now=NOW, only={"times-of-israel"}, env={})
+        self.assertNotIn("via", report[0])
+        self.assertEqual(len(urls), 1)
+
+    def test_no_fallback_still_fails(self):
+        def fake(url):
+            raise OSError("HTTP Error 403: Forbidden")
+        _, report = collectors.run(isolated_root(), fetch=fake, now=NOW, only={"ynet"}, env={})
+        self.assertFalse(report[0]["ok"])
+
+
 class RunnerTests(unittest.TestCase):
     def test_one_failing_feed_does_not_stop_the_rest(self):
         def fake_fetch(url):

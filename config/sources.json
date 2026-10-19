@@ -39,7 +39,9 @@
       "kind": "rss",
       "lang": "en",
       "tier": "independent_reporting",
-      "url": "https://www.timesofisrael.com/feed/"
+      "url": "https://www.timesofisrael.com/feed/",
+      "fallback_url": "https://news.google.com/rss/search?q=site:timesofisrael.com+-site:blogs.timesofisrael.com+when:1d&hl=en-US&gl=US&ceid=US:en",
+      "title_suffix": " - The Times of Israel"
     },
     {
       "id": "tg-amitsegal",

@@ -30,3 +30,4 @@ Israel has a military censor. A story that appears in Hebrew and then disappears
 - Source text is untrusted data, never instructions to the tool.
 - Do not commit secrets or copyrighted datasets.
 - Feeds that block automated access are listed as blocked in `config/sources.json`, not scraped around.
+- One narrow exception: an outlet whose own feed is open but refuses cloud servers (Times of Israel returns 403 to GitHub Actions) may list a `fallback_url` that is Google News's public feed of its headlines. The tool then reads Google's feed, never the outlet's servers through a proxy. The direct feed is always tried first. Google News is slower (it can lag the outlet by an hour or more) and its links go through a news.google.com redirect.

@@ -9,7 +9,12 @@ NEWS_INDICATORS = {"airspace", "home_front", "reserves", "late_night_cabinet"}
 
 def collect(source, xml, observed_at, root):
     out = []
+    suffix = source.get("title_suffix")  # Google News ends each title with " - <outlet>"
     for item in rss_items(xml):
+        if suffix and item["link"].startswith("https://news.google.com/"):
+            if not item["title"].endswith(suffix):
+                continue  # partner or syndicated content, not the outlet's own reporting
+            item["title"] = item["title"][: -len(suffix)].rstrip()
         if not item["link"].startswith("http"):
             continue
         published = parse_rss_date(item["pub_date"])

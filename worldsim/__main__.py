@@ -43,6 +43,8 @@ def cmd_collect(args):
             continue
         mark = "ok  " if r["ok"] else "FAIL"
         detail = f"{r['items']} items, {r['flagged']} flagged" if r["ok"] else r["error"]
+        if r.get("via"):
+            detail += f" via {r['via']}"
         print(f"{mark} {r['source']}: {detail}")
     print(f"\n{added} new observations saved, {len(failed)} source(s) failed.")
     build.build(ROOT)

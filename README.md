@@ -136,6 +136,7 @@ The GitHub Actions `collect` workflow can also be run by hand from the Actions t
 - The watch level is not calibrated yet. Treat it as a prompt to look closer, not a prediction.
 - Many military flights switch transponders off. A quiet sky proves nothing.
 - Home Front Command's own alert feed, the US Embassy Israel alerts page and Israel Hayom block automated requests, so they are listed as blocked rather than scraped.
+- Times of Israel refuses cloud servers such as GitHub Actions, so those runs fall back to Google News's feed of its headlines, which can lag by an hour or more.
 - Telegram posts are unverified signals, never facts.
 - Timeline and base-rate entries sourced to reference sites are marked to verify.
 - Nothing here is investment advice. A market price is the crowd's probability, not a fact.
