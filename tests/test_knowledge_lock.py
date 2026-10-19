@@ -5,7 +5,7 @@ import unittest
 
 from worldsim import ROOT, signals, watch
 from worldsim.build import read_frontmatter
-from worldsim.collectors import adsb
+from worldsim.collectors import adsb, gpsjam
 
 DOC = (ROOT / "docs" / "indicators.md").read_text(encoding="utf-8")
 
@@ -30,6 +30,15 @@ class KnowledgeLockTests(unittest.TestCase):
         rows = table_rows(DOC, "| Indicator | What it is |")
         doc = {r[0].strip("`"): int(r[3]) for r in rows}
         self.assertEqual(doc, watch.WINDOW_HOURS)
+
+    def test_gps_thresholds_match_doc(self):
+        doc = {r[0]: r[1] for r in table_rows(DOC, "| Setting | Value |")}
+        self.assertEqual(doc, {
+            "Degraded below NACp": str(gpsjam.DEGRADED_BELOW_NACP),
+            "Minimum aircraft reporting": str(gpsjam.MIN_REPORTING),
+            "Minimum degraded aircraft": str(gpsjam.MIN_DEGRADED),
+            "Minimum degraded share": f"{gpsjam.MIN_DEGRADED_SHARE:.0%}",
+        })
 
     def test_aircraft_classes_match_doc(self):
         doc = {r[0]: [c.strip() for c in r[1].split(",")] for r in table_rows(DOC, "| Class | Type codes |")}

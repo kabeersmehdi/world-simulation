@@ -5,11 +5,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .. import ROOT
-from . import adsb, advisory, fleet, rss, telegram
+from . import adsb, advisory, fleet, gpsjam, rss, telegram
 from .http import fetch_text
 
 PARSERS = {"rss": rss.collect, "telegram": telegram.collect, "adsb": adsb.collect,
-           "fleet": fleet.collect, "advisory": advisory.collect}
+           "fleet": fleet.collect, "advisory": advisory.collect,
+           "gpsjam": gpsjam.collect}
 
 
 def load_sources(root=ROOT):

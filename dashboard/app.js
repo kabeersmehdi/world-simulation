@@ -60,14 +60,15 @@
     return out.join("");
   }
   var IND_NAMES = { airspace: "Airspace closures", home_front: "Home Front Command", reserves: "Reserve call-ups",
-    late_night_cabinet: "Late-night cabinet", us_advisory: "US departure orders", us_military_moves: "US military moves" };
+    late_night_cabinet: "Late-night cabinet", us_advisory: "US departure orders", us_military_moves: "US military moves",
+    gps_jamming: "GPS jamming" };
 
   // ---------- views ----------
   function overview() {
     var w = D.watch, live = D.forecasts.live;
     var h = '<div class="grid">';
     h += '<div class="card"><div class="kicker">Watch level</div><div class="level ' + esc(w.level) + '">' + esc(w.level) + "</div>" +
-      '<div class="small muted">' + w.active_count + " of 6 indicators active. Heuristic, not calibrated.</div></div>";
+      '<div class="small muted">' + w.active_count + " of " + Object.keys(w.indicators).length + " indicators active. Heuristic, not calibrated.</div></div>";
     h += '<div class="card"><div class="kicker">Live forecasts</div><div class="big">' + live.length + "</div>" +
       '<div class="small muted">' + D.scorecard.live.resolved + " resolved. Edge claims need " + D.scorecard.live.min_resolved_for_claims + ".</div></div>";
     h += '<div class="card"><div class="kicker">Feed, last 10 days</div><div class="big">' + D.counts.observations_10d + "</div>" +
@@ -103,7 +104,7 @@
   function watch() {
     var h = '<h2>Leading indicators</h2><p class="muted small">Big operations usually leave public tracks a day or two ahead. One signal means little. Several kinds at once moves the odds. The level is a heuristic until enough past events are logged against it.</p>';
     h += '<div class="card" style="margin-bottom:16px">' + indicatorList(false) + "</div>";
-    h += '<div class="card"><h3>Raw signals: aircraft, fleet, advisories</h3><ul class="feed">' + D.signals.slice(0, 40).map(feedItem).join("") + "</ul></div>";
+    h += '<div class="card"><h3>Raw signals: aircraft, GPS, fleet, advisories</h3><ul class="feed">' + D.signals.slice(0, 40).map(feedItem).join("") + "</ul></div>";
     return h;
   }
 

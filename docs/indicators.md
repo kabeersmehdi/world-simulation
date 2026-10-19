@@ -24,6 +24,7 @@ The tables below are locked to `worldsim/signals.py` and `worldsim/watch.py` by 
 | `late_night_cabinet` | Security cabinet meetings reported between 21:00 and 05:00 Israel time | rss, telegram | 48 |
 | `us_advisory` | State Department advisory updates mentioning ordered or authorized departure | advisory | 72 |
 | `us_military_moves` | US tankers, bombers or surveillance aircraft in the region, or a carrier strike group reported nearby | adsb, fleet | 192 |
+| `gps_jamming` | Civil aircraft over Israel and the Levant, or the Gulf and Hormuz, reporting degraded GPS accuracy | gpsjam | 24 |
 
 The fleet tracker is weekly, which is why `us_military_moves` has an eight-day window.
 
@@ -66,6 +67,18 @@ ICAO type codes from the adsb.lol military feed, inside latitude 10 to 42 and lo
 Some databases list the KC-46 under its airliner base code (B762), which also covers civilian jets, so it is not counted.
 
 `us_military_moves` fires when at least 3 of these are in the box at once. Many military flights switch transponders off, so a quiet sky proves nothing.
+
+## GPS jamming
+Every ADS-B position report carries NACp, the aircraft's own estimate of its GPS error. Healthy receivers report 8 to 11 (error under 93 m). Jamming or spoofing drops it, usually to 0. The collector reads two areas from adsb.lol: Israel and the Levant (200 nautical miles around 32.5 N, 35.0 E) and the Gulf and Hormuz (250 nautical miles around 26.5 N, 54.0 E).
+
+| Setting | Value |
+|---|---|
+| Degraded below NACp | 8 |
+| Minimum aircraft reporting | 10 |
+| Minimum degraded aircraft | 5 |
+| Minimum degraded share | 20% |
+
+`gps_jamming` fires when all four are met in one area at once. On 10/19/2026 the Levant showed 0 of 31 degraded and the Gulf 5 of 102 (5%), so the bar sits well above the quiet level. Israel has jammed GPS on and off since October 2023, so a long run of hits is a standing condition, not a new signal. Raise the share if it fires every day. Few aircraft at night means few readings, which is why there is a minimum count.
 
 ## Watch level
 
