@@ -1,0 +1,34 @@
+{
+  "id": "fc-il-strike-lebanon-oct-26",
+  "question": "Israel military action against Lebanon on October 26?",
+  "resolution_criteria": "Yes if an Israeli air strike or surface-to-surface missile strike directly impacts Lebanon on October 26, 2026, Jerusalem time. Resolves with Polymarket market israel-military-action-against-lebanon-on-october-26.",
+  "countries": [
+    "israel",
+    "other"
+  ],
+  "topic": "military",
+  "created_at": "2026-10-19T03:14:35+00:00",
+  "deadline": "2026-10-27T03:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "israel-military-action-against-lebanon-on-october-26",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T03:14:35+00:00",
+      "probability": 0.845,
+      "rationale": "Sprint forecast for fast resolutions. No independent news view: this is the market price 84.5% with the standing favorite-longshot rule (prices under 10% or over 90% moved 30% closer to the edge, in between left as is). It tests whether that rule beats the market.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.845
+    }
+  ],
+  "resolution": null
+}

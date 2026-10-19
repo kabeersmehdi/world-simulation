@@ -1,0 +1,33 @@
+{
+  "id": "fc-ir-hormuz-fees-by-oct-31",
+  "question": "Iran charges Hormuz fees by October 31?",
+  "resolution_criteria": "Yes if Iran officially announces and starts collecting mandatory fees from commercial vessels (all, or a defined class) to pass the Strait of Hormuz by October 31, 2026, 11:59 PM ET. Resolves with Polymarket market iran-charges-hormuz-fees-by-october-31.",
+  "countries": [
+    "iran"
+  ],
+  "topic": "economy",
+  "created_at": "2026-10-19T03:14:35+00:00",
+  "deadline": "2026-11-01T03:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "iran-charges-hormuz-fees-by-october-31",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T03:14:35+00:00",
+      "probability": 0.042,
+      "rationale": "Sprint forecast for fast resolutions. No independent news view: this is the market price 6.0% with the standing favorite-longshot rule (prices under 10% or over 90% moved 30% closer to the edge, in between left as is). It tests whether that rule beats the market.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.06
+    }
+  ],
+  "resolution": null
+}

@@ -35,5 +35,8 @@ Each guard has a red-team test that feeds it a bad record and checks it is rejec
 - Calibration shown in ten probability bands.
 - No claim of an edge until at least 20 forecasts have resolved (`MIN_RESOLVED_FOR_CLAIMS`). Below that the dashboard says "not enough data".
 
+## Sprint to 20 resolutions (started 10/19/2026)
+Eighteen forecasts on Polymarket markets that resolve between 10/21 and 11/1 (election results, strikes by 10/31, Iran deadlines, the Bank of Israel decision), plus the open election-held and bloc forecasts, give about 20 resolutions within two weeks. None of them carries an independent news view. Each one uses the market price with one stated rule: prices under 10% or over 90% move 30% closer to the edge (the favorite-longshot bias), and prices in between stay as they are. The sprint tests that rule, not the news pipeline. The election forecasts all hang on one vote, so they are not independent tests.
+
 ## The 90-day test
 Write 15 to 20 forecasts on the United States and Israel relationship, log the market price beside each one, and score after 90 days. If the record does not beat the market, stop or change the method.
