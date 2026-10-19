@@ -174,7 +174,7 @@ def brief_markdown(outlook, days=14):
     lines = ["---", "type: brief", "title: Geopolitics brief for the stocks report", "generated:",
              "  by: worldsim/outlook.py", f"  at: {outlook['as_of'][:10]}", f"stale_after: {(today + timedelta(days=1)).isoformat()}", "---", "",
              f"## Geopolitics: next {days} days", "",
-             f"_From world-simulation, {fmt(outlook['as_of'][:10])}. Ours = this tool's forecast. Polymarket = bettors' price._", "",
+             f"From world-simulation, {fmt(outlook['as_of'][:10])}. Ours = this tool's forecast. Polymarket = bettors' price.", "",
              "**Most likely:**"]
     lines += [f"- {h['title']}: **{h['answer']}** · {h['detail']}" for h in outlook.get("headlines", [])]
     lines += ["", "**Dated, next two weeks:**"]
@@ -188,7 +188,7 @@ def brief_markdown(outlook, days=14):
         extra += f" · {i['detail']}" if i["detail"] else ""
         lines.append(f"- **{fmt(i['date'])}** {i['title']}{extra}")
     if hidden:
-        lines.append(f"- _{hidden} more items under {round(BRIEF_MIN * 100)}% or past the first {BRIEF_ITEMS} are on the dashboard._")
+        lines.append(f"- {hidden} more items under {round(BRIEF_MIN * 100)}% or past the first {BRIEF_ITEMS} are on the dashboard.")
     gaps = [r for r in outlook["forecasts"] if r["gap_points"] is not None and abs(r["gap_points"]) >= GAP_POINTS
             and r["group"] in ("This week", "This month", "Later")]
     lines += ["", "**Where we disagree with the market:** " + ("; ".join(f"{r['question']} ({r['gap']})" for r in gaps[:5]) if gaps else "nowhere yet")]
