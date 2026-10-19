@@ -1,0 +1,33 @@
+{
+  "id": "fc-il-netanyahu-drops-out",
+  "question": "Netanyahu drops out before election?",
+  "resolution_criteria": "Yes if Netanyahu definitively announces he will not run in the October 27, 2026 election by October 26, 2026, 11:59 PM Jerusalem time. Resolves with Polymarket market netanyahu-drops-out-before-election.",
+  "countries": [
+    "israel"
+  ],
+  "topic": "election",
+  "created_at": "2026-10-19T03:14:35+00:00",
+  "deadline": "2026-10-27T03:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "netanyahu-drops-out-before-election",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T03:14:35+00:00",
+      "probability": 0.012,
+      "rationale": "Sprint forecast for fast resolutions. No independent news view: this is the market price 1.8% with the standing favorite-longshot rule (prices under 10% or over 90% moved 30% closer to the edge, in between left as is). It tests whether that rule beats the market.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.0175
+    }
+  ],
+  "resolution": null
+}

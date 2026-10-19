@@ -13,6 +13,24 @@
     {"slug": "will-the-us-invade-iran-before-2027", "label": "US invades Iran before 2027", "countries": ["united-states", "iran"], "topic": "military", "outcome_index": 0},
     {"slug": "iran-agrees-to-end-enrichment-of-uranium-by-december-31-1", "label": "Iran agrees to end uranium enrichment by Dec 31", "countries": ["iran", "united-states"], "topic": "diplomacy", "outcome_index": 0},
     {"slug": "will-the-democratic-party-control-the-house-after-the-2026-midterm-elections", "label": "Democrats control the House after the midterms", "countries": ["united-states"], "topic": "election", "outcome_index": 0},
-    {"slug": "will-the-democratic-party-control-the-senate-after-the-2026-midterm-elections", "label": "Democrats control the Senate after the midterms", "countries": ["united-states"], "topic": "election", "outcome_index": 0}
+    {"slug": "will-the-democratic-party-control-the-senate-after-the-2026-midterm-elections", "label": "Democrats control the Senate after the midterms", "countries": ["united-states"], "topic": "election", "outcome_index": 0},
+    {"slug": "will-yashar-win-the-most-seats-in-the-2026-israeli-legislative-election", "label": "Will Yashar win the most seats in the 2026 Israeli legislative election", "countries": ["israel"], "topic": "election", "outcome_index": 0},
+    {"slug": "will-likud-win-20-24-seats-in-the-2026-israeli-legislative-election", "label": "Will Likud win 20-24 seats in the 2026 Israeli legislative election", "countries": ["israel"], "topic": "election", "outcome_index": 0},
+    {"slug": "israel-election-any-coalition-wins-a-majority", "label": "Israel Election: Any Coalition Wins a Majority", "countries": ["israel"], "topic": "election", "outcome_index": 0},
+    {"slug": "will-together-win-the-third-most-seats-israel-2026", "label": "Will Together win the third-most seats in the 2026 Israeli legislative election", "countries": ["israel"], "topic": "election", "outcome_index": 0},
+    {"slug": "will-yisrael-beiteinu-win-less-than-5-percent-of-the-vote-in-the-2026-knesset-elections", "label": "Will Yisrael Beiteinu win less than 5% of the vote in the 2026 Knesset elections", "countries": ["israel"], "topic": "election", "outcome_index": 0},
+    {"slug": "netanyahu-drops-out-before-election", "label": "Netanyahu drops out before election", "countries": ["israel"], "topic": "election", "outcome_index": 0},
+    {"slug": "israel-military-action-against-greater-beirut-by-october-31", "label": "Israel military action against Greater Beirut by October 31", "countries": ["israel", "other"], "topic": "military", "outcome_index": 0},
+    {"slug": "israel-military-action-against-syria-by-october-31-2026", "label": "Israel military action against Syria by October 31, 2026", "countries": ["israel", "other"], "topic": "military", "outcome_index": 0},
+    {"slug": "israel-military-action-against-yemen-by-october-31", "label": "Israel military action against Yemen by October 31", "countries": ["israel", "other"], "topic": "military", "outcome_index": 0},
+    {"slug": "will-there-be-houthi-military-action-against-israel-by-october-31-2026", "label": "Will there be Houthi military action against Israel by October 31, 2026", "countries": ["israel", "other"], "topic": "military", "outcome_index": 0},
+    {"slug": "israel-military-action-against-iraq-by-october-31-2026-20260922", "label": "Israel military action against Iraq by October 31, 2026", "countries": ["israel", "other"], "topic": "military", "outcome_index": 0},
+    {"slug": "us-announces-end-of-iranian-blockade-by-october-31-2026-20260727171711632-895-372-622-413-171-454-592-696", "label": "US announces end of Iranian blockade by October 31, 2026", "countries": ["united-states", "iran"], "topic": "sanctions", "outcome_index": 0},
+    {"slug": "iran-charges-hormuz-fees-by-october-31", "label": "Iran charges Hormuz fees by October 31", "countries": ["iran"], "topic": "economy", "outcome_index": 0},
+    {"slug": "iaea-visits-isfahan-fordow-or-natanz-nuclear-site-by-october-31", "label": "IAEA visits Isfahan, Fordow, or Natanz nuclear site by October 31", "countries": ["iran"], "topic": "diplomacy", "outcome_index": 0},
+    {"slug": "iran-agrees-to-surrender-enriched-uranium-stockpile-by-october-31-2026", "label": "Iran agrees to surrender enriched uranium stockpile by October 31, 2026", "countries": ["iran", "united-states"], "topic": "diplomacy", "outcome_index": 0},
+    {"slug": "israel-military-action-against-lebanon-on-october-22", "label": "Israel military action against Lebanon on October 22", "countries": ["israel", "other"], "topic": "military", "outcome_index": 0},
+    {"slug": "israel-military-action-against-lebanon-on-october-26", "label": "Israel military action against Lebanon on October 26", "countries": ["israel", "other"], "topic": "military", "outcome_index": 0},
+    {"slug": "will-the-bank-of-israel-make-no-change-to-the-bank-of-israel-interest-rate-after-the-october-decision", "label": "Will the Bank of Israel make no change to the Bank of Israel Interest Rate after the October decision", "countries": ["israel"], "topic": "economy", "outcome_index": 0}
   ]
 }

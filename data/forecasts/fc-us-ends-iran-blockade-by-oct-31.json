@@ -1,0 +1,34 @@
+{
+  "id": "fc-us-ends-iran-blockade-by-oct-31",
+  "question": "US announces end of Iranian blockade by October 31, 2026?",
+  "resolution_criteria": "Yes if the US government officially announces the end, lifting or suspension of its naval blockade on Iranian ships and customers by October 31, 2026, 11:59 PM ET. Resolves with Polymarket market us-announces-end-of-iranian-blockade-by-october-31-2026-20260727171711632-895-372-622-413-171-454-592-696.",
+  "countries": [
+    "united-states",
+    "iran"
+  ],
+  "topic": "sanctions",
+  "created_at": "2026-10-19T03:14:35+00:00",
+  "deadline": "2026-11-01T03:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "us-announces-end-of-iranian-blockade-by-october-31-2026-20260727171711632-895-372-622-413-171-454-592-696",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T03:14:35+00:00",
+      "probability": 0.045,
+      "rationale": "Sprint forecast for fast resolutions. No independent news view: this is the market price 6.5% with the standing favorite-longshot rule (prices under 10% or over 90% moved 30% closer to the edge, in between left as is). It tests whether that rule beats the market.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.065
+    }
+  ],
+  "resolution": null
+}

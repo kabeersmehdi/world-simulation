@@ -1,0 +1,34 @@
+{
+  "id": "fc-il-houthi-strike-on-israel-by-oct-31",
+  "question": "Will there be Houthi military action against Israel by October 31, 2026?",
+  "resolution_criteria": "Yes if a Houthi air strike, drone or missile directly impacts Israeli ground territory by October 31, 2026, 11:59 PM IDT. Intercepted munitions do not count. Resolves with Polymarket market will-there-be-houthi-military-action-against-israel-by-october-31-2026.",
+  "countries": [
+    "israel",
+    "other"
+  ],
+  "topic": "military",
+  "created_at": "2026-10-19T03:14:35+00:00",
+  "deadline": "2026-10-31T20:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "will-there-be-houthi-military-action-against-israel-by-october-31-2026",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T03:14:35+00:00",
+      "probability": 0.036,
+      "rationale": "Sprint forecast for fast resolutions. No independent news view: this is the market price 5.1% with the standing favorite-longshot rule (prices under 10% or over 90% moved 30% closer to the edge, in between left as is). It tests whether that rule beats the market.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.051
+    }
+  ],
+  "resolution": null
+}

@@ -1,0 +1,33 @@
+{
+  "id": "fc-il-any-bloc-61-seats",
+  "question": "Israel Election: Any Coalition Wins a Majority?",
+  "resolution_criteria": "Yes if either (a) The Democrats, Yashar, Together and Yisrael Beiteinu or (b) Likud, Otzma Yehudit, RZP-Zehut, Amcha Yisrael, UTJ and Shas win 61 or more seats combined in the October 27, 2026 election. Resolves with Polymarket market israel-election-any-coalition-wins-a-majority.",
+  "countries": [
+    "israel"
+  ],
+  "topic": "election",
+  "created_at": "2026-10-19T03:14:35+00:00",
+  "deadline": "2026-10-28T03:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "israel-election-any-coalition-wins-a-majority",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T03:14:35+00:00",
+      "probability": 0.2,
+      "rationale": "Sprint forecast for fast resolutions. No independent news view: this is the market price 20.0% with the standing favorite-longshot rule (prices under 10% or over 90% moved 30% closer to the edge, in between left as is). It tests whether that rule beats the market.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.2
+    }
+  ],
+  "resolution": null
+}

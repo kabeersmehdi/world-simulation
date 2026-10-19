@@ -1,0 +1,33 @@
+{
+  "id": "fc-il-likud-20-24-seats",
+  "question": "Will Likud win 20-24 seats in the 2026 Israeli legislative election?",
+  "resolution_criteria": "Yes if Likud's list (including any joint list it runs on) wins 20 to 24 Knesset seats in the October 27, 2026 election, per the official results. Resolves with Polymarket market will-likud-win-20-24-seats-in-the-2026-israeli-legislative-election.",
+  "countries": [
+    "israel"
+  ],
+  "topic": "election",
+  "created_at": "2026-10-19T03:14:35+00:00",
+  "deadline": "2026-10-28T03:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "will-likud-win-20-24-seats-in-the-2026-israeli-legislative-election",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-10-19T03:14:35+00:00",
+      "probability": 0.425,
+      "rationale": "Sprint forecast for fast resolutions. No independent news view: this is the market price 42.5% with the standing favorite-longshot rule (prices under 10% or over 90% moved 30% closer to the edge, in between left as is). It tests whether that rule beats the market.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.425
+    }
+  ],
+  "resolution": null
+}
