@@ -5,6 +5,9 @@ title: Change log
 
 # Change log
 
+## 10/19/2026
+- Added the strike event study: 15 assets, 11 strike and war events since October 2023, 1, 5 and 20 trading-day moves against each asset's normal swing, with a check that drops the biggest event. New Reactions view and `python -m worldsim prices`.
+
 ## 2026-10-19
 - Added timing curves from Polymarket ladders (Israel-Iran ceasefire, US strikes before the midterms, blockade end, Hormuz deal, nuclear deal), a backtest of 1,422 resolved geopolitics markets with calibration, Knesset seat polls with bloc totals, and three ceasefire and blockade forecasts started at market.
 

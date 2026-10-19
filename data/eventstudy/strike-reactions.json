@@ -1,0 +1,2398 @@
+{
+ "run_at": "2026-10-19T03:26:12+00:00",
+ "windows": [
+  1,
+  5,
+  20
+ ],
+ "events": [
+  {
+   "id": "tl-2023-10-07-hamas-attack",
+   "date": "2023-10-07",
+   "title": "Hamas-led attack on southern Israel; Gaza war begins",
+   "category": "war"
+  },
+  {
+   "id": "tl-2024-04-01-damascus",
+   "date": "2024-04-01",
+   "title": "Israeli strike on the Iranian consulate annex in Damascus",
+   "category": "strike"
+  },
+  {
+   "id": "tl-2024-04-13-iran-strike",
+   "date": "2024-04-13",
+   "title": "First direct Iranian missile and drone attack on Israel",
+   "category": "strike"
+  },
+  {
+   "id": "tl-2024-04-19-isfahan",
+   "date": "2024-04-19",
+   "title": "Israeli strike near Isfahan",
+   "category": "strike"
+  },
+  {
+   "id": "tl-2024-10-01-iran-strike",
+   "date": "2024-10-01",
+   "title": "Iranian ballistic missile attack on Israel",
+   "category": "strike"
+  },
+  {
+   "id": "tl-2024-10-26-israel-strike",
+   "date": "2024-10-26",
+   "title": "Israeli strikes on Iranian military sites",
+   "category": "strike"
+  },
+  {
+   "id": "tl-2025-06-13-twelve-day-war",
+   "date": "2025-06-13",
+   "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+   "category": "war"
+  },
+  {
+   "id": "tl-2025-06-22-us-strikes",
+   "date": "2025-06-22",
+   "title": "US strikes on Iranian nuclear sites",
+   "category": "strike"
+  },
+  {
+   "id": "tl-2026-02-28-iran-war",
+   "date": "2026-02-28",
+   "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+   "category": "war"
+  },
+  {
+   "id": "tl-2026-04-13-blockade",
+   "date": "2026-04-13",
+   "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+   "category": "war"
+  },
+  {
+   "id": "tl-2026-07-08-collapse",
+   "date": "2026-07-08",
+   "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+   "category": "war"
+  }
+ ],
+ "note": "Base is the last close before the event date; day k is the k-th trading close on or after it. US-listed stocks are shown against SPY. 'Unusual' means the average move is at least 2.0 standard errors from zero given the asset's normal swing, with 3 or more events. Events on the same date count once. Some events fall inside each other's 5- and 20-day windows, which overstates certainty. 'Without largest' drops the single biggest move to show whether one event carries the average. A few events, so treat every number as a hint. Not a trading signal.",
+ "assets": [
+  {
+   "ticker": "BZ=F",
+   "name": "Brent crude",
+   "category": "commodity",
+   "why": "Seaborne oil; prices in Gulf and Hormuz risk",
+   "benchmark": null,
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-18",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 1.55,
+     "mean_without_largest": 0.98,
+     "median": 2.49,
+     "share_up": 0.64,
+     "typical_swing": 2.45,
+     "z": 2.09,
+     "unusual": true,
+     "holds_without_largest": true
+    },
+    "5": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 5.03,
+     "mean_without_largest": 2.75,
+     "median": 4.22,
+     "share_up": 0.64,
+     "typical_swing": 5.41,
+     "z": 3.08,
+     "unusual": true,
+     "holds_without_largest": true
+    },
+    "20": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 4.39,
+     "mean_without_largest": -0.7,
+     "median": 0.37,
+     "share_up": 0.55,
+     "typical_swing": 10.91,
+     "z": 1.33,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": 4.22,
+     "d5": 7.46,
+     "d20": 0.37
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": -0.07,
+     "d5": 4.22,
+     "d20": 2.31
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": -0.39,
+     "d5": -3.49,
+     "d20": -8.47
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 0.21,
+     "d5": 2.18,
+     "d20": -4.41
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": 2.49,
+     "d5": 12.76,
+     "d20": -0.49
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": -6.09,
+     "d5": -3.88,
+     "d20": -1.16
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 7.02,
+     "d5": 11.03,
+     "d20": 1.44
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": -7.18,
+     "d5": -12.0,
+     "d20": -10.04
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 7.26,
+     "d5": 27.88,
+     "d20": 55.31
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": 4.37,
+     "d5": -5.06,
+     "d20": 6.4
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": 5.2,
+     "d5": 14.25,
+     "d20": 7.01
+    }
+   ]
+  },
+  {
+   "ticker": "CL=F",
+   "name": "WTI crude",
+   "category": "commodity",
+   "why": "US oil; less exposed to Gulf shipping than Brent",
+   "benchmark": null,
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-18",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 1.22,
+     "mean_without_largest": 2.2,
+     "median": 2.44,
+     "share_up": 0.73,
+     "typical_swing": 2.56,
+     "z": 1.58,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "5": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 4.65,
+     "mean_without_largest": 1.55,
+     "median": 4.5,
+     "share_up": 0.64,
+     "typical_swing": 5.7,
+     "z": 2.7,
+     "unusual": true,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 2.62,
+     "mean_without_largest": -1.99,
+     "median": -1.16,
+     "share_up": 0.36,
+     "typical_swing": 10.94,
+     "z": 0.79,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": 4.34,
+     "d5": 5.92,
+     "d20": -2.75
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": 0.65,
+     "d5": 4.5,
+     "d20": 0.82
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": -0.29,
+     "d5": -2.94,
+     "d20": -8.64
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 0.5,
+     "d5": 1.02,
+     "d20": -4.23
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": 2.44,
+     "d5": 13.16,
+     "d20": -1.16
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": -6.13,
+     "d5": -3.19,
+     "d20": -0.75
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 7.26,
+     "d5": 10.13,
+     "d20": 0.6
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": -8.57,
+     "d5": -12.56,
+     "d20": -10.13
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 6.28,
+     "d5": 35.63,
+     "d20": 48.67
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": 2.6,
+     "d5": -13.17,
+     "d20": -1.19
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": 4.37,
+     "d5": 12.63,
+     "d20": 7.57
+    }
+   ]
+  },
+  {
+   "ticker": "GC=F",
+   "name": "Gold",
+   "category": "commodity",
+   "why": "Flight to safety",
+   "benchmark": null,
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-18",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 0.53,
+     "mean_without_largest": 0.76,
+     "median": 0.66,
+     "share_up": 0.82,
+     "typical_swing": 1.34,
+     "z": 1.31,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "5": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 0.47,
+     "mean_without_largest": -0.06,
+     "median": -0.2,
+     "share_up": 0.45,
+     "typical_swing": 2.88,
+     "z": 0.54,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "raw",
+     "mean": -0.17,
+     "mean_without_largest": 1.26,
+     "median": -0.52,
+     "share_up": 0.36,
+     "typical_swing": 5.33,
+     "z": -0.1,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": 1.04,
+     "d5": 5.22,
+     "d20": 8.35
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": 1.79,
+     "d5": 5.77,
+     "d20": 5.85
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": 0.37,
+     "d5": 1.67,
+     "d20": 0.04
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 0.66,
+     "d5": -2.31,
+     "d20": -0.52
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": 1.16,
+     "d5": 0.25,
+     "d20": 3.63
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": 0.05,
+     "d5": -0.2,
+     "d20": -1.54
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 1.48,
+     "d5": -0.49,
+     "d20": -1.13
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": 0.27,
+     "d5": -2.9,
+     "d20": -0.81
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 1.21,
+     "d5": -1.7,
+     "d20": -14.39
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": -0.42,
+     "d5": 1.93,
+     "d20": -1.18
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": -1.8,
+     "d5": -2.11,
+     "d20": -0.12
+    }
+   ]
+  },
+  {
+   "ticker": "^OVX",
+   "name": "Oil volatility index",
+   "category": "volatility",
+   "why": "What options traders pay for oil swings",
+   "benchmark": null,
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-16",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 4.47,
+     "mean_without_largest": 2.3,
+     "median": 6.01,
+     "share_up": 0.82,
+     "typical_swing": 6.31,
+     "z": 2.35,
+     "unusual": true,
+     "holds_without_largest": true
+    },
+    "5": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 11.68,
+     "mean_without_largest": 6.83,
+     "median": 21.22,
+     "share_up": 0.55,
+     "typical_swing": 14.5,
+     "z": 2.67,
+     "unusual": true,
+     "holds_without_largest": true
+    },
+    "20": {
+     "n": 11,
+     "measure": "raw",
+     "mean": -5.08,
+     "mean_without_largest": -0.44,
+     "median": -7.51,
+     "share_up": 0.45,
+     "typical_swing": 27.19,
+     "z": -0.62,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": 11.69,
+     "d5": 23.99,
+     "d20": 7.99
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": 5.25,
+     "d5": 23.18,
+     "d20": 5.86
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": 10.56,
+     "d5": -1.03,
+     "d20": -13.39
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 1.46,
+     "d5": -9.75,
+     "d20": -13.76
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": 7.55,
+     "d5": 21.22,
+     "d20": 7.78
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": -12.27,
+     "d5": -9.86,
+     "d20": -27.02
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 26.14,
+     "d5": 42.54,
+     "d20": -26.1
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": -17.04,
+     "d5": -36.25,
+     "d20": -51.48
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 6.52,
+     "d5": 60.17,
+     "d20": 49.41
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": 3.26,
+     "d5": -11.54,
+     "d20": -7.51
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": 6.01,
+     "d5": 25.85,
+     "d20": 12.31
+    }
+   ]
+  },
+  {
+   "ticker": "ILS=X",
+   "name": "US dollar in shekels",
+   "category": "fx",
+   "why": "Up means a weaker shekel",
+   "benchmark": null,
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-19",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 0.37,
+     "mean_without_largest": 0.2,
+     "median": 0.18,
+     "share_up": 0.64,
+     "typical_swing": 0.63,
+     "z": 1.93,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "5": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 0.02,
+     "mean_without_largest": -0.29,
+     "median": -0.22,
+     "share_up": 0.45,
+     "typical_swing": 1.35,
+     "z": 0.06,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "raw",
+     "mean": -0.82,
+     "mean_without_largest": -0.36,
+     "median": -0.7,
+     "share_up": 0.36,
+     "typical_swing": 2.67,
+     "z": -1.02,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": -0.15,
+     "d5": 2.65,
+     "d20": 2.96
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": 0.76,
+     "d5": 1.24,
+     "d20": 3.81
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": 0.48,
+     "d5": 1.01,
+     "d20": -0.7
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 0.18,
+     "d5": -0.22,
+     "d20": -3.04
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": 0.48,
+     "d5": 3.14,
+     "d20": 2.47
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": -0.1,
+     "d5": -1.33,
+     "d20": -2.08
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 2.05,
+     "d5": -0.43,
+     "d20": -4.63
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": -0.04,
+     "d5": -2.78,
+     "d20": -3.7
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 0.16,
+     "d5": -1.62,
+     "d20": -0.21
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": -1.11,
+     "d5": -2.3,
+     "d20": -5.4
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": 1.31,
+     "d5": 0.89,
+     "d20": 1.52
+    }
+   ]
+  },
+  {
+   "ticker": "^TA125.TA",
+   "name": "Tel Aviv 125",
+   "category": "index",
+   "why": "Israeli stocks in Tel Aviv",
+   "benchmark": null,
+   "first_date": "2023-09-04",
+   "last_date": "2026-10-16",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "raw",
+     "mean": -0.11,
+     "mean_without_largest": 0.49,
+     "median": 0.43,
+     "share_up": 0.55,
+     "typical_swing": 1.14,
+     "z": -0.31,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "5": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 0.77,
+     "mean_without_largest": 1.65,
+     "median": 0.47,
+     "share_up": 0.55,
+     "typical_swing": 2.68,
+     "z": 0.96,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 2.94,
+     "mean_without_largest": 1.83,
+     "median": 2.57,
+     "share_up": 0.64,
+     "typical_swing": 5.01,
+     "z": 1.95,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": -6.03,
+     "d5": -7.97,
+     "d20": -7.32
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": 0.52,
+     "d5": -0.14,
+     "d20": -1.07
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": -0.73,
+     "d5": 0.47,
+     "d20": 0.75
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 1.46,
+     "d5": 1.46,
+     "d20": 3.63
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": -1.23,
+     "d5": -1.49,
+     "d20": 8.81
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": 0.93,
+     "d5": 2.76,
+     "d20": 6.59
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 0.56,
+     "d5": 6.47,
+     "d20": 14.07
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": 0.43,
+     "d5": 5.36,
+     "d20": 8.55
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 4.61,
+     "d5": 3.19,
+     "d20": -3.27
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": -1.45,
+     "d5": -0.62,
+     "d20": 2.57
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": -0.25,
+     "d5": -0.99,
+     "d20": -0.97
+    }
+   ]
+  },
+  {
+   "ticker": "EIS",
+   "name": "iShares Israel ETF",
+   "category": "equity",
+   "why": "Israeli stocks traded in New York",
+   "benchmark": "SPY",
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-16",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": -0.21,
+     "mean_without_largest": 0.55,
+     "median": 0.27,
+     "share_up": 0.55,
+     "typical_swing": 1.38,
+     "z": -0.5,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "5": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 0.01,
+     "mean_without_largest": 1.04,
+     "median": 0.22,
+     "share_up": 0.55,
+     "typical_swing": 3.06,
+     "z": 0.01,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 0.9,
+     "mean_without_largest": 1.96,
+     "median": 1.08,
+     "share_up": 0.73,
+     "typical_swing": 5.94,
+     "z": 0.51,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": -7.11,
+     "x1": -7.75,
+     "d5": -9.82,
+     "x5": -10.28,
+     "d20": -8.4,
+     "x20": -9.6
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": -0.55,
+     "x1": -0.37,
+     "d5": -5.63,
+     "x5": -4.74,
+     "d20": -7.35,
+     "x20": -4.52
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": -0.09,
+     "x1": 1.17,
+     "d5": -1.98,
+     "x5": 1.1,
+     "d20": 5.06,
+     "x20": 3.1
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": -0.5,
+     "x1": 0.37,
+     "d5": 1.02,
+     "x5": 0.22,
+     "d20": 6.0,
+     "x20": 0.16
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": -3.14,
+     "x1": -2.24,
+     "d5": -4.04,
+     "x5": -3.0,
+     "d20": 2.31,
+     "x20": 1.08
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": 2.75,
+     "x1": 2.44,
+     "d5": 1.46,
+     "x5": 2.84,
+     "d20": 7.99,
+     "x20": 5.14
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": -2.54,
+     "x1": -1.43,
+     "d5": 3.95,
+     "x5": 5.51,
+     "d20": 11.42,
+     "x20": 7.93
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": 2.15,
+     "x1": 1.16,
+     "d5": 5.29,
+     "x5": 1.82,
+     "d20": 9.06,
+     "x20": 3.25
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 5.54,
+     "x1": 5.48,
+     "d5": 5.83,
+     "x5": 7.82,
+     "d20": -4.12,
+     "x20": 3.45
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": -0.42,
+     "x1": -1.4,
+     "d5": 3.36,
+     "x5": -1.16,
+     "d20": 8.99,
+     "x20": 0.43
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": -0.04,
+     "x1": 0.27,
+     "d5": 0.51,
+     "x5": -0.04,
+     "d20": 2.69,
+     "x20": -0.47
+    }
+   ]
+  },
+  {
+   "ticker": "ESLT",
+   "name": "Elbit Systems",
+   "category": "equity",
+   "why": "Israel's largest defense company",
+   "benchmark": "SPY",
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-16",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 2.39,
+     "mean_without_largest": 1.85,
+     "median": 1.47,
+     "share_up": 0.73,
+     "typical_swing": 2.2,
+     "z": 3.6,
+     "unusual": true,
+     "holds_without_largest": true
+    },
+    "5": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 2.27,
+     "mean_without_largest": 0.12,
+     "median": 1.34,
+     "share_up": 0.55,
+     "typical_swing": 4.97,
+     "z": 1.51,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 0.91,
+     "mean_without_largest": 3.4,
+     "median": -0.35,
+     "share_up": 0.45,
+     "typical_swing": 10.26,
+     "z": 0.29,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": -2.24,
+     "x1": -2.88,
+     "d5": 1.8,
+     "x5": 1.34,
+     "d20": -8.5,
+     "x20": -9.7
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": -0.75,
+     "x1": -0.58,
+     "d5": -4.27,
+     "x5": -3.38,
+     "d20": -4.5,
+     "x20": -1.67
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": 3.18,
+     "x1": 4.43,
+     "d5": 2.85,
+     "x5": 5.92,
+     "d20": 1.61,
+     "x20": -0.35
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 0.59,
+     "x1": 1.47,
+     "d5": -0.15,
+     "x5": -0.95,
+     "d20": 0.38,
+     "x20": -5.46
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": 1.1,
+     "x1": 2.0,
+     "d5": 4.48,
+     "x5": 5.52,
+     "d20": 13.43,
+     "x20": 12.2
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": 7.91,
+     "x1": 7.6,
+     "d5": 8.74,
+     "x5": 10.12,
+     "d20": 18.91,
+     "x20": 16.07
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 5.43,
+     "x1": 6.55,
+     "d5": 1.62,
+     "x5": 3.19,
+     "d20": 5.24,
+     "x20": 1.75
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": 0.25,
+     "x1": -0.74,
+     "d5": -0.95,
+     "x5": -4.42,
+     "d20": 0.28,
+     "x20": -5.53
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 7.84,
+     "x1": 7.79,
+     "d5": 21.73,
+     "x5": 23.71,
+     "d20": 13.1,
+     "x20": 20.67
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": 1.06,
+     "x1": 0.08,
+     "d5": -5.69,
+     "x5": -10.21,
+     "d20": -15.46,
+     "x20": -24.02
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": 0.27,
+     "x1": 0.58,
+     "d5": -5.35,
+     "x5": -5.9,
+     "d20": 9.17,
+     "x20": 6.01
+    }
+   ]
+  },
+  {
+   "ticker": "LMT",
+   "name": "Lockheed Martin",
+   "category": "equity",
+   "why": "US defense, F-35 and missiles",
+   "benchmark": "SPY",
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-16",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 1.94,
+     "mean_without_largest": 1.3,
+     "median": 1.85,
+     "share_up": 0.55,
+     "typical_swing": 1.55,
+     "z": 4.14,
+     "unusual": true,
+     "holds_without_largest": true
+    },
+    "5": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 0.75,
+     "mean_without_largest": -0.13,
+     "median": 1.11,
+     "share_up": 0.64,
+     "typical_swing": 3.57,
+     "z": 0.7,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": -2.43,
+     "mean_without_largest": -0.07,
+     "median": -2.57,
+     "share_up": 0.45,
+     "typical_swing": 7.9,
+     "z": -1.02,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": 8.93,
+     "x1": 8.29,
+     "d5": 10.06,
+     "x5": 9.61,
+     "d20": 13.13,
+     "x20": 11.93
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": -0.46,
+     "x1": -0.28,
+     "d5": 0.11,
+     "x5": 1.0,
+     "d20": 1.41,
+     "x20": 4.24
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": 0.6,
+     "x1": 1.85,
+     "d5": 2.99,
+     "x5": 6.06,
+     "d20": 4.1,
+     "x20": 2.15
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 1.71,
+     "x1": 2.58,
+     "d5": 1.91,
+     "x5": 1.11,
+     "d20": 1.92,
+     "x20": -3.92
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": 3.64,
+     "x1": 4.54,
+     "d5": 3.59,
+     "x5": 4.63,
+     "d20": -5.03,
+     "x20": -6.26
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": -1.27,
+     "x1": -1.58,
+     "d5": -3.01,
+     "x5": -1.63,
+     "d20": -3.57,
+     "x20": -6.41
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 3.66,
+     "x1": 4.78,
+     "d5": 0.27,
+     "x5": 1.84,
+     "d20": 0.92,
+     "x20": -2.57
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": 0.4,
+     "x1": -0.58,
+     "d5": -2.54,
+     "x5": -6.02,
+     "d20": -2.13,
+     "x20": -7.94
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 2.83,
+     "x1": 2.77,
+     "d5": 2.08,
+     "x5": 4.06,
+     "d20": -6.42,
+     "x20": 1.15
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": 0.97,
+     "x1": -0.0,
+     "d5": -3.51,
+     "x5": -8.02,
+     "d20": -17.47,
+     "x20": -26.03
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": -1.39,
+     "x1": -1.08,
+     "d5": -3.81,
+     "x5": -4.36,
+     "d20": 10.08,
+     "x20": 6.92
+    }
+   ]
+  },
+  {
+   "ticker": "RTX",
+   "name": "RTX",
+   "category": "equity",
+   "why": "US defense, Patriot interceptors",
+   "benchmark": "SPY",
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-16",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 1.33,
+     "mean_without_largest": 0.99,
+     "median": 1.17,
+     "share_up": 0.64,
+     "typical_swing": 1.53,
+     "z": 2.88,
+     "unusual": true,
+     "holds_without_largest": true
+    },
+    "5": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 0.9,
+     "mean_without_largest": 1.69,
+     "median": 4.25,
+     "share_up": 0.64,
+     "typical_swing": 3.43,
+     "z": 0.87,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 0.67,
+     "mean_without_largest": 2.85,
+     "median": 2.29,
+     "share_up": 0.64,
+     "typical_swing": 6.46,
+     "z": 0.34,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": 4.62,
+     "x1": 3.97,
+     "d5": 4.99,
+     "x5": 4.53,
+     "d20": 18.56,
+     "x20": 17.36
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": 0.24,
+     "x1": 0.41,
+     "d5": 4.27,
+     "x5": 5.15,
+     "d20": 3.98,
+     "x20": 6.81
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": -0.08,
+     "x1": 1.17,
+     "d5": 1.46,
+     "x5": 4.53,
+     "d20": 6.21,
+     "x20": 4.26
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 0.84,
+     "x1": 1.72,
+     "d5": 0.99,
+     "x5": 0.2,
+     "d20": 3.51,
+     "x20": -2.33
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": 2.67,
+     "x1": 3.56,
+     "d5": 3.21,
+     "x5": 4.25,
+     "d20": 3.52,
+     "x20": 2.29
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": 0.22,
+     "x1": -0.09,
+     "d5": -5.12,
+     "x5": -3.74,
+     "d20": -3.51,
+     "x20": -6.35
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 3.34,
+     "x1": 4.46,
+     "d5": 4.01,
+     "x5": 5.58,
+     "d20": 5.89,
+     "x20": 2.4
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": -0.57,
+     "x1": -1.55,
+     "d5": -1.35,
+     "x5": -4.82,
+     "d20": 3.36,
+     "x20": -2.45
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 4.71,
+     "x1": 4.65,
+     "d5": 3.52,
+     "x5": 5.51,
+     "d20": -6.37,
+     "x20": 1.19
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": -0.07,
+     "x1": -1.05,
+     "d5": -2.55,
+     "x5": -7.07,
+     "d20": -12.64,
+     "x20": -21.2
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": -2.96,
+     "x1": -2.65,
+     "d5": -3.71,
+     "x5": -4.27,
+     "d20": 8.5,
+     "x20": 5.34
+    }
+   ]
+  },
+  {
+   "ticker": "ITA",
+   "name": "US aerospace and defense ETF",
+   "category": "equity",
+   "why": "The defense sector as a whole",
+   "benchmark": "SPY",
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-16",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 0.87,
+     "mean_without_largest": 0.57,
+     "median": 0.73,
+     "share_up": 0.73,
+     "typical_swing": 1.26,
+     "z": 2.29,
+     "unusual": true,
+     "holds_without_largest": true
+    },
+    "5": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 0.37,
+     "mean_without_largest": 0.87,
+     "median": 0.47,
+     "share_up": 0.73,
+     "typical_swing": 2.78,
+     "z": 0.45,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 0.16,
+     "mean_without_largest": 1.3,
+     "median": 0.42,
+     "share_up": 0.64,
+     "typical_swing": 5.47,
+     "z": 0.1,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": 4.45,
+     "x1": 3.81,
+     "d5": 4.39,
+     "x5": 3.93,
+     "d20": 8.96,
+     "x20": 7.76
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": -0.79,
+     "x1": -0.61,
+     "d5": -0.44,
+     "x5": 0.45,
+     "d20": -1.82,
+     "x20": 1.01
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": -0.52,
+     "x1": 0.73,
+     "d5": 0.22,
+     "x5": 3.29,
+     "d20": 5.78,
+     "x20": 3.82
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 0.42,
+     "x1": 1.3,
+     "d5": 1.22,
+     "x5": 0.42,
+     "d20": 5.87,
+     "x20": 0.03
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": 1.14,
+     "x1": 2.04,
+     "d5": 1.13,
+     "x5": 2.17,
+     "d20": -0.63,
+     "x20": -1.86
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": -0.61,
+     "x1": -0.92,
+     "d5": -3.4,
+     "x5": -2.01,
+     "d20": 3.27,
+     "x20": 0.42
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 0.42,
+     "x1": 1.54,
+     "d5": 0.54,
+     "x5": 2.11,
+     "d20": 7.9,
+     "x20": 4.41
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": 1.42,
+     "x1": 0.44,
+     "d5": 3.94,
+     "x5": 0.47,
+     "d20": 7.88,
+     "x20": 2.07
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 2.81,
+     "x1": 2.76,
+     "d5": -0.62,
+     "x5": 1.36,
+     "d20": -11.36,
+     "x20": -3.79
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": 1.38,
+     "x1": 0.4,
+     "d5": 1.0,
+     "x5": -3.51,
+     "d20": -2.68,
+     "x20": -11.24
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": -2.24,
+     "x1": -1.93,
+     "d5": -4.01,
+     "x5": -4.57,
+     "d20": 2.26,
+     "x20": -0.9
+    }
+   ]
+  },
+  {
+   "ticker": "FRO",
+   "name": "Frontline",
+   "category": "equity",
+   "why": "Crude tankers; rates rise when routes are disrupted",
+   "benchmark": "SPY",
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-16",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 2.15,
+     "mean_without_largest": 1.51,
+     "median": 2.43,
+     "share_up": 0.82,
+     "typical_swing": 2.84,
+     "z": 2.52,
+     "unusual": true,
+     "holds_without_largest": true
+    },
+    "5": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 1.44,
+     "mean_without_largest": 2.98,
+     "median": 1.7,
+     "share_up": 0.64,
+     "typical_swing": 6.41,
+     "z": 0.74,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 1.57,
+     "mean_without_largest": -0.56,
+     "median": 0.32,
+     "share_up": 0.55,
+     "typical_swing": 12.23,
+     "z": 0.43,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": 5.42,
+     "x1": 4.78,
+     "d5": 12.81,
+     "x5": 12.35,
+     "d20": 24.08,
+     "x20": 22.88
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": 2.35,
+     "x1": 2.53,
+     "d5": 2.31,
+     "x5": 3.2,
+     "d20": 1.8,
+     "x20": 4.63
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": 0.33,
+     "x1": 1.59,
+     "d5": -4.07,
+     "x5": -1.0,
+     "d20": 8.76,
+     "x20": 6.81
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 1.01,
+     "x1": 1.88,
+     "d5": 2.49,
+     "x5": 1.7,
+     "d20": 19.46,
+     "x20": 13.62
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": 1.88,
+     "x1": 2.78,
+     "d5": 12.39,
+     "x5": 13.42,
+     "d20": -13.52,
+     "x20": -14.76
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": -2.32,
+     "x1": -2.63,
+     "d5": -4.15,
+     "x5": -2.77,
+     "d20": -3.36,
+     "x20": -6.21
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 7.46,
+     "x1": 8.58,
+     "d5": 3.32,
+     "x5": 4.89,
+     "d20": 1.2,
+     "x20": -2.29
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": -2.11,
+     "x1": -3.1,
+     "d5": -10.54,
+     "x5": -14.01,
+     "d20": -4.69,
+     "x20": -10.49
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 4.4,
+     "x1": 4.34,
+     "d5": -8.93,
+     "x5": -6.95,
+     "d20": -11.33,
+     "x20": -3.76
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": 1.46,
+     "x1": 0.48,
+     "d5": 8.12,
+     "x5": 3.61,
+     "d20": 15.06,
+     "x20": 6.5
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": 2.12,
+     "x1": 2.43,
+     "d5": 1.91,
+     "x5": 1.36,
+     "d20": 3.48,
+     "x20": 0.32
+    }
+   ]
+  },
+  {
+   "ticker": "STNG",
+   "name": "Scorpio Tankers",
+   "category": "equity",
+   "why": "Product tankers",
+   "benchmark": "SPY",
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-16",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 1.36,
+     "mean_without_largest": 1.01,
+     "median": 1.63,
+     "share_up": 0.73,
+     "typical_swing": 2.33,
+     "z": 1.93,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "5": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 0.79,
+     "mean_without_largest": 1.8,
+     "median": 1.19,
+     "share_up": 0.64,
+     "typical_swing": 5.18,
+     "z": 0.5,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 1.01,
+     "mean_without_largest": 2.9,
+     "median": 4.54,
+     "share_up": 0.64,
+     "typical_swing": 10.69,
+     "z": 0.31,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": 4.44,
+     "x1": 3.8,
+     "d5": 9.01,
+     "x5": 8.56,
+     "d20": 13.98,
+     "x20": 12.78
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": 1.68,
+     "x1": 1.85,
+     "d5": 0.31,
+     "x5": 1.19,
+     "d20": 1.71,
+     "x20": 4.54
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": -0.56,
+     "x1": 0.69,
+     "d5": -2.03,
+     "x5": 1.04,
+     "d20": 9.65,
+     "x20": 7.7
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 1.56,
+     "x1": 2.44,
+     "d5": 4.89,
+     "x5": 4.1,
+     "d20": 18.39,
+     "x20": 12.55
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": -0.06,
+     "x1": 0.84,
+     "d5": 2.58,
+     "x5": 3.62,
+     "d20": -14.52,
+     "x20": -15.75
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": -1.73,
+     "x1": -2.03,
+     "d5": -5.85,
+     "x5": -4.47,
+     "d20": -14.96,
+     "x20": -17.81
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 3.73,
+     "x1": 4.85,
+     "d5": 2.56,
+     "x5": 4.13,
+     "d20": 8.96,
+     "x20": 5.47
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": -1.4,
+     "x1": -2.39,
+     "d5": -5.85,
+     "x5": -9.32,
+     "d20": -0.21,
+     "x20": -6.01
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": -1.01,
+     "x1": -1.07,
+     "d5": -2.82,
+     "x5": -0.84,
+     "d20": -4.26,
+     "x20": 3.3
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": 2.6,
+     "x1": 1.63,
+     "d5": 0.94,
+     "x5": -3.58,
+     "d20": 13.29,
+     "x20": 4.73
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": 4.05,
+     "x1": 4.36,
+     "d5": 4.78,
+     "x5": 4.23,
+     "d20": 2.8,
+     "x20": -0.36
+    }
+   ]
+  },
+  {
+   "ticker": "ZIM",
+   "name": "ZIM Shipping",
+   "category": "equity",
+   "why": "Israeli container line; Red Sea exposure",
+   "benchmark": "SPY",
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-16",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 1.31,
+     "mean_without_largest": 0.76,
+     "median": -0.06,
+     "share_up": 0.45,
+     "typical_swing": 4.21,
+     "z": 1.03,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "5": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 0.62,
+     "mean_without_largest": 3.26,
+     "median": 1.33,
+     "share_up": 0.55,
+     "typical_swing": 9.9,
+     "z": 0.21,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "vs SPY",
+     "mean": 12.83,
+     "mean_without_largest": 5.48,
+     "median": -1.59,
+     "share_up": 0.45,
+     "typical_swing": 21.4,
+     "z": 1.99,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": 0.0,
+     "x1": -0.64,
+     "d5": -0.1,
+     "x5": -0.56,
+     "d20": -19.24,
+     "x20": -20.44
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": 5.43,
+     "x1": 5.61,
+     "d5": 10.28,
+     "x5": 11.16,
+     "d20": 30.63,
+     "x20": 33.46
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": 1.39,
+     "x1": 2.64,
+     "d5": 0.69,
+     "x5": 3.76,
+     "d20": 74.16,
+     "x20": 72.2
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": 3.14,
+     "x1": 4.02,
+     "d5": 15.52,
+     "x5": 14.72,
+     "d20": 92.19,
+     "x20": 86.35
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": -5.22,
+     "x1": -4.33,
+     "d5": -26.81,
+     "x5": -25.77,
+     "d20": -11.38,
+     "x20": -12.61
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": -0.26,
+     "x1": -0.57,
+     "d5": 6.58,
+     "x5": 7.96,
+     "d20": 4.3,
+     "x20": 1.45
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": 5.67,
+     "x1": 6.79,
+     "d5": -0.24,
+     "x5": 1.33,
+     "d20": -4.95,
+     "x20": -8.44
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": -0.79,
+     "x1": -1.77,
+     "d5": 0.0,
+     "x5": -3.47,
+     "d20": -6.65,
+     "x20": -12.46
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 0.0,
+     "x1": -0.06,
+     "d5": -3.54,
+     "x5": -1.55,
+     "d20": -9.16,
+     "x20": -1.59
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": 0.53,
+     "x1": -0.45,
+     "d5": 2.35,
+     "x5": -2.17,
+     "d20": 0.83,
+     "x20": -7.73
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": 2.84,
+     "x1": 3.15,
+     "d5": 2.01,
+     "x5": 1.46,
+     "d20": 14.09,
+     "x20": 10.93
+    }
+   ]
+  },
+  {
+   "ticker": "SPY",
+   "name": "S&P 500 ETF",
+   "category": "index",
+   "why": "The benchmark for US-listed stocks",
+   "benchmark": null,
+   "first_date": "2023-09-01",
+   "last_date": "2026-10-16",
+   "summary": {
+    "1": {
+     "n": 11,
+     "measure": "raw",
+     "mean": -0.15,
+     "mean_without_largest": -0.04,
+     "median": -0.17,
+     "share_up": 0.45,
+     "typical_swing": 0.96,
+     "z": -0.52,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "5": {
+     "n": 11,
+     "measure": "raw",
+     "mean": -0.01,
+     "mean_without_largest": -0.47,
+     "median": -0.89,
+     "share_up": 0.45,
+     "typical_swing": 1.98,
+     "z": -0.02,
+     "unusual": false,
+     "holds_without_largest": false
+    },
+    "20": {
+     "n": 11,
+     "measure": "raw",
+     "mean": 2.15,
+     "mean_without_largest": 1.51,
+     "median": 2.84,
+     "share_up": 0.82,
+     "typical_swing": 3.62,
+     "z": 1.97,
+     "unusual": false,
+     "holds_without_largest": false
+    }
+   },
+   "events": [
+    {
+     "event_id": "tl-2023-10-07-hamas-attack",
+     "date": "2023-10-07",
+     "title": "Hamas-led attack on southern Israel; Gaza war begins",
+     "d1": 0.64,
+     "d5": 0.46,
+     "d20": 1.2
+    },
+    {
+     "event_id": "tl-2024-04-01-damascus",
+     "date": "2024-04-01",
+     "title": "Israeli strike on the Iranian consulate annex in Damascus",
+     "d1": -0.17,
+     "d5": -0.89,
+     "d20": -2.83
+    },
+    {
+     "event_id": "tl-2024-04-13-iran-strike",
+     "date": "2024-04-13",
+     "title": "First direct Iranian missile and drone attack on Israel",
+     "d1": -1.25,
+     "d5": -3.07,
+     "d20": 1.96
+    },
+    {
+     "event_id": "tl-2024-04-19-isfahan",
+     "date": "2024-04-19",
+     "title": "Israeli strike near Isfahan",
+     "d1": -0.87,
+     "d5": 0.79,
+     "d20": 5.84
+    },
+    {
+     "event_id": "tl-2024-10-01-iran-strike",
+     "date": "2024-10-01",
+     "title": "Iranian ballistic missile attack on Israel",
+     "d1": -0.9,
+     "d5": -1.04,
+     "d20": 1.23
+    },
+    {
+     "event_id": "tl-2024-10-26-israel-strike",
+     "date": "2024-10-26",
+     "title": "Israeli strikes on Iranian military sites",
+     "d1": 0.31,
+     "d5": -1.38,
+     "d20": 2.84
+    },
+    {
+     "event_id": "tl-2025-06-13-twelve-day-war",
+     "date": "2025-06-13",
+     "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+     "d1": -1.12,
+     "d5": -1.57,
+     "d20": 3.49
+    },
+    {
+     "event_id": "tl-2025-06-22-us-strikes",
+     "date": "2025-06-22",
+     "title": "US strikes on Iranian nuclear sites",
+     "d1": 0.99,
+     "d5": 3.47,
+     "d20": 5.8
+    },
+    {
+     "event_id": "tl-2026-02-28-iran-war",
+     "date": "2026-02-28",
+     "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+     "d1": 0.06,
+     "d5": -1.98,
+     "d20": -7.57
+    },
+    {
+     "event_id": "tl-2026-04-13-blockade",
+     "date": "2026-04-13",
+     "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+     "d1": 0.98,
+     "d5": 4.52,
+     "d20": 8.56
+    },
+    {
+     "event_id": "tl-2026-07-08-collapse",
+     "date": "2026-07-08",
+     "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+     "d1": -0.31,
+     "d5": 0.55,
+     "d20": 3.16
+    }
+   ]
+  }
+ ]
+}

@@ -19,6 +19,7 @@ The curated knowledge this tool reads as ground truth. Code reads these files; f
 - [Leading indicators](docs/indicators.md): the six signals, keywords, windows and the watch level
 - [Base rates](docs/base-rates.md): how past events set starting odds, and the small-sample warning
 - [Timing curves and market accuracy](docs/timing-and-accuracy.md): ceasefire "when" curves, the Polymarket backtest, calibration
+- [Market reactions to past strikes](docs/event-study.md): how oil, the shekel, defense and tanker stocks moved after each strike
 - [Ideology, religion and doctrine](docs/ideology-research.md): recording the texts and doctrines leaders invoke
 - [Architecture](docs/architecture.md): stages, contracts, guards, tests
 - [Original build spec](docs/build-spec.md): the full spec this repo starts from

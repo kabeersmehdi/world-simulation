@@ -5,7 +5,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import ROOT, backtest, baserates, forecasts, markets, polls, scoring, store, timing
+from . import ROOT, backtest, baserates, eventstudy, forecasts, markets, polls, scoring, store, timing
 from .contracts import validate
 from .watch import watch_status
 
@@ -95,6 +95,7 @@ def build(root=ROOT, now=None, out_path=None):
         "signals": [o for o in observations if o["collector"] in ("adsb", "fleet", "advisory", "gpsjam")][:100],
         "markets": markets.board(root, now),
         "accuracy": accuracy,
+        "reactions": eventstudy.load(root),
         "timing": timing.board(root, now, calibration_bands(accuracy)),
         "polls": polls.load_all(root),
         "baserates": baserates.load_all(root),

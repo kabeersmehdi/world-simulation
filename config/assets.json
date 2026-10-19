@@ -1,0 +1,21 @@
+{
+  "note": "Daily closes from Yahoo Finance's public chart endpoint (no key). Used only for the event study: how assets moved after past strikes. Nothing here is a trading signal. US-listed stocks are also measured against SPY so a market-wide day does not look like a war reaction.",
+  "history_start": "2023-09-01",
+  "assets": [
+    {"ticker": "BZ=F", "name": "Brent crude", "category": "commodity", "why": "Seaborne oil; prices in Gulf and Hormuz risk"},
+    {"ticker": "CL=F", "name": "WTI crude", "category": "commodity", "why": "US oil; less exposed to Gulf shipping than Brent"},
+    {"ticker": "GC=F", "name": "Gold", "category": "commodity", "why": "Flight to safety"},
+    {"ticker": "^OVX", "name": "Oil volatility index", "category": "volatility", "why": "What options traders pay for oil swings"},
+    {"ticker": "ILS=X", "name": "US dollar in shekels", "category": "fx", "why": "Up means a weaker shekel"},
+    {"ticker": "^TA125.TA", "name": "Tel Aviv 125", "category": "index", "why": "Israeli stocks in Tel Aviv"},
+    {"ticker": "EIS", "name": "iShares Israel ETF", "category": "equity", "why": "Israeli stocks traded in New York", "benchmark": "SPY"},
+    {"ticker": "ESLT", "name": "Elbit Systems", "category": "equity", "why": "Israel's largest defense company", "benchmark": "SPY"},
+    {"ticker": "LMT", "name": "Lockheed Martin", "category": "equity", "why": "US defense, F-35 and missiles", "benchmark": "SPY"},
+    {"ticker": "RTX", "name": "RTX", "category": "equity", "why": "US defense, Patriot interceptors", "benchmark": "SPY"},
+    {"ticker": "ITA", "name": "US aerospace and defense ETF", "category": "equity", "why": "The defense sector as a whole", "benchmark": "SPY"},
+    {"ticker": "FRO", "name": "Frontline", "category": "equity", "why": "Crude tankers; rates rise when routes are disrupted", "benchmark": "SPY"},
+    {"ticker": "STNG", "name": "Scorpio Tankers", "category": "equity", "why": "Product tankers", "benchmark": "SPY"},
+    {"ticker": "ZIM", "name": "ZIM Shipping", "category": "equity", "why": "Israeli container line; Red Sea exposure", "benchmark": "SPY"},
+    {"ticker": "SPY", "name": "S&P 500 ETF", "category": "index", "why": "The benchmark for US-listed stocks"}
+  ]
+}

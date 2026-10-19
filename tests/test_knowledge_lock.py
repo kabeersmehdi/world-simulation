@@ -77,6 +77,13 @@ class KnowledgeLockTests(unittest.TestCase):
         self.assertIn(f"within {backtest.SETTLED} of 0 or 1", doc)
         self.assertIn(", ".join(str(h) for h in backtest.HORIZONS[:2]) + f" and {backtest.HORIZONS[2]} days", doc)
 
+    def test_event_study_constants_match_doc(self):
+        from worldsim import eventstudy
+        doc = (ROOT / "docs" / "event-study.md").read_text()
+        self.assertIn(f"at least {eventstudy.UNUSUAL_Z} standard errors", doc)
+        self.assertIn(f"`ROBUST_SHARE = {eventstudy.ROBUST_SHARE}`", doc)
+        self.assertIn("windows of " + ", ".join(str(w) for w in eventstudy.WINDOWS[:-1]) + f" and {eventstudy.WINDOWS[-1]} trading days", doc)
+
     def test_small_sample_matches_doc(self):
         from worldsim.baserates import SMALL_SAMPLE
         self.assertIn(f"Fewer than {SMALL_SAMPLE} events", (ROOT / "docs" / "base-rates.md").read_text())

@@ -4,6 +4,7 @@
   build          rebuild dashboard/data.json from what is saved
   validate       check every forecast, evidence, poll and base-rate file
   score          print the scorecard
+  prices         fetch daily prices and rerun the strike event study
   backtest       score resolved Polymarket markets on our topics (how good is the baseline?)
   new-forecast   write a forecast skeleton, optionally pre-filled from a Polymarket slug
 """
@@ -15,7 +16,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from . import ROOT, backtest, build, collectors, forecasts, markets, scoring, store, timing
+from . import ROOT, backtest, build, eventstudy, prices, collectors, forecasts, markets, scoring, store, timing
 from .contracts import ContractError
 
 
@@ -80,6 +81,22 @@ def cmd_backtest(args):
     return 0
 
 
+def cmd_prices(args):
+    for r in prices.collect(ROOT):
+        if not r["ok"]:
+            print(f"FAIL {r['source']}: {r['error']}")
+    result = eventstudy.run(ROOT)
+    print(f"Event study: {len(result['events'])} events x {len(result['assets'])} assets.")
+    for a in result["assets"]:
+        hits = [f"day {k} {s['mean']:+.1f}%" + ("" if s["holds_without_largest"] else " (one event carries it)")
+                for k, s in a["summary"].items() if s["unusual"]]
+        if hits:
+            print(f"  {a['name']}: " + ", ".join(hits))
+    build.build(ROOT)
+    print("Saved data/eventstudy/strike-reactions.json and rebuilt the dashboard.")
+    return 0
+
+
 def cmd_new_forecast(args):
     now = datetime.now(timezone.utc).replace(microsecond=0)
     question, deadline, market, bench = args.question, None, None, None
@@ -128,12 +145,13 @@ def main(argv=None):
     v.add_argument("--out", help="write the test build here instead of dashboard/data.json")
     sub.add_parser("score")
     sub.add_parser("backtest")
+    sub.add_parser("prices")
     n = sub.add_parser("new-forecast")
     n.add_argument("--question")
     n.add_argument("--market", help="Polymarket slug to pre-fill question, deadline and market price")
     args = p.parse_args(argv)
     return {"collect": cmd_collect, "build": cmd_build, "validate": cmd_validate,
-            "score": cmd_score, "backtest": cmd_backtest, "new-forecast": cmd_new_forecast}[args.cmd](args)
+            "score": cmd_score, "backtest": cmd_backtest, "prices": cmd_prices, "new-forecast": cmd_new_forecast}[args.cmd](args)
 
 
 if __name__ == "__main__":

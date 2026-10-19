@@ -329,9 +329,44 @@
     return h;
   }
 
+
+  function reactionsView() {
+    var R = D.reactions;
+    var h = '<h2>Market reactions to past strikes</h2>';
+    if (!R) return h + '<div class="banner">No event study yet. Run <code>python -m worldsim prices</code>.</div>';
+    h += '<p class="muted small">' + esc(R.note) + " Run " + when(R.run_at) + ".</p>";
+    h += '<div class="banner">How to read it: each cell is the average move after ' + R.events.length + ' strike and war events. <span class="pill warn">unusual</span> means bigger than the asset’s normal swing. <span class="pill ok">holds</span> means it survives dropping the single biggest event. Unusual but not holding means one event (usually the 2026 war) carries it.</div>';
+    function cell(s) {
+      if (!s || s.mean == null) return '<td class="num">n/a</td>';
+      var tag = s.holds_without_largest ? ' <span class="pill ok">holds</span>' : (s.unusual ? ' <span class="pill warn">unusual</span>' : "");
+      return '<td class="num">' + (s.mean > 0 ? "+" : "") + s.mean.toFixed(1) + '%' + tag + '<div class="small muted">without largest ' + (s.mean_without_largest > 0 ? "+" : "") + (s.mean_without_largest == null ? "n/a" : s.mean_without_largest.toFixed(1) + "%") + " &middot; normal swing " + s.typical_swing + "%</div></td>";
+    }
+    h += '<div class="card tablewrap"><table><thead><tr><th>Asset</th><th>Measured</th>' + R.windows.map(function (k) { return '<th class="num">' + k + (k === 1 ? " trading day" : " trading days") + "</th>"; }).join("") + "</tr></thead><tbody>" +
+      R.assets.map(function (a) {
+        return "<tr><td><strong>" + esc(a.name) + '</strong><div class="small muted">' + esc(a.ticker) + " &middot; " + esc(a.why) + "</div></td><td>" + esc(a.summary["1"].measure) + "</td>" +
+          R.windows.map(function (k) { return cell(a.summary[String(k)]); }).join("") + "</tr>";
+      }).join("") + "</tbody></table></div>";
+    h += '<h3 style="margin-top:20px">Event by event</h3><div class="toolbar"><select id="rasset" aria-label="Asset">' + R.assets.map(function (a, i) { return '<option value="' + i + '">' + esc(a.name) + "</option>"; }).join("") + '</select></div><div class="card tablewrap" id="rbody"></div>';
+    setTimeout(function () {
+      function draw() {
+        var a = R.assets[+$("#rasset").value], useX = a.benchmark === "SPY";
+        $("#rbody").innerHTML = "<table><thead><tr><th>Date</th><th>Event</th>" + R.windows.map(function (k) { return '<th class="num">Day ' + k + (useX ? " vs SPY" : "") + "</th>"; }).join("") + "</tr></thead><tbody>" +
+          a.events.map(function (e) {
+            return "<tr><td>" + day(e.date) + "</td><td>" + esc(e.title) + "</td>" + R.windows.map(function (k) {
+              var v = useX ? e["x" + k] : e["d" + k];
+              return '<td class="num">' + (v == null ? "n/a" : (v > 0 ? "+" : "") + v.toFixed(1) + "%") + "</td>";
+            }).join("") + "</tr>";
+          }).join("") + "</tbody></table>";
+      }
+      $("#rasset").addEventListener("input", draw);
+      draw();
+    });
+    return h;
+  }
+
   var VIEWS = [
     ["overview", "Overview", overview], ["watch", "Indicators", watch], ["feed", "News feed", feed],
-    ["markets", "Markets", marketsView], ["timing", "When", timingView], ["accuracy", "Accuracy", accuracyView], ["forecasts", "Forecasts", forecastsView], ["polls", "Polls", pollsView],
+    ["markets", "Markets", marketsView], ["timing", "When", timingView], ["accuracy", "Accuracy", accuracyView], ["reactions", "Reactions", reactionsView], ["forecasts", "Forecasts", forecastsView], ["polls", "Polls", pollsView],
     ["countries", "Countries", countriesView], ["timeline", "Timeline", timelineView], ["backers", "Backers", backersView],
     ["baserates", "Base rates", baseratesView], ["scenarios", "Scenarios", scenariosView], ["scorecard", "Scorecard", scorecardView],
     ["sources", "Sources", sourcesView]
