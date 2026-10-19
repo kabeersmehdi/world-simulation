@@ -13,17 +13,22 @@ import csv
 import io
 import math
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from ..store import make_observation
 from .http import NotConfigured
 
 KEY_VAR = "FIRMS_MAP_KEY"
-API = "https://firms.modaps.eosdis.nasa.gov/api/area/csv/{key}/{sat}/{bbox}/1"
+# DAY_RANGE 1 means "today, UTC" only, which is nearly empty early in the UTC day.
+# Ask for two days and keep the last 24 hours ourselves.
+API = "https://firms.modaps.eosdis.nasa.gov/api/area/csv/{key}/{sat}/{bbox}/2"
+LOOKBACK_HOURS = 24
 SATELLITES = ["VIIRS_SNPP_NRT", "VIIRS_NOAA20_NRT", "VIIRS_NOAA21_NRT"]
 
 # site kind -> (minimum solid detections, minimum total fire radiative power in MW)
-RULES = {"flare": (6, 100.0), "no_flare": (2, 0.0)}
+# On 10/18/2026 one satellite alone saw 7 to 10 flare pixels and 15 to 38 MW at the
+# busiest refineries, so three satellites see about three times that on a normal day.
+RULES = {"flare": (10, 300.0), "no_flare": (2, 0.0)}
 SOLID_CONFIDENCE = {"n", "h", "nominal", "high"}  # VIIRS low-confidence pixels are ignored
 
 
@@ -58,7 +63,9 @@ def km_between(lat1, lon1, lat2, lon2):
 
 def parse(csv_text):
     rows = []
+    lines = 0
     for row in csv.DictReader(io.StringIO(csv_text)):
+        lines += 1
         try:
             t = row["acq_time"].zfill(4)
             at = datetime.strptime(f"{row['acq_date']} {t}", "%Y-%m-%d %H%M").replace(tzinfo=timezone.utc)
@@ -67,6 +74,8 @@ def parse(csv_text):
                          "at": at.isoformat(), "satellite": row.get("satellite")})
         except (KeyError, ValueError):
             continue
+    if lines and not rows:
+        raise ValueError(f"none of {lines} FIRMS rows could be read; the CSV format may have changed")
     return rows
 
 
@@ -76,7 +85,8 @@ def fires(kind, solid, frp):
 
 
 def collect(source, csv_text, observed_at, root):
-    detections = parse(csv_text)
+    cutoff = (datetime.fromisoformat(observed_at) - timedelta(hours=LOOKBACK_HOURS)).isoformat()
+    detections = [d for d in parse(csv_text) if d["at"] >= cutoff]
     out = []
     for site in source["sites"]:
         near = [d for d in detections if km_between(site["lat"], site["lon"], d["lat"], d["lon"]) <= site["radius_km"]]

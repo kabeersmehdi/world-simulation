@@ -131,12 +131,22 @@ class FirmsTests(unittest.TestCase):
         obs = {o["data"]["site"]: o for o in firms.collect(src, fixture("firms.csv"), NOW_ISO, root)}
         self.assertEqual(set(obs), {"abadan-refinery", "haifa-bazan", "bushehr-npp", "natanz"})  # farmland point dropped
         self.assertEqual(obs["abadan-refinery"]["indicators"], ["infrastructure_fire"])
-        self.assertEqual(obs["abadan-refinery"]["data"]["solid"], 7)  # low-confidence pixel ignored
-        self.assertEqual(obs["abadan-refinery"]["data"]["frp_mw"], 180.0)
-        self.assertEqual(obs["abadan-refinery"]["published_at"], "2026-10-18T22:16:00+00:00")
+        self.assertEqual(obs["abadan-refinery"]["data"]["solid"], 12)  # low-confidence and old pixels ignored
+        self.assertEqual(obs["abadan-refinery"]["data"]["frp_mw"], 300.0)
+        self.assertEqual(obs["abadan-refinery"]["published_at"], "2026-10-18T20:21:00+00:00")
         self.assertEqual(obs["haifa-bazan"]["indicators"], [])   # a normal flare
         self.assertEqual(obs["bushehr-npp"]["indicators"], [])   # one pixel is not enough
         self.assertEqual(obs["natanz"]["indicators"], ["infrastructure_fire"])
+
+    def test_unreadable_rows_fail_loudly(self):
+        with self.assertRaises(ValueError):
+            firms.parse("latitude,longitude,acq_date\nx,y,z\n")
+
+    def test_asks_for_two_days(self):
+        urls = []
+        firms.fetch({"bbox": [1, 2, 3, 4]}, lambda url: urls.append(url) or "latitude\n",
+                    env={"FIRMS_MAP_KEY": "0123456789abcdef0123456789abcdef"})
+        self.assertTrue(all(u.endswith("/1,2,3,4/2") for u in urls))
 
     def test_skipped_without_key(self):
         with self.assertRaises(NotConfigured):
@@ -150,7 +160,7 @@ class FirmsTests(unittest.TestCase):
             return fixture("firms.csv")
         text = firms.fetch({"bbox": [47, 24, 58, 36]}, fake, env={"FIRMS_MAP_KEY": "SECRET"})
         self.assertEqual(len(urls), 3)
-        self.assertIn("/SECRET/VIIRS_NOAA20_NRT/47,24,58,36/1", urls[1])
+        self.assertIn("/SECRET/VIIRS_NOAA20_NRT/47,24,58,36/2", urls[1])
         self.assertEqual(text.count("latitude,"), 1)
         self.assertEqual(len(firms.parse(text)), 3 * len(firms.parse(fixture("firms.csv"))))
 
