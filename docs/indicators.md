@@ -82,13 +82,13 @@ Every ADS-B position report carries NACp, the aircraft's own estimate of its GPS
 `gps_jamming` fires when all four are met in one area at once. On 10/19/2026 the Levant showed 0 of 31 degraded and the Gulf 5 of 102 (5%), so the bar sits well above the quiet level. Israel has jammed GPS on and off since October 2023, so a long run of hits is a standing condition, not a new signal. Raise the share if it fires every day. Few aircraft at night means few readings, which is why there is a minimum count.
 
 ## Satellite fire detections (NASA FIRMS)
-VIIRS instruments on three satellites (S-NPP, NOAA-20, NOAA-21) detect heat at 375 m resolution several times a day, and NASA publishes the detections within about three hours. The collector reads the last 24 hours around each site below. It needs a free key from NASA in `FIRMS_MAP_KEY`; without one it is skipped. Low-confidence pixels are ignored.
+VIIRS instruments on three satellites (S-NPP, NOAA-20, NOAA-21) detect heat at 375 m resolution several times a day, and NASA publishes the detections within about three hours. The collector asks for two days (FIRMS's one-day window is today in UTC only) and keeps the last 24 hours around each site below. It needs a free key from NASA in `FIRMS_MAP_KEY`; without one it is skipped. Low-confidence pixels are ignored.
 
 Refineries and oil processing plants flare gas every day, so they only count when the heat is far above a flare. Nuclear sites, ports and storage terminals do not flare, so two solid detections there are enough.
 
 | Site kind | Minimum solid detections | Minimum total fire power (MW) |
 |---|---|---|
-| flare | 6 | 100 |
+| flare | 10 | 300 |
 | no_flare | 2 | 0 |
 
 | Site | Name | Lat, lon | Radius (km) | Kind |
@@ -108,7 +108,7 @@ Refineries and oil processing plants flare gas every day, so they only count whe
 | ashdod-refinery | Ashdod refinery | 31.842, 34.681 | 3 | flare |
 | hodeidah-port | Hodeidah port | 14.837, 42.936 | 4 | no_flare |
 
-Coordinates come from OpenStreetMap and were checked on 10/19/2026. The thresholds are a starting guess: watch a week of readings (every site with any heat is saved, even when nothing fires) and raise the flare bar if a refinery fires on a normal day. Satellite passes are hours apart and clouds or smoke can hide a fire, so a quiet reading proves nothing.
+Coordinates come from OpenStreetMap and were checked on 10/19/2026. On a normal day (10/18/2026) NOAA-20 alone saw 7 to 10 flare pixels and 15 to 38 MW at Abadan, Bandar Abbas, Tehran and Ras Tanura, so three satellites see roughly 20 to 30 pixels and 45 to 115 MW. The flare bar sits at about three times that. It is still a starting guess: watch a week of readings (every site with any heat is saved, even when nothing fires) and raise the flare bar if a refinery fires on a normal day. Satellite passes are hours apart and clouds or smoke can hide a fire, so a quiet reading proves nothing.
 
 ## Watch level
 
