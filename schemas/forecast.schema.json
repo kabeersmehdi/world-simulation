@@ -226,6 +226,11 @@
         "null"
       ],
       "description": "Forecasts in one group cannot both resolve yes; their probabilities must sum to at most 1."
+    },
+    "annulled_reason": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Why an annulled forecast was withdrawn. Annulled forecasts are kept and never scored."
     }
   }
 }

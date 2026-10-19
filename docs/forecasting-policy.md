@@ -23,11 +23,14 @@ generated:
 | `guard_deadline_after_creation` | A deadline on or before the creation date |
 | `guard_history_order` | Updates out of time order, or dated before creation |
 | `guard_append_only` | Any change to an earlier history entry (no hindsight edits) |
-| `guard_resolution` | A resolved forecast with no outcome source, or an open one with a resolution |
+| `guard_resolution` | A resolved forecast with no outcome source, an open one with a resolution, or an annulled one with no `annulled_reason` |
 | `guard_no_illustrative_in_live` | An illustrative forecast saved in `data/forecasts/` |
 | `guard_exclusive_groups` | Open forecasts in one `exclusive_group` (for example rival candidates) adding up to more than 100% |
 
 Each guard has a red-team test that feeds it a bad record and checks it is rejected.
+
+## Withdrawing a forecast
+A forecast is never deleted or rewritten. To withdraw one, set `status` to `annulled` and say why in `annulled_reason`. It stays in the record and is never scored. Avoid questions priced above 95% or below 5%: they score well whatever you do, so they teach nothing.
 
 ## Scoring
 - Brier score on resolved yes/no forecasts, using the last probability made before the deadline.

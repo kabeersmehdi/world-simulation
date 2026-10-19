@@ -61,6 +61,11 @@ class GuardTests(unittest.TestCase):
         with self.assertRaises(F.GuardError):
             F.guard_resolution(good_forecast(resolution=res))
 
+    def test_rejects_annulled_without_reason(self):
+        with self.assertRaises(F.GuardError):
+            F.guard_resolution(good_forecast(status="annulled"))
+        F.guard_resolution(good_forecast(status="annulled", annulled_reason="Priced near certain, says nothing."))
+
     def test_rejects_illustrative_in_live_folder(self):
         with self.assertRaises(F.GuardError):
             F.guard_no_illustrative_in_live(good_forecast(illustrative=True), live=True)

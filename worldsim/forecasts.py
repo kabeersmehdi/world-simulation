@@ -58,6 +58,8 @@ def guard_resolution(fc):
         raise GuardError(f"{fc['id']}: status is resolved but there is no resolution with a source")
     if fc["status"] == "open" and res:
         raise GuardError(f"{fc['id']}: has a resolution but status is still open")
+    if fc["status"] == "annulled" and not fc.get("annulled_reason"):
+        raise GuardError(f"{fc['id']}: annulled forecasts must say why (annulled_reason)")
 
 
 def guard_no_illustrative_in_live(fc, live):

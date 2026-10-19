@@ -1,0 +1,37 @@
+{
+  "id": "fc-il-amcha-yisrael-passes-threshold",
+  "question": "Will Amcha Yisrael win at least one Knesset seat in the October 27, 2026 election?",
+  "resolution_criteria": "Yes if Amcha Yisrael clears the 3.25% threshold and wins at least one seat in the official results of the Central Elections Committee (or a consensus of credible reporting). No otherwise, or if results are not known by October 31, 2027. Same rules as the Polymarket market.",
+  "countries": [
+    "israel"
+  ],
+  "topic": "election",
+  "created_at": "2026-10-19T03:20:41+00:00",
+  "deadline": "2026-11-30T23:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "will-amcha-yisrael-win-a-seat-in-the-2026-knesset-elections",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [
+    "More polls show it at 3.25% or higher in the final week"
+  ],
+  "lower_if": [
+    "Final-week polls show it under 3%"
+  ],
+  "history": [
+    {
+      "at": "2026-10-19T03:20:41+00:00",
+      "probability": 0.205,
+      "rationale": "starting at market, will adjust. Note: 3 of the 6 latest seat polls (10/12 to 10/15) show it at 4 seats; the market is thin at about $5k traded.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.205
+    }
+  ],
+  "resolution": null
+}

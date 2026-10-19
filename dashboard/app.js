@@ -156,6 +156,7 @@
       '<p class="small muted"><strong>Resolves yes if:</strong> ' + esc(f.resolution_criteria) + "</p>" +
       (f.reference_class ? '<p class="small muted">Base rate ' + pct(f.reference_class.base_rate) + ": " + esc(f.reference_class.description) + "</p>" : "") +
       (bench != null ? '<p class="small muted">Market on day one: ' + pct(bench) + "</p>" : "") +
+      (f.annulled_reason ? '<p class="small"><span class="pill bad">withdrawn</span> ' + esc(f.annulled_reason) + "</p>" : "") +
       (f.resolution ? '<p class="small">Outcome: <strong>' + (f.resolution.outcome ? "Yes" : "No") + "</strong> " + link(f.resolution.source_url, "source") + "</p>" : "") +
       '<details class="small"><summary>History (' + f.history.length + ")</summary>" + f.history.map(function (u) {
         return "<div>" + day(u.at) + ": " + pct(u.probability) + ": " + esc(u.rationale) + "</div>";
