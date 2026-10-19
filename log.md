@@ -6,6 +6,7 @@ title: Change log
 # Change log
 
 ## 10/19/2026
+- Forecasts tab rebuilt in plain English (most likely outcome, our number, Polymarket, the gap), Timeline gets Coming up and Most likely outcomes, military forecasts link to past stock reactions, and `dashboard/brief.md` is written on every build for the stocks report.
 - Added the strike event study: 15 assets, 11 strike and war events since October 2023, 1, 5 and 20 trading-day moves against each asset's normal swing, with a check that drops the biggest event. New Reactions view and `python -m worldsim prices`.
 
 ## 2026-10-19

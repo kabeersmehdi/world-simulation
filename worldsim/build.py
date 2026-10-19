@@ -5,7 +5,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import ROOT, backtest, baserates, eventstudy, forecasts, markets, polls, scoring, store, timing
+from . import ROOT, backtest, baserates, eventstudy, forecasts, markets, outlook, polls, scoring, store, timing
 from .contracts import validate
 from .watch import watch_status
 
@@ -77,6 +77,9 @@ def build(root=ROOT, now=None, out_path=None):
     countries.sort(key=lambda c: COUNTRY_ORDER.index(c["id"]) if c["id"] in COUNTRY_ORDER else 99)
 
     accuracy = backtest.load(root)
+    reactions = eventstudy.load(root)
+    timing_board = timing.board(root, now, calibration_bands(accuracy))
+    view = outlook.build(live, timing_board, reactions, evidence, root, now)
 
     def fc_view(f):
         return {**f, "current_probability": forecasts.current_probability(f)}
@@ -95,8 +98,9 @@ def build(root=ROOT, now=None, out_path=None):
         "signals": [o for o in observations if o["collector"] in ("adsb", "fleet", "advisory", "gpsjam")][:100],
         "markets": markets.board(root, now),
         "accuracy": accuracy,
-        "reactions": eventstudy.load(root),
-        "timing": timing.board(root, now, calibration_bands(accuracy)),
+        "reactions": reactions,
+        "timing": timing_board,
+        "outlook": view,
         "polls": polls.load_all(root),
         "baserates": baserates.load_all(root),
         "scenarios": _load_json_folder(root / "data" / "scenarios"),
@@ -111,4 +115,5 @@ def build(root=ROOT, now=None, out_path=None):
     out_path = Path(out_path) if out_path else root / "dashboard" / "data.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+    outlook.write_brief(view, out_path.parent.parent if out_path.parent.name == "dashboard" else root)
     return data

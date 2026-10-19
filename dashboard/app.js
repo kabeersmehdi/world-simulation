@@ -148,29 +148,50 @@
     return h + "</div>";
   }
 
-  function fcCard(f) {
-    var last = f.history[f.history.length - 1];
-    var bench = f.history[0].benchmark_probability;
-    return '<div class="card"><div class="kicker">' + esc(f.topic) + " &middot; due " + day(f.deadline) + " &middot; " + esc(f.status) + "</div><h3>" + esc(f.question) + "</h3>" +
-      '<div class="big">' + pct(f.current_probability) + '</div><div class="bar"><span style="width:' + f.current_probability * 100 + '%"></span></div>' +
-      '<p class="small">' + esc(last.rationale) + "</p>" +
-      '<p class="small muted"><strong>Resolves yes if:</strong> ' + esc(f.resolution_criteria) + "</p>" +
-      (f.reference_class ? '<p class="small muted">Base rate ' + pct(f.reference_class.base_rate) + ": " + esc(f.reference_class.description) + "</p>" : "") +
-      (bench != null ? '<p class="small muted">Market on day one: ' + pct(bench) + "</p>" : "") +
-      (f.annulled_reason ? '<p class="small"><span class="pill bad">withdrawn</span> ' + esc(f.annulled_reason) + "</p>" : "") +
-      (f.resolution ? '<p class="small">Outcome: <strong>' + (f.resolution.outcome ? "Yes" : "No") + "</strong> " + link(f.resolution.source_url, "source") + "</p>" : "") +
-      '<details class="small"><summary>History (' + f.history.length + ")</summary>" + f.history.map(function (u) {
-        return "<div>" + day(u.at) + ": " + pct(u.probability) + ": " + esc(u.rationale) + "</div>";
-      }).join("") + "</details></div>";
+  function headlineBox() {
+    var O = D.outlook;
+    if (!O || !O.headlines || !O.headlines.length) return "";
+    return '<div class="grid" style="margin-bottom:16px">' + O.headlines.map(function (x) {
+      return '<div class="card"><div class="kicker">' + esc(x.title) + '</div><div style="font:600 20px var(--serif)">' + esc(x.answer) + '</div><div class="small muted">' + esc(x.detail) + "</div></div>";
+    }).join("") + "</div>";
   }
 
   function forecastsView() {
-    var live = D.forecasts.live.slice().sort(function (a, b) { return a.deadline < b.deadline ? -1 : 1; });
-    var h = "<h2>Forecasts</h2>";
-    if (!live.length) h += '<div class="banner">No live forecasts yet. Start one from a market: <code>python -m worldsim new-forecast --market &lt;slug&gt;</code>, fill in your probability, then <code>python -m worldsim validate</code>.</div>';
-    if (D.forecasts.overdue.length) h += '<div class="banner">Overdue for resolution: ' + D.forecasts.overdue.map(esc).join(", ") + "</div>";
-    h += '<div class="grid two">' + live.map(fcCard).join("") + "</div>";
-    if (D.forecasts.demo.length) h += '<h3 style="margin-top:28px">Illustrative examples</h3><p class="muted small">Written after the fact to show how scoring works. Not forecasts.</p><div class="grid two">' + D.forecasts.demo.map(fcCard).join("") + "</div>";
+    var O = D.outlook;
+    var h = '<h2>Forecasts</h2>' +
+      '<div class="banner"><strong>Our number</strong> is this tool’s forecast, the one that gets scored. <strong>Polymarket</strong> is what bettors are paying right now. When the two are within ' + 5 + ' points we call it the same. Tap a row for the rules and the reasoning.</div>' + '<h3>Most likely outcomes</h3>' + headlineBox();
+    if (!O || !O.forecasts.length) return h + '<p class="muted">No forecasts yet. Start one with <code>python -m worldsim new-forecast --market &lt;slug&gt;</code>.</p>';
+    var groups = ["Past due", "This week", "This month", "Later", "Decided", "Withdrawn"];
+    groups.forEach(function (g) {
+      var rows = O.forecasts.filter(function (r) { return r.group === g; });
+      if (!rows.length) return;
+      var collapsed = g === "Withdrawn" || g === "Decided";
+      h += (collapsed ? "<details><summary><h3 style=\"display:inline\">" + g + " (" + rows.length + ")</h3></summary>" : "<h3 style=\"margin-top:20px\">" + g + "</h3>") +
+        '<div class="card tablewrap"><table class="fc"><thead><tr><th>Question</th><th>Most likely</th><th class="num">Our number</th><th class="num">Polymarket</th><th>Us vs market</th><th>Decided by</th></tr></thead><tbody>' +
+        rows.map(function (r, i) {
+          var cls = r.ours >= 0.55 ? "ok" : r.ours <= 0.45 ? "bad" : "warn";
+          var gapCls = r.gap_points == null || Math.abs(r.gap_points) < 5 ? "" : "warn";
+          var id = "fc-" + g.replace(/\W/g, "") + i;
+          var detail = '<tr id="' + id + '" hidden><td colspan="6" class="small">' +
+            "<p><strong>Counts as yes if:</strong> " + esc(r.rule) + "</p>" +
+            "<p><strong>Why this number:</strong> " + esc(r.why) + (r.updates > 1 ? " (" + r.updates + " updates)" : "") + "</p>" +
+            (r.withdrawn_reason ? '<p><span class="pill bad">withdrawn</span> ' + esc(r.withdrawn_reason) + "</p>" : "") +
+            (r.outcome != null ? "<p><strong>Result:</strong> " + (r.outcome ? "Yes" : "No") + "</p>" : "") +
+            (r.stock_moves.length ? "<p><strong>If it happens, stocks after past strikes:</strong> " + r.stock_moves.map(function (m) { return esc(m.text); }).join("; ") + '. <a href="#reactions">Details</a>. Not a trading signal.</p>' : "") +
+            (r.market_url ? "<p>" + link(r.market_url, "Polymarket market") + "</p>" : "") + "</td></tr>";
+          return '<tr class="fcrow" data-target="' + id + '" style="cursor:pointer"><td>' + esc(r.question) + "</td>" +
+            '<td><span class="pill ' + cls + '">' + esc(r.verdict) + "</span></td>" +
+            '<td class="num"><strong>' + pct(r.ours) + "</strong></td>" +
+            '<td class="num">' + (r.market == null ? "n/a" : pct(r.market)) + "</td>" +
+            '<td><span class="pill ' + gapCls + '">' + esc(r.gap) + "</span></td>" +
+            "<td>" + day(r.deadline) + "</td></tr>" + detail;
+        }).join("") + "</tbody></table></div>" + (collapsed ? "</details>" : "");
+    });
+    setTimeout(function () {
+      document.querySelectorAll(".fcrow").forEach(function (tr) {
+        tr.addEventListener("click", function () { var d = document.getElementById(tr.dataset.target); d.hidden = !d.hidden; });
+      });
+    });
     return h;
   }
 
@@ -217,8 +238,23 @@
   }
 
   function timelineView() {
-    return '<h2>Timeline</h2><p class="muted small">Wars, strikes, ceasefires and political events. Reference-sourced entries are marked to verify against a primary or newsroom source.</p><div class="card"><ul class="timeline">' +
+    var O = D.outlook, h = "<h2>Timeline</h2><h3>Most likely outcomes</h3>" + headlineBox();
+    if (O && O.coming_up.length) {
+      h += '<h3>Coming up</h3><p class="muted small">Dated events ahead, with the most likely outcome. Percentages are our number; Polymarket is shown beside it.</p><div class="card"><ul class="timeline">' +
+        O.coming_up.filter(function (i) { return i.p == null || i.p >= 0.1; }).map(function (i) {
+          var cls = i.p == null ? "" : i.p >= 0.55 ? "ok" : i.p <= 0.45 ? "bad" : "warn";
+          return '<li><div class="d">' + day(i.date) + " &middot; " + esc(i.kind) + "</div><div>" + esc(i.title) + "</div>" +
+            (i.likely ? '<div class="small"><span class="pill ' + cls + '">' + esc(i.likely) + "</span>" + (i.detail ? ' <span class="muted">' + esc(i.detail) + "</span>" : "") + "</div>" : "") + "</li>";
+        }).join("") + '</ul><p class="small muted">Long shots under 10% are hidden here; they are on the Forecasts tab.</p></div>';
+      if (O.stock_moves.length) {
+        h += '<div class="card" style="margin-top:16px"><h3>If a strike happens: how stocks moved after past ones</h3><ul>' +
+          O.stock_moves.map(function (m) { return "<li>" + esc(m.text) + (m.holds ? ' <span class="pill ok">holds</span>' : "") + "</li>"; }).join("") +
+          '</ul><p class="small muted">Average of past strikes since 10/2023. <a href="#reactions">See every asset</a>. Not a trading signal.</p></div>';
+      }
+    }
+    h += '<h3 style="margin-top:20px">What happened</h3><p class="muted small">Wars, strikes, ceasefires and political events. Reference-sourced entries are marked to verify against a primary or newsroom source.</p><div class="card"><ul class="timeline">' +
       D.timeline.map(tlItem).join("") + "</ul></div>";
+    return h;
   }
 
   function backersView() {

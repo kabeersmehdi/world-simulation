@@ -41,10 +41,27 @@ def snapshot(entry, at, fetch=fetch_text, root=ROOT):
     }, "market_price", root)
 
 
+def forecast_entries(root=ROOT):
+    """Every open forecast's market, so the dashboard can show today's price beside our number."""
+    out = []
+    for path in sorted((Path(root) / "data" / "forecasts").glob("*.json")):
+        fc = json.loads(path.read_text(encoding="utf-8"))
+        m = fc.get("market")
+        if fc.get("status") == "open" and m:
+            out.append({"slug": m["slug"], "label": fc["question"], "outcome_index": m.get("outcome_index", 0)})
+    return out
+
+
 def collect(root=ROOT, fetch=fetch_text, now=None):
     at = (now or datetime.now(timezone.utc)).replace(microsecond=0).isoformat()
     rows, report = [], []
-    for entry in load_watchlist(root):
+    seen = set()
+    entries = []
+    for entry in load_watchlist(root) + forecast_entries(root):
+        if entry["slug"] not in seen:
+            seen.add(entry["slug"])
+            entries.append(entry)
+    for entry in entries:
         try:
             rows.append(snapshot(entry, at, fetch, root))
             report.append({"source": f"polymarket:{entry['slug'][:40]}", "ok": True, "items": 1, "flagged": 0})
@@ -99,3 +116,8 @@ def board(root=ROOT, now=None):
             "series": [[r["at"], r["probability"]] for r in rows[-60:]],
         })
     return out
+
+
+def latest_prices(root=ROOT, now=None):
+    """slug -> (probability, at) from the newest saved snapshot."""
+    return {slug: (rows[-1]["probability"], rows[-1]["at"]) for slug, rows in history(root, now=now).items() if rows}

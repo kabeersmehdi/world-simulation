@@ -84,6 +84,17 @@ class KnowledgeLockTests(unittest.TestCase):
         self.assertIn(f"`ROBUST_SHARE = {eventstudy.ROBUST_SHARE}`", doc)
         self.assertIn("windows of " + ", ".join(str(w) for w in eventstudy.WINDOWS[:-1]) + f" and {eventstudy.WINDOWS[-1]} trading days", doc)
 
+    def test_outlook_words_match_doc(self):
+        from worldsim import outlook
+        doc = (ROOT / "docs" / "outlook.md").read_text()
+        rows = table_rows(doc, "| Chance | Verdict |")
+        self.assertEqual([r[1] for r in rows], [w for _, w in outlook.VERDICTS])
+        for (floor, _), r in zip(outlook.VERDICTS[:-1], rows):
+            self.assertIn(str(round(floor * 100)), r[0])
+        self.assertIn(f"Within {outlook.GAP_POINTS} points", doc)
+        self.assertIn(f"under {round(outlook.BRIEF_MIN * 100)}%", doc)
+        self.assertIn(f"at most {outlook.BRIEF_ITEMS}", doc)
+
     def test_small_sample_matches_doc(self):
         from worldsim.baserates import SMALL_SAMPLE
         self.assertIn(f"Fewer than {SMALL_SAMPLE} events", (ROOT / "docs" / "base-rates.md").read_text())
