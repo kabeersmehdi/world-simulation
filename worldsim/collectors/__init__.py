@@ -21,6 +21,17 @@ def load_sources(root=ROOT):
     return json.loads((Path(root) / "config" / "sources.json").read_text(encoding="utf-8"))
 
 
+def _fetch_with_fallback(source, fetch):
+    """Try the outlet's own feed first. If it refuses (some block cloud servers) and the
+    source lists a fallback_url, read that instead. Returns (text, note or None)."""
+    try:
+        return fetch(source["url"]), None
+    except Exception as exc:  # noqa: BLE001
+        if not source.get("fallback_url"):
+            raise
+        return fetch(source["fallback_url"]), f"fallback, direct feed failed ({type(exc).__name__}: {exc})"
+
+
 def run(root=ROOT, fetch=fetch_text, now=None, only=None, env=None):
     """Return (observations, report). report has one line per source.
 
@@ -34,11 +45,18 @@ def run(root=ROOT, fetch=fetch_text, now=None, only=None, env=None):
             continue
         try:
             kind = source["kind"]
-            raw = FETCHERS[kind](source, fetch, env) if kind in FETCHERS else fetch(source["url"])
+            via = None
+            if kind in FETCHERS:
+                raw = FETCHERS[kind](source, fetch, env)
+            else:
+                raw, via = _fetch_with_fallback(source, fetch)
             items = PARSERS[kind](source, raw, observed_at, root)
             observations.extend(items)
             flagged = sum(1 for i in items if i["indicators"])
-            report.append({"source": source["id"], "ok": True, "items": len(items), "flagged": flagged})
+            row = {"source": source["id"], "ok": True, "items": len(items), "flagged": flagged}
+            if via:
+                row["via"] = via
+            report.append(row)
         except NotConfigured as exc:
             report.append({"source": source["id"], "ok": True, "skipped": f"not configured ({exc})"})
         except Exception as exc:  # noqa: BLE001 - report every failure, keep going

@@ -5,7 +5,7 @@
     {"id": "n12", "name": "N12 (Channel 12 News)", "kind": "rss", "lang": "he", "tier": "independent_reporting", "url": "https://rcs.mako.co.il/rss/31750a2610f26110VgnVCM1000005201000aRCRD.xml"},
     {"id": "maariv", "name": "Maariv", "kind": "rss", "lang": "he", "tier": "independent_reporting", "url": "https://www.maariv.co.il/rss/rsschadashot"},
     {"id": "haaretz-he", "name": "Haaretz (Hebrew)", "kind": "rss", "lang": "he", "tier": "independent_reporting", "url": "https://www.haaretz.co.il/srv/htz---all-articles"},
-    {"id": "times-of-israel", "name": "Times of Israel (English, for speed comparison)", "kind": "rss", "lang": "en", "tier": "independent_reporting", "url": "https://www.timesofisrael.com/feed/"},
+    {"id": "times-of-israel", "name": "Times of Israel (English, for speed comparison)", "kind": "rss", "lang": "en", "tier": "independent_reporting", "url": "https://www.timesofisrael.com/feed/", "fallback_url": "https://news.google.com/rss/search?q=site:timesofisrael.com+-site:blogs.timesofisrael.com+when:1d&hl=en-US&gl=US&ceid=US:en", "title_suffix": " - The Times of Israel"},
     {"id": "tg-amitsegal", "name": "Amit Segal, Channel 12 political analyst (Telegram)", "kind": "telegram", "lang": "he", "tier": "unverified_signal", "url": "https://t.me/s/amitsegal"},
     {"id": "tg-kann-news", "name": "Kan News (Telegram)", "kind": "telegram", "lang": "he", "tier": "independent_reporting", "url": "https://t.me/s/kann_news"},
     {"id": "tg-abualiexpress", "name": "Abu Ali Express, Arab affairs (Telegram)", "kind": "telegram", "lang": "he", "tier": "unverified_signal", "url": "https://t.me/s/abualiexpress"},
