@@ -1,0 +1,603 @@
+{
+ "run_at": "2026-10-19T07:44:33+00:00",
+ "since": "2026-01-01",
+ "quiet_hours": 48,
+ "horizons": [
+  1,
+  6,
+  24,
+  72
+ ],
+ "random_draws": 1000,
+ "big_move": 0.05,
+ "markets": {
+  "total": 823,
+  "watchlist": 16,
+  "resolved": 829
+ },
+ "coverage": {
+  "aawsat-ar": [
+   "2026-10-19T03:51:39+00:00",
+   "2026-10-19T03:51:39+00:00"
+  ],
+  "aljazeera-ar": [
+   "2026-10-19T03:51:39+00:00",
+   "2026-10-19T03:51:39+00:00"
+  ],
+  "almanar-ar": [
+   "2026-10-19T03:51:39+00:00",
+   "2026-10-19T03:51:39+00:00"
+  ],
+  "bbc-arabic": [
+   "2026-10-19T03:51:39+00:00",
+   "2026-10-19T03:51:39+00:00"
+  ],
+  "bbc-persian": [
+   "2026-10-19T03:51:39+00:00",
+   "2026-10-19T03:51:39+00:00"
+  ],
+  "haaretz-he": [
+   "2026-10-19T02:42:34+00:00",
+   "2026-10-19T02:42:34+00:00"
+  ],
+  "iranintl-fa": [
+   "2026-10-19T03:51:39+00:00",
+   "2026-10-19T03:51:39+00:00"
+  ],
+  "irna-fa": [
+   "2026-10-19T03:51:39+00:00",
+   "2026-10-19T03:51:39+00:00"
+  ],
+  "maariv": [
+   "2026-10-19T02:42:34+00:00",
+   "2026-10-19T02:42:34+00:00"
+  ],
+  "mehr-fa": [
+   "2026-10-19T03:51:39+00:00",
+   "2026-10-19T03:51:39+00:00"
+  ],
+  "n12": [
+   "2026-10-19T02:42:34+00:00",
+   "2026-10-19T02:42:34+00:00"
+  ],
+  "tg-abualiexpress": [
+   "2026-01-01T06:18:41+00:00",
+   "2026-10-19T06:51:47+00:00"
+  ],
+  "tg-almasirah": [
+   "2026-01-01T00:57:46+00:00",
+   "2026-10-19T04:18:55+00:00"
+  ],
+  "tg-amitsegal": [
+   "2026-01-01T04:36:06+00:00",
+   "2026-10-19T04:32:37+00:00"
+  ],
+  "tg-farsna": [
+   "2026-10-19T03:51:39+00:00",
+   "2026-10-19T03:51:39+00:00"
+  ],
+  "tg-idf": [
+   "2026-01-01T07:04:37+00:00",
+   "2026-10-17T16:05:22+00:00"
+  ],
+  "tg-kann-news": [
+   "2026-01-02T11:35:09+00:00",
+   "2026-03-26T14:39:30+00:00"
+  ],
+  "times-of-israel": [
+   "2026-10-19T02:42:34+00:00",
+   "2026-10-19T02:42:34+00:00"
+  ],
+  "travel-state-gov": [
+   "2026-01-16T00:00:00+00:00",
+   "2026-10-17T00:00:00+00:00"
+  ],
+  "usni-fleet-tracker": [
+   "2026-10-19T02:42:34+00:00",
+   "2026-10-19T02:42:34+00:00"
+  ],
+  "ynet": [
+   "2026-10-19T02:42:34+00:00",
+   "2026-10-19T02:42:34+00:00"
+  ]
+ },
+ "note": "Moves are absolute changes in the Yes price, in probability points, from hourly Polymarket prices. One onset touches many markets at once, so the onset count is the fair sample size, not the pair count.",
+ "indicators": {
+  "airspace": {
+   "onsets": 10,
+   "horizons": {
+    "1": {
+     "onsets_with_markets": 10,
+     "pairs": 484,
+     "largest_onset": "2026-05-22T21:00:00+00:00",
+     "mean_move_after_without_largest": 0.005438888888888888,
+     "p_value_without_largest": 0.6783216783216783,
+     "mean_move_after": 0.007604338842975206,
+     "mean_move_before": 0.006219008264462812,
+     "mean_move_random": 0.00649613824309949,
+     "after_vs_random": 1.1705937525348848,
+     "before_vs_random": 0.9573392732318992,
+     "big_move_share_after": 0.03305785123966942,
+     "big_move_share_random": 0.02480054253737676,
+     "p_value": 0.22077922077922077,
+     "p_value_before": 0.5214785214785215
+    },
+    "6": {
+     "onsets_with_markets": 10,
+     "pairs": 480,
+     "largest_onset": "2026-05-22T21:00:00+00:00",
+     "mean_move_after_without_largest": 0.014337443946188334,
+     "p_value_without_largest": 0.8341658341658341,
+     "mean_move_after": 0.01679895833333333,
+     "mean_move_before": 0.017715625,
+     "mean_move_random": 0.018169296352559948,
+     "after_vs_random": 0.9245794667753577,
+     "before_vs_random": 0.9750308793606072,
+     "big_move_share_after": 0.10625,
+     "big_move_share_random": 0.0939159789131632,
+     "p_value": 0.5624375624375625,
+     "p_value_before": 0.5264735264735265
+    },
+    "24": {
+     "onsets_with_markets": 10,
+     "pairs": 464,
+     "largest_onset": "2026-05-22T21:00:00+00:00",
+     "mean_move_after_without_largest": 0.02514037122969837,
+     "p_value_without_largest": 0.964035964035964,
+     "mean_move_after": 0.03357219827586206,
+     "mean_move_before": 0.03169396551724138,
+     "mean_move_random": 0.036598750921531135,
+     "after_vs_random": 0.9173044825448251,
+     "before_vs_random": 0.8659848961838679,
+     "big_move_share_after": 0.1810344827586207,
+     "big_move_share_random": 0.20918790499249718,
+     "p_value": 0.6263736263736264,
+     "p_value_before": 0.7892107892107892
+    },
+    "72": {
+     "onsets_with_markets": 10,
+     "pairs": 373,
+     "largest_onset": "2026-05-22T21:00:00+00:00",
+     "mean_move_after_without_largest": 0.04145197740112994,
+     "p_value_without_largest": 0.97002997002997,
+     "mean_move_after": 0.04331769436997319,
+     "mean_move_before": 0.04157238605898123,
+     "mean_move_random": 0.058096582982954205,
+     "after_vs_random": 0.7456151833005874,
+     "before_vs_random": 0.7155736865140374,
+     "big_move_share_after": 0.2546916890080429,
+     "big_move_share_random": 0.3232464833593955,
+     "p_value": 0.9460539460539461,
+     "p_value_before": 0.9210789210789211
+    }
+   },
+   "verdict": "no lead: moves after it fires look like random times",
+   "sources": [
+    "tg-abualiexpress",
+    "tg-almasirah",
+    "tg-amitsegal"
+   ]
+  },
+  "home_front": {
+   "onsets": 30,
+   "horizons": {
+    "1": {
+     "onsets_with_markets": 30,
+     "pairs": 1356,
+     "largest_onset": "2026-02-28T06:00:00+00:00",
+     "mean_move_after_without_largest": 0.0076351246105919,
+     "p_value_without_largest": 0.14685314685314685,
+     "mean_move_after": 0.01686025073746313,
+     "mean_move_before": 0.0061714601769911484,
+     "mean_move_random": 0.006553790613210637,
+     "after_vs_random": 2.5725952708158704,
+     "before_vs_random": 0.9416627019714643,
+     "big_move_share_after": 0.05383480825958702,
+     "big_move_share_random": 0.025252658436623915,
+     "p_value": 0.002997002997002997,
+     "p_value_before": 0.6113886113886113
+    },
+    "6": {
+     "onsets_with_markets": 30,
+     "pairs": 1250,
+     "largest_onset": "2026-02-28T06:00:00+00:00",
+     "mean_move_after_without_largest": 0.022912972085385876,
+     "p_value_without_largest": 0.058941058941058944,
+     "mean_move_after": 0.024691599999999998,
+     "mean_move_before": 0.0179476,
+     "mean_move_random": 0.018197371468227693,
+     "after_vs_random": 1.356877285442632,
+     "before_vs_random": 0.9862743106242685,
+     "big_move_share_after": 0.144,
+     "big_move_share_random": 0.09389300794833437,
+     "p_value": 0.025974025974025976,
+     "p_value_before": 0.5224775224775224
+    },
+    "24": {
+     "onsets_with_markets": 30,
+     "pairs": 1164,
+     "largest_onset": "2026-02-28T06:00:00+00:00",
+     "mean_move_after_without_largest": 0.037127705627705634,
+     "p_value_without_largest": 0.41058941058941056,
+     "mean_move_after": 0.037701030927835055,
+     "mean_move_before": 0.034798969072164954,
+     "mean_move_random": 0.03651429451229291,
+     "after_vs_random": 1.0325005982285271,
+     "before_vs_random": 0.9530231800165144,
+     "big_move_share_after": 0.22250859106529208,
+     "big_move_share_random": 0.20931095303780045,
+     "p_value": 0.3646353646353646,
+     "p_value_before": 0.7572427572427572
+    },
+    "72": {
+     "onsets_with_markets": 30,
+     "pairs": 977,
+     "largest_onset": "2026-02-28T06:00:00+00:00",
+     "mean_move_after_without_largest": 0.050084362139917696,
+     "p_value_without_largest": 0.9150849150849151,
+     "mean_move_after": 0.05083418628454453,
+     "mean_move_before": 0.052724667349027615,
+     "mean_move_random": 0.058013055124760904,
+     "after_vs_random": 0.8762542530336018,
+     "before_vs_random": 0.908841419153667,
+     "big_move_share_after": 0.2896622313203685,
+     "big_move_share_random": 0.3236099778987074,
+     "p_value": 0.8861138861138861,
+     "p_value_before": 0.6773226773226774
+    }
+   },
+   "verdict": "one event only: bigger moves in the 1 hours after, but they vanish without the largest onset (2026-02-28T06:00)",
+   "sources": [
+    "tg-abualiexpress",
+    "tg-amitsegal",
+    "tg-idf"
+   ]
+  },
+  "reserves": {
+   "onsets": 5,
+   "horizons": {
+    "1": {
+     "onsets_with_markets": 5,
+     "pairs": 215,
+     "largest_onset": "2026-09-03T16:00:00+00:00",
+     "mean_move_after_without_largest": 0.005763636363636364,
+     "p_value_without_largest": 0.5324675324675324,
+     "mean_move_after": 0.008532558139534886,
+     "mean_move_before": 0.004913953488372094,
+     "mean_move_random": 0.0065211770818922495,
+     "after_vs_random": 1.308438343627834,
+     "before_vs_random": 0.7535378086905459,
+     "big_move_share_after": 0.03255813953488372,
+     "big_move_share_random": 0.025412000724642506,
+     "p_value": 0.17482517482517482,
+     "p_value_before": 0.7022977022977023
+    },
+    "6": {
+     "onsets_with_markets": 5,
+     "pairs": 209,
+     "largest_onset": "2026-03-04T13:00:00+00:00",
+     "mean_move_after_without_largest": 0.018772251308900523,
+     "p_value_without_largest": 0.37162837162837165,
+     "mean_move_after": 0.019277511961722487,
+     "mean_move_before": 0.015796650717703347,
+     "mean_move_random": 0.018135338014884237,
+     "after_vs_random": 1.0629805711865328,
+     "before_vs_random": 0.8710425305962615,
+     "big_move_share_after": 0.12440191387559808,
+     "big_move_share_random": 0.09375790854953615,
+     "p_value": 0.34865134865134867,
+     "p_value_before": 0.6323676323676324
+    },
+    "24": {
+     "onsets_with_markets": 5,
+     "pairs": 183,
+     "largest_onset": "2026-05-05T13:00:00+00:00",
+     "mean_move_after_without_largest": 0.024799999999999996,
+     "p_value_without_largest": 0.9050949050949051,
+     "mean_move_after": 0.0353743169398907,
+     "mean_move_before": 0.04234972677595628,
+     "mean_move_random": 0.036618408543614284,
+     "after_vs_random": 0.9660255141279063,
+     "before_vs_random": 1.1565146728186104,
+     "big_move_share_after": 0.2459016393442623,
+     "big_move_share_random": 0.20919255325581662,
+     "p_value": 0.48151848151848153,
+     "p_value_before": 0.27172827172827174
+    },
+    "72": {
+     "onsets_with_markets": 5,
+     "pairs": 156,
+     "largest_onset": "2026-05-05T13:00:00+00:00",
+     "mean_move_after_without_largest": 0.04531782945736434,
+     "p_value_without_largest": 0.8251748251748252,
+     "mean_move_after": 0.059624999999999984,
+     "mean_move_before": 0.04504807692307692,
+     "mean_move_random": 0.058461938673139,
+     "after_vs_random": 1.0198943338735937,
+     "before_vs_random": 0.7705539355261711,
+     "big_move_share_after": 0.36538461538461536,
+     "big_move_share_random": 0.32607804924830375,
+     "p_value": 0.42157842157842157,
+     "p_value_before": 0.7562437562437563
+    }
+   },
+   "verdict": "too few onsets to judge (5)",
+   "sources": [
+    "tg-abualiexpress",
+    "tg-amitsegal"
+   ]
+  },
+  "late_night_cabinet": {
+   "onsets": 12,
+   "horizons": {
+    "1": {
+     "onsets_with_markets": 12,
+     "pairs": 733,
+     "largest_onset": "2026-03-09T19:00:00+00:00",
+     "mean_move_after_without_largest": 0.007352447552447551,
+     "p_value_without_largest": 0.24075924075924077,
+     "mean_move_after": 0.007667121418826739,
+     "mean_move_before": 0.008867667121418827,
+     "mean_move_random": 0.006478358428811117,
+     "after_vs_random": 1.1834975639397864,
+     "before_vs_random": 1.3688139084712834,
+     "big_move_share_after": 0.03819918144611187,
+     "big_move_share_random": 0.024933517507120466,
+     "p_value": 0.1938061938061938,
+     "p_value_before": 0.0899100899100899
+    },
+    "6": {
+     "onsets_with_markets": 12,
+     "pairs": 707,
+     "largest_onset": "2026-03-09T19:00:00+00:00",
+     "mean_move_after_without_largest": 0.017676086956521734,
+     "p_value_without_largest": 0.48451548451548454,
+     "mean_move_after": 0.01824115983026874,
+     "mean_move_before": 0.018828147100424325,
+     "mean_move_random": 0.01822121739234024,
+     "after_vs_random": 1.001094462433497,
+     "before_vs_random": 1.0333089548857048,
+     "big_move_share_after": 0.09193776520509193,
+     "big_move_share_random": 0.09412103399325629,
+     "p_value": 0.43456543456543456,
+     "p_value_before": 0.4155844155844156
+    },
+    "24": {
+     "onsets_with_markets": 12,
+     "pairs": 651,
+     "largest_onset": "2026-07-07T18:00:00+00:00",
+     "mean_move_after_without_largest": 0.03661612903225805,
+     "p_value_without_largest": 0.43656343656343655,
+     "mean_move_after": 0.03776497695852533,
+     "mean_move_before": 0.03779416282642089,
+     "mean_move_random": 0.036593004790522854,
+     "after_vs_random": 1.0320272187187536,
+     "before_vs_random": 1.0328247992416606,
+     "big_move_share_after": 0.2350230414746544,
+     "big_move_share_random": 0.20893792730112706,
+     "p_value": 0.3546453546453546,
+     "p_value_before": 0.46053946053946054
+    },
+    "72": {
+     "onsets_with_markets": 12,
+     "pairs": 555,
+     "largest_onset": "2026-03-23T19:00:00+00:00",
+     "mean_move_after_without_largest": 0.05709861932938856,
+     "p_value_without_largest": 0.5194805194805194,
+     "mean_move_after": 0.059509909909909904,
+     "mean_move_before": 0.058436036036036025,
+     "mean_move_random": 0.058059473918951665,
+     "after_vs_random": 1.0249819003352145,
+     "before_vs_random": 1.0064857996751748,
+     "big_move_share_after": 0.3441441441441441,
+     "big_move_share_random": 0.3231422439972068,
+     "p_value": 0.4125874125874126,
+     "p_value_before": 0.35264735264735264
+    }
+   },
+   "verdict": "no lead: moves after it fires look like random times",
+   "sources": [
+    "tg-abualiexpress",
+    "tg-amitsegal"
+   ]
+  },
+  "us_advisory": {
+   "onsets": 4,
+   "horizons": {
+    "1": {
+     "onsets_with_markets": 4,
+     "pairs": 182,
+     "largest_onset": "2026-03-02T00:00:00+00:00",
+     "mean_move_after_without_largest": 0.0036513157894736852,
+     "p_value_without_largest": 0.8711288711288712,
+     "mean_move_after": 0.009368131868131869,
+     "mean_move_before": 0.015923076923076922,
+     "mean_move_random": 0.0062227540692445,
+     "after_vs_random": 1.505463941509944,
+     "before_vs_random": 2.5588472155400686,
+     "big_move_share_after": 0.027472527472527472,
+     "big_move_share_random": 0.023474841832561804,
+     "p_value": 0.1048951048951049,
+     "p_value_before": 0.012987012987012988
+    },
+    "6": {
+     "onsets_with_markets": 4,
+     "pairs": 181,
+     "largest_onset": "2026-03-02T00:00:00+00:00",
+     "mean_move_after_without_largest": 0.011730263157894737,
+     "p_value_without_largest": 0.8491508491508492,
+     "mean_move_after": 0.01979281767955801,
+     "mean_move_before": 0.03403314917127072,
+     "mean_move_random": 0.017536132608022593,
+     "after_vs_random": 1.1286877284734382,
+     "before_vs_random": 1.9407442867819622,
+     "big_move_share_after": 0.08839779005524862,
+     "big_move_share_random": 0.08848726225314044,
+     "p_value": 0.27172827172827174,
+     "p_value_before": 0.026973026973026972
+    },
+    "24": {
+     "onsets_with_markets": 4,
+     "pairs": 170,
+     "largest_onset": "2026-05-06T00:00:00+00:00",
+     "mean_move_after_without_largest": 0.03948581560283687,
+     "p_value_without_largest": 0.26873126873126874,
+     "mean_move_after": 0.04691176470588235,
+     "mean_move_before": 0.04661470588235294,
+     "mean_move_random": 0.03511869271341803,
+     "after_vs_random": 1.3358061215062955,
+     "before_vs_random": 1.3273474118967574,
+     "big_move_share_after": 0.2647058823529412,
+     "big_move_share_random": 0.20319059961128086,
+     "p_value": 0.1108891108891109,
+     "p_value_before": 0.15184815184815184
+    },
+    "72": {
+     "onsets_with_markets": 4,
+     "pairs": 138,
+     "largest_onset": "2026-03-02T00:00:00+00:00",
+     "mean_move_after_without_largest": 0.05836363636363635,
+     "p_value_without_largest": 0.42957042957042957,
+     "mean_move_after": 0.061887681159420276,
+     "mean_move_before": 0.04830072463768116,
+     "mean_move_random": 0.05687735818859522,
+     "after_vs_random": 1.0880899382529639,
+     "before_vs_random": 0.8492082996809475,
+     "big_move_share_after": 0.37681159420289856,
+     "big_move_share_random": 0.32499659025198174,
+     "p_value": 0.34965034965034963,
+     "p_value_before": 0.6413586413586414
+    }
+   },
+   "verdict": "too few onsets to judge (4)",
+   "sources": [
+    "travel-state-gov"
+   ]
+  },
+  "us_military_moves": {
+   "onsets": 3,
+   "horizons": {
+    "1": {
+     "onsets_with_markets": 3,
+     "pairs": 122,
+     "largest_onset": "2026-09-21T16:00:00+00:00",
+     "mean_move_after_without_largest": 0.005511764705882353,
+     "p_value_without_largest": null,
+     "mean_move_after": 0.006508196721311477,
+     "mean_move_before": 0.007385245901639343,
+     "mean_move_random": null,
+     "after_vs_random": null,
+     "before_vs_random": null,
+     "big_move_share_after": 0.040983606557377046,
+     "big_move_share_random": null,
+     "p_value": null,
+     "p_value_before": null
+    },
+    "6": {
+     "onsets_with_markets": 3,
+     "pairs": 117,
+     "largest_onset": "2026-09-21T16:00:00+00:00",
+     "mean_move_after_without_largest": 0.01520731707317073,
+     "p_value_without_largest": null,
+     "mean_move_after": 0.01698717948717949,
+     "mean_move_before": 0.01322649572649573,
+     "mean_move_random": null,
+     "after_vs_random": null,
+     "before_vs_random": null,
+     "big_move_share_after": 0.09401709401709402,
+     "big_move_share_random": null,
+     "p_value": null,
+     "p_value_before": null
+    },
+    "24": {
+     "onsets_with_markets": 3,
+     "pairs": 110,
+     "largest_onset": "2026-09-08T18:00:00+00:00",
+     "mean_move_after_without_largest": 0.04242063492063492,
+     "p_value_without_largest": null,
+     "mean_move_after": 0.06708181818181817,
+     "mean_move_before": 0.05062727272727271,
+     "mean_move_random": null,
+     "after_vs_random": null,
+     "before_vs_random": null,
+     "big_move_share_after": 0.3090909090909091,
+     "big_move_share_random": null,
+     "p_value": null,
+     "p_value_before": null
+    },
+    "72": {
+     "onsets_with_markets": 3,
+     "pairs": 101,
+     "largest_onset": "2026-09-08T18:00:00+00:00",
+     "mean_move_after_without_largest": 0.05220535714285714,
+     "p_value_without_largest": null,
+     "mean_move_after": 0.06033168316831684,
+     "mean_move_before": 0.07827722772277228,
+     "mean_move_random": null,
+     "after_vs_random": null,
+     "before_vs_random": null,
+     "big_move_share_after": 0.4158415841584158,
+     "big_move_share_random": null,
+     "p_value": null,
+     "p_value_before": null
+    }
+   },
+   "verdict": "no onset overlapped an open market",
+   "sources": [
+    "usni-fleet-tracker"
+   ]
+  },
+  "gps_jamming": {
+   "onsets": 0,
+   "horizons": {
+    "1": {
+     "onsets_with_markets": 0,
+     "pairs": 0
+    },
+    "6": {
+     "onsets_with_markets": 0,
+     "pairs": 0
+    },
+    "24": {
+     "onsets_with_markets": 0,
+     "pairs": 0
+    },
+    "72": {
+     "onsets_with_markets": 0,
+     "pairs": 0
+    }
+   },
+   "verdict": "no onset overlapped an open market",
+   "sources": []
+  },
+  "infrastructure_fire": {
+   "onsets": 0,
+   "horizons": {
+    "1": {
+     "onsets_with_markets": 0,
+     "pairs": 0
+    },
+    "6": {
+     "onsets_with_markets": 0,
+     "pairs": 0
+    },
+    "24": {
+     "onsets_with_markets": 0,
+     "pairs": 0
+    },
+    "72": {
+     "onsets_with_markets": 0,
+     "pairs": 0
+    }
+   },
+   "verdict": "no onset overlapped an open market",
+   "sources": []
+  }
+ },
+ "untested": {
+  "gps_jamming": "No free hourly history. gpsjam.org keeps daily maps, but reading them needs an H3 hex library, which breaks the standard-library rule.",
+  "infrastructure_fire": "NASA FIRMS history needs a free key, and none is set in config/local.json.",
+  "airline_cancellations": "The repo has no airline cancellation collector, so there is nothing to test.",
+  "us_military_moves": "The aircraft feed (adsb.lol) is live only and the fleet tracker is weekly; only the live log counts."
+ }
+}
