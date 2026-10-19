@@ -58,6 +58,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .feed li { padding: 10px 0; border-bottom: 1px solid var(--line); }
 .feed .t { font-size: 15px; }
 .feed .t[lang="he"] { font-family: var(--hebrew); font-size: 16px; }
+.feed .t[lang="fa"], .feed .t[lang="ar"] { font-family: "Noto Naskh Arabic", var(--sans); font-size: 16px; }
 .feed .m { font-size: 12px; color: var(--muted); margin-top: 2px; }
 .toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; align-items: center; }
 .toolbar input, .toolbar select { font: 14px var(--sans); padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--ink); }

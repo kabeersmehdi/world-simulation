@@ -30,7 +30,7 @@ The tables below are locked to `worldsim/signals.py` and `worldsim/watch.py` by 
 The fleet tracker is weekly, which is why `us_military_moves` has an eight-day window.
 
 ## Keywords
-Matching is a plain substring check, so Hebrew prefixes (ה, ו, ב, ל, ש) still match.
+Matching is a plain substring check, so Hebrew prefixes (ה, ו, ב, ל, ש) still match. The Persian and Arabic airspace phrases mean "airspace closure"; Persian and Arabic feeds otherwise feed topic tags only, until more keywords are checked by a reader of each language.
 
 | Indicator | Keyword |
 |---|---|
@@ -42,6 +42,8 @@ Matching is a plain substring check, so Hebrew prefixes (ה, ו, ב, ל, ש) sti
 | airspace | airspace closure |
 | airspace | closes airspace |
 | airspace | NOTAM |
+| airspace | بسته شدن حریم هوایی |
+| airspace | إغلاق المجال الجوي |
 | home_front | פיקוד העורף |
 | home_front | Home Front Command |
 | reserves | צו 8 |

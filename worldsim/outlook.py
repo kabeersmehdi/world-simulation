@@ -154,11 +154,22 @@ def coming_up(rows, timing, evidence, today, days=90):
     return items
 
 
-def build(live, timing, reactions, evidence, root=ROOT, now=None):
+def market_pricing(timing):
+    """What Polymarket is pricing on war risk, to read beside the stress level."""
+    out = []
+    for c in timing or []:
+        if c["kind"] == "survival" and c["rows"]:
+            last = c["rows"][-1]
+            out.append(f"{round(last['by_date'] * 100)}% chance of {c['event']} by {fmt(last['to'])}")
+    return out
+
+
+def build(live, timing, reactions, evidence, root=ROOT, now=None, markets_now=None):
     now = now or datetime.now(timezone.utc)
     today = now.date()
     rows = forecast_rows(live, markets.latest_prices(root, now=now), reactions, today)
     return {"forecasts": rows, "headlines": headlines(live, rows, timing), "coming_up": coming_up(rows, timing, evidence, today),
+            "markets_now": markets_now, "war_risk_priced": market_pricing(timing),
             "stock_moves": stock_moves(reactions, limit=8), "as_of": now.replace(microsecond=0).isoformat()}
 
 
@@ -192,6 +203,15 @@ def brief_markdown(outlook, days=14):
     gaps = [r for r in outlook["forecasts"] if r["gap_points"] is not None and abs(r["gap_points"]) >= GAP_POINTS
             and r["group"] in ("This week", "This month", "Later")]
     lines += ["", "**Where we disagree with the market:** " + ("; ".join(f"{r['question']} ({r['gap']})" for r in gaps[:5]) if gaps else "nowhere yet")]
+    m = outlook.get("markets_now")
+    if m:
+        lines += ["", f"**Markets now: {m['level']}**" + (f" ({'; '.join(m['flags'])})" if m["flags"] else "")]
+        lines += [f"- {r['what']}: {r['value']}, {r['detail']}" for r in m["reads"]]
+        big = [q for q in m["quotes"] if q.get("size") in ("big move", "very big move")]
+        if big:
+            lines.append("- Big moves in the latest session: " + ", ".join(f"{q['name']} {q['change_pct']:+.1f}%" for q in big))
+    if outlook.get("war_risk_priced"):
+        lines.append("- Polymarket prices " + "; ".join(outlook["war_risk_priced"]) + ".")
     if outlook["stock_moves"]:
         lines += ["", "**If a strike happens, past reactions** (average of past strikes, not a signal):"]
         lines += [f"- {m['text']}" for m in outlook["stock_moves"][:5]]

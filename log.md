@@ -6,6 +6,7 @@ title: Change log
 # Change log
 
 ## 10/19/2026
+- Markets now: live quotes for 16 assets (TradingView through a local quote tool, Yahoo as the keyless fallback), a stress read against each asset's past year, and Polymarket's war odds beside it. Added 10 Persian and Arabic feeds (IRNA, Mehr, Fars, BBC Persian, Iran International, Al Manar, Al Masirah, Al Jazeera, Asharq Al-Awsat, BBC Arabic) and `python -m worldsim watch`.
 - Forecasts tab rebuilt in plain English (most likely outcome, our number, Polymarket, the gap), Timeline gets Coming up and Most likely outcomes, military forecasts link to past stock reactions, and `dashboard/brief.md` is written on every build for the stocks report.
 - Added the strike event study: 15 assets, 11 strike and war events since October 2023, 1, 5 and 20 trading-day moves against each asset's normal swing, with a check that drops the biggest event. New Reactions view and `python -m worldsim prices`.
 

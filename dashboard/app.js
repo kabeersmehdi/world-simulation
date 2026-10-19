@@ -67,7 +67,7 @@
   // ---------- views ----------
   function overview() {
     var w = D.watch, live = D.forecasts.live;
-    var h = '<div class="grid">';
+    var h = marketsNowPanel() + '<div class="grid" style="margin-top:16px">';
     h += '<div class="card"><div class="kicker">Watch level</div><div class="level ' + esc(w.level) + '">' + esc(w.level) + "</div>" +
       '<div class="small muted">' + w.active_count + " of " + Object.keys(w.indicators).length + " indicators active. Heuristic, not calibrated.</div></div>";
     h += '<div class="card"><div class="kicker">Live forecasts</div><div class="big">' + live.length + "</div>" +
@@ -110,7 +110,8 @@
   }
 
   function feedItem(o) {
-    var tr = o.lang === "he" ? ' &middot; <a target="_blank" rel="noopener" href="https://translate.google.com/translate?sl=iw&tl=en&u=' + encodeURIComponent(o.url) + '">translate</a>' : "";
+    var SL = { he: "iw", fa: "fa", ar: "ar" };
+    var tr = SL[o.lang] ? ' &middot; <a target="_blank" rel="noopener" href="https://translate.google.com/translate?sl=' + SL[o.lang] + '&tl=en&u=' + encodeURIComponent(o.url) + '">translate</a>' : "";
     return '<li><div class="t" dir="auto" lang="' + esc(o.lang) + '">' + link(o.url, o.title) + "</div>" +
       '<div class="m">' + esc(o.source_id) + " &middot; " + when(o.published_at || o.observed_at) + tr +
       (o.indicators.length ? " &middot; " + o.indicators.map(function (i) { return '<span class="pill warn">' + esc(IND_NAMES[i] || i) + "</span>"; }).join("") : "") +
@@ -121,7 +122,7 @@
     var sources = Array.from(new Set(D.feed.map(function (o) { return o.source_id; }))).sort();
     var h = '<h2>Hebrew and English news</h2><p class="muted small">Headlines and short excerpts with links. Hebrew outlets and reporters’ Telegram channels often run hours ahead of English wires. Telegram is an unverified signal.</p>';
     h += '<div class="toolbar"><input id="q" placeholder="Search (Hebrew or English)" aria-label="Search feed"><select id="src" aria-label="Source"><option value="">All sources</option>' +
-      sources.map(function (s) { return "<option>" + esc(s) + "</option>"; }).join("") + '</select><select id="lang" aria-label="Language"><option value="">All languages</option><option value="he">Hebrew</option><option value="en">English</option></select>' +
+      sources.map(function (s) { return "<option>" + esc(s) + "</option>"; }).join("") + '</select><select id="lang" aria-label="Language"><option value="">All languages</option><option value="he">Hebrew</option><option value="fa">Persian</option><option value="ar">Arabic</option><option value="en">English</option></select>' +
       '<label class="small"><input type="checkbox" id="flag"> flagged only</label></div><ul class="feed" id="feedlist"></ul>';
     setTimeout(function () {
       function draw() {
@@ -139,7 +140,7 @@
   }
 
   function marketsView() {
-    var h = '<h2>Market baseline</h2><p class="muted small">Polymarket prices logged on every collect run. This is the number to beat. A price is the crowd’s probability, not a fact.</p><div class="grid">';
+    var h = '<h2>Polymarket prices</h2><p class="muted small">Polymarket prices logged on every collect run. This is the number to beat. A price is the crowd’s probability, not a fact.</p><div class="grid">';
     h += D.markets.map(function (m) {
       return '<div class="card"><div class="kicker">' + esc(m.topic) + " &middot; " + esc(m.countries.join(", ")) + "</div><h3>" + link(m.url, m.label) + "</h3>" +
         '<div class="big">' + pct(m.probability) + "</div>" +
@@ -401,9 +402,32 @@
     return h;
   }
 
+
+  function marketsNowPanel() {
+    var M = D.markets_now, O = D.outlook;
+    if (!M) return '<div class="card"><h3>Markets now</h3><p class="muted small">No quotes yet. Run <code>python -m worldsim live</code>.</p></div>';
+    var cls = M.level === "calm" ? "ok" : M.level === "some stress" ? "warn" : "bad";
+    var groups = {};
+    M.quotes.forEach(function (q) { (groups[q.group] = groups[q.group] || []).push(q); });
+    var h = '<div class="card"><div class="kicker">Markets now &middot; ' + esc((D.live_source || "")) + '</div><h3>Middle East market stress: <span class="pill ' + cls + '">' + esc(M.level) + "</span></h3>" +
+      (M.flags.length ? '<p class="small">' + esc(M.flags.join("; ").replace(/^./, function (c) { return c.toUpperCase(); })) + ".</p>" : '<p class="small muted">Nothing unusual in oil, defense, shipping or the shekel.</p>') +
+      (M.reads.length ? "<ul class=\"small\">" + M.reads.map(function (r) { return "<li><strong>" + esc(r.what) + ":</strong> " + esc(r.value) + ", " + esc(r.detail) + "</li>"; }).join("") + "</ul>" : "") +
+      (O && O.war_risk_priced && O.war_risk_priced.length ? '<p class="small"><strong>What Polymarket prices:</strong> ' + O.war_risk_priced.map(esc).join("; ") + ".</p>" : "") +
+      '<div class="tablewrap"><table><thead><tr><th>Asset</th><th class="num">Price</th><th class="num">Latest session</th><th>Size of move</th></tr></thead><tbody>' +
+      Object.keys(groups).map(function (g) {
+        return '<tr><td colspan="4" class="kicker" style="padding-top:12px">' + esc(g) + "</td></tr>" + groups[g].map(function (q) {
+          var c = q.change_pct == null ? "n/a" : (q.change_pct > 0 ? "+" : "") + q.change_pct.toFixed(2) + "%";
+          var s = q.size === "very big move" ? "bad" : q.size === "big move" ? "warn" : "";
+          return "<tr><td>" + esc(q.name) + '</td><td class="num">' + Number(q.price).toLocaleString(undefined, { maximumFractionDigits: 2 }) + '</td><td class="num">' + c + "</td><td>" + (q.size ? '<span class="pill ' + s + '">' + esc(q.size) + "</span>" : "") + (q.delay_minutes ? ' <span class="small muted">' + q.delay_minutes + " min delay</span>" : "") + "</td></tr>";
+        }).join("");
+      }).join("") + "</tbody></table></div>" +
+      '<p class="small muted">Size of move compares the latest session with the asset’s normal daily swing over the past year. A description of the market, not a trading signal. <a href="#reactions">How these assets moved after past strikes</a>.</p></div>';
+    return h;
+  }
+
   var VIEWS = [
     ["overview", "Overview", overview], ["watch", "Indicators", watch], ["feed", "News feed", feed],
-    ["markets", "Markets", marketsView], ["timing", "When", timingView], ["accuracy", "Accuracy", accuracyView], ["reactions", "Reactions", reactionsView], ["forecasts", "Forecasts", forecastsView], ["polls", "Polls", pollsView],
+    ["markets", "Polymarket", marketsView], ["timing", "When", timingView], ["accuracy", "Accuracy", accuracyView], ["reactions", "Reactions", reactionsView], ["forecasts", "Forecasts", forecastsView], ["polls", "Polls", pollsView],
     ["countries", "Countries", countriesView], ["timeline", "Timeline", timelineView], ["backers", "Backers", backersView],
     ["baserates", "Base rates", baseratesView], ["scenarios", "Scenarios", scenariosView], ["scorecard", "Scorecard", scorecardView],
     ["sources", "Sources", sourcesView]
