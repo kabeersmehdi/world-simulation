@@ -4,6 +4,8 @@
   build          rebuild dashboard/data.json from what is saved
   validate       check every forecast, evidence, poll and base-rate file
   score          print the scorecard
+  live           live quotes for oil, defense, shipping and Israel, with a stress read
+  watch          run collect every N minutes (default 15) until stopped
   prices         fetch daily prices and rerun the strike event study
   backtest       score resolved Polymarket markets on our topics (how good is the baseline?)
   new-forecast   write a forecast skeleton, optionally pre-filled from a Polymarket slug
@@ -16,7 +18,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from . import ROOT, backtest, build, eventstudy, prices, collectors, forecasts, markets, scoring, store, timing
+from . import ROOT, backtest, build, eventstudy, live, prices, collectors, forecasts, markets, scoring, store, timing
 from .contracts import ContractError
 
 
@@ -29,6 +31,11 @@ def cmd_collect(args):
         lrows, lreport = timing.collect(ROOT)
         markets.save(rows + lrows, ROOT)
         report += mreport + lreport
+        try:
+            snap = live.snapshot(ROOT)
+            report.append({"source": f"markets now ({snap['source']})", "ok": True, "items": len(snap["quotes"]), "flagged": 0})
+        except Exception as exc:  # noqa: BLE001
+            report.append({"source": "markets now", "ok": False, "error": f"{type(exc).__name__}: {exc}"})
     failed = [r for r in report if not r["ok"]]
     for r in report:
         if r.get("skipped"):
@@ -82,6 +89,33 @@ def cmd_backtest(args):
     build.build(ROOT)
     print("\nSaved data/backtests/polymarket-geopolitics.json and rebuilt the dashboard.")
     return 0
+
+
+def cmd_live(args):
+    snap = live.snapshot(ROOT)
+    s = live.stress(snap, ROOT)
+    print(f"Markets now from {snap['source']}: {s['level']}" + (f" ({'; '.join(s['flags'])})" if s["flags"] else ""))
+    for r in s["reads"]:
+        print(f"  {r['what']}: {r['value']}, {r['detail']}")
+    for q in s["quotes"]:
+        move = "n/a" if q.get("change_pct") is None else f"{q['change_pct']:+.2f}%"
+        print(f"  {q['name']:40} {q['price']:>10,.2f}  {move:>8}  {q['size'] or ''}")
+    build.build(ROOT)
+    return 0
+
+
+def cmd_watch(args):
+    import time
+    print(f"Collecting every {args.every} minutes. Ctrl+C to stop.")
+    while True:
+        try:
+            cmd_collect(argparse.Namespace(only=None))
+        except Exception as exc:  # noqa: BLE001 - keep the loop alive, show the error
+            print(f"collect failed: {exc}")
+        try:
+            time.sleep(args.every * 60)
+        except KeyboardInterrupt:
+            return 0
 
 
 def cmd_prices(args):
@@ -149,12 +183,15 @@ def main(argv=None):
     sub.add_parser("score")
     sub.add_parser("backtest")
     sub.add_parser("prices")
+    sub.add_parser("live")
+    w = sub.add_parser("watch")
+    w.add_argument("--every", type=int, default=15, help="minutes between runs (default 15)")
     n = sub.add_parser("new-forecast")
     n.add_argument("--question")
     n.add_argument("--market", help="Polymarket slug to pre-fill question, deadline and market price")
     args = p.parse_args(argv)
     return {"collect": cmd_collect, "build": cmd_build, "validate": cmd_validate,
-            "score": cmd_score, "backtest": cmd_backtest, "prices": cmd_prices, "new-forecast": cmd_new_forecast}[args.cmd](args)
+            "score": cmd_score, "backtest": cmd_backtest, "prices": cmd_prices, "live": cmd_live, "watch": cmd_watch, "new-forecast": cmd_new_forecast}[args.cmd](args)
 
 
 if __name__ == "__main__":

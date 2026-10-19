@@ -21,6 +21,8 @@ INDICATOR_KEYWORDS = {
         "airspace closure",
         "closes airspace",
         "NOTAM",
+        "بسته شدن حریم هوایی",
+        "إغلاق المجال الجوي",
     ],
     "home_front": ["פיקוד העורף", "Home Front Command"],
     "reserves": ["צו 8", "גיוס מילואים", "גיוס נרחב", "call-up of reservists", "reservists called up"],
@@ -33,11 +35,12 @@ LATE_NIGHT_START_HOUR = 21
 LATE_NIGHT_END_HOUR = 5
 
 TOPIC_KEYWORDS = {
-    "iran": ["איראן", "טהרן", "Iran", "Tehran"],
-    "hezbollah": ["חיזבאללה", "Hezbollah"],
-    "houthis": ["חות'ים", "חותים", "Houthi"],
-    "gaza": ["עזה", "חמאס", "Gaza", "Hamas"],
-    "united-states": ['ארה"ב', "טראמפ", "וושינגטון", "Trump", "Washington", "Pentagon"],
+    "iran": ["איראן", "טהרן", "Iran", "Tehran", "إيران", "طهران"],
+    "israel": ["اسرائیل", "رژیم صهیونیستی", "إسرائيل", "الاحتلال", "Israel"],
+    "hezbollah": ["חיזבאללה", "Hezbollah", "حزب‌الله", "حزب الله"],
+    "houthis": ["חות'ים", "חותים", "Houthi", "حوثی", "الحوثي", "أنصار الله"],
+    "gaza": ["עזה", "חמאס", "Gaza", "Hamas", "غزه", "غزة", "حماس"],
+    "united-states": ['ארה"ב', "טראמפ", "וושינגטון", "Trump", "Washington", "Pentagon", "آمریکا", "ترامپ", "أمريكا", "واشنطن", "ترامب"],
     "election": ["בחירות", "סקר", "election", "poll"],
     "coalition": ["קואליציה", "coalition"],
 }

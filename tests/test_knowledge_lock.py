@@ -105,6 +105,15 @@ class KnowledgeLockTests(unittest.TestCase):
         self.assertIn(f"under {round(outlook.BRIEF_MIN * 100)}%", doc)
         self.assertIn(f"at most {outlook.BRIEF_ITEMS}", doc)
 
+    def test_markets_now_constants_match_doc(self):
+        from worldsim import live
+        doc = (ROOT / "docs" / "markets-now.md").read_text()
+        self.assertIn(f"{live.BIG_MOVE} swings or more is a big move", doc)
+        self.assertIn(f"{live.VERY_BIG_MOVE} or more a very big move", doc)
+        self.assertIn(f"higher than {live.HIGH_PERCENTILE}% of the past year counts as high", doc)
+        self.assertEqual(live.STRESS_LEVELS, [(3, "high stress"), (1, "some stress"), (0, "calm")])
+        self.assertIn("0 flags is calm, 1 or 2 is some stress, 3 or more is high stress", doc)
+
     def test_small_sample_matches_doc(self):
         from worldsim.baserates import SMALL_SAMPLE
         self.assertIn(f"Fewer than {SMALL_SAMPLE} events", (ROOT / "docs" / "base-rates.md").read_text())

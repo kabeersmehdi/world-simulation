@@ -11,3 +11,6 @@ dashboard/brief.md
 dashboard/brief.json
 # Raw daily prices are re-fetched by `python -m worldsim prices`; only the event-study results are kept.
 data/prices/
+# Machine-specific settings (TradingView tool path) and live quotes.
+config/local.json
+data/live/

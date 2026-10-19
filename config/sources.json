@@ -1,27 +1,411 @@
 {
-  "note": "Feeds checked by hand on 2026-10-18. 'blocked' entries refuse automated requests and are not scraped around.",
+  "note": "Feeds checked by hand on 10/18/2026 (Hebrew, English) and 10/19/2026 (Persian, Arabic). 'blocked' entries refuse automated requests and are not scraped around.",
   "sources": [
-    {"id": "ynet", "name": "Ynet (Yedioth Ahronoth)", "kind": "rss", "lang": "he", "tier": "independent_reporting", "url": "https://www.ynet.co.il/Integration/StoryRss2.xml"},
-    {"id": "n12", "name": "N12 (Channel 12 News)", "kind": "rss", "lang": "he", "tier": "independent_reporting", "url": "https://rcs.mako.co.il/rss/31750a2610f26110VgnVCM1000005201000aRCRD.xml"},
-    {"id": "maariv", "name": "Maariv", "kind": "rss", "lang": "he", "tier": "independent_reporting", "url": "https://www.maariv.co.il/rss/rsschadashot"},
-    {"id": "haaretz-he", "name": "Haaretz (Hebrew)", "kind": "rss", "lang": "he", "tier": "independent_reporting", "url": "https://www.haaretz.co.il/srv/htz---all-articles"},
-    {"id": "times-of-israel", "name": "Times of Israel (English, for speed comparison)", "kind": "rss", "lang": "en", "tier": "independent_reporting", "url": "https://www.timesofisrael.com/feed/"},
-    {"id": "tg-amitsegal", "name": "Amit Segal, Channel 12 political analyst (Telegram)", "kind": "telegram", "lang": "he", "tier": "unverified_signal", "url": "https://t.me/s/amitsegal"},
-    {"id": "tg-kann-news", "name": "Kan News (Telegram)", "kind": "telegram", "lang": "he", "tier": "independent_reporting", "url": "https://t.me/s/kann_news"},
-    {"id": "tg-abualiexpress", "name": "Abu Ali Express, Arab affairs (Telegram)", "kind": "telegram", "lang": "he", "tier": "unverified_signal", "url": "https://t.me/s/abualiexpress"},
-    {"id": "tg-idf", "name": "Israel Defense Forces (Telegram)", "kind": "telegram", "lang": "en", "tier": "official", "url": "https://t.me/s/idfofficial"},
-    {"id": "travel-state-gov", "name": "US State Department travel advisories", "kind": "advisory", "lang": "en", "tier": "official", "url": "https://travel.state.gov/_res/rss/TAsTWs.xml"},
-    {"id": "usni-fleet-tracker", "name": "USNI News Fleet and Marine Tracker", "kind": "fleet", "lang": "en", "tier": "independent_reporting", "url": "https://news.usni.org/category/fleet-tracker/feed"},
-    {"id": "gpsjam-levant", "name": "GPS accuracy of aircraft over Israel and the Levant (adsb.lol)", "kind": "gpsjam", "lang": "data", "tier": "unverified_signal", "area": "Israel and the Levant", "url": "https://api.adsb.lol/v2/lat/32.5/lon/35.0/dist/200", "map_url": "https://gpsjam.org/?lat=32.5&lon=35&z=6"},
-    {"id": "gpsjam-gulf", "name": "GPS accuracy of aircraft over the Gulf and Hormuz (adsb.lol)", "kind": "gpsjam", "lang": "data", "tier": "unverified_signal", "area": "the Gulf and Hormuz", "url": "https://api.adsb.lol/v2/lat/26.5/lon/54.0/dist/250", "map_url": "https://gpsjam.org/?lat=26.5&lon=54&z=6"},
-    {"id": "firms-iran-gulf", "name": "NASA FIRMS fire detections, Iran and the Gulf", "kind": "firms", "lang": "data", "tier": "official", "bbox": [47, 24, 58, 36], "url": "https://firms.modaps.eosdis.nasa.gov/api/area/", "sites": [{"id": "abadan-refinery", "name": "Abadan refinery", "lat": 30.349, "lon": 48.28, "radius_km": 4, "kind": "flare"}, {"id": "bandar-abbas-refineries", "name": "Bandar Abbas refineries", "lat": 27.165, "lon": 56.06, "radius_km": 5, "kind": "flare"}, {"id": "isfahan-refinery", "name": "Isfahan refinery", "lat": 32.784, "lon": 51.507, "radius_km": 4, "kind": "flare"}, {"id": "tehran-refinery", "name": "Tehran refinery", "lat": 35.54, "lon": 51.424, "radius_km": 4, "kind": "flare"}, {"id": "kharg-island", "name": "Kharg Island oil terminal", "lat": 29.241, "lon": 50.312, "radius_km": 5, "kind": "flare"}, {"id": "bushehr-npp", "name": "Bushehr nuclear power plant", "lat": 28.829, "lon": 50.884, "radius_km": 3, "kind": "no_flare"}, {"id": "natanz", "name": "Natanz enrichment site", "lat": 33.725, "lon": 51.724, "radius_km": 3, "kind": "no_flare"}, {"id": "fordow", "name": "Fordow enrichment site", "lat": 34.884, "lon": 50.997, "radius_km": 3, "kind": "no_flare"}, {"id": "abqaiq", "name": "Abqaiq oil processing (Saudi Arabia)", "lat": 25.936, "lon": 49.668, "radius_km": 6, "kind": "flare"}, {"id": "ras-tanura", "name": "Ras Tanura refinery and terminal (Saudi Arabia)", "lat": 26.693, "lon": 50.096, "radius_km": 5, "kind": "flare"}, {"id": "fujairah-terminal", "name": "Fujairah oil terminal (UAE)", "lat": 25.199, "lon": 56.354, "radius_km": 5, "kind": "no_flare"}]},
-    {"id": "firms-israel", "name": "NASA FIRMS fire detections, Israel", "kind": "firms", "lang": "data", "tier": "official", "bbox": [34, 31, 36, 33.5], "url": "https://firms.modaps.eosdis.nasa.gov/api/area/", "sites": [{"id": "haifa-bazan", "name": "Bazan refinery, Haifa", "lat": 32.792, "lon": 35.055, "radius_km": 3, "kind": "flare"}, {"id": "ashdod-refinery", "name": "Ashdod refinery", "lat": 31.842, "lon": 34.681, "radius_km": 3, "kind": "flare"}]},
-    {"id": "firms-yemen", "name": "NASA FIRMS fire detections, Yemen Red Sea coast", "kind": "firms", "lang": "data", "tier": "official", "bbox": [42, 14, 44, 16], "url": "https://firms.modaps.eosdis.nasa.gov/api/area/", "sites": [{"id": "hodeidah-port", "name": "Hodeidah port", "lat": 14.837, "lon": 42.936, "radius_km": 4, "kind": "no_flare"}]},
-    {"id": "adsb-lol-mil", "name": "adsb.lol military aircraft feed", "kind": "adsb", "lang": "data", "tier": "unverified_signal", "url": "https://api.adsb.lol/v2/mil"}
+    {
+      "id": "ynet",
+      "name": "Ynet (Yedioth Ahronoth)",
+      "kind": "rss",
+      "lang": "he",
+      "tier": "independent_reporting",
+      "url": "https://www.ynet.co.il/Integration/StoryRss2.xml"
+    },
+    {
+      "id": "n12",
+      "name": "N12 (Channel 12 News)",
+      "kind": "rss",
+      "lang": "he",
+      "tier": "independent_reporting",
+      "url": "https://rcs.mako.co.il/rss/31750a2610f26110VgnVCM1000005201000aRCRD.xml"
+    },
+    {
+      "id": "maariv",
+      "name": "Maariv",
+      "kind": "rss",
+      "lang": "he",
+      "tier": "independent_reporting",
+      "url": "https://www.maariv.co.il/rss/rsschadashot"
+    },
+    {
+      "id": "haaretz-he",
+      "name": "Haaretz (Hebrew)",
+      "kind": "rss",
+      "lang": "he",
+      "tier": "independent_reporting",
+      "url": "https://www.haaretz.co.il/srv/htz---all-articles"
+    },
+    {
+      "id": "times-of-israel",
+      "name": "Times of Israel (English, for speed comparison)",
+      "kind": "rss",
+      "lang": "en",
+      "tier": "independent_reporting",
+      "url": "https://www.timesofisrael.com/feed/"
+    },
+    {
+      "id": "tg-amitsegal",
+      "name": "Amit Segal, Channel 12 political analyst (Telegram)",
+      "kind": "telegram",
+      "lang": "he",
+      "tier": "unverified_signal",
+      "url": "https://t.me/s/amitsegal"
+    },
+    {
+      "id": "tg-kann-news",
+      "name": "Kan News (Telegram)",
+      "kind": "telegram",
+      "lang": "he",
+      "tier": "independent_reporting",
+      "url": "https://t.me/s/kann_news"
+    },
+    {
+      "id": "tg-abualiexpress",
+      "name": "Abu Ali Express, Arab affairs (Telegram)",
+      "kind": "telegram",
+      "lang": "he",
+      "tier": "unverified_signal",
+      "url": "https://t.me/s/abualiexpress"
+    },
+    {
+      "id": "tg-idf",
+      "name": "Israel Defense Forces (Telegram)",
+      "kind": "telegram",
+      "lang": "en",
+      "tier": "official",
+      "url": "https://t.me/s/idfofficial"
+    },
+    {
+      "id": "irna-fa",
+      "name": "IRNA, Iran's state news agency (Persian)",
+      "kind": "rss",
+      "lang": "fa",
+      "tier": "official",
+      "url": "https://www.irna.ir/rss"
+    },
+    {
+      "id": "mehr-fa",
+      "name": "Mehr News, state-affiliated (Persian)",
+      "kind": "rss",
+      "lang": "fa",
+      "tier": "official",
+      "url": "https://www.mehrnews.com/rss"
+    },
+    {
+      "id": "tg-farsna",
+      "name": "Fars News, IRGC-affiliated (Telegram, Persian)",
+      "kind": "telegram",
+      "lang": "fa",
+      "tier": "unverified_signal",
+      "url": "https://t.me/s/farsna"
+    },
+    {
+      "id": "bbc-persian",
+      "name": "BBC Persian",
+      "kind": "rss",
+      "lang": "fa",
+      "tier": "independent_reporting",
+      "url": "https://feeds.bbci.co.uk/persian/rss.xml"
+    },
+    {
+      "id": "iranintl-fa",
+      "name": "Iran International, opposition-leaning (Persian)",
+      "kind": "rss",
+      "lang": "fa",
+      "tier": "independent_reporting",
+      "url": "https://www.iranintl.com/fa/feed"
+    },
+    {
+      "id": "almanar-ar",
+      "name": "Al Manar, Hezbollah's channel (Arabic)",
+      "kind": "rss",
+      "lang": "ar",
+      "tier": "unverified_signal",
+      "url": "https://www.almanar.com.lb/rss"
+    },
+    {
+      "id": "tg-almasirah",
+      "name": "Al Masirah, the Houthis' channel (Telegram, Arabic)",
+      "kind": "telegram",
+      "lang": "ar",
+      "tier": "unverified_signal",
+      "url": "https://t.me/s/AlMasirahNews"
+    },
+    {
+      "id": "aljazeera-ar",
+      "name": "Al Jazeera Arabic, Qatar-funded",
+      "kind": "rss",
+      "lang": "ar",
+      "tier": "independent_reporting",
+      "url": "https://www.aljazeera.net/aljazeerarss/a7c186be-1baa-4bd4-9d80-a84db769f779/73d0e1b4-532f-45ef-b135-bfdff8b8cab9"
+    },
+    {
+      "id": "aawsat-ar",
+      "name": "Asharq Al-Awsat, Saudi-owned (Arabic)",
+      "kind": "rss",
+      "lang": "ar",
+      "tier": "independent_reporting",
+      "url": "https://aawsat.com/feed"
+    },
+    {
+      "id": "bbc-arabic",
+      "name": "BBC Arabic",
+      "kind": "rss",
+      "lang": "ar",
+      "tier": "independent_reporting",
+      "url": "https://feeds.bbci.co.uk/arabic/rss.xml"
+    },
+    {
+      "id": "travel-state-gov",
+      "name": "US State Department travel advisories",
+      "kind": "advisory",
+      "lang": "en",
+      "tier": "official",
+      "url": "https://travel.state.gov/_res/rss/TAsTWs.xml"
+    },
+    {
+      "id": "usni-fleet-tracker",
+      "name": "USNI News Fleet and Marine Tracker",
+      "kind": "fleet",
+      "lang": "en",
+      "tier": "independent_reporting",
+      "url": "https://news.usni.org/category/fleet-tracker/feed"
+    },
+    {
+      "id": "gpsjam-levant",
+      "name": "GPS accuracy of aircraft over Israel and the Levant (adsb.lol)",
+      "kind": "gpsjam",
+      "lang": "data",
+      "tier": "unverified_signal",
+      "area": "Israel and the Levant",
+      "url": "https://api.adsb.lol/v2/lat/32.5/lon/35.0/dist/200",
+      "map_url": "https://gpsjam.org/?lat=32.5&lon=35&z=6"
+    },
+    {
+      "id": "gpsjam-gulf",
+      "name": "GPS accuracy of aircraft over the Gulf and Hormuz (adsb.lol)",
+      "kind": "gpsjam",
+      "lang": "data",
+      "tier": "unverified_signal",
+      "area": "the Gulf and Hormuz",
+      "url": "https://api.adsb.lol/v2/lat/26.5/lon/54.0/dist/250",
+      "map_url": "https://gpsjam.org/?lat=26.5&lon=54&z=6"
+    },
+    {
+      "id": "firms-iran-gulf",
+      "name": "NASA FIRMS fire detections, Iran and the Gulf",
+      "kind": "firms",
+      "lang": "data",
+      "tier": "official",
+      "bbox": [
+        47,
+        24,
+        58,
+        36
+      ],
+      "url": "https://firms.modaps.eosdis.nasa.gov/api/area/",
+      "sites": [
+        {
+          "id": "abadan-refinery",
+          "name": "Abadan refinery",
+          "lat": 30.349,
+          "lon": 48.28,
+          "radius_km": 4,
+          "kind": "flare"
+        },
+        {
+          "id": "bandar-abbas-refineries",
+          "name": "Bandar Abbas refineries",
+          "lat": 27.165,
+          "lon": 56.06,
+          "radius_km": 5,
+          "kind": "flare"
+        },
+        {
+          "id": "isfahan-refinery",
+          "name": "Isfahan refinery",
+          "lat": 32.784,
+          "lon": 51.507,
+          "radius_km": 4,
+          "kind": "flare"
+        },
+        {
+          "id": "tehran-refinery",
+          "name": "Tehran refinery",
+          "lat": 35.54,
+          "lon": 51.424,
+          "radius_km": 4,
+          "kind": "flare"
+        },
+        {
+          "id": "kharg-island",
+          "name": "Kharg Island oil terminal",
+          "lat": 29.241,
+          "lon": 50.312,
+          "radius_km": 5,
+          "kind": "flare"
+        },
+        {
+          "id": "bushehr-npp",
+          "name": "Bushehr nuclear power plant",
+          "lat": 28.829,
+          "lon": 50.884,
+          "radius_km": 3,
+          "kind": "no_flare"
+        },
+        {
+          "id": "natanz",
+          "name": "Natanz enrichment site",
+          "lat": 33.725,
+          "lon": 51.724,
+          "radius_km": 3,
+          "kind": "no_flare"
+        },
+        {
+          "id": "fordow",
+          "name": "Fordow enrichment site",
+          "lat": 34.884,
+          "lon": 50.997,
+          "radius_km": 3,
+          "kind": "no_flare"
+        },
+        {
+          "id": "abqaiq",
+          "name": "Abqaiq oil processing (Saudi Arabia)",
+          "lat": 25.936,
+          "lon": 49.668,
+          "radius_km": 6,
+          "kind": "flare"
+        },
+        {
+          "id": "ras-tanura",
+          "name": "Ras Tanura refinery and terminal (Saudi Arabia)",
+          "lat": 26.693,
+          "lon": 50.096,
+          "radius_km": 5,
+          "kind": "flare"
+        },
+        {
+          "id": "fujairah-terminal",
+          "name": "Fujairah oil terminal (UAE)",
+          "lat": 25.199,
+          "lon": 56.354,
+          "radius_km": 5,
+          "kind": "no_flare"
+        }
+      ]
+    },
+    {
+      "id": "firms-israel",
+      "name": "NASA FIRMS fire detections, Israel",
+      "kind": "firms",
+      "lang": "data",
+      "tier": "official",
+      "bbox": [
+        34,
+        31,
+        36,
+        33.5
+      ],
+      "url": "https://firms.modaps.eosdis.nasa.gov/api/area/",
+      "sites": [
+        {
+          "id": "haifa-bazan",
+          "name": "Bazan refinery, Haifa",
+          "lat": 32.792,
+          "lon": 35.055,
+          "radius_km": 3,
+          "kind": "flare"
+        },
+        {
+          "id": "ashdod-refinery",
+          "name": "Ashdod refinery",
+          "lat": 31.842,
+          "lon": 34.681,
+          "radius_km": 3,
+          "kind": "flare"
+        }
+      ]
+    },
+    {
+      "id": "firms-yemen",
+      "name": "NASA FIRMS fire detections, Yemen Red Sea coast",
+      "kind": "firms",
+      "lang": "data",
+      "tier": "official",
+      "bbox": [
+        42,
+        14,
+        44,
+        16
+      ],
+      "url": "https://firms.modaps.eosdis.nasa.gov/api/area/",
+      "sites": [
+        {
+          "id": "hodeidah-port",
+          "name": "Hodeidah port",
+          "lat": 14.837,
+          "lon": 42.936,
+          "radius_km": 4,
+          "kind": "no_flare"
+        }
+      ]
+    },
+    {
+      "id": "adsb-lol-mil",
+      "name": "adsb.lol military aircraft feed",
+      "kind": "adsb",
+      "lang": "data",
+      "tier": "unverified_signal",
+      "url": "https://api.adsb.lol/v2/mil"
+    }
   ],
   "blocked": [
-    {"id": "oref-alerts", "name": "Home Front Command alert feed", "url": "https://www.oref.org.il/WarningMessages/alert/alerts.json", "reason": "Returns 403 outside Israel"},
-    {"id": "us-embassy-israel-alerts", "name": "US Embassy Israel alerts", "url": "https://il.usembassy.gov/category/alert/feed/", "reason": "Returns 403 to automated requests"},
-    {"id": "israel-hayom", "name": "Israel Hayom", "url": "https://www.israelhayom.co.il/rss.xml", "reason": "Returns 403 to automated requests"}
+    {
+      "id": "oref-alerts",
+      "name": "Home Front Command alert feed",
+      "url": "https://www.oref.org.il/WarningMessages/alert/alerts.json",
+      "reason": "Returns 403 outside Israel"
+    },
+    {
+      "id": "us-embassy-israel-alerts",
+      "name": "US Embassy Israel alerts",
+      "url": "https://il.usembassy.gov/category/alert/feed/",
+      "reason": "Returns 403 to automated requests"
+    },
+    {
+      "id": "israel-hayom",
+      "name": "Israel Hayom",
+      "url": "https://www.israelhayom.co.il/rss.xml",
+      "reason": "Returns 403 to automated requests"
+    },
+    {
+      "id": "tasnim-fa",
+      "name": "Tasnim News (Persian)",
+      "url": "https://www.tasnimnews.com/",
+      "reason": "No response to requests from outside Iran (tested 10/19/2026)"
+    },
+    {
+      "id": "farsnews-web",
+      "name": "Fars News website",
+      "url": "https://www.farsnews.ir/rss",
+      "reason": "No response from outside Iran; its Telegram channel is used instead"
+    },
+    {
+      "id": "almayadeen-ar",
+      "name": "Al Mayadeen (Arabic)",
+      "url": "https://www.almayadeen.net/rss",
+      "reason": "Returns 403 to automated requests"
+    },
+    {
+      "id": "almasirah-web",
+      "name": "Al Masirah website",
+      "url": "https://www.almasirah.net/",
+      "reason": "Returns 403; its Telegram channel is used instead"
+    },
+    {
+      "id": "alarabiya-ar",
+      "name": "Al Arabiya (Arabic)",
+      "url": "https://www.alarabiya.net/.mrss/ar.xml",
+      "reason": "Returns 403 to automated requests"
+    }
   ]
 }

@@ -14,7 +14,7 @@
     "title": {"type": "string", "minLength": 1},
     "excerpt": {"type": "string"},
     "url": {"type": "string", "format": "uri"},
-    "lang": {"type": "string", "enum": ["he", "en", "ar", "data"]},
+    "lang": {"type": "string", "enum": ["he", "en", "ar", "fa", "data"]},
     "indicators": {"type": "array", "items": {"type": "string", "enum": ["airspace", "home_front", "reserves", "us_advisory", "us_military_moves", "late_night_cabinet", "gps_jamming", "infrastructure_fire"]}},
     "tags": {"type": "array", "items": {"type": "string"}},
     "data": {"type": ["object", "null"]}

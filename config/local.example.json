@@ -1,0 +1,5 @@
+{
+  "note": "Copy to config/local.json (not committed) to use live TradingView quotes through a local quote tool that has scripts/snapshot_quotes.py. Without it, Markets now uses Yahoo Finance (about 15 minutes delayed).",
+  "tradingview_tool": "~/path/to/market_update_playbook",
+  "tradingview_python": "/usr/local/bin/python3"
+}

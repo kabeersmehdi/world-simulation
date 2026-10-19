@@ -1,6 +1,6 @@
 # World Simulation
 
-**What it does:** tracks what the United States and Israel say, what they actually do, and what is likely to happen next, with Iran as the main outside player. It pulls Hebrew and English news, reporters' Telegram channels, US military aircraft and carrier positions, State Department advisories, leader polls and Polymarket prices into one dashboard. Then it makes you write dated, testable forecasts and scores them against the market.
+**What it does:** tracks what the United States and Israel say, what they actually do, and what is likely to happen next, with Iran as the main outside player. It pulls Hebrew, Persian, Arabic and English news, reporters' and official Telegram channels, US military aircraft and carrier positions, State Department advisories, leader polls, Polymarket prices and live quotes for oil, defense, shipping and the shekel into one dashboard. Then it makes you write dated, testable forecasts and scores them against the market.
 
 **The point:** the edge is not a secret source. It is being faster on Hebrew sources, watching the public tracks big operations leave, starting from base rates instead of gut feel, and keeping an honest score against the crowd.
 
@@ -15,8 +15,8 @@ python3 -m http.server -d dashboard  # open http://localhost:8000
 
 ## The whole thing in plain English
 
-1. **Collect.** Every run reads 12 feeds and 12 prediction markets. Headlines and short excerpts are saved locally with links. Full articles are never stored.
-2. **Tag.** Hebrew and English keyword rules flag eight leading indicators: airspace closures, Home Front Command instructions, reserve call-ups ("Tzav 8"), late-night security cabinet meetings, US departure orders for diplomats, and US tankers, bombers, surveillance planes or carriers in the region, GPS jamming (civil aircraft over Israel or the Gulf reporting degraded GPS), and NASA satellite fire detections at refineries, oil terminals, ports and nuclear sites (optional, needs a free key).
+1. **Collect.** Every run reads 27 feeds (Hebrew, Persian, Arabic, English), every forecast's Polymarket market, and live quotes for 16 assets. Headlines and short excerpts are saved locally with links. Full articles are never stored.
+2. **Tag.** Keyword rules (mostly Hebrew and English; Persian and Arabic for airspace closures) flag eight leading indicators: airspace closures, Home Front Command instructions, reserve call-ups ("Tzav 8"), late-night security cabinet meetings, US departure orders for diplomats, and US tankers, bombers, surveillance planes or carriers in the region, GPS jamming (civil aircraft over Israel or the Gulf reporting degraded GPS), and NASA satellite fire detections at refineries, oil terminals, ports and nuclear sites (optional, needs a free key).
 3. **Watch level.** One indicator means little. Two kinds at once is "elevated", three or more is "high". This is a rule of thumb until enough past events are logged against it, and the dashboard says so.
 4. **Base rates.** Past strikes and responses between Israel, the US and Iran set the starting odds. With only a handful of comparable events, every number carries a small-sample warning. History sets the starting point, it does not call exact dates.
 5. **Forecast.** You write the question, the rule that decides it, a deadline and your probability. The tool logs the market price beside it on the same day.
@@ -28,7 +28,8 @@ python3 -m http.server -d dashboard  # open http://localhost:8000
 |---|---|
 | Overview | Watch level, market baseline, latest Hebrew headlines, recent timeline |
 | Indicators | Each of the eight signals, active or quiet, with the items that triggered it |
-| News feed | Searchable Hebrew and English headlines, with a translate link on every Hebrew item |
+| Overview | Markets now (oil, defense, shipping, shekel, with a stress read and Polymarket's war odds), then the watch level and latest headlines |
+| News feed | Searchable Hebrew, Persian, Arabic and English headlines, with a translate link on every non-English item |
 | Markets | Polymarket prices with change since first logged |
 | Forecasts | Your live forecasts, plus clearly marked illustrative examples |
 | Polls | Leader preference and approval polls, each row sourced |
@@ -66,6 +67,10 @@ Validation refuses 0% and 100%, deadlines before the start date, and any edit to
 | `python3 -m worldsim validate` | Check every data file against its schema and guards |
 | `python3 -m worldsim score` | Print the scorecard |
 | `python3 -m worldsim new-forecast --market <slug>` | Start a forecast from a Polymarket market |
+| `python3 -m worldsim live` | Live quotes and the stress read |
+| `python3 -m worldsim watch --every 15` | Run collect every 15 minutes until stopped |
+| `python3 -m worldsim prices` | Refresh daily prices and the strike event study |
+| `python3 -m worldsim backtest` | Score resolved Polymarket markets (how good is the baseline?) |
 | `python3 -m unittest` | Run the tests (offline, about a second) |
 
 ## Adding data
@@ -99,8 +104,19 @@ python3 -m worldsim collect --only firms-iran-gulf firms-israel firms-yemen
 
 Without the key you see `skip firms-...: not configured`, which is expected. For the GitHub Actions `collect` workflow, add the key as a repository secret named `FIRMS_MAP_KEY`. Sites and thresholds are in `docs/indicators.md`.
 
+## Live TradingView quotes (optional)
+
+Without setup, Markets now uses Yahoo Finance (about 15 minutes delayed). To use TradingView instead, copy `config/local.example.json` to `config/local.json` and point `tradingview_tool` at a local quote tool that has `scripts/snapshot_quotes.py`. It runs as a separate program and `config/local.json` is never committed.
+
 ## Running it on a schedule
 
+The simplest way is to leave this running in a terminal:
+
+```bash
+python3 -m worldsim watch --every 15
+```
+
+Or 
 On a Mac, a cron entry every two hours:
 
 ```bash

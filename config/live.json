@@ -1,0 +1,21 @@
+{
+  "note": "Assets for the Markets now panel. tv_symbol is used when a TradingView quote tool is set up in config/local.json; yahoo is the keyless fallback and the daily history for the stress read. kind follows the TradingView tool's watchlist kinds.",
+  "assets": [
+    {"alias": "BRENT", "name": "Brent crude", "group": "Oil", "tv_symbol": "TVC:UKOIL", "kind": "commodity", "yahoo": "BZ=F"},
+    {"alias": "WTI", "name": "WTI crude", "group": "Oil", "tv_symbol": "TVC:USOIL", "kind": "commodity", "yahoo": "CL=F"},
+    {"alias": "OVX", "name": "Oil volatility index", "group": "Oil", "tv_symbol": "CBOE:OVX", "kind": "volatility_index", "yahoo": "^OVX"},
+    {"alias": "ESLT", "name": "Elbit Systems", "group": "Defense", "tv_symbol": "NASDAQ:ESLT", "kind": "equity", "yahoo": "ESLT"},
+    {"alias": "LMT", "name": "Lockheed Martin", "group": "Defense", "tv_symbol": "NYSE:LMT", "kind": "equity", "yahoo": "LMT"},
+    {"alias": "RTX", "name": "RTX", "group": "Defense", "tv_symbol": "NYSE:RTX", "kind": "equity", "yahoo": "RTX"},
+    {"alias": "ITA", "name": "US defense ETF", "group": "Defense", "tv_symbol": "AMEX:ITA", "kind": "equity_etf", "yahoo": "ITA"},
+    {"alias": "FRO", "name": "Frontline (crude tankers)", "group": "Shipping", "tv_symbol": "NYSE:FRO", "kind": "equity", "yahoo": "FRO"},
+    {"alias": "STNG", "name": "Scorpio (product tankers)", "group": "Shipping", "tv_symbol": "NYSE:STNG", "kind": "equity", "yahoo": "STNG"},
+    {"alias": "ZIM", "name": "ZIM (Israeli container line)", "group": "Shipping", "tv_symbol": "NYSE:ZIM", "kind": "equity", "yahoo": "ZIM"},
+    {"alias": "USDILS", "name": "Dollar in shekels (up = weaker shekel)", "group": "Israel", "tv_symbol": "FX_IDC:USDILS", "kind": "index", "yahoo": "ILS=X"},
+    {"alias": "TA125", "name": "Tel Aviv 125", "group": "Israel", "tv_symbol": "TASE:TA125", "kind": "index", "yahoo": "^TA125.TA"},
+    {"alias": "EIS", "name": "Israel ETF (New York)", "group": "Israel", "tv_symbol": "AMEX:EIS", "kind": "equity_etf", "yahoo": "EIS"},
+    {"alias": "GOLD", "name": "Gold", "group": "Safety", "tv_symbol": "TVC:GOLD", "kind": "commodity", "yahoo": "GC=F"},
+    {"alias": "VIX", "name": "Stock volatility index", "group": "Safety", "tv_symbol": "CBOE:VIX", "kind": "volatility_index", "yahoo": "^VIX"},
+    {"alias": "SPY", "name": "S&P 500 ETF", "group": "Safety", "tv_symbol": "AMEX:SPY", "kind": "equity_etf", "yahoo": "SPY"}
+  ]
+}

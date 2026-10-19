@@ -5,7 +5,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import ROOT, backtest, baserates, eventstudy, forecasts, markets, outlook, polls, scoring, store, timing
+from . import ROOT, backtest, baserates, eventstudy, forecasts, live, markets, outlook, polls, scoring, store, timing
 from .contracts import validate
 from .watch import watch_status
 
@@ -58,7 +58,7 @@ def _load_json_folder(folder, schema=None, root=ROOT):
 def build(root=ROOT, now=None, out_path=None):
     root = Path(root)
     now = now or datetime.now(timezone.utc)
-    live, demo = forecasts.load_all(root)
+    live_fc, demo = forecasts.load_all(root)
     evidence = _load_json_folder(root / "data" / "evidence", "evidence", root)
     observations = store.load(root, days=10, now=now)
     observations.sort(key=lambda o: o.get("published_at") or o["observed_at"], reverse=True)
@@ -79,7 +79,8 @@ def build(root=ROOT, now=None, out_path=None):
     accuracy = backtest.load(root)
     reactions = eventstudy.load(root)
     timing_board = timing.board(root, now, calibration_bands(accuracy))
-    view = outlook.build(live, timing_board, reactions, evidence, root, now)
+    markets_now = live.stress(live.load(root), root)
+    view = outlook.build(live_fc, timing_board, reactions, evidence, root, now, markets_now)
 
     def fc_view(f):
         return {**f, "current_probability": forecasts.current_probability(f)}
@@ -88,11 +89,11 @@ def build(root=ROOT, now=None, out_path=None):
         "generated_at": now.replace(microsecond=0).isoformat(),
         "countries": countries,
         "forecasts": {
-            "live": [fc_view(f) for f in live],
+            "live": [fc_view(f) for f in live_fc],
             "demo": [fc_view(f) for f in demo],
-            "overdue": scoring.overdue(live, now),
+            "overdue": scoring.overdue(live_fc, now),
         },
-        "scorecard": {"live": scoring.scorecard(live), "demo": scoring.scorecard(demo)},
+        "scorecard": {"live": scoring.scorecard(live_fc), "demo": scoring.scorecard(demo)},
         "watch": watch_status(observations, now),
         "feed": [o for o in observations if o["collector"] in ("rss", "telegram")][:400],
         "signals": [o for o in observations if o["collector"] in ("adsb", "fleet", "advisory", "gpsjam", "firms")][:100],
@@ -101,6 +102,8 @@ def build(root=ROOT, now=None, out_path=None):
         "reactions": reactions,
         "timing": timing_board,
         "outlook": view,
+        "markets_now": markets_now,
+        "live_source": (live.load(root) or {}).get("source"),
         "polls": polls.load_all(root),
         "baserates": baserates.load_all(root),
         "scenarios": _load_json_folder(root / "data" / "scenarios"),
@@ -110,7 +113,7 @@ def build(root=ROOT, now=None, out_path=None):
         "evidence": evidence,
         "sources": sources,
         "counts": {"observations_10d": len(observations), "evidence": len(evidence),
-                   "live_forecasts": len(live), "demo_forecasts": len(demo)},
+                   "live_forecasts": len(live_fc), "demo_forecasts": len(demo)},
     }
     out_path = Path(out_path) if out_path else root / "dashboard" / "data.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
