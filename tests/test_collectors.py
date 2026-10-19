@@ -4,7 +4,8 @@ import json
 import unittest
 
 from worldsim import collectors
-from worldsim.collectors import adsb, advisory, fleet, gpsjam, rss, telegram
+from worldsim.collectors import adsb, advisory, firms, fleet, gpsjam, rss, telegram
+from worldsim.collectors.http import NotConfigured
 from worldsim.collectors.text import parse_rss_date, rss_items
 
 from .helpers import NOW, NOW_ISO, fixture, isolated_root
@@ -118,13 +119,62 @@ class AdvisoryTests(unittest.TestCase):
         self.assertEqual(obs[1]["indicators"], [])
 
 
+def firms_source(root):
+    return next(s for s in collectors.load_sources(root)["sources"] if s["id"] == "firms-iran-gulf")
+
+
+class FirmsTests(unittest.TestCase):
+    def test_site_rules(self):
+        root = isolated_root()
+        src = firms_source(root)
+        src["sites"] += [s for s in collectors.load_sources(root)["sources"] if s["id"] == "firms-israel"][0]["sites"]
+        obs = {o["data"]["site"]: o for o in firms.collect(src, fixture("firms.csv"), NOW_ISO, root)}
+        self.assertEqual(set(obs), {"abadan-refinery", "haifa-bazan", "bushehr-npp", "natanz"})  # farmland point dropped
+        self.assertEqual(obs["abadan-refinery"]["indicators"], ["infrastructure_fire"])
+        self.assertEqual(obs["abadan-refinery"]["data"]["solid"], 7)  # low-confidence pixel ignored
+        self.assertEqual(obs["abadan-refinery"]["data"]["frp_mw"], 180.0)
+        self.assertEqual(obs["abadan-refinery"]["published_at"], "2026-10-18T22:16:00+00:00")
+        self.assertEqual(obs["haifa-bazan"]["indicators"], [])   # a normal flare
+        self.assertEqual(obs["bushehr-npp"]["indicators"], [])   # one pixel is not enough
+        self.assertEqual(obs["natanz"]["indicators"], ["infrastructure_fire"])
+
+    def test_skipped_without_key(self):
+        with self.assertRaises(NotConfigured):
+            firms.fetch({"bbox": [1, 2, 3, 4]}, lambda url: "", env={})
+
+    def test_fetch_joins_satellites_and_hides_key(self):
+        urls = []
+
+        def fake(url):
+            urls.append(url)
+            return fixture("firms.csv")
+        text = firms.fetch({"bbox": [47, 24, 58, 36]}, fake, env={"FIRMS_MAP_KEY": "SECRET"})
+        self.assertEqual(len(urls), 3)
+        self.assertIn("/SECRET/VIIRS_NOAA20_NRT/47,24,58,36/1", urls[1])
+        self.assertEqual(text.count("latitude,"), 1)
+        self.assertEqual(len(firms.parse(text)), 3 * len(firms.parse(fixture("firms.csv"))))
+
+        def broken(url):
+            raise OSError(f"failed {url}")
+        with self.assertRaises(RuntimeError) as ctx:
+            firms.fetch({"bbox": [1, 2, 3, 4]}, broken, env={"FIRMS_MAP_KEY": "SECRET"})
+        self.assertNotIn("SECRET", str(ctx.exception))
+        with self.assertRaises(RuntimeError) as ctx:
+            firms.fetch({"bbox": [1, 2, 3, 4]}, lambda url: "Invalid MAP_KEY SECRET", env={"FIRMS_MAP_KEY": "SECRET"})
+        self.assertNotIn("SECRET", str(ctx.exception))
+
+    def test_runner_reports_skipped(self):
+        _, report = collectors.run(isolated_root(), fetch=lambda url: "", now=NOW, only={"firms-israel"}, env={})
+        self.assertEqual(report, [{"source": "firms-israel", "ok": True, "skipped": "not configured (FIRMS_MAP_KEY not set)"}])
+
+
 class RunnerTests(unittest.TestCase):
     def test_one_failing_feed_does_not_stop_the_rest(self):
         def fake_fetch(url):
             if "ynet" in url:
                 return fixture("ynet.xml")
             raise OSError("network off in tests")
-        obs, report = collectors.run(isolated_root(), fetch=fake_fetch, now=NOW)
+        obs, report = collectors.run(isolated_root(), fetch=fake_fetch, now=NOW, env={"FIRMS_MAP_KEY": "0123456789abcdef0123456789abcdef"})
         ok = [r for r in report if r["ok"]]
         self.assertEqual([r["source"] for r in ok], ["ynet"])
         self.assertTrue(all("network off" in r["error"] for r in report if not r["ok"]))

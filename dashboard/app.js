@@ -61,7 +61,8 @@
   }
   var IND_NAMES = { airspace: "Airspace closures", home_front: "Home Front Command", reserves: "Reserve call-ups",
     late_night_cabinet: "Late-night cabinet", us_advisory: "US departure orders", us_military_moves: "US military moves",
-    gps_jamming: "GPS jamming" };
+    gps_jamming: "GPS jamming",
+    infrastructure_fire: "Fires at energy sites" };
 
   // ---------- views ----------
   function overview() {
@@ -104,7 +105,7 @@
   function watch() {
     var h = '<h2>Leading indicators</h2><p class="muted small">Big operations usually leave public tracks a day or two ahead. One signal means little. Several kinds at once moves the odds. The level is a heuristic until enough past events are logged against it.</p>';
     h += '<div class="card" style="margin-bottom:16px">' + indicatorList(false) + "</div>";
-    h += '<div class="card"><h3>Raw signals: aircraft, GPS, fleet, advisories</h3><ul class="feed">' + D.signals.slice(0, 40).map(feedItem).join("") + "</ul></div>";
+    h += '<div class="card"><h3>Raw signals: aircraft, GPS, satellite fires, fleet, advisories</h3><ul class="feed">' + D.signals.slice(0, 40).map(feedItem).join("") + "</ul></div>";
     return h;
   }
 
