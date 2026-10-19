@@ -25,6 +25,7 @@ The tables below are locked to `worldsim/signals.py` and `worldsim/watch.py` by 
 | `us_advisory` | State Department advisory updates mentioning ordered or authorized departure | advisory | 72 |
 | `us_military_moves` | US tankers, bombers or surveillance aircraft in the region, or a carrier strike group reported nearby | adsb, fleet | 192 |
 | `gps_jamming` | Civil aircraft over Israel and the Levant, or the Gulf and Hormuz, reporting degraded GPS accuracy | gpsjam | 24 |
+| `infrastructure_fire` | NASA satellites detect a fire at a named refinery, oil terminal, port or nuclear site | firms | 48 |
 
 The fleet tracker is weekly, which is why `us_military_moves` has an eight-day window.
 
@@ -79,6 +80,35 @@ Every ADS-B position report carries NACp, the aircraft's own estimate of its GPS
 | Minimum degraded share | 20% |
 
 `gps_jamming` fires when all four are met in one area at once. On 10/19/2026 the Levant showed 0 of 31 degraded and the Gulf 5 of 102 (5%), so the bar sits well above the quiet level. Israel has jammed GPS on and off since October 2023, so a long run of hits is a standing condition, not a new signal. Raise the share if it fires every day. Few aircraft at night means few readings, which is why there is a minimum count.
+
+## Satellite fire detections (NASA FIRMS)
+VIIRS instruments on three satellites (S-NPP, NOAA-20, NOAA-21) detect heat at 375 m resolution several times a day, and NASA publishes the detections within about three hours. The collector reads the last 24 hours around each site below. It needs a free key from NASA in `FIRMS_MAP_KEY`; without one it is skipped. Low-confidence pixels are ignored.
+
+Refineries and oil processing plants flare gas every day, so they only count when the heat is far above a flare. Nuclear sites, ports and storage terminals do not flare, so two solid detections there are enough.
+
+| Site kind | Minimum solid detections | Minimum total fire power (MW) |
+|---|---|---|
+| flare | 6 | 100 |
+| no_flare | 2 | 0 |
+
+| Site | Name | Lat, lon | Radius (km) | Kind |
+|---|---|---|---|---|
+| abadan-refinery | Abadan refinery | 30.349, 48.28 | 4 | flare |
+| bandar-abbas-refineries | Bandar Abbas refineries | 27.165, 56.06 | 5 | flare |
+| isfahan-refinery | Isfahan refinery | 32.784, 51.507 | 4 | flare |
+| tehran-refinery | Tehran refinery | 35.54, 51.424 | 4 | flare |
+| kharg-island | Kharg Island oil terminal | 29.241, 50.312 | 5 | flare |
+| bushehr-npp | Bushehr nuclear power plant | 28.829, 50.884 | 3 | no_flare |
+| natanz | Natanz enrichment site | 33.725, 51.724 | 3 | no_flare |
+| fordow | Fordow enrichment site | 34.884, 50.997 | 3 | no_flare |
+| abqaiq | Abqaiq oil processing (Saudi Arabia) | 25.936, 49.668 | 6 | flare |
+| ras-tanura | Ras Tanura refinery and terminal (Saudi Arabia) | 26.693, 50.096 | 5 | flare |
+| fujairah-terminal | Fujairah oil terminal (UAE) | 25.199, 56.354 | 5 | no_flare |
+| haifa-bazan | Bazan refinery, Haifa | 32.792, 35.055 | 3 | flare |
+| ashdod-refinery | Ashdod refinery | 31.842, 34.681 | 3 | flare |
+| hodeidah-port | Hodeidah port | 14.837, 42.936 | 4 | no_flare |
+
+Coordinates come from OpenStreetMap and were checked on 10/19/2026. The thresholds are a starting guess: watch a week of readings (every site with any heat is saved, even when nothing fires) and raise the flare bar if a refinery fires on a normal day. Satellite passes are hours apart and clouds or smoke can hide a fire, so a quiet reading proves nothing.
 
 ## Watch level
 

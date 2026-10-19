@@ -16,6 +16,7 @@ WINDOW_HOURS = {
     "us_advisory": 72,
     "us_military_moves": 192,
     "gps_jamming": 24,
+    "infrastructure_fire": 48,
 }
 
 # (minimum distinct active indicators, level), checked from the top.

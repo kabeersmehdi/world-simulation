@@ -2,6 +2,10 @@
 
 import urllib.request
 
+class NotConfigured(Exception):
+    """An optional source has no key or backend. The runner reports it as skipped, not failed."""
+
+
 USER_AGENT = "Mozilla/5.0 (world-simulation research tool; +https://github.com/kabeersmehdi/world-simulation)"
 
 

@@ -31,6 +31,9 @@ def cmd_collect(args):
         report += mreport + lreport
     failed = [r for r in report if not r["ok"]]
     for r in report:
+        if r.get("skipped"):
+            print(f"skip {r['source']}: {r['skipped']}")
+            continue
         mark = "ok  " if r["ok"] else "FAIL"
         detail = f"{r['items']} items, {r['flagged']} flagged" if r["ok"] else r["error"]
         print(f"{mark} {r['source']}: {detail}")

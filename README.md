@@ -16,7 +16,7 @@ python3 -m http.server -d dashboard  # open http://localhost:8000
 ## The whole thing in plain English
 
 1. **Collect.** Every run reads 12 feeds and 12 prediction markets. Headlines and short excerpts are saved locally with links. Full articles are never stored.
-2. **Tag.** Hebrew and English keyword rules flag seven leading indicators: airspace closures, Home Front Command instructions, reserve call-ups ("Tzav 8"), late-night security cabinet meetings, US departure orders for diplomats, and US tankers, bombers, surveillance planes or carriers in the region, and GPS jamming (civil aircraft over Israel or the Gulf reporting degraded GPS).
+2. **Tag.** Hebrew and English keyword rules flag eight leading indicators: airspace closures, Home Front Command instructions, reserve call-ups ("Tzav 8"), late-night security cabinet meetings, US departure orders for diplomats, and US tankers, bombers, surveillance planes or carriers in the region, GPS jamming (civil aircraft over Israel or the Gulf reporting degraded GPS), and NASA satellite fire detections at refineries, oil terminals, ports and nuclear sites (optional, needs a free key).
 3. **Watch level.** One indicator means little. Two kinds at once is "elevated", three or more is "high". This is a rule of thumb until enough past events are logged against it, and the dashboard says so.
 4. **Base rates.** Past strikes and responses between Israel, the US and Iran set the starting odds. With only a handful of comparable events, every number carries a small-sample warning. History sets the starting point, it does not call exact dates.
 5. **Forecast.** You write the question, the rule that decides it, a deadline and your probability. The tool logs the market price beside it on the same day.
@@ -27,7 +27,7 @@ python3 -m http.server -d dashboard  # open http://localhost:8000
 | View | What it shows |
 |---|---|
 | Overview | Watch level, market baseline, latest Hebrew headlines, recent timeline |
-| Indicators | Each of the seven signals, active or quiet, with the items that triggered it |
+| Indicators | Each of the eight signals, active or quiet, with the items that triggered it |
 | News feed | Searchable Hebrew and English headlines, with a translate link on every Hebrew item |
 | Markets | Polymarket prices with change since first logged |
 | Forecasts | Your live forecasts, plus clearly marked illustrative examples |
@@ -79,6 +79,25 @@ Validation refuses 0% and 100%, deadlines before the start date, and any edit to
 | A backer or relationship | `data/relationships/` | amount, period, sources, and what the link does not show |
 | A poll | `data/polls/` | pollster, fieldwork date, values, source |
 | Religious or doctrinal research | `data/evidence/` with topic `doctrine` | anchored on the actor's own words; see `docs/ideology-research.md` |
+
+## Satellite fire alerts (optional)
+
+The NASA FIRMS collector watches refineries, oil terminals, ports and nuclear sites in Iran, the Gulf, Israel and Yemen for fires seen from space. It needs a free key, and everything else runs without it.
+
+1. Ask NASA for a key at https://firms.modaps.eosdis.nasa.gov/api/map_key/ (an email address is all it takes).
+2. Set it in the shell that runs `collect`:
+
+```bash
+export FIRMS_MAP_KEY="..."
+```
+
+3. Check it:
+
+```bash
+python3 -m worldsim collect --only firms-iran-gulf firms-israel firms-yemen
+```
+
+Without the key you see `skip firms-...: not configured`, which is expected. For the GitHub Actions `collect` workflow, add the key as a repository secret named `FIRMS_MAP_KEY`. Sites and thresholds are in `docs/indicators.md`.
 
 ## Running it on a schedule
 

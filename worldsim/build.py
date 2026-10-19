@@ -95,7 +95,7 @@ def build(root=ROOT, now=None, out_path=None):
         "scorecard": {"live": scoring.scorecard(live), "demo": scoring.scorecard(demo)},
         "watch": watch_status(observations, now),
         "feed": [o for o in observations if o["collector"] in ("rss", "telegram")][:400],
-        "signals": [o for o in observations if o["collector"] in ("adsb", "fleet", "advisory", "gpsjam")][:100],
+        "signals": [o for o in observations if o["collector"] in ("adsb", "fleet", "advisory", "gpsjam", "firms")][:100],
         "markets": markets.board(root, now),
         "accuracy": accuracy,
         "reactions": reactions,

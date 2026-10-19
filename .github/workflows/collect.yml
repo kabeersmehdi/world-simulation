@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m worldsim collect
+        env:
+          FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
       - uses: actions/upload-artifact@v4
         with:
           name: dashboard

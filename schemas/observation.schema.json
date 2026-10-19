@@ -7,7 +7,7 @@
   "additionalProperties": false,
   "properties": {
     "id": {"type": "string", "pattern": "^ob-[0-9a-f]{16}$"},
-    "collector": {"type": "string", "enum": ["rss", "telegram", "adsb", "fleet", "advisory", "gpsjam"]},
+    "collector": {"type": "string", "enum": ["rss", "telegram", "adsb", "fleet", "advisory", "gpsjam", "firms"]},
     "source_id": {"type": "string", "minLength": 2},
     "observed_at": {"type": "string", "format": "date-time"},
     "published_at": {"type": ["string", "null"], "format": "date-time"},
@@ -15,7 +15,7 @@
     "excerpt": {"type": "string"},
     "url": {"type": "string", "format": "uri"},
     "lang": {"type": "string", "enum": ["he", "en", "ar", "data"]},
-    "indicators": {"type": "array", "items": {"type": "string", "enum": ["airspace", "home_front", "reserves", "us_advisory", "us_military_moves", "late_night_cabinet", "gps_jamming"]}},
+    "indicators": {"type": "array", "items": {"type": "string", "enum": ["airspace", "home_front", "reserves", "us_advisory", "us_military_moves", "late_night_cabinet", "gps_jamming", "infrastructure_fire"]}},
     "tags": {"type": "array", "items": {"type": "string"}},
     "data": {"type": ["object", "null"]}
   }

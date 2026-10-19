@@ -5,7 +5,8 @@ import unittest
 
 from worldsim import ROOT, signals, watch
 from worldsim.build import read_frontmatter
-from worldsim.collectors import adsb, gpsjam
+from worldsim import collectors
+from worldsim.collectors import adsb, firms, gpsjam
 
 DOC = (ROOT / "docs" / "indicators.md").read_text(encoding="utf-8")
 
@@ -39,6 +40,15 @@ class KnowledgeLockTests(unittest.TestCase):
             "Minimum degraded aircraft": str(gpsjam.MIN_DEGRADED),
             "Minimum degraded share": f"{gpsjam.MIN_DEGRADED_SHARE:.0%}",
         })
+
+    def test_firms_rules_and_sites_match_doc(self):
+        rules = {r[0]: (int(r[1]), float(r[2])) for r in table_rows(DOC, "| Site kind | Minimum solid detections |")}
+        self.assertEqual(rules, firms.RULES)
+        doc_sites = {r[0]: (r[1], r[2], float(r[3]), r[4]) for r in table_rows(DOC, "| Site | Name | Lat, lon |")}
+        code_sites = {s["id"]: (s["name"], f"{s['lat']}, {s['lon']}", float(s["radius_km"]), s["kind"])
+                      for src in collectors.load_sources(ROOT)["sources"] if src["kind"] == "firms" for s in src["sites"]}
+        self.assertEqual(doc_sites, code_sites)
+        self.assertTrue(all(s[3] in firms.RULES for s in code_sites.values()))
 
     def test_aircraft_classes_match_doc(self):
         doc = {r[0]: [c.strip() for c in r[1].split(",")] for r in table_rows(DOC, "| Class | Type codes |")}
