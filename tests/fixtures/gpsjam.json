@@ -1,0 +1,138 @@
+{
+ "ac": [
+  {
+   "hex": "4x0000",
+   "flight": "ELY000 ",
+   "lat": 32.0,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "4x0001",
+   "flight": "ELY001 ",
+   "lat": 32.05,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "4x0002",
+   "flight": "ELY002 ",
+   "lat": 32.1,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "4x0003",
+   "flight": "ELY003 ",
+   "lat": 32.15,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "4x0004",
+   "flight": "ELY004 ",
+   "lat": 32.2,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "4x0005",
+   "flight": "ELY005 ",
+   "lat": 32.25,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "4x0006",
+   "flight": "ELY006 ",
+   "lat": 32.3,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "4x0007",
+   "flight": "ELY007 ",
+   "lat": 32.35,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "4x0008",
+   "flight": "ELY008 ",
+   "lat": 32.4,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "4x0009",
+   "flight": "ELY009 ",
+   "lat": 32.45,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "4x000a",
+   "flight": "ELY010 ",
+   "lat": 32.5,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "4x000b",
+   "flight": "ELY011 ",
+   "lat": 32.55,
+   "lon": 34.8,
+   "nac_p": 9
+  },
+  {
+   "hex": "jm0000",
+   "flight": "JAM000 ",
+   "lat": 33.0,
+   "lon": 35.5,
+   "nac_p": 0
+  },
+  {
+   "hex": "jm0001",
+   "flight": "JAM001 ",
+   "lat": 33.0,
+   "lon": 35.55,
+   "nac_p": 0
+  },
+  {
+   "hex": "jm0002",
+   "flight": "JAM002 ",
+   "lat": 33.0,
+   "lon": 35.6,
+   "nac_p": 0
+  },
+  {
+   "hex": "jm0003",
+   "flight": "JAM003 ",
+   "lat": 33.0,
+   "lon": 35.65,
+   "nac_p": 0
+  },
+  {
+   "hex": "jm0004",
+   "flight": "JAM004 ",
+   "lat": 33.0,
+   "lon": 35.7,
+   "nac_p": 0
+  },
+  {
+   "hex": "jm0005",
+   "flight": "JAM005 ",
+   "lat": 33.0,
+   "lon": 35.75,
+   "nac_p": 0
+  },
+  {
+   "hex": "mlat01",
+   "flight": "MLAT1",
+   "lat": 31.5,
+   "lon": 34.5
+  }
+ ],
+ "now": 1792371600000,
+ "total": 19
+}

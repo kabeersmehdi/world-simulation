@@ -4,7 +4,7 @@ import json
 import unittest
 
 from worldsim import collectors
-from worldsim.collectors import adsb, advisory, fleet, rss, telegram
+from worldsim.collectors import adsb, advisory, fleet, gpsjam, rss, telegram
 from worldsim.collectors.text import parse_rss_date, rss_items
 
 from .helpers import NOW, NOW_ISO, fixture, isolated_root
@@ -45,6 +45,41 @@ class TelegramTests(unittest.TestCase):
         self.assertIn("reserves", obs[0]["indicators"])
         self.assertIn("unverified", obs[0]["tags"])
         self.assertEqual(obs[0]["title"], "צו 8 נשלח לאלפי מילואימניקים")
+
+
+GPS_SRC = {"id": "gpsjam-levant", "area": "Israel and the Levant", "map_url": "https://gpsjam.org/"}
+
+
+class GpsJamTests(unittest.TestCase):
+    def test_counts_degraded_and_fires(self):
+        obs = gpsjam.collect(GPS_SRC, fixture("gpsjam.json"), NOW_ISO, isolated_root())
+        self.assertEqual(len(obs), 1)
+        self.assertEqual(obs[0]["collector"], "gpsjam")
+        self.assertEqual(obs[0]["data"]["reporting"], 18)  # the aircraft with no NACp is skipped
+        self.assertEqual(obs[0]["data"]["degraded"], 6)
+        self.assertEqual(obs[0]["indicators"], ["gps_jamming"])
+        self.assertIn("6 of 18", obs[0]["title"])
+
+    def test_quiet_sky_does_not_fire(self):
+        feed = json.loads(fixture("gpsjam.json"))
+        for ac in feed["ac"]:
+            if "nac_p" in ac:
+                ac["nac_p"] = 9
+        obs = gpsjam.collect(GPS_SRC, json.dumps(feed), NOW_ISO, isolated_root())
+        self.assertEqual(obs[0]["indicators"], [])
+
+    def test_thresholds(self):
+        self.assertFalse(gpsjam.fires(9, 9))     # too few aircraft to judge
+        self.assertFalse(gpsjam.fires(100, 4))   # too few degraded
+        self.assertFalse(gpsjam.fires(100, 19))  # under 20%
+        self.assertTrue(gpsjam.fires(100, 20))
+
+    def test_nacp_8_is_healthy(self):
+        _, degraded = gpsjam.count({"ac": [{"nac_p": 8}, {"nac_p": 7}, {"nac_p": None}]})
+        self.assertEqual([a["nac_p"] for a in degraded], [7])
+
+    def test_empty_sky_gives_nothing(self):
+        self.assertEqual(gpsjam.collect(GPS_SRC, '{"ac": []}', NOW_ISO, isolated_root()), [])
 
 
 class AdsbTests(unittest.TestCase):

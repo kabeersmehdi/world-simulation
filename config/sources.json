@@ -12,6 +12,8 @@
     {"id": "tg-idf", "name": "Israel Defense Forces (Telegram)", "kind": "telegram", "lang": "en", "tier": "official", "url": "https://t.me/s/idfofficial"},
     {"id": "travel-state-gov", "name": "US State Department travel advisories", "kind": "advisory", "lang": "en", "tier": "official", "url": "https://travel.state.gov/_res/rss/TAsTWs.xml"},
     {"id": "usni-fleet-tracker", "name": "USNI News Fleet and Marine Tracker", "kind": "fleet", "lang": "en", "tier": "independent_reporting", "url": "https://news.usni.org/category/fleet-tracker/feed"},
+    {"id": "gpsjam-levant", "name": "GPS accuracy of aircraft over Israel and the Levant (adsb.lol)", "kind": "gpsjam", "lang": "data", "tier": "unverified_signal", "area": "Israel and the Levant", "url": "https://api.adsb.lol/v2/lat/32.5/lon/35.0/dist/200", "map_url": "https://gpsjam.org/?lat=32.5&lon=35&z=6"},
+    {"id": "gpsjam-gulf", "name": "GPS accuracy of aircraft over the Gulf and Hormuz (adsb.lol)", "kind": "gpsjam", "lang": "data", "tier": "unverified_signal", "area": "the Gulf and Hormuz", "url": "https://api.adsb.lol/v2/lat/26.5/lon/54.0/dist/250", "map_url": "https://gpsjam.org/?lat=26.5&lon=54&z=6"},
     {"id": "adsb-lol-mil", "name": "adsb.lol military aircraft feed", "kind": "adsb", "lang": "data", "tier": "unverified_signal", "url": "https://api.adsb.lol/v2/mil"}
   ],
   "blocked": [
