@@ -1,0 +1,26 @@
+{
+  "id": "tl-2024-04-13-iran-strike",
+  "date": "2024-04-13",
+  "end_date": null,
+  "title": "First direct Iranian missile and drone attack on Israel",
+  "category": "strike",
+  "countries": [
+    "iran",
+    "israel"
+  ],
+  "actors": [
+    "Iran",
+    "Israel",
+    "United States"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/April_2024_Iranian_strikes_against_Israel",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

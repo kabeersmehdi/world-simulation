@@ -1,0 +1,21 @@
+{
+  "id": "rel-us-israel-mou-2019-2028",
+  "from": "United States",
+  "to": "Israel",
+  "type": "military_aid",
+  "description": "Ten-year security memorandum: $38 billion for FY2019 to FY2028, of which $33 billion is Foreign Military Financing and $5 billion missile defense.",
+  "period": "FY2019-FY2028",
+  "amount_usd": 38000000000.0,
+  "what_it_does_not_show": "Does not include supplemental aid passed since October 2023, which should be added from the appropriation laws.",
+  "confidence": "high",
+  "label": "official_position",
+  "sources": [
+    {
+      "url": "https://obamawhitehouse.archives.gov/the-press-office/2016/09/14/fact-sheet-memorandum-understanding-reached-israel",
+      "publisher": "The White House (archived)",
+      "published_at": "2016-09-14",
+      "accessed_at": "2026-10-18",
+      "kind": "official"
+    }
+  ]
+}

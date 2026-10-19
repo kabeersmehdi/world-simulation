@@ -1,0 +1,92 @@
+{
+  "id": "br-israel-iran-direct-strike-response",
+  "description": "Direct state-on-state strikes between Israel or the United States and Iran, and whether the struck side answered with its own direct strike.",
+  "question_shape": "Will the struck side carry out a direct military strike on the attacker within N days?",
+  "inclusion_rule": "Include only overt strikes by one state's forces on the other state's territory or officials, acknowledged or widely attributed. Exclude proxy attacks and covert sabotage. Exchanges inside the 2026 war after its opening day are not yet entered.",
+  "events": [
+    {
+      "id": "2024-04-damascus",
+      "trigger_date": "2024-04-01",
+      "trigger": "Israeli strike on the Iranian consulate annex in Damascus",
+      "responded": true,
+      "response_date": "2024-04-13",
+      "response": "Iranian missile and drone attack on Israel",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/April_2024_Iranian_strikes_against_Israel"
+      ]
+    },
+    {
+      "id": "2024-04-isfahan",
+      "trigger_date": "2024-04-13",
+      "trigger": "Iranian missile and drone attack on Israel",
+      "responded": true,
+      "response_date": "2024-04-19",
+      "response": "Israeli strike near Isfahan",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/April_2024_Israeli_strikes_on_Iran"
+      ]
+    },
+    {
+      "id": "2024-10-iran",
+      "trigger_date": "2024-07-31",
+      "trigger": "Killing of Hamas leader Ismail Haniyeh in Tehran (Iran also cited later killings in Lebanon)",
+      "responded": true,
+      "response_date": "2024-10-01",
+      "response": "Iranian ballistic missile attack on Israel",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/October_2024_Iranian_strikes_against_Israel"
+      ]
+    },
+    {
+      "id": "2024-10-israel",
+      "trigger_date": "2024-10-01",
+      "trigger": "Iranian ballistic missile attack on Israel",
+      "responded": true,
+      "response_date": "2024-10-26",
+      "response": "Israeli strikes on Iranian military sites",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/October_2024_Israeli_strikes_on_Iran"
+      ]
+    },
+    {
+      "id": "2025-06-israel",
+      "trigger_date": "2025-06-13",
+      "trigger": "Israeli strikes on Iranian nuclear and military sites",
+      "responded": true,
+      "response_date": "2025-06-13",
+      "response": "Iranian missile attacks on Israel the same day",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Iran%E2%80%93Israel_war"
+      ]
+    },
+    {
+      "id": "2025-06-us",
+      "trigger_date": "2025-06-22",
+      "trigger": "US strikes on Iranian nuclear sites",
+      "responded": true,
+      "response_date": "2025-06-23",
+      "response": "Iranian missile attack on Al Udeid Air Base in Qatar",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/2025_United_States_strikes_on_Iranian_nuclear_sites"
+      ]
+    },
+    {
+      "id": "2026-02-us-israel",
+      "trigger_date": "2026-02-28",
+      "trigger": "US and Israeli strikes on Iran that killed Supreme Leader Ali Khamenei",
+      "responded": true,
+      "response_date": "2026-02-28",
+      "response": "Iranian missile launches at Israel and Gulf states the same day (Operation True Promise IV)",
+      "verified": false,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Timeline_of_the_2026_Iran_war"
+      ]
+    }
+  ]
+}

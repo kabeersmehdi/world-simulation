@@ -1,0 +1,21 @@
+{
+  "id": "rel-iran-axis",
+  "from": "Iran",
+  "to": "Hezbollah, Houthis, Iraqi militias (the 'Axis of Resistance')",
+  "type": "proxy_support",
+  "description": "Listed as fighting on Iran's side in the 2026 Iran war.",
+  "period": "2026",
+  "amount_usd": null,
+  "what_it_does_not_show": "Degree of Iranian command over each group varies and is contested.",
+  "confidence": "medium",
+  "label": "observed_behavior",
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/2026_Iran_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

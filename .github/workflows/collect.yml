@@ -1,0 +1,20 @@
+name: collect
+# Manual by default. To run on a schedule, uncomment the two schedule lines.
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "0 */3 * * *"
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m worldsim collect
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dashboard
+          path: dashboard/
+          retention-days: 7

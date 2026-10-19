@@ -1,0 +1,33 @@
+{
+  "id": "tl-2026-04-08-pause",
+  "date": "2026-04-08",
+  "end_date": null,
+  "title": "Two-week US-Iran pause announced by Pakistan",
+  "category": "ceasefire",
+  "countries": [
+    "united-states",
+    "iran"
+  ],
+  "actors": [
+    "United States",
+    "Iran",
+    "Pakistan"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10637/",
+      "publisher": "UK House of Commons Library",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "research"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/2026_Iran_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

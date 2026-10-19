@@ -1,0 +1,24 @@
+{
+  "id": "ev-ir-constitution-art5",
+  "claim": "Article 5 of Iran's constitution vests leadership in a just and pious Islamic jurist (velayat-e faqih).",
+  "label": "established_fact",
+  "countries": [
+    "iran"
+  ],
+  "topics": [
+    "doctrine",
+    "religion"
+  ],
+  "event_date": null,
+  "confidence": "high",
+  "recorded_at": "2026-10-18T12:00:00+00:00",
+  "sources": [
+    {
+      "url": "https://www.constituteproject.org/constitution/Iran_1989",
+      "publisher": "Constitute Project",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "primary"
+    }
+  ]
+}

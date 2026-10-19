@@ -1,0 +1,24 @@
+{
+  "id": "ev-us-midterms-2026",
+  "claim": "The US midterm elections on November 3, 2026 decide all 435 House seats and 35 Senate seats.",
+  "label": "established_fact",
+  "countries": [
+    "united-states"
+  ],
+  "topics": [
+    "election"
+  ],
+  "event_date": "2026-11-03",
+  "confidence": "medium",
+  "recorded_at": "2026-10-18T12:00:00+00:00",
+  "sources": [
+    {
+      "url": "https://www.graphicnews.com/en/pages/48171/U.S._midterm_elections_interactive",
+      "publisher": "Graphic News",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "independent_reporting"
+    }
+  ],
+  "evidence_against": "Source was written in 2025; seat counts can change with special elections. Confirm against an official election body."
+}

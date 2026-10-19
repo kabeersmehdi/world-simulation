@@ -1,0 +1,44 @@
+{
+  "id": "tl-2026-02-28-iran-war",
+  "date": "2026-02-28",
+  "end_date": null,
+  "title": "2026 Iran war begins: US (Operation Epic Fury) and Israeli (Operation Roaring Lion) strikes; Supreme Leader Ali Khamenei killed; Iran answers the same day (Operation True Promise IV) against Israel and Gulf states",
+  "category": "war",
+  "countries": [
+    "united-states",
+    "israel",
+    "iran"
+  ],
+  "actors": [
+    "United States",
+    "Israel",
+    "Iran",
+    "Gulf states",
+    "Hezbollah",
+    "Houthis"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/2026_Iran_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Timeline_of_the_2026_Iran_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    },
+    {
+      "url": "https://www.congress.gov/crs-product/R48887",
+      "publisher": "Congressional Research Service",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "research"
+    }
+  ]
+}

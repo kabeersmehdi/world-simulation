@@ -1,0 +1,22 @@
+{
+  "note": "Feeds checked by hand on 2026-10-18. 'blocked' entries refuse automated requests and are not scraped around.",
+  "sources": [
+    {"id": "ynet", "name": "Ynet (Yedioth Ahronoth)", "kind": "rss", "lang": "he", "tier": "independent_reporting", "url": "https://www.ynet.co.il/Integration/StoryRss2.xml"},
+    {"id": "n12", "name": "N12 (Channel 12 News)", "kind": "rss", "lang": "he", "tier": "independent_reporting", "url": "https://rcs.mako.co.il/rss/31750a2610f26110VgnVCM1000005201000aRCRD.xml"},
+    {"id": "maariv", "name": "Maariv", "kind": "rss", "lang": "he", "tier": "independent_reporting", "url": "https://www.maariv.co.il/rss/rsschadashot"},
+    {"id": "haaretz-he", "name": "Haaretz (Hebrew)", "kind": "rss", "lang": "he", "tier": "independent_reporting", "url": "https://www.haaretz.co.il/srv/htz---all-articles"},
+    {"id": "times-of-israel", "name": "Times of Israel (English, for speed comparison)", "kind": "rss", "lang": "en", "tier": "independent_reporting", "url": "https://www.timesofisrael.com/feed/"},
+    {"id": "tg-amitsegal", "name": "Amit Segal, Channel 12 political analyst (Telegram)", "kind": "telegram", "lang": "he", "tier": "unverified_signal", "url": "https://t.me/s/amitsegal"},
+    {"id": "tg-kann-news", "name": "Kan News (Telegram)", "kind": "telegram", "lang": "he", "tier": "independent_reporting", "url": "https://t.me/s/kann_news"},
+    {"id": "tg-abualiexpress", "name": "Abu Ali Express, Arab affairs (Telegram)", "kind": "telegram", "lang": "he", "tier": "unverified_signal", "url": "https://t.me/s/abualiexpress"},
+    {"id": "tg-idf", "name": "Israel Defense Forces (Telegram)", "kind": "telegram", "lang": "en", "tier": "official", "url": "https://t.me/s/idfofficial"},
+    {"id": "travel-state-gov", "name": "US State Department travel advisories", "kind": "advisory", "lang": "en", "tier": "official", "url": "https://travel.state.gov/_res/rss/TAsTWs.xml"},
+    {"id": "usni-fleet-tracker", "name": "USNI News Fleet and Marine Tracker", "kind": "fleet", "lang": "en", "tier": "independent_reporting", "url": "https://news.usni.org/category/fleet-tracker/feed"},
+    {"id": "adsb-lol-mil", "name": "adsb.lol military aircraft feed", "kind": "adsb", "lang": "data", "tier": "unverified_signal", "url": "https://api.adsb.lol/v2/mil"}
+  ],
+  "blocked": [
+    {"id": "oref-alerts", "name": "Home Front Command alert feed", "url": "https://www.oref.org.il/WarningMessages/alert/alerts.json", "reason": "Returns 403 outside Israel"},
+    {"id": "us-embassy-israel-alerts", "name": "US Embassy Israel alerts", "url": "https://il.usembassy.gov/category/alert/feed/", "reason": "Returns 403 to automated requests"},
+    {"id": "israel-hayom", "name": "Israel Hayom", "url": "https://www.israelhayom.co.il/rss.xml", "reason": "Returns 403 to automated requests"}
+  ]
+}

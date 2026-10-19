@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reference class",
+  "description": "Comparable past events used to set starting odds, never to call exact dates.",
+  "type": "object",
+  "required": ["id", "description", "question_shape", "inclusion_rule", "events"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^br-[a-z0-9-]+$"},
+    "description": {"type": "string", "minLength": 10},
+    "question_shape": {"type": "string", "minLength": 10},
+    "inclusion_rule": {"type": "string", "minLength": 10},
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "trigger_date", "trigger", "responded", "sources", "verified"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "trigger_date": {"type": "string", "format": "date"},
+          "trigger": {"type": "string", "minLength": 5},
+          "responded": {"type": "boolean"},
+          "response_date": {"type": ["string", "null"], "format": "date"},
+          "response": {"type": ["string", "null"]},
+          "verified": {"type": "boolean"},
+          "sources": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}}
+        }
+      }
+    }
+  }
+}

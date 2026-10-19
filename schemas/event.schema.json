@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Timeline event",
+  "description": "A dated past event: war, strike, ceasefire, deal, election. Publication date and event date are kept apart.",
+  "type": "object",
+  "required": [
+    "id",
+    "date",
+    "title",
+    "category",
+    "countries",
+    "sources",
+    "verified"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^tl-[a-z0-9-]+$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5
+    },
+    "description": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "war",
+        "strike",
+        "ceasefire",
+        "diplomacy",
+        "election",
+        "aid",
+        "leadership",
+        "attack"
+      ]
+    },
+    "countries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "united-states",
+          "israel",
+          "iran",
+          "other"
+        ]
+      }
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "disputed": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "publisher",
+          "accessed_at",
+          "kind"
+        ]
+      }
+    }
+  }
+}

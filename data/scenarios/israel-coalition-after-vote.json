@@ -1,0 +1,50 @@
+{
+  "id": "sc-israel-coalition-after-vote",
+  "title": "Coalition formation after the October 27 vote",
+  "status": "modeled",
+  "note": "Modeled pathways, not facts. No probabilities are attached here; the market board and your forecasts carry the numbers.",
+  "as_of": "2026-10-18",
+  "pathways": [
+    {
+      "name": "Netanyahu bloc reaches 61",
+      "how": "Likud plus religious and right-wing partners clear 61 seats; a government forms within weeks.",
+      "watch": [
+        "Final seat counts on Nov 4",
+        "Whether Otzma Yehudit and Religious Zionism both clear 3.25%"
+      ],
+      "markets": "Polymarket: Netanyahu next prime minister; bloc seats market"
+    },
+    {
+      "name": "Opposition forms a government",
+      "how": "A Bennett-led list builds 61 with centrist and possibly Arab party support, inside or outside the coalition.",
+      "watch": [
+        "Ra'am and Joint List seat totals",
+        "Statements on outside support"
+      ],
+      "markets": "Polymarket: Bennett next prime minister"
+    },
+    {
+      "name": "Deadlock and another election",
+      "how": "Neither side reaches 61; the Knesset dissolves again and Netanyahu stays caretaker prime minister.",
+      "watch": [
+        "Small parties near the threshold",
+        "Coalition talks stalling past the president's mandate period"
+      ],
+      "markets": "Polymarket: confidence vote by Dec 31"
+    }
+  ],
+  "market_channels": [
+    {
+      "asset": "Israeli shekel and government bonds",
+      "chain": "Coalition shape changes the fiscal path (defense spending, Haredi subsidies) and judicial-overhaul risk.",
+      "horizon": "Days to months",
+      "counter": "Large moves usually need a surprise relative to polls, which are close."
+    },
+    {
+      "asset": "Oil and shipping insurance",
+      "chain": "A government seen as more or less willing to escalate with Iran shifts Gulf risk premiums.",
+      "horizon": "Weeks",
+      "counter": "US-Iran ceasefire status matters more than the Israeli coalition."
+    }
+  ]
+}

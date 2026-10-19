@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Relationship",
+  "description": "A documented link between actors: aid, arms, political spending, lobbying, alliance, religious constituency. Association is not control.",
+  "type": "object",
+  "required": [
+    "id",
+    "from",
+    "to",
+    "type",
+    "description",
+    "period",
+    "sources",
+    "confidence",
+    "label"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^rel-[a-z0-9-]+$"
+    },
+    "from": {
+      "type": "string",
+      "minLength": 2
+    },
+    "to": {
+      "type": "string",
+      "minLength": 2
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "military_aid",
+        "arms_sales",
+        "political_spending",
+        "lobbying",
+        "alliance",
+        "proxy_support",
+        "religious_constituency",
+        "doctrine"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10
+    },
+    "period": {
+      "type": "string",
+      "minLength": 4
+    },
+    "amount_usd": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "what_it_does_not_show": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "label": {
+      "type": "string",
+      "enum": [
+        "established_fact",
+        "official_position",
+        "observed_behavior",
+        "evidence_backed_inference",
+        "hypothesis",
+        "speculation"
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "publisher",
+          "accessed_at",
+          "kind"
+        ]
+      }
+    }
+  }
+}

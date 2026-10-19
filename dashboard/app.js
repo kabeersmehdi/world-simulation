@@ -1,0 +1,308 @@
+/* World Simulation dashboard. Renders everything from data.json (built by `python -m worldsim build`). */
+(function () {
+  "use strict";
+  var D = null;
+  var $ = function (s) { return document.querySelector(s); };
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function safeUrl(u) { return /^https?:\/\//.test(u || "") ? u : "#"; }
+  function link(u, text) { return '<a href="' + esc(safeUrl(u)) + '" target="_blank" rel="noopener">' + esc(text || u) + "</a>"; }
+  function pct(p) { return p == null ? "n/a" : Math.round(p * 1000) / 10 + "%"; }
+  function num(x, d) { return x == null ? "n/a" : Number(x).toFixed(d == null ? 3 : d); }
+  function when(iso) {
+    if (!iso) return "";
+    var d = new Date(iso);
+    return isNaN(d) ? esc(iso) : d.toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  }
+  function day(iso) { return iso ? esc(String(iso).slice(0, 10)) : ""; }
+  function money(x) { return x == null ? "" : "$" + (x >= 1e9 ? (x / 1e9).toFixed(1) + "B" : (x / 1e6).toFixed(1) + "M"); }
+  var LABEL_CLASS = { established_fact: "ok", official_position: "", observed_behavior: "ok", evidence_backed_inference: "warn", hypothesis: "warn", speculation: "bad" };
+  function label(l) { return '<span class="pill ' + (LABEL_CLASS[l] || "") + '">' + esc(String(l).replace(/_/g, " ")) + "</span>"; }
+  function srcList(sources) {
+    return (sources || []).map(function (s) {
+      return typeof s === "string" ? link(s, new URL(s).hostname) : link(s.url, s.publisher) + (s.kind ? ' <span class="muted small">(' + esc(s.kind.replace(/_/g, " ")) + ")</span>" : "");
+    }).join(", ");
+  }
+  function spark(series) {
+    if (!series || series.length < 2) return "";
+    var w = 200, h = 34, pts = series.map(function (p, i) {
+      return (i / (series.length - 1)) * w + "," + (h - 2 - p[1] * (h - 4));
+    }).join(" ");
+    return '<svg class="spark" viewBox="0 0 ' + w + " " + h + '" preserveAspectRatio="none"><polyline fill="none" stroke="currentColor" stroke-width="1.5" points="' + pts + '"/></svg>';
+  }
+  function md(text) {
+    var out = [], inList = false;
+    String(text).split("\n").forEach(function (line) {
+      var l = esc(line)
+        .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+        .replace(/`(.+?)`/g, "<code>$1</code>")
+        .replace(/\[(.+?)\]\((https?:[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+        .replace(/\[(.+?)\]\(([^)]+)\)/g, "$1");
+      if (/^- /.test(line)) { if (!inList) { out.push("<ul>"); inList = true; } out.push("<li>" + l.slice(2) + "</li>"); return; }
+      if (inList) { out.push("</ul>"); inList = false; }
+      if (/^### /.test(line)) out.push("<h3>" + l.slice(4) + "</h3>");
+      else if (/^## /.test(line)) out.push("<h2>" + l.slice(3) + "</h2>");
+      else if (/^# /.test(line)) out.push("<h1>" + l.slice(2) + "</h1>");
+      else if (/^&gt; /.test(l)) out.push("<blockquote>" + l.slice(5) + "</blockquote>");
+      else if (line.trim()) out.push("<p>" + l + "</p>");
+    });
+    if (inList) out.push("</ul>");
+    return out.join("");
+  }
+  var IND_NAMES = { airspace: "Airspace closures", home_front: "Home Front Command", reserves: "Reserve call-ups",
+    late_night_cabinet: "Late-night cabinet", us_advisory: "US departure orders", us_military_moves: "US military moves" };
+
+  // ---------- views ----------
+  function overview() {
+    var w = D.watch, live = D.forecasts.live;
+    var h = '<div class="grid">';
+    h += '<div class="card"><div class="kicker">Watch level</div><div class="level ' + esc(w.level) + '">' + esc(w.level) + "</div>" +
+      '<div class="small muted">' + w.active_count + " of 6 indicators active. Heuristic, not calibrated.</div></div>";
+    h += '<div class="card"><div class="kicker">Live forecasts</div><div class="big">' + live.length + "</div>" +
+      '<div class="small muted">' + D.scorecard.live.resolved + " resolved. Edge claims need " + D.scorecard.live.min_resolved_for_claims + ".</div></div>";
+    h += '<div class="card"><div class="kicker">Feed, last 10 days</div><div class="big">' + D.counts.observations_10d + "</div>" +
+      '<div class="small muted">Hebrew and English headlines, Telegram, aircraft, fleet, advisories.</div></div>';
+    var stale = D.countries.filter(function (c) { return c.is_stale; });
+    h += '<div class="card"><div class="kicker">Profiles</div><div class="big">' + D.countries.length + "</div>" +
+      '<div class="small muted">' + (stale.length ? stale.length + " past refresh date" : "All within refresh window") + "</div></div></div>";
+
+    h += '<div class="grid two" style="margin-top:16px">';
+    h += '<div class="card"><h3>Active indicators</h3>' + indicatorList(true) + "</div>";
+    var movers = D.markets.filter(function (m) { return m.probability != null; }).slice(0, 6);
+    h += '<div class="card"><h3>Market baseline</h3><table><tbody>' + movers.map(function (m) {
+      return "<tr><td>" + esc(m.label) + '</td><td class="num">' + pct(m.probability) + "</td></tr>";
+    }).join("") + "</tbody></table>" + (movers.length ? "" : '<p class="muted">Run collect to pull prices.</p>') + "</div>";
+    h += '<div class="card"><h3>Latest Hebrew headlines</h3><ul class="feed">' + D.feed.filter(function (o) { return o.lang === "he"; }).slice(0, 6).map(feedItem).join("") + "</ul></div>";
+    h += '<div class="card"><h3>Recent timeline</h3><ul class="timeline">' + D.timeline.slice(0, 5).map(tlItem).join("") + "</ul></div>";
+    return h + "</div>";
+  }
+
+  function indicatorList(onlyActive) {
+    var rows = Object.keys(D.watch.indicators).filter(function (k) { return !onlyActive || D.watch.indicators[k].active; });
+    if (!rows.length) return '<p class="muted">None active right now.</p>';
+    return rows.map(function (k) {
+      var it = D.watch.indicators[k];
+      return '<div style="margin-bottom:10px"><span class="pill ' + (it.active ? "warn" : "ok") + '">' + (it.active ? "active" : "quiet") + "</span> <strong>" +
+        esc(IND_NAMES[k] || k) + '</strong> <span class="muted small">' + it.count + " in " + it.window_hours + "h</span>" +
+        (it.latest.length ? '<div class="small">' + it.latest.slice(0, 2).map(function (l) {
+          return link(l.url, l.title) + ' <span class="muted">' + when(l.at) + "</span>";
+        }).join("<br>") + "</div>" : "") + "</div>";
+    }).join("");
+  }
+
+  function watch() {
+    var h = '<h2>Leading indicators</h2><p class="muted small">Big operations usually leave public tracks a day or two ahead. One signal means little. Several kinds at once moves the odds. The level is a heuristic until enough past events are logged against it.</p>';
+    h += '<div class="card" style="margin-bottom:16px">' + indicatorList(false) + "</div>";
+    h += '<div class="card"><h3>Raw signals: aircraft, fleet, advisories</h3><ul class="feed">' + D.signals.slice(0, 40).map(feedItem).join("") + "</ul></div>";
+    return h;
+  }
+
+  function feedItem(o) {
+    var tr = o.lang === "he" ? ' &middot; <a target="_blank" rel="noopener" href="https://translate.google.com/translate?sl=iw&tl=en&u=' + encodeURIComponent(o.url) + '">translate</a>' : "";
+    return '<li><div class="t" dir="auto" lang="' + esc(o.lang) + '">' + link(o.url, o.title) + "</div>" +
+      '<div class="m">' + esc(o.source_id) + " &middot; " + when(o.published_at || o.observed_at) + tr +
+      (o.indicators.length ? " &middot; " + o.indicators.map(function (i) { return '<span class="pill warn">' + esc(IND_NAMES[i] || i) + "</span>"; }).join("") : "") +
+      (o.tags.length ? " " + o.tags.map(function (t) { return '<span class="pill">' + esc(t) + "</span>"; }).join("") : "") + "</div></li>";
+  }
+
+  function feed() {
+    var sources = Array.from(new Set(D.feed.map(function (o) { return o.source_id; }))).sort();
+    var h = '<h2>Hebrew and English news</h2><p class="muted small">Headlines and short excerpts with links. Hebrew outlets and reporters’ Telegram channels often run hours ahead of English wires. Telegram is an unverified signal.</p>';
+    h += '<div class="toolbar"><input id="q" placeholder="Search (Hebrew or English)" aria-label="Search feed"><select id="src" aria-label="Source"><option value="">All sources</option>' +
+      sources.map(function (s) { return "<option>" + esc(s) + "</option>"; }).join("") + '</select><select id="lang" aria-label="Language"><option value="">All languages</option><option value="he">Hebrew</option><option value="en">English</option></select>' +
+      '<label class="small"><input type="checkbox" id="flag"> flagged only</label></div><ul class="feed" id="feedlist"></ul>';
+    setTimeout(function () {
+      function draw() {
+        var q = $("#q").value.trim().toLowerCase(), s = $("#src").value, l = $("#lang").value, f = $("#flag").checked;
+        var items = D.feed.filter(function (o) {
+          return (!s || o.source_id === s) && (!l || o.lang === l) && (!f || o.indicators.length) &&
+            (!q || (o.title + " " + (o.excerpt || "")).toLowerCase().indexOf(q) >= 0);
+        });
+        $("#feedlist").innerHTML = items.slice(0, 200).map(feedItem).join("") || '<li class="muted">Nothing matches.</li>';
+      }
+      ["#q", "#src", "#lang", "#flag"].forEach(function (id) { $(id).addEventListener("input", draw); });
+      draw();
+    });
+    return h;
+  }
+
+  function marketsView() {
+    var h = '<h2>Market baseline</h2><p class="muted small">Polymarket prices logged on every collect run. This is the number to beat. A price is the crowd’s probability, not a fact.</p><div class="grid">';
+    h += D.markets.map(function (m) {
+      return '<div class="card"><div class="kicker">' + esc(m.topic) + " &middot; " + esc(m.countries.join(", ")) + "</div><h3>" + link(m.url, m.label) + "</h3>" +
+        '<div class="big">' + pct(m.probability) + "</div>" +
+        '<div class="small muted">' + (m.change != null ? (m.change >= 0 ? "+" : "") + Math.round(m.change * 1000) / 10 + " pts since first logged &middot; " : "") +
+        (m.end_date ? "ends " + esc(m.end_date) : "") + (m.as_of ? " &middot; as of " + when(m.as_of) : " &middot; not yet collected") + "</div>" + spark(m.series) + "</div>";
+    }).join("");
+    return h + "</div>";
+  }
+
+  function fcCard(f) {
+    var last = f.history[f.history.length - 1];
+    var bench = f.history[0].benchmark_probability;
+    return '<div class="card"><div class="kicker">' + esc(f.topic) + " &middot; due " + day(f.deadline) + " &middot; " + esc(f.status) + "</div><h3>" + esc(f.question) + "</h3>" +
+      '<div class="big">' + pct(f.current_probability) + '</div><div class="bar"><span style="width:' + f.current_probability * 100 + '%"></span></div>' +
+      '<p class="small">' + esc(last.rationale) + "</p>" +
+      '<p class="small muted"><strong>Resolves yes if:</strong> ' + esc(f.resolution_criteria) + "</p>" +
+      (f.reference_class ? '<p class="small muted">Base rate ' + pct(f.reference_class.base_rate) + ": " + esc(f.reference_class.description) + "</p>" : "") +
+      (bench != null ? '<p class="small muted">Market on day one: ' + pct(bench) + "</p>" : "") +
+      (f.resolution ? '<p class="small">Outcome: <strong>' + (f.resolution.outcome ? "Yes" : "No") + "</strong> " + link(f.resolution.source_url, "source") + "</p>" : "") +
+      '<details class="small"><summary>History (' + f.history.length + ")</summary>" + f.history.map(function (u) {
+        return "<div>" + day(u.at) + ": " + pct(u.probability) + ": " + esc(u.rationale) + "</div>";
+      }).join("") + "</details></div>";
+  }
+
+  function forecastsView() {
+    var live = D.forecasts.live.slice().sort(function (a, b) { return a.deadline < b.deadline ? -1 : 1; });
+    var h = "<h2>Forecasts</h2>";
+    if (!live.length) h += '<div class="banner">No live forecasts yet. Start one from a market: <code>python -m worldsim new-forecast --market &lt;slug&gt;</code>, fill in your probability, then <code>python -m worldsim validate</code>.</div>';
+    if (D.forecasts.overdue.length) h += '<div class="banner">Overdue for resolution: ' + D.forecasts.overdue.map(esc).join(", ") + "</div>";
+    h += '<div class="grid two">' + live.map(fcCard).join("") + "</div>";
+    if (D.forecasts.demo.length) h += '<h3 style="margin-top:28px">Illustrative examples</h3><p class="muted small">Written after the fact to show how scoring works. Not forecasts.</p><div class="grid two">' + D.forecasts.demo.map(fcCard).join("") + "</div>";
+    return h;
+  }
+
+  function pollsView() {
+    return "<h2>Leader polls</h2>" + D.polls.map(function (p) {
+      var keys = Array.from(new Set([].concat.apply([], p.rows.map(function (r) { return Object.keys(r.values); }))));
+      return '<div class="card" style="margin-bottom:16px"><div class="kicker">' + esc(p.country) + " &middot; " + esc(p.measure.replace(/_/g, " ")) + "</div><p>" + esc(p.description) + "</p>" +
+        (p.rows.length ? '<div class="tablewrap"><table><thead><tr><th>Fieldwork</th><th>Pollster</th><th>Outlet</th>' + keys.map(function (k) { return '<th class="num">' + esc(k) + "</th>"; }).join("") + "<th>Source</th></tr></thead><tbody>" +
+          p.rows.map(function (r) {
+            return "<tr><td>" + day(r.fieldwork_end) + "</td><td>" + esc(r.pollster) + "</td><td>" + esc(r.outlet || "") + "</td>" +
+              keys.map(function (k) { return '<td class="num">' + (r.values[k] == null ? "n/a" : esc(r.values[k]) + "%") + "</td>"; }).join("") +
+              "<td>" + link(r.source_url, r.verified ? "verified" : "reference, verify") + "</td></tr>";
+          }).join("") + "</tbody></table></div>"
+          : '<p class="muted">No rows yet. Update from: ' + (p.where_to_update || []).map(function (u) { return link(u, new URL(u).hostname); }).join(", ") + "</p>") + "</div>";
+    }).join("");
+  }
+
+  function countriesView() {
+    var h = '<div class="toolbar">' + D.countries.map(function (c, i) {
+      return '<button class="pill" data-c="' + i + '" style="border:0;cursor:pointer;padding:6px 12px">' + esc(c.title) + "</button>";
+    }).join("") + '</div><div id="cbody"></div>';
+    setTimeout(function () {
+      function show(i) {
+        var c = D.countries[i];
+        $("#cbody").innerHTML = '<div class="card prose"><div class="kicker">' + esc(c.status) + " &middot; refreshed " + esc(c.refreshed) + " &middot; stale after " + esc(c.stale_after) +
+          (c.is_stale ? ' <span class="pill bad">stale</span>' : "") + "</div><h2>" + esc(c.title) + "</h2>" + md(c.body) +
+          '<p class="small muted">Sources: ' + srcList(c.sources) + "</p></div>";
+      }
+      document.querySelectorAll("[data-c]").forEach(function (b) { b.addEventListener("click", function () { show(+b.dataset.c); }); });
+      show(0);
+    });
+    return h;
+  }
+
+  function tlItem(e) {
+    return '<li><div class="d">' + day(e.date) + (e.end_date ? " to " + day(e.end_date) : "") + " &middot; " + esc(e.category) + "</div><div>" + esc(e.title) + "</div>" +
+      '<div class="small muted">' + srcList(e.sources) + (e.verified ? "" : ' <span class="pill warn">verify</span>') + (e.disputed ? '<br><span class="pill bad">disputed</span> ' + esc(e.disputed) : "") + "</div></li>";
+  }
+
+  function timelineView() {
+    return '<h2>Timeline</h2><p class="muted small">Wars, strikes, ceasefires and political events. Reference-sourced entries are marked to verify against a primary or newsroom source.</p><div class="card"><ul class="timeline">' +
+      D.timeline.map(tlItem).join("") + "</ul></div>";
+  }
+
+  function backersView() {
+    return '<h2>Backers, money and doctrine</h2><p class="muted small">Documented relationships with amounts and sources. Association is not control: each row says what it does not show.</p><div class="tablewrap card"><table><thead><tr><th>From</th><th>To</th><th>Type</th><th>What</th><th class="num">Amount</th><th>Period</th><th>Label</th><th>Source</th></tr></thead><tbody>' +
+      D.relationships.map(function (r) {
+        return "<tr><td>" + esc(r.from) + "</td><td>" + esc(r.to) + "</td><td>" + esc(r.type.replace(/_/g, " ")) + "</td><td>" + esc(r.description) +
+          (r.what_it_does_not_show ? '<div class="small muted">Does not show: ' + esc(r.what_it_does_not_show) + "</div>" : "") + '</td><td class="num">' + money(r.amount_usd) + "</td><td>" + esc(r.period) + "</td><td>" + label(r.label) + "</td><td>" + srcList(r.sources) + "</td></tr>";
+      }).join("") + "</tbody></table></div>";
+  }
+
+  function baseratesView() {
+    return "<h2>Base rates</h2>" + D.baserates.map(function (b) {
+      return '<div class="card" style="margin-bottom:16px"><h3>' + esc(b.description) + "</h3>" +
+        (b.warning ? '<div class="banner">' + esc(b.warning) + "</div>" : "") +
+        '<p class="small"><strong>Question shape:</strong> ' + esc(b.question_shape) + '<br><strong>Inclusion rule:</strong> ' + esc(b.inclusion_rule) + "</p>" +
+        '<div class="grid"><div><div class="kicker">Response rate (smoothed)</div><div class="big">' + pct(b.response_rate) + '</div></div><div><div class="kicker">Median lag</div><div class="big">' + esc(b.lag_days.median) + ' days</div><div class="small muted">range ' + esc(b.lag_days.min) + " to " + esc(b.lag_days.max) + "</div></div>" +
+        Object.keys(b.chance_within_days).map(function (k) { return '<div><div class="kicker">Within ' + esc(k) + ' days</div><div class="big">' + pct(b.chance_within_days[k]) + "</div></div>"; }).join("") + "</div>" +
+        '<div class="tablewrap"><table><thead><tr><th>Trigger</th><th>Response</th><th class="num">Lag</th><th>Source</th></tr></thead><tbody>' + b.rows.map(function (r) {
+          return "<tr><td>" + day(r.trigger_date) + " " + esc(r.trigger) + "</td><td>" + (r.responded ? day(r.response_date) + " " + esc(r.response) : "No response") + '</td><td class="num">' + (r.lag_days == null ? "n/a" : r.lag_days + "d") + "</td><td>" + srcList(r.sources) + (r.verified ? "" : ' <span class="pill warn">verify</span>') + "</td></tr>";
+        }).join("") + "</tbody></table></div></div>";
+    }).join("");
+  }
+
+  function scenariosView() {
+    return "<h2>Scenarios</h2>" + D.scenarios.map(function (s) {
+      return '<div class="card" style="margin-bottom:16px"><div class="kicker"><span class="pill warn">modeled, not fact</span> as of ' + esc(s.as_of) + "</div><h3>" + esc(s.title) + '</h3><p class="small muted">' + esc(s.note) + "</p>" +
+        '<div class="grid">' + s.pathways.map(function (p) {
+          return '<div class="card"><h3>' + esc(p.name) + '</h3><p class="small">' + esc(p.how) + '</p><p class="small muted"><strong>Watch:</strong> ' + p.watch.map(esc).join("; ") + "<br><strong>Markets:</strong> " + esc(p.markets) + "</p></div>";
+        }).join("") + "</div>" +
+        '<h3 style="margin-top:14px">Market transmission</h3><div class="tablewrap"><table><thead><tr><th>Asset</th><th>Causal chain</th><th>Horizon</th><th>Counterargument</th></tr></thead><tbody>' +
+        s.market_channels.map(function (c) { return "<tr><td>" + esc(c.asset) + "</td><td>" + esc(c.chain) + "</td><td>" + esc(c.horizon) + "</td><td>" + esc(c.counter) + "</td></tr>"; }).join("") + "</tbody></table></div></div>";
+    }).join("");
+  }
+
+  function scoreBlock(card, title) {
+    var h = '<div class="card" style="margin-bottom:16px"><h3>' + title + "</h3>";
+    if (!card.enough_data) h += '<div class="banner">Not enough data: ' + card.resolved + " resolved of the " + card.min_resolved_for_claims + " needed before any claim of an edge.</div>";
+    h += '<div class="grid"><div><div class="kicker">Mean Brier (lower is better)</div><div class="big">' + num(card.mean_brier) + "</div></div>" +
+      '<div><div class="kicker">vs base rate</div><div class="big">' + num(card.vs_base_rate.ours) + " / " + num(card.vs_base_rate.baseline) + '</div><div class="small muted">ours / baseline, n=' + card.vs_base_rate.n + "</div></div>" +
+      '<div><div class="kicker">vs market</div><div class="big">' + num(card.vs_market.ours) + " / " + num(card.vs_market.baseline) + '</div><div class="small muted">ours / market, n=' + card.vs_market.n + "</div></div></div>";
+    h += '<div class="tablewrap"><table><thead><tr><th>Band</th><th class="num">Count</th><th class="num">Mean forecast</th><th class="num">Happened</th></tr></thead><tbody>' + card.calibration.filter(function (b) { return b.count; }).map(function (b) {
+      return "<tr><td>" + esc(b.band) + '</td><td class="num">' + b.count + '</td><td class="num">' + pct(b.mean_forecast) + '</td><td class="num">' + pct(b.observed_rate) + "</td></tr>";
+    }).join("") + "</tbody></table></div></div>";
+    return h;
+  }
+
+  function scorecardView() {
+    return "<h2>Scorecard</h2>" + scoreBlock(D.scorecard.live, "Live forecasts") + scoreBlock(D.scorecard.demo, "Illustrative examples (not a track record)");
+  }
+
+  function sourcesView() {
+    var h = '<h2>Sources and evidence</h2><div class="toolbar"><input id="eq" placeholder="Search evidence" aria-label="Search evidence"></div><div class="card tablewrap"><table><thead><tr><th>Claim</th><th>Label</th><th>Countries</th><th>Sources</th></tr></thead><tbody id="evrows"></tbody></table></div>';
+    h += '<h3 style="margin-top:24px">Feeds</h3><div class="card tablewrap"><table><thead><tr><th>Feed</th><th>Kind</th><th>Language</th><th>Tier</th></tr></thead><tbody>' +
+      D.sources.sources.map(function (s) { return "<tr><td>" + link(s.url, s.name) + "</td><td>" + esc(s.kind) + "</td><td>" + esc(s.lang) + "</td><td>" + esc(s.tier.replace(/_/g, " ")) + "</td></tr>"; }).join("") +
+      D.sources.blocked.map(function (s) { return '<tr><td class="muted">' + esc(s.name) + '</td><td colspan="3"><span class="pill bad">blocked</span> ' + esc(s.reason) + "</td></tr>"; }).join("") + "</tbody></table></div>";
+    setTimeout(function () {
+      function draw() {
+        var q = $("#eq").value.toLowerCase();
+        $("#evrows").innerHTML = D.evidence.filter(function (e) { return !q || e.claim.toLowerCase().indexOf(q) >= 0; }).map(function (e) {
+          return "<tr><td>" + esc(e.claim) + (e.evidence_against ? '<div class="small muted">Against: ' + esc(e.evidence_against) + "</div>" : "") + '<div class="small muted">' + esc(e.id) + "</div></td><td>" + label(e.label) + "</td><td>" + esc(e.countries.join(", ")) + "</td><td>" + srcList(e.sources) + "</td></tr>";
+        }).join("");
+      }
+      $("#eq").addEventListener("input", draw);
+      draw();
+    });
+    return h;
+  }
+
+  var VIEWS = [
+    ["overview", "Overview", overview], ["watch", "Indicators", watch], ["feed", "News feed", feed],
+    ["markets", "Markets", marketsView], ["forecasts", "Forecasts", forecastsView], ["polls", "Polls", pollsView],
+    ["countries", "Countries", countriesView], ["timeline", "Timeline", timelineView], ["backers", "Backers", backersView],
+    ["baserates", "Base rates", baseratesView], ["scenarios", "Scenarios", scenariosView], ["scorecard", "Scorecard", scorecardView],
+    ["sources", "Sources", sourcesView]
+  ];
+
+  function render(key) {
+    var v = VIEWS.filter(function (x) { return x[0] === key; })[0] || VIEWS[0];
+    document.querySelectorAll("#tabs button").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.k === v[0]); });
+    $("#view").innerHTML = v[2]();
+    try { localStorage.setItem("ws-tab", v[0]); } catch (e) { /* storage unavailable */ }
+  }
+
+  function start(data) {
+    D = data;
+    $("#meta").innerHTML = "Built " + when(D.generated_at) + "<br>" + D.counts.evidence + " evidence records &middot; " + D.timeline.length + " timeline events";
+    $("#tabs").innerHTML = VIEWS.map(function (v) { return '<button role="tab" data-k="' + v[0] + '">' + v[1] + "</button>"; }).join("");
+    $("#tabs").addEventListener("click", function (e) { if (e.target.dataset.k) { location.hash = e.target.dataset.k; } });
+    window.addEventListener("hashchange", function () { render(location.hash.slice(1)); });
+    var saved = null;
+    try { saved = localStorage.getItem("ws-tab"); } catch (e) { /* storage unavailable */ }
+    render(location.hash.slice(1) || saved || "overview");
+  }
+
+  fetch("data.json", { cache: "no-store" }).then(function (r) {
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }).then(start).catch(function () {
+    $("#view").innerHTML = '<div class="banner">No data.json found. Run <code>python -m worldsim collect</code> (or <code>build</code>) from the repo folder, then serve it with <code>python -m http.server -d dashboard</code>.</div>';
+  });
+})();

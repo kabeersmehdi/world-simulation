@@ -1,0 +1,25 @@
+{
+  "id": "tl-2024-10-26-israel-strike",
+  "date": "2024-10-26",
+  "end_date": null,
+  "title": "Israeli strikes on Iranian military sites",
+  "category": "strike",
+  "countries": [
+    "israel",
+    "iran"
+  ],
+  "actors": [
+    "Israel",
+    "Iran"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/October_2024_Israeli_strikes_on_Iran",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

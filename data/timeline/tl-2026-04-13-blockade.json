@@ -1,0 +1,33 @@
+{
+  "id": "tl-2026-04-13-blockade",
+  "date": "2026-04-13",
+  "end_date": null,
+  "title": "US naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+  "category": "war",
+  "countries": [
+    "united-states",
+    "iran"
+  ],
+  "actors": [
+    "United States",
+    "Iran"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10637/",
+      "publisher": "UK House of Commons Library",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "research"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/2026_Iran_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ],
+  "disputed": "Wikipedia gives mid-April without an exact day; the Commons Library gives 13 April."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "tl-2026-06-17-memorandum",
+  "date": "2026-06-17",
+  "end_date": null,
+  "title": "US and Iran sign the Islamabad Memorandum, a 14-point framework for 60 days of talks on Hormuz, nuclear and missile programs, and sanctions",
+  "category": "diplomacy",
+  "countries": [
+    "united-states",
+    "iran"
+  ],
+  "actors": [
+    "United States",
+    "Iran"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10637/",
+      "publisher": "UK House of Commons Library",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "research"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/2026_Iran_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

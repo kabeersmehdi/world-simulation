@@ -1,0 +1,23 @@
+{
+  "id": "tl-2026-02-28-israel-reserves",
+  "date": "2026-02-28",
+  "end_date": null,
+  "title": "Israel declares a state of emergency and calls up 20,000 reservists",
+  "category": "war",
+  "countries": [
+    "israel"
+  ],
+  "actors": [
+    "Israel"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Timeline_of_the_2026_Iran_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

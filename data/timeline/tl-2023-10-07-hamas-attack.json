@@ -1,0 +1,25 @@
+{
+  "id": "tl-2023-10-07-hamas-attack",
+  "date": "2023-10-07",
+  "end_date": null,
+  "title": "Hamas-led attack on southern Israel; Gaza war begins",
+  "category": "war",
+  "countries": [
+    "israel",
+    "other"
+  ],
+  "actors": [
+    "Israel",
+    "Hamas"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/October_7_attacks",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

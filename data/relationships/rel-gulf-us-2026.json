@@ -1,0 +1,21 @@
+{
+  "id": "rel-gulf-us-2026",
+  "from": "Saudi Arabia, UAE, Kuwait, Bahrain",
+  "to": "United States and Israel",
+  "type": "alliance",
+  "description": "Listed as on the US and Israeli side in the 2026 Iran war after Iranian strikes on their territory.",
+  "period": "2026",
+  "amount_usd": null,
+  "what_it_does_not_show": "Belligerent lists on reference sites can overstate formal participation.",
+  "confidence": "medium",
+  "label": "observed_behavior",
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/2026_Iran_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

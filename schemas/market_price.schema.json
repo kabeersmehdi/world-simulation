@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Market price",
+  "description": "One snapshot of a prediction-market price, used as the crowd baseline.",
+  "type": "object",
+  "required": ["slug", "source", "at", "probability", "question", "end_date"],
+  "additionalProperties": false,
+  "properties": {
+    "slug": {"type": "string", "minLength": 3},
+    "source": {"type": "string", "enum": ["polymarket"]},
+    "at": {"type": "string", "format": "date-time"},
+    "probability": {"type": "number", "minimum": 0, "maximum": 1},
+    "question": {"type": "string", "minLength": 5},
+    "end_date": {"type": ["string", "null"]},
+    "volume": {"type": ["number", "null"]},
+    "closed": {"type": "boolean"}
+  }
+}

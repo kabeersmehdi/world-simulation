@@ -1,0 +1,24 @@
+{
+  "id": "ev-ir-constitution-art110",
+  "claim": "Article 110 of Iran's constitution gives the Leader command of the armed forces and the power to declare war and peace.",
+  "label": "established_fact",
+  "countries": [
+    "iran"
+  ],
+  "topics": [
+    "doctrine",
+    "religion"
+  ],
+  "event_date": null,
+  "confidence": "high",
+  "recorded_at": "2026-10-18T12:00:00+00:00",
+  "sources": [
+    {
+      "url": "https://www.constituteproject.org/constitution/Iran_1989",
+      "publisher": "Constitute Project",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "primary"
+    }
+  ]
+}

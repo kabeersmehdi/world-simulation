@@ -1,0 +1,24 @@
+{
+  "id": "ev-il-pm-netanyahu",
+  "claim": "Benjamin Netanyahu of Likud is the sitting prime minister, heading the 37th government.",
+  "label": "established_fact",
+  "countries": [
+    "israel"
+  ],
+  "topics": [
+    "leadership"
+  ],
+  "event_date": null,
+  "confidence": "medium",
+  "recorded_at": "2026-10-18T12:00:00+00:00",
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/2026_Israeli_legislative_election",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ],
+  "evidence_against": "Reference source only; replace with the Prime Minister's Office site."
+}

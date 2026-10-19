@@ -1,0 +1,33 @@
+{
+  "id": "tl-2026-07-08-collapse",
+  "date": "2026-07-08",
+  "end_date": null,
+  "title": "Ceasefire collapses after attacks on commercial ships in the Strait of Hormuz; the memorandum formally expires in August",
+  "category": "war",
+  "countries": [
+    "united-states",
+    "iran"
+  ],
+  "actors": [
+    "United States",
+    "Iran"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/2026_Iran_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    },
+    {
+      "url": "https://www.congress.gov/crs-product/R48887",
+      "publisher": "Congressional Research Service",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "research"
+    }
+  ],
+  "disputed": "Britannica dates the ship attacks to July 6-7; Wikipedia dates the collapse to July 8."
+}

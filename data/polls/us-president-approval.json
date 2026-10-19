@@ -1,0 +1,11 @@
+{
+  "id": "poll-us-president-approval",
+  "country": "united-states",
+  "measure": "job_approval",
+  "description": "Presidential job approval. Empty on purpose: no current figure could be confirmed from a primary pollster page on 2026-10-18. Add rows from the pollster's own release.",
+  "where_to_update": [
+    "https://news.gallup.com/interactives/507569/presidential-job-approval-center.aspx",
+    "https://www.pewresearch.org/politics/"
+  ],
+  "rows": []
+}

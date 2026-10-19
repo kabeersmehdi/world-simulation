@@ -1,0 +1,24 @@
+{
+  "id": "ev-ir-constitution-art4",
+  "claim": "Article 4 of Iran's constitution requires all laws and regulations to conform to Islamic criteria, judged by the Guardian Council's jurists.",
+  "label": "established_fact",
+  "countries": [
+    "iran"
+  ],
+  "topics": [
+    "doctrine",
+    "religion"
+  ],
+  "event_date": null,
+  "confidence": "high",
+  "recorded_at": "2026-10-18T12:00:00+00:00",
+  "sources": [
+    {
+      "url": "https://www.constituteproject.org/constitution/Iran_1989",
+      "publisher": "Constitute Project",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "primary"
+    }
+  ]
+}

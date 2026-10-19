@@ -1,0 +1,28 @@
+{
+  "id": "fc-demo-israel-saudi-2024",
+  "question": "[DEMO] Will Israel and Saudi Arabia sign a normalization agreement by December 31, 2024?",
+  "resolution_criteria": "Yes if both governments sign a formal normalization or diplomatic-relations agreement by December 31, 2024.",
+  "countries": [
+    "israel",
+    "other"
+  ],
+  "topic": "diplomacy",
+  "created_at": "2024-06-01T08:00:00+00:00",
+  "deadline": "2024-12-31T23:59:00+00:00",
+  "status": "resolved",
+  "illustrative": true,
+  "reference_class": null,
+  "history": [
+    {
+      "at": "2024-06-01T08:00:00+00:00",
+      "probability": 0.1,
+      "rationale": "Illustrative entry written after the fact to show how scoring works.",
+      "benchmark_probability": null
+    }
+  ],
+  "resolution": {
+    "outcome": false,
+    "resolved_at": "2024-12-31T23:59:00+00:00",
+    "source_url": "https://en.wikipedia.org/wiki/Israel%E2%80%93Saudi_Arabia_relations"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ev-il-knesset-61",
+  "claim": "The Knesset has 120 seats and a government is installed after a confidence vote of at least 61 members.",
+  "label": "established_fact",
+  "countries": [
+    "israel"
+  ],
+  "topics": [
+    "coalition"
+  ],
+  "event_date": null,
+  "confidence": "high",
+  "recorded_at": "2026-10-18T12:00:00+00:00",
+  "sources": [
+    {
+      "url": "https://blogs.loc.gov/law/2026/10/falqs-israels-upcoming-election-on-october-27-2026/",
+      "publisher": "Library of Congress, In Custodia Legis",
+      "published_at": "2026-10-09",
+      "accessed_at": "2026-10-18",
+      "kind": "official"
+    }
+  ]
+}

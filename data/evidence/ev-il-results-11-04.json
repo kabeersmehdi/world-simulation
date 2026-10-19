@@ -1,0 +1,23 @@
+{
+  "id": "ev-il-results-11-04",
+  "claim": "Official Knesset election results are due to be confirmed on November 4, 2026.",
+  "label": "established_fact",
+  "countries": [
+    "israel"
+  ],
+  "topics": [
+    "election"
+  ],
+  "event_date": "2026-11-04",
+  "confidence": "medium",
+  "recorded_at": "2026-10-18T12:00:00+00:00",
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/2026_Israeli_legislative_election",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

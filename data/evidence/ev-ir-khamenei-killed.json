@@ -1,0 +1,34 @@
+{
+  "id": "ev-ir-khamenei-killed",
+  "claim": "Supreme Leader Ali Khamenei was killed in the opening US and Israeli strikes on February 28, 2026.",
+  "label": "established_fact",
+  "countries": [
+    "iran",
+    "united-states",
+    "israel"
+  ],
+  "topics": [
+    "leadership",
+    "war"
+  ],
+  "event_date": "2026-02-28",
+  "confidence": "medium",
+  "evidence_against": "Reference sources only so far; the successor is not yet confirmed here (Wikipedia notes a March 9 election of a new leader).",
+  "recorded_at": "2026-10-18T12:00:00+00:00",
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/2026_Iran_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Timeline_of_the_2026_Iran_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

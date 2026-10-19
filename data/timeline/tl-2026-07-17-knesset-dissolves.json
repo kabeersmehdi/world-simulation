@@ -1,0 +1,23 @@
+{
+  "id": "tl-2026-07-17-knesset-dissolves",
+  "date": "2026-07-17",
+  "end_date": null,
+  "title": "Knesset dissolves; election set for October 27, 2026",
+  "category": "election",
+  "countries": [
+    "israel"
+  ],
+  "actors": [
+    "Israel"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://blogs.loc.gov/law/2026/10/falqs-israels-upcoming-election-on-october-27-2026/",
+      "publisher": "Library of Congress, In Custodia Legis",
+      "published_at": "2026-10-09",
+      "accessed_at": "2026-10-18",
+      "kind": "official"
+    }
+  ]
+}

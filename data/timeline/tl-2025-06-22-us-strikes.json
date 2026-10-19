@@ -1,0 +1,25 @@
+{
+  "id": "tl-2025-06-22-us-strikes",
+  "date": "2025-06-22",
+  "end_date": null,
+  "title": "US strikes on Iranian nuclear sites",
+  "category": "strike",
+  "countries": [
+    "united-states",
+    "iran"
+  ],
+  "actors": [
+    "United States",
+    "Iran"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/2025_United_States_strikes_on_Iranian_nuclear_sites",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

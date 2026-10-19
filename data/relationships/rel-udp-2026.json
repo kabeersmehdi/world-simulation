@@ -1,0 +1,21 @@
+{
+  "id": "rel-udp-2026",
+  "from": "United Democracy Project (AIPAC-affiliated super PAC)",
+  "to": "US federal elections",
+  "type": "political_spending",
+  "description": "Receipts of $109.7 million and independent expenditures of $53.4 million in the 2026 cycle through August 31, 2026.",
+  "period": "2025-2026 cycle, through 2026-08-31",
+  "amount_usd": 53414686.72,
+  "what_it_does_not_show": "Partial cycle; more will be reported after the November election.",
+  "confidence": "high",
+  "label": "established_fact",
+  "sources": [
+    {
+      "url": "https://www.fec.gov/data/committee/C00799031/?cycle=2026",
+      "publisher": "Federal Election Commission",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "primary"
+    }
+  ]
+}

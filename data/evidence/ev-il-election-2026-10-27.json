@@ -1,0 +1,23 @@
+{
+  "id": "ev-il-election-2026-10-27",
+  "claim": "Israel's Knesset election is set for October 27, 2026, after the Knesset dissolved on July 17, 2026.",
+  "label": "established_fact",
+  "countries": [
+    "israel"
+  ],
+  "topics": [
+    "election"
+  ],
+  "event_date": "2026-10-27",
+  "confidence": "high",
+  "recorded_at": "2026-10-18T12:00:00+00:00",
+  "sources": [
+    {
+      "url": "https://blogs.loc.gov/law/2026/10/falqs-israels-upcoming-election-on-october-27-2026/",
+      "publisher": "Library of Congress, In Custodia Legis",
+      "published_at": "2026-10-09",
+      "accessed_at": "2026-10-18",
+      "kind": "official"
+    }
+  ]
+}

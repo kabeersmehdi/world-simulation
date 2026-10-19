@@ -1,0 +1,23 @@
+{
+  "id": "ev-us-president-vp",
+  "claim": "Donald J. Trump is President of the United States and JD Vance is Vice President.",
+  "label": "established_fact",
+  "countries": [
+    "united-states"
+  ],
+  "topics": [
+    "leadership"
+  ],
+  "event_date": null,
+  "confidence": "high",
+  "recorded_at": "2026-10-18T12:00:00+00:00",
+  "sources": [
+    {
+      "url": "https://www.whitehouse.gov/administration/",
+      "publisher": "The White House",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "official"
+    }
+  ]
+}

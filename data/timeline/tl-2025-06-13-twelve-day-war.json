@@ -1,0 +1,34 @@
+{
+  "id": "tl-2025-06-13-twelve-day-war",
+  "date": "2025-06-13",
+  "end_date": "2025-06-24",
+  "title": "Twelve-Day War: Israeli strikes on Iranian nuclear and military sites, Iranian missile response, ceasefire",
+  "category": "war",
+  "countries": [
+    "israel",
+    "iran",
+    "united-states"
+  ],
+  "actors": [
+    "Israel",
+    "Iran",
+    "United States"
+  ],
+  "verified": false,
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Iran%E2%80%93Israel_war",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Twelve-Day_War_ceasefire",
+      "publisher": "Wikipedia",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "reference"
+    }
+  ]
+}

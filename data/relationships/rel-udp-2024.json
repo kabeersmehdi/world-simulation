@@ -1,0 +1,21 @@
+{
+  "id": "rel-udp-2024",
+  "from": "United Democracy Project (AIPAC-affiliated super PAC)",
+  "to": "US federal elections",
+  "type": "political_spending",
+  "description": "Receipts of $87.2 million and independent expenditures of $37.9 million in the 2024 cycle.",
+  "period": "2023-2024 cycle",
+  "amount_usd": 37859810.12,
+  "what_it_does_not_show": "Spending shows where money went, not that any official's vote was bought. Votes must be checked one by one.",
+  "confidence": "high",
+  "label": "established_fact",
+  "sources": [
+    {
+      "url": "https://www.fec.gov/data/committee/C00799031/?cycle=2024",
+      "publisher": "Federal Election Commission",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "primary"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+"""Collectors against saved fixtures. No network."""
+
+import json
+import unittest
+
+from worldsim import collectors
+from worldsim.collectors import adsb, advisory, fleet, rss, telegram
+from worldsim.collectors.text import parse_rss_date, rss_items
+
+from .helpers import NOW, NOW_ISO, fixture, isolated_root
+
+SRC = {"id": "test-src", "lang": "he"}
+
+
+class RssTests(unittest.TestCase):
+    def test_parses_cdata_and_tags_indicators(self):
+        obs = rss.collect(SRC, fixture("ynet.xml"), NOW_ISO, isolated_root())
+        by_url = {o["url"].rsplit("/", 1)[1]: o for o in obs}
+        self.assertEqual(len(obs), 4)
+        self.assertEqual(by_url["aaa111"]["indicators"], ["home_front"])
+        self.assertEqual(by_url["bbb222"]["indicators"], ["late_night_cabinet"])
+        self.assertEqual(by_url["ccc333"]["indicators"], [])
+        self.assertIn("iran", by_url["bbb222"]["tags"])
+        self.assertIn("election", by_url["ddd444"]["tags"])
+
+    def test_dates_to_utc(self):
+        self.assertEqual(parse_rss_date("Mon, 19 Oct 2026 05:20:11 +0300"), "2026-10-19T02:20:11+00:00")
+        self.assertEqual(parse_rss_date("Wed, 26 Aug 2026"), "2026-08-26T00:00:00+00:00")
+        self.assertIsNone(parse_rss_date("not a date"))
+
+    def test_survives_malformed_xml(self):
+        self.assertEqual(len(rss_items("<rss><item><title>a & b</title><link>https://x.org/1</link></item><item>")), 1)
+
+    def test_excerpt_is_short(self):
+        long_feed = fixture("ynet.xml").replace("הנחיות חדשות לתושבי הצפון", "מילה " * 400)
+        obs = rss.collect(SRC, long_feed, NOW_ISO, isolated_root())
+        self.assertTrue(all(len(o["excerpt"]) <= 200 for o in obs))
+
+
+class TelegramTests(unittest.TestCase):
+    def test_parses_posts(self):
+        obs = telegram.collect({"id": "tg-kann", "lang": "he"}, fixture("telegram.html"), NOW_ISO, isolated_root())
+        self.assertEqual(len(obs), 2)
+        self.assertEqual(obs[0]["url"], "https://t.me/kann_news/5001")
+        self.assertIn("reserves", obs[0]["indicators"])
+        self.assertIn("unverified", obs[0]["tags"])
+        self.assertEqual(obs[0]["title"], "צו 8 נשלח לאלפי מילואימניקים")
+
+
+class AdsbTests(unittest.TestCase):
+    def test_counts_only_listed_classes_in_region(self):
+        obs = adsb.collect({"id": "adsb"}, fixture("adsb.json"), NOW_ISO, isolated_root())
+        self.assertEqual(len(obs), 1)
+        self.assertEqual(obs[0]["data"]["counts"], {"tanker": 2, "bomber": 0, "surveillance": 1})
+        self.assertEqual(obs[0]["indicators"], ["us_military_moves"])
+
+    def test_below_threshold_does_not_fire(self):
+        feed = json.loads(fixture("adsb.json"))
+        feed["ac"] = feed["ac"][:1]
+        obs = adsb.collect({"id": "adsb"}, json.dumps(feed), NOW_ISO, isolated_root())
+        self.assertEqual(obs[0]["indicators"], [])
+
+    def test_empty_sky_gives_nothing(self):
+        self.assertEqual(adsb.collect({"id": "adsb"}, '{"ac": []}', NOW_ISO, isolated_root()), [])
+
+
+class FleetTests(unittest.TestCase):
+    def test_finds_carriers_under_regional_headings(self):
+        obs = fleet.collect({"id": "usni"}, fixture("usni.xml"), NOW_ISO, isolated_root())
+        carriers = obs[0]["data"]["carriers"]
+        self.assertIn({"carrier": "USS Gerald R. Ford (CVN-78)", "region": "Eastern Mediterranean"}, carriers)
+        self.assertIn({"carrier": "USS George Washington (CVN-73)", "region": "Arabian Sea"}, carriers)
+        self.assertNotIn("Abraham Lincoln", json.dumps(carriers))
+
+
+class AdvisoryTests(unittest.TestCase):
+    def test_regional_only_and_departure_flag(self):
+        obs = advisory.collect({"id": "state"}, fixture("advisories.xml"), NOW_ISO, isolated_root())
+        countries = [o["data"]["country"] for o in obs]
+        self.assertEqual(countries, ["Israel", "Lebanon"])
+        self.assertEqual(obs[0]["indicators"], ["us_advisory"])
+        self.assertEqual(obs[0]["data"]["level"], 3)
+        self.assertEqual(obs[1]["indicators"], [])
+
+
+class RunnerTests(unittest.TestCase):
+    def test_one_failing_feed_does_not_stop_the_rest(self):
+        def fake_fetch(url):
+            if "ynet" in url:
+                return fixture("ynet.xml")
+            raise OSError("network off in tests")
+        obs, report = collectors.run(isolated_root(), fetch=fake_fetch, now=NOW)
+        ok = [r for r in report if r["ok"]]
+        self.assertEqual([r["source"] for r in ok], ["ynet"])
+        self.assertTrue(all("network off" in r["error"] for r in report if not r["ok"]))
+        self.assertEqual(len(obs), 4)
+
+
+if __name__ == "__main__":
+    unittest.main()

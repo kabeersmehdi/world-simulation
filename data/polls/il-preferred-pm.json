@@ -1,0 +1,83 @@
+{
+  "id": "poll-il-preferred-pm",
+  "country": "israel",
+  "measure": "preferred_prime_minister",
+  "description": "Head-to-head: who is better suited to be prime minister, Netanyahu or Bennett. Israel has no regular job-approval series; this preference question is the closest standing measure.",
+  "where_to_update": [
+    "https://en.wikipedia.org/wiki/Leadership_opinion_polling_for_the_2026_Israeli_legislative_election",
+    "https://www.idi.org.il/en/"
+  ],
+  "rows": [
+    {
+      "fieldwork_start": null,
+      "fieldwork_end": "2026-10-05",
+      "pollster": "Midgam R&C",
+      "outlet": "HaHadashot 12",
+      "values": {
+        "Netanyahu": 41,
+        "Bennett": 37,
+        "Neither": 16,
+        "Undecided": 6
+      },
+      "source_url": "https://en.wikipedia.org/wiki/Leadership_opinion_polling_for_the_2026_Israeli_legislative_election",
+      "accessed_at": "2026-10-18",
+      "verified": false
+    },
+    {
+      "fieldwork_start": null,
+      "fieldwork_end": "2026-10-04",
+      "pollster": "Kantar",
+      "outlet": "Kan 11",
+      "values": {
+        "Netanyahu": 40,
+        "Bennett": 35,
+        "Neither": 25
+      },
+      "source_url": "https://en.wikipedia.org/wiki/Leadership_opinion_polling_for_the_2026_Israeli_legislative_election",
+      "accessed_at": "2026-10-18",
+      "verified": false
+    },
+    {
+      "fieldwork_start": null,
+      "fieldwork_end": "2026-09-27",
+      "pollster": "Kantar",
+      "outlet": "Kan 11",
+      "values": {
+        "Netanyahu": 42,
+        "Bennett": 33,
+        "Neither": 25
+      },
+      "source_url": "https://en.wikipedia.org/wiki/Leadership_opinion_polling_for_the_2026_Israeli_legislative_election",
+      "accessed_at": "2026-10-18",
+      "verified": false
+    },
+    {
+      "fieldwork_start": null,
+      "fieldwork_end": "2026-09-14",
+      "pollster": "Kantar",
+      "outlet": "Kan 11",
+      "values": {
+        "Netanyahu": 37,
+        "Bennett": 32,
+        "Neither": 31
+      },
+      "source_url": "https://en.wikipedia.org/wiki/Leadership_opinion_polling_for_the_2026_Israeli_legislative_election",
+      "accessed_at": "2026-10-18",
+      "verified": false
+    },
+    {
+      "fieldwork_start": null,
+      "fieldwork_end": "2026-09-10",
+      "pollster": "LRI+P4A",
+      "outlet": "Maariv",
+      "values": {
+        "Netanyahu": 40,
+        "Bennett": 45,
+        "Undecided": 15
+      },
+      "source_url": "https://en.wikipedia.org/wiki/Leadership_opinion_polling_for_the_2026_Israeli_legislative_election",
+      "accessed_at": "2026-10-18",
+      "verified": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{"ac": [
+ {"hex": "ae0001", "t": "K35R", "flight": "SHELL11 ", "lat": 32.1, "lon": 35.0},
+ {"hex": "ae0002", "t": "K35R", "flight": "SHELL12 ", "lat": 33.0, "lon": 44.0},
+ {"hex": "ae0003", "t": "R135", "flight": "JAKE21  ", "lat": 34.5, "lon": 33.0},
+ {"hex": "ae0004", "t": "K35R", "flight": "SHELL13 ", "lat": 51.0, "lon": -1.0},
+ {"hex": "ae0005", "t": "C17", "flight": "RCH001  ", "lat": 32.0, "lon": 35.0},
+ {"hex": "ae0006", "t": "B52", "flight": "DOOM31  "}
+], "now": 1790000000}

@@ -1,0 +1,21 @@
+{
+  "id": "rel-iran-velayat-faqih",
+  "from": "Iran's constitution",
+  "to": "Iran's state",
+  "type": "doctrine",
+  "description": "Article 5 vests leadership in a just and pious Islamic jurist (velayat-e faqih); Article 4 requires all laws to conform to Islamic criteria; Article 110 gives the Leader command of the armed forces and the power to declare war and peace.",
+  "period": "1979 constitution, amended 1989",
+  "amount_usd": null,
+  "what_it_does_not_show": "How strictly doctrine drives a specific decision has to be checked against the Leader's own statements and actions.",
+  "confidence": "high",
+  "label": "established_fact",
+  "sources": [
+    {
+      "url": "https://www.constituteproject.org/constitution/Iran_1989",
+      "publisher": "Constitute Project",
+      "published_at": null,
+      "accessed_at": "2026-10-18",
+      "kind": "primary"
+    }
+  ]
+}
