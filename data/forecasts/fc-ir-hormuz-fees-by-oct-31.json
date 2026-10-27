@@ -27,6 +27,13 @@
       "rationale": "Sprint forecast for fast resolutions. No independent news view: this is the market price 6.0% with the standing favorite-longshot rule (prices under 10% or over 90% moved 30% closer to the edge, in between left as is). It tests whether that rule beats the market.",
       "evidence_ids": [],
       "benchmark_probability": 0.06
+    },
+    {
+      "at": "2026-10-27T17:52:06+00:00",
+      "probability": 0.0287,
+      "rationale": "10/27/2026 update, same method as the sprint: market price 4.1% with the favorite-longshot rule (under 10% or over 90% moved 30% closer to the edge, floor 1%). No independent news view.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.041
     }
   ],
   "resolution": null

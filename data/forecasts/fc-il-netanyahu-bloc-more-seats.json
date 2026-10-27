@@ -27,6 +27,13 @@
       "rationale": "starting at market, will adjust",
       "evidence_ids": [],
       "benchmark_probability": 0.515
+    },
+    {
+      "at": "2026-10-27T17:52:06+00:00",
+      "probability": 0.315,
+      "rationale": "10/27/2026 update to the market price 31.5%. No independent news view.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.315
     }
   ],
   "resolution": null

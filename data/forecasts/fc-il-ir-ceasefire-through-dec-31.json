@@ -33,6 +33,13 @@
       "rationale": "starting at market, will adjust. Calibration-adjusted reading of the same price is 46.8%.",
       "evidence_ids": [],
       "benchmark_probability": 0.475
+    },
+    {
+      "at": "2026-10-27T17:52:06+00:00",
+      "probability": 0.425,
+      "rationale": "10/27/2026 update to the market price 42.5%. No independent news view.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.425
     }
   ],
   "resolution": null

@@ -8,7 +8,7 @@
   "topic": "economy",
   "created_at": "2026-10-19T03:14:35+00:00",
   "deadline": "2026-10-21T00:00:00+00:00",
-  "status": "open",
+  "status": "resolved",
   "illustrative": false,
   "reference_class": null,
   "exclusive_group": null,
@@ -29,5 +29,10 @@
       "benchmark_probability": 0.9295
     }
   ],
-  "resolution": null
+  "resolution": {
+    "outcome": true,
+    "resolved_at": "2026-10-21T15:03:45+00:00",
+    "source_url": "https://polymarket.com/market/will-the-bank-of-israel-make-no-change-to-the-bank-of-israel-interest-rate-after-the-october-decision",
+    "post_mortem": "Resolved yes per the Polymarket market. Our last number was 95.1%, the market's at entry 93.0%. The longshot rule helped on this one."
+  }
 }
