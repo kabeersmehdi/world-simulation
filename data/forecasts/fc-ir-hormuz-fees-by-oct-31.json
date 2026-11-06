@@ -8,7 +8,7 @@
   "topic": "economy",
   "created_at": "2026-10-19T03:14:35+00:00",
   "deadline": "2026-11-01T03:59:00+00:00",
-  "status": "open",
+  "status": "resolved",
   "illustrative": false,
   "reference_class": null,
   "exclusive_group": null,
@@ -36,5 +36,10 @@
       "benchmark_probability": 0.041
     }
   ],
-  "resolution": null
+  "resolution": {
+    "outcome": false,
+    "resolved_at": "2026-11-06T04:57:19+00:00",
+    "source_url": "https://polymarket.com/market/iran-charges-hormuz-fees-by-october-31",
+    "post_mortem": "Resolved no. Our last number was 2.9%; the market's last saved price before archival was 1.45%. Brier 0.001."
+  }
 }

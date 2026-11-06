@@ -9,7 +9,7 @@
   "topic": "military",
   "created_at": "2026-10-19T03:14:35+00:00",
   "deadline": "2026-10-31T20:59:00+00:00",
-  "status": "open",
+  "status": "resolved",
   "illustrative": false,
   "reference_class": null,
   "exclusive_group": null,
@@ -37,5 +37,10 @@
       "benchmark_probability": 0.0175
     }
   ],
-  "resolution": null
+  "resolution": {
+    "outcome": false,
+    "resolved_at": "2026-11-06T04:57:19+00:00",
+    "source_url": "https://polymarket.com/market/israel-military-action-against-yemen-by-october-31",
+    "post_mortem": "Resolved no. Our last number was 1.2%; the market's last saved price before archival was 0.35%. Brier 0.000."
+  }
 }

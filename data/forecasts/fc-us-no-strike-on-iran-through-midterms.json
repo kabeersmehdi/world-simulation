@@ -9,7 +9,7 @@
   "topic": "military",
   "created_at": "2026-10-19T03:10:55+00:00",
   "deadline": "2026-11-04T05:00:00+00:00",
-  "status": "open",
+  "status": "resolved",
   "illustrative": false,
   "reference_class": null,
   "exclusive_group": null,
@@ -42,5 +42,10 @@
       "benchmark_probability": 0.905
     }
   ],
-  "resolution": null
+  "resolution": {
+    "outcome": true,
+    "resolved_at": "2026-11-06T04:57:19+00:00",
+    "source_url": "https://polymarket.com/market/us-iran-ceasefire-continues-through-the-midterms",
+    "post_mortem": "Resolved yes. Our last number was 90.5%; the market's last saved price before archival was 89.00%. Brier 0.009. Ceasefire held through the Nov 3 midterms: no US strike; de-escalation and deal momentum reported through Nov 5 (Brent fell from $105 to the mid-90s; no resumption of strikes). Market last traded 0.89 on Nov 2 before archival, prior to the midterms ending."
+  }
 }

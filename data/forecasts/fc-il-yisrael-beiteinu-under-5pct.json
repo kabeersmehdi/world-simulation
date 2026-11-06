@@ -8,7 +8,7 @@
   "topic": "election",
   "created_at": "2026-10-19T03:14:35+00:00",
   "deadline": "2026-10-27T23:59:00+00:00",
-  "status": "open",
+  "status": "resolved",
   "illustrative": false,
   "reference_class": null,
   "exclusive_group": null,
@@ -36,5 +36,10 @@
       "benchmark_probability": 0.2025
     }
   ],
-  "resolution": null
+  "resolution": {
+    "outcome": false,
+    "resolved_at": "2026-11-06T04:57:19+00:00",
+    "source_url": "https://polymarket.com/market/will-yisrael-beiteinu-win-less-than-5-percent-of-the-vote-in-the-2026-knesset-elections",
+    "post_mortem": "Resolved no. Our last number was 20.2%; the market's last saved price before archival was 0.80%. Brier 0.041. Yisrael Beytenu won 5.93% of valid votes. Official CEC results certified 2026-11-04 (israelvote.meforum.org, israelnationalnews.com/news/435272): Likud 27, Yashar 21, Together 12, Joint List 11, Democrats 8, Raam 8, Yisrael Beytenu 7 (5.93%), Otzma 7, UTJ 7, Shas 6, RZ-Zehut 6; Netanyahu bloc 53, opposition 48, Arab parties 19; Amcha Yisrael 1.68%, below the threshold."
+  }
 }

@@ -9,7 +9,7 @@
   "topic": "sanctions",
   "created_at": "2026-10-19T03:14:35+00:00",
   "deadline": "2026-11-01T03:59:00+00:00",
-  "status": "open",
+  "status": "resolved",
   "illustrative": false,
   "reference_class": null,
   "exclusive_group": null,
@@ -37,5 +37,10 @@
       "benchmark_probability": 0.026
     }
   ],
-  "resolution": null
+  "resolution": {
+    "outcome": false,
+    "resolved_at": "2026-11-06T04:57:19+00:00",
+    "source_url": "https://polymarket.com/market/us-announces-end-of-iranian-blockade-by-october-31-2026-20260727171711632-895-372-622-413-171-454-592-696",
+    "post_mortem": "Resolved no. Our last number was 1.8%; the market's last saved price before archival was 2.20%. Brier 0.000. Blockade still in place; the end-of-blockade ladder now centers on early 2027."
+  }
 }
