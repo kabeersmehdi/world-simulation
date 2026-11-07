@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision-maker card",
+  "description": "One card per player whose choices move the questions here. Every line is either a documented fact with an evidence or timeline id, or is marked (reported) or (inferred). Never infer anyone's goals from their religion or associates.",
+  "type": "object",
+  "required": ["id", "name", "role", "country", "as_of", "wants", "fears", "constraints", "red_lines", "who_can_remove_them", "tells", "record", "open_questions", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^ac-[a-z0-9-]+$"},
+    "name": {"type": "string", "minLength": 2},
+    "role": {"type": "string", "minLength": 2},
+    "country": {"type": "string", "enum": ["united-states", "israel", "iran", "other"]},
+    "as_of": {"type": "string", "format": "date"},
+    "wants": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "fears": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "constraints": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "red_lines": {"type": "array", "items": {"type": "string"}},
+    "who_can_remove_them": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "tells": {"type": "array", "items": {"type": "string"}, "description": "Public signs that this player is about to move. Tie to the indicator panel where possible."},
+    "record": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "what"],
+        "additionalProperties": false,
+        "properties": {
+          "date": {"type": "string", "format": "date"},
+          "what": {"type": "string", "minLength": 5},
+          "source_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "open_questions": {"type": "array", "items": {"type": "string"}},
+    "sources": {"type": "array", "items": {"type": "string"}, "description": "Evidence ids, timeline ids, forecast ids or URLs."}
+  }
+}

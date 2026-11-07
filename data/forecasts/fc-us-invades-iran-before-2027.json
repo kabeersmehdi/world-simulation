@@ -1,0 +1,51 @@
+{
+  "id": "fc-us-invades-iran-before-2027",
+  "question": "Will the U.S. invade Iran before 2027?",
+  "resolution_criteria": "Yes if the United States begins a military offensive intended to take control of any part of Iranian territory by 11:59 PM ET on 12/31/2026. Resolves with Polymarket market will-the-us-invade-iran-before-2027.",
+  "countries": [
+    "united-states",
+    "iran"
+  ],
+  "topic": "military",
+  "created_at": "2026-11-07T05:41:56+00:00",
+  "deadline": "2027-01-01T04:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "will-the-us-invade-iran-before-2027",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [
+    "us_advisory",
+    "us_military_moves",
+    "home_front"
+  ],
+  "raise_if": [
+    "Departure orders for Gulf embassies plus carrier moves plus a call-up at once"
+  ],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-11-07T05:41:56+00:00",
+      "probability": 0.04,
+      "rationale": "11/07/2026, independent view 4% against the crowd's 10.5% (8.8% with the bias taken out). The question needs a ground offensive to take territory, not strikes. Trump's record since 2025 is strikes, a blockade and talks, never ground forces (ac-trump record). Taking even Kharg Island is priced at 4.5% on Polymarket. A ground move in 55 days would show up first as departure orders, carrier moves and a Home Front Command call-up; none is active today. The crowd's 10% looks like a long-shot premium on a famous question, the pattern the backtest found at 30 days out.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.105,
+      "view": "independent",
+      "players": [
+        {
+          "actor": "ac-trump",
+          "does": "Keeps the blockade and the strike option, avoids a ground war that would own Iranian territory."
+        },
+        {
+          "actor": "ac-iran-leadership",
+          "does": "Avoids attacks on US ships that would give Washington a reason to escalate."
+        }
+      ]
+    }
+  ],
+  "resolution": null
+}

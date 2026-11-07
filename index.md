@@ -15,7 +15,8 @@ The curated knowledge this tool reads as ground truth. Code reads these files; f
 ## Method and policy
 - [Methodology](docs/methodology.md): evidence labels, competing explanations, what counts as proof
 - [Source policy](docs/source-policy.md): source tiers, Hebrew sources, what never counts as fact
-- [Forecasting policy](docs/forecasting-policy.md): question rules, guards, scoring, the 20-forecast minimum
+- [Forecasting policy](docs/forecasting-policy.md): question rules, guards, scoring, the market view (bias map by horizon) and the independent view
+- [Player cards](docs/players.md): one checklist per decision-maker; independent forecasts must name their players
 - [Leading indicators](docs/indicators.md): the six signals, keywords, windows and the watch level
 - [Base rates](docs/base-rates.md): how past events set starting odds, and the small-sample warning
 - [Timing curves and market accuracy](docs/timing-and-accuracy.md): ceasefire "when" curves, the Polymarket backtest, calibration

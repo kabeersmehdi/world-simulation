@@ -1,0 +1,51 @@
+{
+  "id": "ac-eisenkot",
+  "name": "Gadi Eisenkot",
+  "role": "Leader of the Yashar list, former IDF chief of staff; reported holder of the first mandate to form a government",
+  "country": "israel",
+  "as_of": "2026-11-07",
+  "wants": [
+    "Form a government on the first mandate, inside the 28 days plus a possible 14-day extension that the law allows (stated; Basic Law: The Government, verify section numbers).",
+    "A coalition wide enough to survive without depending on any one small party (inferred)."
+  ],
+  "fears": [
+    "Running out the mandate clock and handing the chance to Netanyahu or to a second election (inferred; the 2019 to 2021 pattern in br-israel-election-to-government).",
+    "A coalition that needs outside support from Arab parties and splits his own voters (inferred)."
+  ],
+  "constraints": [
+    "Yashar did not win the most seats and his bloc won fewer seats than Netanyahu's (fc-il-yashar-most-seats, fc-il-netanyahu-bloc-more-seats).",
+    "Since 2013, 3 of 7 Israeli elections produced a sworn-in government within 65 days, and none of the four hung results of 2019 to 2021 did (br-israel-election-to-government).",
+    "A confidence vote needs 61 of 120 (ev-il-knesset-61)."
+  ],
+  "red_lines": [],
+  "who_can_remove_them": [
+    "The President, when the mandate period ends without a government (stated; Basic Law: The Government).",
+    "His own list, if it fractures during talks (inferred)."
+  ],
+  "tells": [
+    "Reports in the Hebrew press of signed coalition agreements, ministry allocations, or a date for the swearing-in.",
+    "Likud or Haredi parties publicly entering talks with him.",
+    "Polymarket: vote-of-confidence-passes-in-knesset-by-december-31 and the next-prime-minister market."
+  ],
+  "record": [
+    {
+      "date": "2026-10-27",
+      "what": "Election: Yashar not the largest party; market favorite for next prime minister",
+      "source_ids": [
+        "fc-il-yashar-most-seats",
+        "fc-il-next-pm-eisenkot"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Who are the signed partners, and does the arithmetic reach 61 without Likud?",
+    "Confirm the mandate date from the President's Residence; the clock runs from it."
+  ],
+  "sources": [
+    "fc-il-next-pm-eisenkot",
+    "fc-il-yashar-most-seats",
+    "br-israel-election-to-government",
+    "ev-il-knesset-61",
+    "https://polymarket.com/market/vote-of-confidence-passes-in-knesset-by-december-31"
+  ]
+}

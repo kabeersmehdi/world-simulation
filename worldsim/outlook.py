@@ -84,6 +84,7 @@ def forecast_rows(live, prices, reactions, today):
             "market_verdict": verdict(market) if market is not None else None,
             "gap": gap_words(ours, market), "gap_points": round((ours - market) * 100) if market is not None else None,
             "rule": fc["resolution_criteria"], "why": fc["history"][-1]["rationale"],
+            "view": fc["history"][-1].get("view", "market"), "players": fc["history"][-1].get("players") or [],
             "updates": len(fc["history"]), "outcome": (fc.get("resolution") or {}).get("outcome"),
             "withdrawn_reason": fc.get("annulled_reason"),
             "market_url": f"https://polymarket.com/market/{slug}" if slug else None,

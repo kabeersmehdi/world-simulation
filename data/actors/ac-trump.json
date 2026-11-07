@@ -1,0 +1,98 @@
+{
+  "id": "ac-trump",
+  "name": "Donald J. Trump",
+  "role": "President of the United States",
+  "country": "united-states",
+  "as_of": "2026-11-07",
+  "wants": [
+    "An agreement with Iran that reopens the Strait of Hormuz and can be announced as a win (inferred from the Islamabad track, tl-2026-06-17-memorandum).",
+    "Lower oil prices; the blockade and the Hormuz disruption push the other way (inferred).",
+    "To be seen as decisive on Iran without a ground war (inferred from the record: strikes in 2025 and 2026, no invasion)."
+  ],
+  "fears": [
+    "A second collapse of a deal after the 07/08/2026 collapse (tl-2026-07-08-collapse).",
+    "A spike in oil and shipping costs blamed on the blockade (inferred)."
+  ],
+  "constraints": [
+    "The midterms on 11/03/2026 are over, which removes one calendar pressure (ev-us-midterms-2026).",
+    "Congress controls appropriations and can block arms sales (stated; general constitutional point).",
+    "Munitions and carrier availability after nine months of operations (open research; see the fleet and aircraft indicators)."
+  ],
+  "red_lines": [
+    "Iranian attacks on US ships or bases, which would end any pause (inferred from the April and July pattern)."
+  ],
+  "who_can_remove_them": [
+    "Congress, by impeachment and conviction (stated; constitutional).",
+    "The 25th Amendment process (stated; constitutional).",
+    "Neither is in play before 12/31/2026 on anything in the record here."
+  ],
+  "tells": [
+    "State Department departure orders and travel advisories (indicator us_advisory).",
+    "Tanker and carrier movements (indicator us_military_moves).",
+    "Named envoys traveling: Witkoff and Kushner met Araghchi on 09/22/2026 at the UN (reported in the Polymarket market description).",
+    "Truth Social posts naming Iran, oil or the Strait."
+  ],
+  "record": [
+    {
+      "date": "2025-06-22",
+      "what": "US strikes on Iranian nuclear sites",
+      "source_ids": [
+        "tl-2025-06-22-us-strikes"
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "what": "Operation Epic Fury: US and Israeli strikes open the 2026 Iran war",
+      "source_ids": [
+        "tl-2026-02-28-iran-war"
+      ]
+    },
+    {
+      "date": "2026-04-08",
+      "what": "Two-week pause announced by Pakistan",
+      "source_ids": [
+        "tl-2026-04-08-pause"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "what": "Naval blockade of shipping from Iranian ports after the Islamabad talks fail",
+      "source_ids": [
+        "tl-2026-04-13-blockade"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "what": "Islamabad Memorandum signed: 60 days of talks on Hormuz, nuclear and missiles",
+      "source_ids": [
+        "tl-2026-06-17-memorandum"
+      ]
+    },
+    {
+      "date": "2026-07-08",
+      "what": "Ceasefire collapses after attacks on ships in the Strait",
+      "source_ids": [
+        "tl-2026-07-08-collapse"
+      ]
+    },
+    {
+      "date": "2026-07-13",
+      "what": "Blockade of Iranian ships and their customers reinstated (reported in the Polymarket market description)",
+      "source_ids": [
+        "https://polymarket.com/market/us-announces-end-of-iranian-blockade-by-december-31-2026-20260727171803489-375-949-645-919-269-157-255-857"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Who runs Iran policy day to day: the envoys, State, Defense or the White House?",
+    "What would the US accept on enrichment? The Polymarket deal-terms markets price every term under 15%."
+  ],
+  "sources": [
+    "ev-us-president-vp",
+    "ev-us-midterms-2026",
+    "tl-2026-02-28-iran-war",
+    "tl-2026-04-13-blockade",
+    "tl-2026-06-17-memorandum",
+    "tl-2026-07-08-collapse"
+  ]
+}

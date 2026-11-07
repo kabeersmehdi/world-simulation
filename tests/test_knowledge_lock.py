@@ -114,6 +114,16 @@ class KnowledgeLockTests(unittest.TestCase):
         self.assertEqual(live.STRESS_LEVELS, [(3, "high stress"), (1, "some stress"), (0, "calm")])
         self.assertIn("0 flags is calm, 1 or 2 is some stress, 3 or more is high stress", doc)
 
+    def test_calibration_constants_match_doc(self):
+        from worldsim import calibration
+        doc = (ROOT / "docs" / "forecasting-policy.md").read_text(encoding="utf-8")
+        self.assertIn(f"`SHRINK = {calibration.SHRINK}`", doc)
+        self.assertIn(f"`MAX_DAYS = {calibration.MAX_DAYS}`", doc)
+        self.assertIn(f"`CUTOFF = {calibration.CUTOFF}`", doc)
+        for floor, horizon in calibration.HORIZON_FOR_DAYS:
+            self.assertIn(f"{floor} days", doc)
+            self.assertIn(f"{horizon}-day map", doc)
+
     def test_small_sample_matches_doc(self):
         from worldsim.baserates import SMALL_SAMPLE
         self.assertIn(f"Fewer than {SMALL_SAMPLE} events", (ROOT / "docs" / "base-rates.md").read_text())

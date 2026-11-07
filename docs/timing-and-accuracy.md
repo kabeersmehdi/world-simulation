@@ -31,3 +31,6 @@ Limits, stated on the dashboard too:
 
 ## Calibrated curves
 Where the backtest shows a pattern (for example, ceasefire and strike markets priced 70 to 90% coming true more often than that), the timing view adds a **calibrated** column: each price is mapped to how often similar prices came true, then pulled back toward the raw price by `count / (count + 30)` (`SHRINK = 30`), so a thin band barely moves it. Calibration comes from 7-day prices, so it is weaker for dates months away. Treat it as a second opinion on the market, not a replacement.
+
+## The bias map by horizon
+The same backtest feeds `worldsim/calibration.py`, which fits a price-to-truth staircase per horizon and applies it to every market-view forecast by how far its deadline is. Constants, the out-of-sample check and the retired fixed rule are in [the forecasting policy](forecasting-policy.md).

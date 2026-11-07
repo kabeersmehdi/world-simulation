@@ -1,0 +1,37 @@
+{
+  "id": "fc-il-houthi-strike-on-israel-by-dec-31",
+  "question": "Will there be Houthi military action against Israel by December 31, 2026?",
+  "resolution_criteria": "Yes if a Houthi air strike or surface-to-surface missile or drone strike hits Israeli ground territory by 11:59 PM Israel time on 12/31/2026. Interceptions do not count. Resolves with Polymarket market will-there-be-houthi-military-action-against-israel-by-december-31-2026.",
+  "countries": [
+    "israel",
+    "other"
+  ],
+  "topic": "military",
+  "created_at": "2026-11-07T05:41:56+00:00",
+  "deadline": "2027-01-01T04:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "will-there-be-houthi-military-action-against-israel-by-december-31-2026",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [
+    "home_front"
+  ],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-11-07T05:41:56+00:00",
+      "probability": 0.1183,
+      "rationale": "11/07/2026: the crowd's price 18.0% with the horizon's known bias taken out (54 days to go, from the backtest's 30-day map), giving 11.8%. No independent news view. The lead-lag test found no indicator that moves before Polymarket, so the price is the best public starting point.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.18,
+      "view": "market"
+    }
+  ],
+  "resolution": null
+}

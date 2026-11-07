@@ -38,6 +38,24 @@
       "rationale": "10/27/2026 update to the market price 49.5%. No independent news view.",
       "evidence_ids": [],
       "benchmark_probability": 0.495
+    },
+    {
+      "at": "2026-11-07T05:41:56+00:00",
+      "probability": 0.2,
+      "rationale": "11/07/2026, independent view 20% against the crowd's 30% (22.6% with the bias taken out). Base rate: since 2013, 3 of 7 elections produced a sworn-in government within 65 days of the vote, and none of the four hung results of 2019 to 2021 did (br-israel-election-to-government). This one is hung: no bloc reached 61 and Netanyahu's bloc is the larger one, while Eisenkot holds the reported first mandate. The clock is 28 days plus up to 14, so only a first-mandate success can beat 12/31; a second mandate cannot finish in time. That needs Eisenkot to find 61 across the bloc line in about six weeks. 20% is the hung-result base rate lifted a little for a mandate holder who is the market favorite.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.3,
+      "view": "independent",
+      "players": [
+        {
+          "actor": "ac-eisenkot",
+          "does": "Negotiates on the first mandate; needs defectors from Netanyahu's bloc or outside support to reach 61."
+        },
+        {
+          "actor": "ac-netanyahu",
+          "does": "Holds his bloc together to run out the clock and stay caretaker prime minister."
+        }
+      ]
     }
   ],
   "resolution": null

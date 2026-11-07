@@ -62,6 +62,19 @@ def guard_resolution(fc):
         raise GuardError(f"{fc['id']}: annulled forecasts must say why (annulled_reason)")
 
 
+def guard_independent_view(fc, actor_ids=None):
+    """An independent view must name at least one known player and say what each one does."""
+    for h in fc["history"]:
+        if h.get("view") != "independent":
+            continue
+        players = h.get("players") or []
+        if not players:
+            raise GuardError(f"{fc['id']}: an independent view must list the players it rests on")
+        for pl in players:
+            if actor_ids is not None and pl["actor"] not in actor_ids:
+                raise GuardError(f"{fc['id']}: unknown player {pl['actor']}; add a card in data/actors/")
+
+
 def guard_no_illustrative_in_live(fc, live):
     if live and fc["illustrative"]:
         raise GuardError(f"{fc['id']}: illustrative forecasts belong in data/demo/, not data/forecasts/")
@@ -81,31 +94,34 @@ def guard_exclusive_groups(fcs):
             raise GuardError(f"group '{name}' adds up to {total:.0%}: {', '.join(f['id'] for f in members)}")
 
 
-def check(fc, live, root=ROOT, previous=None):
+def check(fc, live, root=ROOT, previous=None, actor_ids=None):
     validate(fc, "forecast", root)
     guard_probability_bounds(fc)
     guard_deadline_after_creation(fc)
     guard_history_order(fc)
     guard_resolution(fc)
+    guard_independent_view(fc, actor_ids)
     guard_no_illustrative_in_live(fc, live)
     guard_append_only(previous, fc)
     return fc
 
 
-def load_folder(folder, live, root=ROOT, previous=None):
+def load_folder(folder, live, root=ROOT, previous=None, actor_ids=None):
     """Load and check every forecast file in a folder. previous maps id -> older version."""
     previous = previous or {}
     out = []
     for path in sorted(Path(folder).glob("*.json")):
         fc = json.loads(path.read_text(encoding="utf-8"))
-        out.append(check(fc, live, root, previous.get(fc.get("id"))))
+        out.append(check(fc, live, root, previous.get(fc.get("id")), actor_ids))
     return out
 
 
 def load_all(root=ROOT, previous=None):
+    from . import actors  # here, not at the top: actors is a leaf and this keeps the import order simple
     root = Path(root)
-    live = load_folder(root / "data" / "forecasts", True, root, previous)
-    demo = load_folder(root / "data" / "demo", False, root, previous)
+    actor_ids = actors.ids(root)
+    live = load_folder(root / "data" / "forecasts", True, root, previous, actor_ids)
+    demo = load_folder(root / "data" / "demo", False, root, previous, actor_ids)
     guard_exclusive_groups(live)
     return live, demo
 

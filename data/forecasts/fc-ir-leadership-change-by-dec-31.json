@@ -1,0 +1,37 @@
+{
+  "id": "fc-ir-leadership-change-by-dec-31",
+  "question": "Iran leadership change by December 31?",
+  "resolution_criteria": "Yes if Mojtaba Khamenei ceases to be Iran's de facto leader, by removal, detention, death or incapacity, by 12/31/2026 ET. Resolves with Polymarket market iran-leadership-change-by-december-31-974-976-658-482-568-685-996-469-827.",
+  "countries": [
+    "iran"
+  ],
+  "topic": "other",
+  "created_at": "2026-11-07T05:41:56+00:00",
+  "deadline": "2027-01-01T04:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "iran-leadership-change-by-december-31-974-976-658-482-568-685-996-469-827",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [
+    "airspace",
+    "infrastructure_fire"
+  ],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-11-07T05:41:56+00:00",
+      "probability": 0.0433,
+      "rationale": "11/07/2026: the crowd's price 8.5% with the horizon's known bias taken out (54 days to go, from the backtest's 30-day map), giving 4.3%. No independent news view. The lead-lag test found no indicator that moves before Polymarket, so the price is the best public starting point.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.085,
+      "view": "market"
+    }
+  ],
+  "resolution": null
+}

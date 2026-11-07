@@ -1,0 +1,46 @@
+{
+  "id": "ac-houthis",
+  "name": "The Houthis (Ansar Allah)",
+  "role": "Yemeni movement controlling Sanaa and the Red Sea coast, part of Iran's network",
+  "country": "other",
+  "as_of": "2026-11-07",
+  "wants": [
+    "Leverage over Red Sea and Bab el-Mandeb shipping (inferred from the transit-count markets on Polymarket).",
+    "Pressure on Saudi Arabia: Polymarket prices a Saudi-Houthi ceasefire by 12/31/2026 at about 22% (reported market price)."
+  ],
+  "fears": [
+    "US and Israeli strikes on Yemen (inferred; Israel strike on Yemen by 10/31 resolved no, fc-il-strike-yemen-by-oct-31)."
+  ],
+  "constraints": [
+    "Listed as fighting on Iran's side in the 2026 war; degree of Iranian command contested (rel-iran-axis).",
+    "Did not carry out a qualifying strike on Israel between 10/19 and 10/31/2026 (fc-il-houthi-strike-on-israel-by-oct-31)."
+  ],
+  "red_lines": [],
+  "who_can_remove_them": [
+    "Saudi-led or US military action (open research).",
+    "Loss of Perim Island or the coast (Polymarket market, 10% by 12/31)."
+  ],
+  "tells": [
+    "Al Masirah (Arabic feed in config/sources.json).",
+    "Bab el-Mandeb daily transit counts (Polymarket).",
+    "Polymarket: Houthi military action against Israel by 12/31/2026."
+  ],
+  "record": [
+    {
+      "date": "2026-10-31",
+      "what": "No qualifying Houthi strike on Israel by 10/31 (market resolved no)",
+      "source_ids": [
+        "fc-il-houthi-strike-on-israel-by-oct-31"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Is the Saudi front active again? The Saudi pipeline and 'Houthis enter Saudi Arabia' markets say traders think so. (open research)"
+  ],
+  "sources": [
+    "rel-iran-axis",
+    "fc-il-houthi-strike-on-israel-by-oct-31",
+    "fc-il-strike-yemen-by-oct-31",
+    "https://polymarket.com/market/saudi-houthi-ceasefire-agreement-announced-by-december-31"
+  ]
+}

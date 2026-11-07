@@ -189,6 +189,36 @@
             ],
             "minimum": 0,
             "maximum": 1
+          },
+          "view": {
+            "type": "string",
+            "enum": [
+              "market",
+              "independent"
+            ],
+            "description": "market = the crowd's price with the horizon's known bias taken out. independent = our own view, which must name the players it rests on."
+          },
+          "players": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "actor",
+                "does"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "actor": {
+                  "type": "string",
+                  "pattern": "^ac-[a-z0-9-]+$"
+                },
+                "does": {
+                  "type": "string",
+                  "minLength": 10
+                }
+              }
+            },
+            "description": "For an independent view: each decision-maker card this number rests on, and what that player does in the scenario."
           }
         }
       }

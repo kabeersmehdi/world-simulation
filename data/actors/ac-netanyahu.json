@@ -1,0 +1,85 @@
+{
+  "id": "ac-netanyahu",
+  "name": "Benjamin Netanyahu",
+  "role": "Prime minister (caretaker after the 10/27/2026 election), Likud leader",
+  "country": "israel",
+  "as_of": "2026-11-07",
+  "wants": [
+    "Stay prime minister, or decide who follows him (inferred from his record of leading every government since 2009 except 2021 to 2022; see record).",
+    "A coalition built on his own bloc, which won more seats than the opposition bloc on 10/27/2026 but not a majority (fc-il-netanyahu-bloc-more-seats, fc-il-any-bloc-61-seats).",
+    "Keep the war footing against Iran that began 02/28/2026 (tl-2026-02-28-iran-war) as the frame of Israeli politics (inferred)."
+  ],
+  "fears": [
+    "A government sworn in without Likud, which ends his term the day it wins a confidence vote (ev-il-knesset-61).",
+    "Losing control of his own bloc: partners who sit with the mandate holder instead of him (inferred).",
+    "His corruption trial, which continues while he is in office (reported; verify the current status before using it)."
+  ],
+  "constraints": [
+    "No bloc reached 61 seats on 10/27/2026, so he cannot form a government alone (fc-il-any-bloc-61-seats).",
+    "The first mandate to form a government is reported to have gone to Gadi Eisenkot; Polymarket priced that at 98% on 11/07/2026 (reported; confirm with the President's Residence).",
+    "A caretaker government has narrower room on long-term commitments, by custom and court rulings (stated; verify the current attorney general guidance).",
+    "The Haredi conscription dispute split his last coalition from May 2026 (ev-il-haredi-draft-crisis)."
+  ],
+  "red_lines": [
+    "Sitting as a junior partner under Eisenkot (inferred; no public statement found, treat as open)."
+  ],
+  "who_can_remove_them": [
+    "The Knesset, by expressing confidence in a new government with 61 votes (ev-il-knesset-61).",
+    "His bloc partners, by backing another candidate for prime minister (inferred).",
+    "A court verdict in his trial, which would start a legal fight over incapacity (reported; verify)."
+  ],
+  "tells": [
+    "Late-night cabinet meetings (indicator late_night_cabinet).",
+    "Likud members in the Hebrew press on whether they would sit with Eisenkot.",
+    "Coalition-agreement leaks and ministry demands in Hebrew outlets and Amit Segal's Telegram channel."
+  ],
+  "record": [
+    {
+      "date": "2025-06-13",
+      "what": "Twelve-Day War strikes on Iran",
+      "source_ids": [
+        "tl-2025-06-13-twelve-day-war"
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "what": "Israel joins the US strikes on Iran (Operation Roaring Lion); state of emergency, 20,000 reservists called up",
+      "source_ids": [
+        "tl-2026-02-28-iran-war",
+        "tl-2026-02-28-israel-reserves"
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "what": "Knesset dissolves after months of coalition crises over Haredi conscription",
+      "source_ids": [
+        "tl-2026-07-17-knesset-dissolves",
+        "ev-il-haredi-draft-crisis"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "what": "Election: his bloc wins more seats than the opposition bloc, no bloc reaches 61, Likud does not land in the 20 to 24 seat band",
+      "source_ids": [
+        "fc-il-netanyahu-bloc-more-seats",
+        "fc-il-any-bloc-61-seats",
+        "fc-il-likud-20-24-seats"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Would he sit under Eisenkot, or let Likud split to do it?",
+    "Is the offer of $125 million for him to retire, reported by Maariv on 11/06/2026, real and who made it? (reported, unverified)",
+    "What does the trial calendar look like through 12/31/2026?"
+  ],
+  "sources": [
+    "ev-il-pm-netanyahu",
+    "ev-il-election-2026-10-27",
+    "ev-il-knesset-61",
+    "ev-il-haredi-draft-crisis",
+    "tl-2026-07-17-knesset-dissolves",
+    "fc-il-netanyahu-bloc-more-seats",
+    "fc-il-any-bloc-61-seats",
+    "https://polymarket.com/market/netanyahu-out-before-2027-684-719-226-657"
+  ]
+}

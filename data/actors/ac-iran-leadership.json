@@ -1,0 +1,86 @@
+{
+  "id": "ac-iran-leadership",
+  "name": "Iran's leadership: the Supreme Leader, the IRGC and the Supreme National Security Council",
+  "role": "Supreme Leader Mojtaba Khamenei (reported; named in Polymarket's leadership market), the Revolutionary Guards, the president and the council",
+  "country": "iran",
+  "as_of": "2026-11-07",
+  "wants": [
+    "Regime survival after the 02/28/2026 strike that killed Ali Khamenei (ev-ir-khamenei-killed).",
+    "An end to the US blockade without giving up enrichment (inferred; the Polymarket deal-terms markets price enrichment concessions under 15%).",
+    "Control over, or a toll on, Strait of Hormuz traffic (inferred from the Hormuz fee and agreement markets)."
+  ],
+  "fears": [
+    "Another decapitation strike (ev-ir-khamenei-killed).",
+    "A coup or a split between the Guards and the clerical leadership (inferred; Polymarket prices a coup attempt by 12/31/2026 at about 6%)."
+  ],
+  "constraints": [
+    "The Leader commands the armed forces and declares war and peace (ev-ir-constitution-art110); the system rests on velayat-e faqih (ev-ir-constitution-art5).",
+    "The blockade since 04/13/2026, reinstated 07/13/2026, cuts oil income (tl-2026-04-13-blockade).",
+    "War damage from February onward (tl-2026-02-28-iran-war)."
+  ],
+  "red_lines": [
+    "Giving up the enriched stockpile: priced at 5% by 12/31/2026 on Polymarket (reported market price, not a statement)."
+  ],
+  "who_can_remove_them": [
+    "The Assembly of Experts can dismiss the Leader (stated; constitution, verify the article).",
+    "US or Israeli strikes (ev-ir-khamenei-killed).",
+    "The Guards themselves (inferred)."
+  ],
+  "tells": [
+    "A general closure of Iranian airspace (indicator airspace; Polymarket prices one by 11/30 at 18%).",
+    "Persian-language feeds: IRNA, Mehr, Fars, BBC Persian, Iran International (config/sources.json).",
+    "GPS jamming over the Gulf (indicator gps_jamming).",
+    "Fires at energy and nuclear sites (indicator infrastructure_fire)."
+  ],
+  "record": [
+    {
+      "date": "2024-04-13",
+      "what": "First direct missile and drone attack on Israel",
+      "source_ids": [
+        "tl-2024-04-13-iran-strike"
+      ]
+    },
+    {
+      "date": "2024-10-01",
+      "what": "Ballistic missile attack on Israel",
+      "source_ids": [
+        "tl-2024-10-01-iran-strike"
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "what": "Ali Khamenei killed in the opening strikes; a temporary leadership council announced 03/01",
+      "source_ids": [
+        "ev-ir-khamenei-killed"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "what": "Signs the Islamabad Memorandum",
+      "source_ids": [
+        "tl-2026-06-17-memorandum"
+      ]
+    },
+    {
+      "date": "2026-07-08",
+      "what": "Ceasefire collapses after attacks on ships in the Strait",
+      "source_ids": [
+        "tl-2026-07-08-collapse"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Confirm the successor from an official Iranian source; the profile still says to.",
+    "Who decided the July ship attacks: the Guards' navy on its own, or the leadership?"
+  ],
+  "sources": [
+    "ev-ir-khamenei-killed",
+    "ev-ir-constitution-art5",
+    "ev-ir-constitution-art110",
+    "tl-2026-02-28-iran-war",
+    "tl-2026-06-17-memorandum",
+    "tl-2026-07-08-collapse",
+    "rel-iran-axis",
+    "https://polymarket.com/market/iran-leadership-change-by-december-31-974-976-658-482-568-685-996-469-827"
+  ]
+}

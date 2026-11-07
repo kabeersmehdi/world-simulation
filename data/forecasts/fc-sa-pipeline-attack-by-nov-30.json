@@ -1,0 +1,34 @@
+{
+  "id": "fc-sa-pipeline-attack-by-nov-30",
+  "question": "Military action against Saudi Oil Pipeline (East-West) by November 30?",
+  "resolution_criteria": "Yes if Saudi Arabia's East-West crude pipeline or its pumping stations are hit by an air strike or surface-to-surface missile or drone strike by 11:59 PM Riyadh time on 11/30/2026. Resolves with Polymarket market military-action-against-saudi-oil-pipeline-east-west-by-november-30.",
+  "countries": [
+    "other"
+  ],
+  "topic": "military",
+  "created_at": "2026-11-07T05:41:56+00:00",
+  "deadline": "2026-11-30T20:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "military-action-against-saudi-oil-pipeline-east-west-by-november-30",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-11-07T05:41:56+00:00",
+      "probability": 0.131,
+      "rationale": "11/07/2026: the crowd's price 21.0% with the horizon's known bias taken out (23 days to go, from the backtest's 30-day map), giving 13.1%. No independent news view. The lead-lag test found no indicator that moves before Polymarket, so the price is the best public starting point.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.21,
+      "view": "market"
+    }
+  ],
+  "resolution": null
+}

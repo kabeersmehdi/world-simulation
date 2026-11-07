@@ -34,6 +34,14 @@
       "rationale": "10/27/2026 update to the market price 8.5%. No independent news view.",
       "evidence_ids": [],
       "benchmark_probability": 0.085
+    },
+    {
+      "at": "2026-11-07T05:41:56+00:00",
+      "probability": 0.0165,
+      "rationale": "11/07/2026: the crowd's price 1.7%, used as is: the question has no fixed close date (it resolves when a prime minister is sworn in), so no horizon map applies. No independent news view.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.0165,
+      "view": "market"
     }
   ],
   "resolution": null

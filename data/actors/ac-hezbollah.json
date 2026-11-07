@@ -1,0 +1,60 @@
+{
+  "id": "ac-hezbollah",
+  "name": "Hezbollah",
+  "role": "Lebanese armed movement, part of Iran's network",
+  "country": "other",
+  "as_of": "2026-11-07",
+  "wants": [
+    "Survive as an armed force and keep its weapons (inferred).",
+    "Avoid a full Israeli ground campaign in Lebanon (inferred)."
+  ],
+  "fears": [
+    "Israeli strikes on its leadership and on Beirut (inferred from the 10/22 and 10/26 strikes on Lebanon, fc-il-strike-lebanon-oct-22, fc-il-strike-lebanon-oct-26)."
+  ],
+  "constraints": [
+    "Listed as fighting on Iran's side in the 2026 war; how much Iran commands it is contested (rel-iran-axis).",
+    "The Lebanese state and army (open research)."
+  ],
+  "red_lines": [],
+  "who_can_remove_them": [
+    "Israel, by force (fc-il-strike-lebanon-oct-22).",
+    "Lebanese politics, slowly (open research)."
+  ],
+  "tells": [
+    "Al Manar (Arabic feed in config/sources.json).",
+    "Home Front Command instructions for northern Israel (indicator home_front).",
+    "Polymarket: Israel military action against Greater Beirut and Lebanon markets."
+  ],
+  "record": [
+    {
+      "date": "2026-10-22",
+      "what": "Israel strikes Lebanon (market resolved yes)",
+      "source_ids": [
+        "fc-il-strike-lebanon-oct-22"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "what": "Israel strikes Lebanon again (market resolved yes)",
+      "source_ids": [
+        "fc-il-strike-lebanon-oct-26"
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "what": "No qualifying Israeli strike on Greater Beirut by 10/31 (market resolved no)",
+      "source_ids": [
+        "fc-il-strike-greater-beirut-by-oct-31"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Who leads it now and how much of the arsenal is left? (open research)"
+  ],
+  "sources": [
+    "rel-iran-axis",
+    "fc-il-strike-lebanon-oct-22",
+    "fc-il-strike-lebanon-oct-26",
+    "fc-il-strike-greater-beirut-by-oct-31"
+  ]
+}

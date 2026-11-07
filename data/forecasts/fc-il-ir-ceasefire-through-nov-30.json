@@ -1,0 +1,43 @@
+{
+  "id": "fc-il-ir-ceasefire-through-nov-30",
+  "question": "Israel x Iran ceasefire continues through November 30?",
+  "resolution_criteria": "Yes if no Israeli or Iranian air strike or surface-to-surface missile strike hits the other country between market creation and 11:59 PM Iran time on the listed date. Intercepted munitions, artillery, cyber and ground raids do not count. Resolves with Polymarket market israel-x-iran-ceasefire-continues-through-november-30.",
+  "countries": [
+    "israel",
+    "iran"
+  ],
+  "topic": "military",
+  "created_at": "2026-11-07T05:41:56+00:00",
+  "deadline": "2026-11-30T20:29:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "israel-x-iran-ceasefire-continues-through-november-30",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [
+    "home_front",
+    "airspace",
+    "us_advisory"
+  ],
+  "raise_if": [
+    "A US-Iran meeting or Hormuz deal is announced"
+  ],
+  "lower_if": [
+    "Home Front Command drills and airspace closures fire together"
+  ],
+  "history": [
+    {
+      "at": "2026-11-07T05:41:56+00:00",
+      "probability": 0.6359,
+      "rationale": "11/07/2026: the crowd's price 64.5% with the horizon's known bias taken out (23 days to go, from the backtest's 30-day map), giving 63.6%. No independent news view. The lead-lag test found no indicator that moves before Polymarket, so the price is the best public starting point.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.645,
+      "view": "market"
+    }
+  ],
+  "resolution": null
+}

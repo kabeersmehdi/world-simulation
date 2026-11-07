@@ -1,0 +1,51 @@
+{
+  "id": "fc-il-netanyahu-out-by-dec-31",
+  "question": "Netanyahu out by end of 2026?",
+  "resolution_criteria": "Yes if Netanyahu ceases to be prime minister for any period by 12/31/2026 ET, or announces his resignation or removal before then, even if it takes effect later. A new government sworn in under another prime minister counts. Resolves with Polymarket market netanyahu-out-before-2027-684-719-226-657.",
+  "countries": [
+    "israel"
+  ],
+  "topic": "coalition",
+  "created_at": "2026-11-07T05:41:56+00:00",
+  "deadline": "2027-01-01T04:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "netanyahu-out-before-2027-684-719-226-657",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [
+    "late_night_cabinet"
+  ],
+  "raise_if": [
+    "Signed coalition agreements with a swearing-in date",
+    "A resignation announcement"
+  ],
+  "lower_if": [
+    "The mandate passes to a second candidate"
+  ],
+  "history": [
+    {
+      "at": "2026-11-07T05:41:56+00:00",
+      "probability": 0.28,
+      "rationale": "11/07/2026, independent view 28% against the crowd's 36.5%. Two ways this resolves yes. (1) A new government under someone else is sworn in by 12/31: that is the confidence-vote question, which we put at 20%, times about 85% that the new prime minister is not Netanyahu (Eisenkot holds the mandate, fc-il-next-pm-eisenkot), so about 17%. (2) He announces resignation or removal without a new government: the retirement-by-March market is at 17%, and this window is shorter, so about 10%, allowing for the Maariv report of a buy-out offer (ac-netanyahu open questions). Together about 27%; rounded to 28%. The crowd's 36.5% is hard to square with its own 30% on the confidence vote unless it expects a resignation.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.365,
+      "view": "independent",
+      "players": [
+        {
+          "actor": "ac-netanyahu",
+          "does": "Stays caretaker prime minister and tries to outlast Eisenkot's mandate; resigns only if the trial or a buy-out forces it."
+        },
+        {
+          "actor": "ac-eisenkot",
+          "does": "Tries to sign partners before the mandate clock runs out; the swearing-in is the event that removes Netanyahu."
+        }
+      ]
+    }
+  ],
+  "resolution": null
+}

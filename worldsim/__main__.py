@@ -19,7 +19,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from . import ROOT, backfill, backtest, build, leadlag, eventstudy, live, prices, collectors, forecasts, markets, scoring, store, timing
+from . import ROOT, actors, backfill, backtest, build, calibration, leadlag, eventstudy, live, prices, collectors, forecasts, markets, scoring, store, timing
 from .contracts import ContractError
 
 
@@ -67,7 +67,8 @@ def cmd_validate(args):
     except (ContractError, forecasts.GuardError, ValueError) as exc:
         print(f"FAIL: {exc}")
         return 1
-    print(f"ok: {len(live)} live and {len(demo)} demo forecasts, all data files pass their contracts.")
+    print(f"ok: {len(live)} live and {len(demo)} demo forecasts, {len(actors.load_all(ROOT))} player cards, "
+          "all data files pass their contracts.")
     return 0
 
 
@@ -81,6 +82,17 @@ def cmd_score(args):
 
 
 def cmd_backtest(args):
+    if args.fit:
+        model = calibration.build(ROOT)
+        if not model:
+            print("No saved backtest. Run: python3 -m worldsim backtest")
+            return 1
+        print(f"Fitted on {model['markets']} resolved markets. Check: fit before {model['check']['cutoff']}, score after.")
+        for h, c in model["check"]["horizons"].items():
+            if c:
+                print(f"  {h:>2} days out: n={c['n']}, market {c['raw_brier']:.4f}, adjusted {c['adjusted_brier']:.4f}, "
+                      f"{'helps' if c['helps'] else 'no help'}")
+        return 0
     if args.by_volume:
         split = backtest.by_volume_from_file(ROOT)
         if not split:
@@ -208,7 +220,12 @@ def cmd_new_forecast(args):
         print(f"{path} already exists.")
         return 1
     path.write_text(json.dumps(fc, ensure_ascii=False, indent=2) + "\n")
-    print(f"Wrote {path.relative_to(ROOT)}. Market says {bench}. Fill in your probability, "
+    suggestion = ""
+    if bench is not None and deadline:
+        days = (datetime.fromisoformat(deadline) - now).days
+        adjusted = calibration.adjust(bench, days, (calibration.load(ROOT) or {}).get("horizons"))
+        suggestion = f" With the horizon's known bias taken out ({days} days to go): {adjusted}."
+    print(f"Wrote {path.relative_to(ROOT)}. Market says {bench}.{suggestion} Fill in your probability, "
           "resolution rule, countries and topic, then run: python -m worldsim validate")
     return 0
 
@@ -224,6 +241,7 @@ def main(argv=None):
     sub.add_parser("score")
     b = sub.add_parser("backtest")
     b.add_argument("--by-volume", action="store_true", help="split the saved backtest by trading volume (no network)")
+    b.add_argument("--fit", action="store_true", help="fit the price-to-truth map by horizon from the saved backtest (no network)")
     ll = sub.add_parser("leadlag")
     ll.add_argument("--backfill", action="store_true", help="rebuild past firings from Telegram and archived advisories first")
     sub.add_parser("prices")

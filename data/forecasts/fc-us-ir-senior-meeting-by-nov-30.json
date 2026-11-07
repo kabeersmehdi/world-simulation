@@ -1,0 +1,35 @@
+{
+  "id": "fc-us-ir-senior-meeting-by-nov-30",
+  "question": "Next US-Iran senior diplomatic meeting by November 30, 2026?",
+  "resolution_criteria": "Yes if a direct or indirect senior-level US-Iran diplomatic meeting takes place by 11:59 PM ET on 11/30/2026, per the market's rules. Resolves with Polymarket market next-us-iran-senior-diplomatic-meeting-by-november-30-2026.",
+  "countries": [
+    "united-states",
+    "iran"
+  ],
+  "topic": "diplomacy",
+  "created_at": "2026-11-07T05:41:56+00:00",
+  "deadline": "2026-12-01T04:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "next-us-iran-senior-diplomatic-meeting-by-november-30-2026",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-11-07T05:41:56+00:00",
+      "probability": 0.2151,
+      "rationale": "11/07/2026: the crowd's price 28.0% with the horizon's known bias taken out (23 days to go, from the backtest's 30-day map), giving 21.5%. No independent news view. The lead-lag test found no indicator that moves before Polymarket, so the price is the best public starting point.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.28,
+      "view": "market"
+    }
+  ],
+  "resolution": null
+}

@@ -5,7 +5,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import ROOT, backtest, baserates, eventstudy, forecasts, live, markets, outlook, polls, scoring, store, timing
+from . import ROOT, actors, backtest, baserates, calibration, eventstudy, forecasts, live, markets, outlook, polls, scoring, store, timing
 from .contracts import validate
 from .watch import watch_status
 
@@ -35,6 +35,13 @@ def read_frontmatter(path):
 
 
 COUNTRY_ORDER = ["united-states", "israel", "iran"]
+
+
+def calibration_view(model):
+    """The fitted map plus sample prices, for the Accuracy tab."""
+    if not model:
+        return None
+    return {**model, "samples": {h: calibration.table(model["horizons"], h) for h in ("30", "7")}}
 
 
 def calibration_bands(accuracy, label="Ceasefire and strike markets", horizon="7"):
@@ -99,6 +106,8 @@ def build(root=ROOT, now=None, out_path=None):
         "signals": [o for o in observations if o["collector"] in ("adsb", "fleet", "advisory", "gpsjam", "firms")][:100],
         "markets": markets.board(root, now),
         "accuracy": accuracy,
+        "calibration": calibration_view(calibration.load(root)),
+        "players": actors.load_all(root),
         "reactions": reactions,
         "timing": timing_board,
         "outlook": view,

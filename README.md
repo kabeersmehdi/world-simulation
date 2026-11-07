@@ -72,6 +72,7 @@ Validation refuses 0% and 100%, deadlines before the start date, and any edit to
 | `python3 -m worldsim prices` | Refresh daily prices and the strike event study |
 | `python3 -m worldsim backtest` | Score resolved Polymarket markets (how good is the baseline?) |
 | `python3 -m worldsim backtest --by-volume` | Split that backtest by dollars traded: are thin markets worse? |
+| `python3 -m worldsim backtest --fit` | Fit the price-to-truth map by horizon from the saved backtest, with an out-of-sample check |
 | `python3 -m worldsim leadlag --backfill` | Do the indicators move before Polymarket? See `docs/lead-lag.md` |
 | `python3 -m unittest` | Run the tests (offline, about a second) |
 

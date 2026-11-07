@@ -1,0 +1,35 @@
+{
+  "id": "fc-us-ir-hormuz-agreement-by-nov-30",
+  "question": "US-Iran Hormuz Agreement by November 30?",
+  "resolution_criteria": "Yes if an official US-Iran agreement on traffic in the Strait of Hormuz is announced by 11:59 PM ET on 11/30/2026. Resolves with Polymarket market us-iran-hormuz-agreement-by-november-30.",
+  "countries": [
+    "united-states",
+    "iran"
+  ],
+  "topic": "diplomacy",
+  "created_at": "2026-11-07T05:41:56+00:00",
+  "deadline": "2026-12-01T04:59:00+00:00",
+  "status": "open",
+  "illustrative": false,
+  "reference_class": null,
+  "exclusive_group": null,
+  "market": {
+    "source": "polymarket",
+    "slug": "us-iran-hormuz-agreement-by-november-30",
+    "outcome_index": 0
+  },
+  "indicators_to_watch": [],
+  "raise_if": [],
+  "lower_if": [],
+  "history": [
+    {
+      "at": "2026-11-07T05:41:56+00:00",
+      "probability": 0.1204,
+      "rationale": "11/07/2026: the crowd's price 18.5% with the horizon's known bias taken out (23 days to go, from the backtest's 30-day map), giving 12.0%. No independent news view. The lead-lag test found no indicator that moves before Polymarket, so the price is the best public starting point.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.185,
+      "view": "market"
+    }
+  ],
+  "resolution": null
+}

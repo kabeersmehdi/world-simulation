@@ -40,6 +40,14 @@
       "rationale": "10/27/2026 update to the market price 42.5%. No independent news view.",
       "evidence_ids": [],
       "benchmark_probability": 0.425
+    },
+    {
+      "at": "2026-11-07T05:41:56+00:00",
+      "probability": 0.4418,
+      "rationale": "11/07/2026: the crowd's price 45.5% with the horizon's known bias taken out (54 days to go, from the backtest's 30-day map), giving 44.2%. No independent news view. The lead-lag test found no indicator that moves before Polymarket, so the price is the best public starting point. Home Front Command drills for a possible Iran war fired on 11/05 and 11/06 (feed), but the lead-lag test found such posts do not move before the price, so they do not change the number.",
+      "evidence_ids": [],
+      "benchmark_probability": 0.455,
+      "view": "market"
     }
   ],
   "resolution": null
