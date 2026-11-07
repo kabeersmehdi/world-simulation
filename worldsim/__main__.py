@@ -8,6 +8,7 @@
   watch          run collect every N minutes (default 15) until stopped
   prices         fetch daily prices and rerun the strike event study
   backtest       score resolved Polymarket markets on our topics (how good is the baseline?)
+  leadlag        do the indicators move before Polymarket? (--backfill rebuilds past firings first)
   new-forecast   write a forecast skeleton, optionally pre-filled from a Polymarket slug
 """
 
@@ -18,7 +19,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from . import ROOT, backtest, build, eventstudy, live, prices, collectors, forecasts, markets, scoring, store, timing
+from . import ROOT, backfill, backtest, build, leadlag, eventstudy, live, prices, collectors, forecasts, markets, scoring, store, timing
 from .contracts import ContractError
 
 
@@ -80,6 +81,26 @@ def cmd_score(args):
 
 
 def cmd_backtest(args):
+    if args.by_volume:
+        split = backtest.by_volume_from_file(ROOT)
+        if not split:
+            print("No saved backtest. Run: python3 -m worldsim backtest")
+            return 1
+        for b in split["buckets"]:
+            print(f"\n{b['label']}: {b['markets']} markets across {b['events']} events")
+            for h, v in b["horizons"].items():
+                if v["n"]:
+                    print(f"  {h:>2} days before close: n={v['n']}, Brier {v['market_brier']:.3f}, "
+                          f"calibration error {v['calibration_error']:.3f}, right side {v['hit_rate']:.0%}")
+        for h, c in split["thin_vs_thick"].items():
+            if c:
+                print(f"\n{h} days, thinnest minus thickest: calibration error {c['calibration_error_diff']:+.3f} "
+                      f"(95% range {c['calibration_error_ci'][0]:+.3f} to {c['calibration_error_ci'][1]:+.3f}), "
+                      f"Brier {c['brier_diff']:+.3f} (95% range {c['brier_ci'][0]:+.3f} to {c['brier_ci'][1]:+.3f})"
+                      + (f", long-shot overpricing {c['longshot_gap_diff']:+.3f} (95% range {c['longshot_gap_ci'][0]:+.3f} to {c['longshot_gap_ci'][1]:+.3f})"
+                         if c["longshot_gap_diff"] is not None else ""))
+        print("\nSaved data/backtests/by-volume.json.")
+        return 0
     print("Scoring resolved Polymarket markets (a few minutes)...")
     result = backtest.run(ROOT)
     for s in result["summary"]:
@@ -90,6 +111,24 @@ def cmd_backtest(args):
                       f"base rate {v['base_rate_brier']:.3f}, coin flip 0.250, right side {v['hit_rate']:.0%}")
     build.build(ROOT)
     print("\nSaved data/backtests/polymarket-geopolitics.json and rebuilt the dashboard.")
+    return 0
+
+
+def cmd_leadlag(args):
+    if args.backfill:
+        print("Rebuilding past indicator firings from Telegram and archived advisories (10 to 30 minutes)...")
+        backfill.run(ROOT)
+    print("Fetching hourly Polymarket prices and running the test...")
+    r = leadlag.run(ROOT)
+    print(f"\n{r['markets']['total']} markets ({r['markets']['watchlist']} watchlist, {r['markets']['resolved']} resolved) since {r['since']}.")
+    for ind, res in r["indicators"].items():
+        print(f"\n{ind}: {res['onsets']} onsets. {res['verdict']}.")
+        for h, v in res["horizons"].items():
+            if v.get("p_value") is not None:
+                print(f"  {h:>2}h: after {v['mean_move_after'] * 100:.2f} pts, before {v['mean_move_before'] * 100:.2f}, "
+                      f"random {v['mean_move_random'] * 100:.2f} (x{v['after_vs_random']:.2f}, p={v['p_value']:.3f}), "
+                      f"{v['onsets_with_markets']} onsets, {v['pairs']} pairs")
+    print("\nSaved data/leadlag/result.json.")
     return 0
 
 
@@ -183,7 +222,10 @@ def main(argv=None):
     v = sub.add_parser("validate")
     v.add_argument("--out", help="write the test build here instead of dashboard/data.json")
     sub.add_parser("score")
-    sub.add_parser("backtest")
+    b = sub.add_parser("backtest")
+    b.add_argument("--by-volume", action="store_true", help="split the saved backtest by trading volume (no network)")
+    ll = sub.add_parser("leadlag")
+    ll.add_argument("--backfill", action="store_true", help="rebuild past firings from Telegram and archived advisories first")
     sub.add_parser("prices")
     sub.add_parser("live")
     w = sub.add_parser("watch")
@@ -193,7 +235,7 @@ def main(argv=None):
     n.add_argument("--market", help="Polymarket slug to pre-fill question, deadline and market price")
     args = p.parse_args(argv)
     return {"collect": cmd_collect, "build": cmd_build, "validate": cmd_validate,
-            "score": cmd_score, "backtest": cmd_backtest, "prices": cmd_prices, "live": cmd_live, "watch": cmd_watch, "new-forecast": cmd_new_forecast}[args.cmd](args)
+            "score": cmd_score, "backtest": cmd_backtest, "leadlag": cmd_leadlag, "prices": cmd_prices, "live": cmd_live, "watch": cmd_watch, "new-forecast": cmd_new_forecast}[args.cmd](args)
 
 
 if __name__ == "__main__":

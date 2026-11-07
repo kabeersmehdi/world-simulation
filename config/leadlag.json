@@ -1,0 +1,24 @@
+{
+  "note": "Lead-lag test settings. See docs/lead-lag.md. since: start of the study window (covers the 2026 Iran war). quiet_hours: a firing only counts as a new onset after this long without one. big_move: a move of at least this many probability points counts as big.",
+  "since": "2026-01-01",
+  "quiet_hours": 48,
+  "horizons": [1, 6, 24, 72],
+  "random_draws": 1000,
+  "big_move": 0.05,
+  "alpha": 0.05,
+  "min_onsets": 10,
+  "indicators": ["airspace", "home_front", "reserves", "late_night_cabinet", "us_advisory", "us_military_moves", "gps_jamming", "infrastructure_fire"],
+  "topics": ["military", "sanctions", "diplomacy", "economy"],
+  "from_backtest": {
+    "words": ["strike", "military action", "attack", "ceasefire", "invade", "war", "blockade", "hormuz", "enrich", "nuclear", "iaea", "missile"],
+    "places": "iran|israel|hezbollah|houthi|lebanon|hormuz|gaza|yemen|syria|iraq|beirut"
+  },
+  "telegram_sources": ["tg-kann-news", "tg-amitsegal", "tg-abualiexpress", "tg-idf", "tg-almasirah"],
+  "max_pages": 2500,
+  "untested": {
+    "gps_jamming": "No free hourly history. gpsjam.org keeps daily maps, but reading them needs an H3 hex library, which breaks the standard-library rule.",
+    "infrastructure_fire": "NASA FIRMS history needs a free key, and none is set in config/local.json.",
+    "airline_cancellations": "The repo has no airline cancellation collector, so there is nothing to test.",
+    "us_military_moves": "The aircraft feed (adsb.lol) is live only and the fleet tracker is weekly; only the live log counts."
+  }
+}

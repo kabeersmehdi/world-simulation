@@ -7,6 +7,7 @@ effective sample is smaller than the market count; the summary says so.
 """
 
 import json
+import random
 import time
 import urllib.parse
 from datetime import datetime, timedelta, timezone
@@ -118,6 +119,121 @@ def summarize(rows, label):
             "calibration": bands,
         }
     return out
+
+
+def calibration_error(rows, h):
+    """Count-weighted gap between average price and how often it happened, over ten price bands."""
+    scored = [r for r in rows if r.get(f"p{h}") is not None]
+    if not scored:
+        return None
+    gap = 0.0
+    for i in range(10):
+        b = [r for r in scored if i / 10 <= r[f"p{h}"] < (i + 1) / 10 or (i == 9 and r[f"p{h}"] == 1)]
+        if b:
+            gap += len(b) * abs(sum(r[f"p{h}"] for r in b) / len(b) - sum(r["outcome"] for r in b) / len(b))
+    return gap / len(scored)
+
+
+def _bucket_stats(rows):
+    out = {}
+    for h in HORIZONS:
+        scored = [r for r in rows if r.get(f"p{h}") is not None]
+        if not scored:
+            out[str(h)] = {"n": 0}
+            continue
+        out[str(h)] = {
+            "n": len(scored), "events": len({r["event"] for r in scored}),
+            "market_brier": sum(brier(r[f"p{h}"], r["outcome"]) for r in scored) / len(scored),
+            "calibration_error": calibration_error(scored, h),
+            "hit_rate": sum((r[f"p{h}"] >= 0.5) == r["outcome"] for r in scored) / len(scored),
+            "yes_share": sum(r["outcome"] for r in scored) / len(scored),
+            **_longshot(scored, h),
+        }
+    return out
+
+
+def _longshot(rows, h, cut=0.3):
+    """Signed gap (price minus how often it happened) for long shots under `cut` and favorites over 1 - cut.
+
+    A positive long-shot gap means the crowd paid too much for unlikely
+    outcomes, the classic favorite-longshot bias.
+    """
+    out = {}
+    for name, part in (("longshot", [r for r in rows if r[f"p{h}"] < cut]),
+                       ("favorite", [r for r in rows if r[f"p{h}"] > 1 - cut])):
+        out[f"{name}_n"] = len(part)
+        out[f"{name}_gap"] = (sum(r[f"p{h}"] for r in part) - sum(r["outcome"] for r in part)) / len(part) if part else None
+    return out
+
+
+def _resample(rows, rng):
+    """Draw whole events with replacement, so ladder markets on one event stay together."""
+    by_event = {}
+    for r in rows:
+        by_event.setdefault(r["event"], []).append(r)
+    events = list(by_event)
+    return [r for _ in events for r in by_event[rng.choice(events)]]
+
+
+def by_volume(rows, buckets=4, draws=1000, seed=7):
+    """Split resolved markets into equal-size volume buckets and compare thin with thick.
+
+    The thin-minus-thick gaps come with a 95% range from an event-level
+    bootstrap. A range that crosses zero means no clear difference.
+    """
+    rows = sorted(rows, key=lambda r: r["volume"])
+    size = len(rows) / buckets
+    groups = [rows[int(i * size):int((i + 1) * size)] for i in range(buckets)]
+    out = {"buckets": [], "thin_vs_thick": {}}
+    for i, g in enumerate(groups):
+        if not g:
+            continue
+        lo, hi = g[0]["volume"], g[-1]["volume"]
+        out["buckets"].append({"label": f"Volume bucket {i + 1} of {buckets} (${lo:,.0f} to ${hi:,.0f})",
+                               "min_volume": lo, "max_volume": hi, "markets": len(g),
+                               "events": len({r["event"] for r in g}), "horizons": _bucket_stats(g)})
+    thin, thick = groups[0], groups[-1]
+    rng = random.Random(seed)
+    for h in HORIZONS:
+        t_rows = [r for r in thin if r.get(f"p{h}") is not None]
+        k_rows = [r for r in thick if r.get(f"p{h}") is not None]
+        if not t_rows or not k_rows:
+            out["thin_vs_thick"][str(h)] = None
+            continue
+
+        def gaps(a, b):
+            ce = calibration_error(a, h) - calibration_error(b, h)
+            br = (sum(brier(r[f"p{h}"], r["outcome"]) for r in a) / len(a)
+                  - sum(brier(r[f"p{h}"], r["outcome"]) for r in b) / len(b))
+            ls_a, ls_b = _longshot(a, h)["longshot_gap"], _longshot(b, h)["longshot_gap"]
+            return ce, br, (ls_a - ls_b) if ls_a is not None and ls_b is not None else None, ls_a
+
+        ce, br, ls, thin_ls = gaps(t_rows, k_rows)
+        sims = [gaps(_resample(t_rows, rng), _resample(k_rows, rng)) for _ in range(draws)]
+        lo, hi = 0.025, 0.975
+
+        def ci(i):
+            xs = sorted(x[i] for x in sims if x[i] is not None)
+            return [xs[int(lo * len(xs))], xs[int(hi * len(xs)) - 1]] if xs else None
+
+        out["thin_vs_thick"][str(h)] = {"calibration_error_diff": ce, "calibration_error_ci": ci(0),
+                                        "brier_diff": br, "brier_ci": ci(1),
+                                        "longshot_gap_diff": ls, "longshot_gap_ci": ci(2),
+                                        "thin_longshot_gap": thin_ls, "thin_longshot_gap_ci": ci(3)}
+    return out
+
+
+def by_volume_from_file(root=ROOT, buckets=4):
+    path = Path(root) / "data" / "backtests" / "polymarket-geopolitics.json"
+    if not path.exists():
+        return None
+    data = json.loads(path.read_text(encoding="utf-8"))
+    result = {"source_run_at": data["run_at"], "min_volume": data["min_volume"],
+              "note": "Equal-size buckets by dollars traded. Calibration error is the count-weighted gap between average price and how often the event happened, across ten price bands. Thin-minus-thick ranges come from resampling whole events.",
+              **by_volume(data["rows"], buckets)}
+    out = Path(root) / "data" / "backtests" / "by-volume.json"
+    out.write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return result
 
 
 def run(root=ROOT, fetch=fetch_text, now=None, pause=0.15):

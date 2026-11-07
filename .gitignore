@@ -14,3 +14,5 @@ data/prices/
 # Machine-specific settings (TradingView tool path) and live quotes.
 config/local.json
 data/live/
+# Hourly Polymarket prices for the lead-lag test are re-fetched by `python -m worldsim leadlag`.
+data/leadlag/prices/

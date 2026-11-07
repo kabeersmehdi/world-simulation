@@ -1,0 +1,255 @@
+{
+ "source_run_at": "2026-10-19T03:08:57+00:00",
+ "min_volume": 10000,
+ "note": "Equal-size buckets by dollars traded. Calibration error is the count-weighted gap between average price and how often the event happened, across ten price bands. Thin-minus-thick ranges come from resampling whole events.",
+ "buckets": [
+  {
+   "label": "Volume bucket 1 of 4 ($10,012 to $40,611)",
+   "min_volume": 10012.224766,
+   "max_volume": 40611.057184,
+   "markets": 355,
+   "events": 112,
+   "horizons": {
+    "30": {
+     "n": 48,
+     "events": 24,
+     "market_brier": 0.045629625,
+     "calibration_error": 0.09804166666666668,
+     "hit_rate": 0.9791666666666666,
+     "yes_share": 0.0625,
+     "longshot_n": 40,
+     "longshot_gap": 0.05615000000000001,
+     "favorite_n": 2,
+     "favorite_gap": -0.06000000000000005
+    },
+    "7": {
+     "n": 181,
+     "events": 76,
+     "market_brier": 0.07535435773480666,
+     "calibration_error": 0.07730662983425415,
+     "hit_rate": 0.9060773480662984,
+     "yes_share": 0.281767955801105,
+     "longshot_n": 112,
+     "longshot_gap": 0.05936160714285713,
+     "favorite_n": 32,
+     "favorite_gap": -0.13371875
+    },
+    "1": {
+     "n": 297,
+     "events": 106,
+     "market_brier": 0.07580117676767675,
+     "calibration_error": 0.039771043771043735,
+     "hit_rate": 0.8821548821548821,
+     "yes_share": 0.3164983164983165,
+     "longshot_n": 196,
+     "longshot_gap": 0.001693877551020394,
+     "favorite_n": 63,
+     "favorite_gap": 0.0021904761904761607
+    }
+   }
+  },
+  {
+   "label": "Volume bucket 2 of 4 ($40,738 to $112,618)",
+   "min_volume": 40738.447475000015,
+   "max_volume": 112618.49593400002,
+   "markets": 356,
+   "events": 128,
+   "horizons": {
+    "30": {
+     "n": 64,
+     "events": 38,
+     "market_brier": 0.08610788281250001,
+     "calibration_error": 0.1501875,
+     "hit_rate": 0.890625,
+     "yes_share": 0.078125,
+     "longshot_n": 44,
+     "longshot_gap": 0.09856818181818183,
+     "favorite_n": 3,
+     "favorite_gap": 0.24333333333333332
+    },
+    "7": {
+     "n": 201,
+     "events": 93,
+     "market_brier": 0.11485134825870645,
+     "calibration_error": 0.059353233830845786,
+     "hit_rate": 0.8258706467661692,
+     "yes_share": 0.25870646766169153,
+     "longshot_n": 123,
+     "longshot_gap": 0.0030894308943088915,
+     "favorite_n": 19,
+     "favorite_gap": -0.019736842105263157
+    },
+    "1": {
+     "n": 319,
+     "events": 124,
+     "market_brier": 0.08497489655172416,
+     "calibration_error": 0.08221943573667712,
+     "hit_rate": 0.8495297805642633,
+     "yes_share": 0.3072100313479624,
+     "longshot_n": 205,
+     "longshot_gap": 0.004941463414634102,
+     "favorite_n": 44,
+     "favorite_gap": -0.0684090909090907
+    }
+   }
+  },
+  {
+   "label": "Volume bucket 3 of 4 ($113,425 to $578,141)",
+   "min_volume": 113425.45657199998,
+   "max_volume": 578141.2326069996,
+   "markets": 355,
+   "events": 138,
+   "horizons": {
+    "30": {
+     "n": 64,
+     "events": 53,
+     "market_brier": 0.07846207812500001,
+     "calibration_error": 0.09451562500000002,
+     "hit_rate": 0.875,
+     "yes_share": 0.125,
+     "longshot_n": 52,
+     "longshot_gap": 0.047576923076923065,
+     "favorite_n": 4,
+     "favorite_gap": -0.17500000000000004
+    },
+    "7": {
+     "n": 222,
+     "events": 102,
+     "market_brier": 0.10065672522522523,
+     "calibration_error": 0.07071621621621621,
+     "hit_rate": 0.8198198198198198,
+     "yes_share": 0.23873873873873874,
+     "longshot_n": 148,
+     "longshot_gap": -0.005435810810810805,
+     "favorite_n": 18,
+     "favorite_gap": -0.08463888888888871
+    },
+    "1": {
+     "n": 332,
+     "events": 134,
+     "market_brier": 0.08920495331325294,
+     "calibration_error": 0.11354216867469881,
+     "hit_rate": 0.8524096385542169,
+     "yes_share": 0.3704819277108434,
+     "longshot_n": 211,
+     "longshot_gap": -0.027334123222748835,
+     "favorite_n": 60,
+     "favorite_gap": -0.02901666666666678
+    }
+   }
+  },
+  {
+   "label": "Volume bucket 4 of 4 ($578,178 to $269,049,107)",
+   "min_volume": 578178.351629,
+   "max_volume": 269049107.0837461,
+   "markets": 356,
+   "events": 110,
+   "horizons": {
+    "30": {
+     "n": 108,
+     "events": 58,
+     "market_brier": 0.11533843981481484,
+     "calibration_error": 0.07411111111111114,
+     "hit_rate": 0.8055555555555556,
+     "yes_share": 0.26851851851851855,
+     "longshot_n": 74,
+     "longshot_gap": 0.019243243243243224,
+     "favorite_n": 4,
+     "favorite_gap": -0.1874999999999999
+    },
+    "7": {
+     "n": 250,
+     "events": 97,
+     "market_brier": 0.10995920199999999,
+     "calibration_error": 0.08185200000000001,
+     "hit_rate": 0.84,
+     "yes_share": 0.32,
+     "longshot_n": 171,
+     "longshot_gap": -0.03478362573099415,
+     "favorite_n": 28,
+     "favorite_gap": -0.07307142857142855
+    },
+    "1": {
+     "n": 326,
+     "events": 108,
+     "market_brier": 0.10152495092024529,
+     "calibration_error": 0.08131901840490803,
+     "hit_rate": 0.852760736196319,
+     "yes_share": 0.32515337423312884,
+     "longshot_n": 230,
+     "longshot_gap": -0.05798913043478263,
+     "favorite_n": 72,
+     "favorite_gap": 0.05615972222222195
+    }
+   }
+  }
+ ],
+ "thin_vs_thick": {
+  "30": {
+   "calibration_error_diff": 0.023930555555555538,
+   "calibration_error_ci": [
+    -0.06554646752015172,
+    0.09183674803836095
+   ],
+   "brier_diff": -0.06970881481481483,
+   "brier_ci": [
+    -0.1244840981054836,
+    -0.002112299850634783
+   ],
+   "longshot_gap_diff": 0.03690675675675679,
+   "longshot_gap_ci": [
+    -0.06126985111662531,
+    0.1261211111111111
+   ],
+   "thin_longshot_gap": 0.05615000000000001,
+   "thin_longshot_gap_ci": [
+    -0.025863636363636363,
+    0.11281034482758623
+   ]
+  },
+  "7": {
+   "calibration_error_diff": -0.0045453701657458545,
+   "calibration_error_ci": [
+    -0.07201111859838272,
+    0.0649030263863825
+   ],
+   "brier_diff": -0.034604844265193335,
+   "brier_ci": [
+    -0.08323730243902448,
+    0.012669708899835805
+   ],
+   "longshot_gap_diff": 0.09414523287385129,
+   "longshot_gap_ci": [
+    0.045902072109407444,
+    0.15462464387464386
+   ],
+   "thin_longshot_gap": 0.05936160714285713,
+   "thin_longshot_gap_ci": [
+    0.027551181102362238,
+    0.09258333333333334
+   ]
+  },
+  "1": {
+   "calibration_error_diff": -0.041547974633864296,
+   "calibration_error_ci": [
+    -0.08005122010342598,
+    0.01811484757454375
+   ],
+   "brier_diff": -0.025723774152568532,
+   "brier_ci": [
+    -0.0740494869047618,
+    0.020119355689207502
+   ],
+   "longshot_gap_diff": 0.059683007985803026,
+   "longshot_gap_ci": [
+    0.004890550807217495,
+    0.11439222756410249
+   ],
+   "thin_longshot_gap": 0.001693877551020394,
+   "thin_longshot_gap_ci": [
+    -0.03249604743083005,
+    0.03231043956043954
+   ]
+  }
+ }
+}
