@@ -124,6 +124,17 @@ class KnowledgeLockTests(unittest.TestCase):
             self.assertIn(f"{floor} days", doc)
             self.assertIn(f"{horizon}-day map", doc)
 
+    def test_fear_settings_match_doc(self):
+        import json
+        cfg = json.loads((ROOT / "config" / "fear.json").read_text(encoding="utf-8"))
+        doc = (ROOT / "docs" / "fear-gauges.md").read_text(encoding="utf-8")
+        self.assertIn(f"`big_move_sd = {cfg['big_move_sd']}`", doc)
+        self.assertIn(f"`quiet_days = {cfg['quiet_days']}`", doc)
+        self.assertIn(f"`close_hour_utc = {cfg['close_hour_utc']}`", doc)
+        self.assertIn(", ".join(str(h) for h in cfg["horizons"]) + " hours", doc)
+        for g in cfg["gauges"]:
+            self.assertIn(g["name"], doc)
+
     def test_small_sample_matches_doc(self):
         from worldsim.baserates import SMALL_SAMPLE
         self.assertIn(f"Fewer than {SMALL_SAMPLE} events", (ROOT / "docs" / "base-rates.md").read_text())

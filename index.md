@@ -24,6 +24,7 @@ The curated knowledge this tool reads as ground truth. Code reads these files; f
 - [Plain-English outlook](docs/outlook.md): verdict words, ours versus Polymarket, the brief for the stocks report
 - [Market reactions to past strikes](docs/event-study.md): how oil, the shekel, defense and tanker stocks moved after each strike
 - [Lead-lag test](docs/lead-lag.md): do the indicators move before Polymarket, and are thin markets worse priced? (No tested lead; a long-shot hint)
+- [Fear gauges](docs/fear-gauges.md): do option prices, oil, gold, the shekel and defense stocks move before Polymarket?
 - [Ideology, religion and doctrine](docs/ideology-research.md): recording the texts and doctrines leaders invoke
 - [Architecture](docs/architecture.md): stages, contracts, guards, tests
 - [Original build spec](docs/build-spec.md): the full spec this repo starts from

@@ -5,7 +5,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import ROOT, actors, backtest, baserates, calibration, eventstudy, forecasts, live, markets, outlook, polls, scoring, store, timing
+from . import ROOT, actors, backtest, baserates, calibration, eventstudy, fear, forecasts, live, markets, outlook, polls, scoring, store, timing
 from .contracts import validate
 from .watch import watch_status
 
@@ -35,6 +35,28 @@ def read_frontmatter(path):
 
 
 COUNTRY_ORDER = ["united-states", "israel", "iran"]
+
+
+def leads_view(root):
+    """Both lead-lag tests, trimmed to what the Accuracy tab shows: did the signal move before the crowd?"""
+    def rows(items, horizons):
+        out = []
+        for key, r in (items or {}).items():
+            best = None
+            for h in horizons:
+                x = r.get("horizons", {}).get(str(h))
+                if x and x.get("p_value") is not None:
+                    best = {"hours": h, "after": x["mean_move_after"], "random": x["mean_move_random"], "p": x["p_value"]}
+                    break
+            out.append({"id": key, "name": r.get("name") or key, "onsets": r.get("onsets", 0), "verdict": r.get("verdict", ""), "first": best})
+        return out
+    path = Path(root) / "data" / "leadlag" / "result.json"
+    ll = json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+    fg = fear.load(root)
+    return {
+        "indicators": {"run_at": ll["run_at"], "markets": ll["markets"]["total"], "rows": rows(ll["indicators"], ll["horizons"]), "untested": ll.get("untested", {})} if ll else None,
+        "gauges": {"run_at": fg["run_at"], "markets": fg["markets"], "rows": rows(fg["gauges"], fg["horizons"]), "big_move_sd": fg["big_move_sd"]} if fg else None,
+    }
 
 
 def calibration_view(model):
@@ -107,6 +129,7 @@ def build(root=ROOT, now=None, out_path=None):
         "markets": markets.board(root, now),
         "accuracy": accuracy,
         "calibration": calibration_view(calibration.load(root)),
+        "leads": leads_view(root),
         "players": actors.load_all(root),
         "reactions": reactions,
         "timing": timing_board,

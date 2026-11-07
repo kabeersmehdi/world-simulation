@@ -33,25 +33,27 @@ def parse_chart(text):
     return sorted(rows.items())
 
 
+def fetch_one(ticker, history_start, root=ROOT, fetch=fetch_text, now=None):
+    """Fetch and save one ticker's daily closes since history_start. Returns a report row."""
+    start = int(datetime.fromisoformat(history_start).replace(tzinfo=timezone.utc).timestamp())
+    end = int((now or datetime.now(timezone.utc)).timestamp())
+    try:
+        rows = parse_chart(fetch(CHART_URL.format(ticker=urllib.parse.quote(ticker), start=start, end=end)))
+        if len(rows) < 30:
+            raise ValueError(f"only {len(rows)} days returned")
+        path = _file(root, ticker)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps({"ticker": ticker, "source": "Yahoo Finance chart endpoint",
+                                    "fetched_at": (now or datetime.now(timezone.utc)).replace(microsecond=0).isoformat(),
+                                    "rows": rows}) + "\n")
+        return {"source": f"prices:{ticker}", "ok": True, "items": len(rows), "flagged": 0}
+    except Exception as exc:  # noqa: BLE001
+        return {"source": f"prices:{ticker}", "ok": False, "error": f"{type(exc).__name__}: {exc}"}
+
+
 def collect(root=ROOT, fetch=fetch_text, now=None):
     cfg = load_config(root)
-    start = int(datetime.fromisoformat(cfg["history_start"]).replace(tzinfo=timezone.utc).timestamp())
-    end = int((now or datetime.now(timezone.utc)).timestamp())
-    report = []
-    for asset in cfg["assets"]:
-        try:
-            rows = parse_chart(fetch(CHART_URL.format(ticker=urllib.parse.quote(asset["ticker"]), start=start, end=end)))
-            if len(rows) < 30:
-                raise ValueError(f"only {len(rows)} days returned")
-            path = _file(root, asset["ticker"])
-            path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(json.dumps({"ticker": asset["ticker"], "source": "Yahoo Finance chart endpoint",
-                                        "fetched_at": (now or datetime.now(timezone.utc)).replace(microsecond=0).isoformat(),
-                                        "rows": rows}) + "\n")
-            report.append({"source": f"prices:{asset['ticker']}", "ok": True, "items": len(rows), "flagged": 0})
-        except Exception as exc:  # noqa: BLE001
-            report.append({"source": f"prices:{asset['ticker']}", "ok": False, "error": f"{type(exc).__name__}: {exc}"})
-    return report
+    return [fetch_one(asset["ticker"], cfg["history_start"], root, fetch, now) for asset in cfg["assets"]]
 
 
 def load(ticker, root=ROOT):

@@ -1,0 +1,1092 @@
+{
+ "run_at": "2026-11-07T05:59:44+00:00",
+ "since": "2026-01-01",
+ "close_hour_utc": 21,
+ "big_move_sd": 1.5,
+ "quiet_days": 5,
+ "horizons": [
+  24,
+  72,
+  120
+ ],
+ "random_draws": 1000,
+ "big_move": 0.05,
+ "markets": 823,
+ "note": "Moves are absolute changes in the Yes price of Polymarket strike and ceasefire markets, in probability points, from hourly prices, measured from the US close on the day the gauge fired. The baseline is random trading days from the same gauge's calendar.",
+ "gauges": {
+  "ovx": {
+   "onsets": 9,
+   "horizons": {
+    "24": {
+     "onsets_with_markets": 9,
+     "pairs": 440,
+     "largest_onset": "2026-02-27",
+     "mean_move_after_without_largest": 0.03927816091954023,
+     "p_value_without_largest": 0.2907092907092907,
+     "mean_move_after": 0.04028977272727272,
+     "mean_move_before": 0.03765568181818181,
+     "mean_move_random": 0.03596563276423516,
+     "after_vs_random": 1.1202297757802155,
+     "before_vs_random": 1.0469906664794528,
+     "big_move_share_after": 0.26136363636363635,
+     "big_move_share_random": 0.21160899146806952,
+     "p_value": 0.24475524475524477,
+     "p_value_before": 0.4405594405594406
+    },
+    "72": {
+     "onsets_with_markets": 9,
+     "pairs": 310,
+     "largest_onset": "2026-02-27",
+     "mean_move_after_without_largest": 0.06406065573770492,
+     "p_value_without_largest": 0.3336663336663337,
+     "mean_move_after": 0.06609193548387098,
+     "mean_move_before": 0.050016129032258064,
+     "mean_move_random": 0.059676041828731624,
+     "after_vs_random": 1.1075120510430763,
+     "before_vs_random": 0.838127454495102,
+     "big_move_share_after": 0.38387096774193546,
+     "big_move_share_random": 0.3383538506609691,
+     "p_value": 0.26073926073926074,
+     "p_value_before": 0.7132867132867133
+    },
+    "120": {
+     "onsets_with_markets": 9,
+     "pairs": 270,
+     "largest_onset": "2026-02-27",
+     "mean_move_after_without_largest": 0.07026981132075472,
+     "p_value_without_largest": 0.3016983016983017,
+     "mean_move_after": 0.07340740740740741,
+     "mean_move_before": 0.05770185185185184,
+     "mean_move_random": 0.06456430060429638,
+     "after_vs_random": 1.1369658885846052,
+     "before_vs_random": 0.8937114057115971,
+     "big_move_share_after": 0.3851851851851852,
+     "big_move_share_random": 0.36744117506576646,
+     "p_value": 0.21878121878121878,
+     "p_value_before": 0.7462537462537463
+    }
+   },
+   "verdict": "too few onsets to judge (9)",
+   "name": "Oil options fear (OVX)",
+   "firings": [
+    {
+     "date": "2026-01-29",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-02-18",
+     "swings": 3.0
+    },
+    {
+     "date": "2026-02-27",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-03-10",
+     "swings": 2.3
+    },
+    {
+     "date": "2026-04-21",
+     "swings": 3.3
+    },
+    {
+     "date": "2026-07-07",
+     "swings": 2.1
+    },
+    {
+     "date": "2026-07-29",
+     "swings": 2.9
+    },
+    {
+     "date": "2026-08-06",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-09-10",
+     "swings": 2.9
+    }
+   ],
+   "trading_days": 199
+  },
+  "vix": {
+   "onsets": 7,
+   "horizons": {
+    "24": {
+     "onsets_with_markets": 7,
+     "pairs": 321,
+     "largest_onset": "2026-03-27",
+     "mean_move_after_without_largest": 0.02518529411764705,
+     "p_value_without_largest": 0.9110889110889111,
+     "mean_move_after": 0.0393006230529595,
+     "mean_move_before": 0.03759813084112148,
+     "mean_move_random": 0.036052686949926076,
+     "after_vs_random": 1.0900886002628463,
+     "before_vs_random": 1.042866261073464,
+     "big_move_share_after": 0.22741433021806853,
+     "big_move_share_random": 0.21266030578836273,
+     "p_value": 0.32967032967032966,
+     "p_value_before": 0.4205794205794206
+    },
+    "72": {
+     "onsets_with_markets": 7,
+     "pairs": 262,
+     "largest_onset": "2026-01-20",
+     "mean_move_after_without_largest": 0.06085067873303167,
+     "p_value_without_largest": 0.4085914085914086,
+     "mean_move_after": 0.06586259541984732,
+     "mean_move_before": 0.08903244274809162,
+     "mean_move_random": 0.058779062625380636,
+     "after_vs_random": 1.1205111561511707,
+     "before_vs_random": 1.514696539404282,
+     "big_move_share_after": 0.41603053435114506,
+     "big_move_share_random": 0.33559618372601535,
+     "p_value": 0.27972027972027974,
+     "p_value_before": 0.014985014985014986
+    },
+    "120": {
+     "onsets_with_markets": 7,
+     "pairs": 106,
+     "largest_onset": "2026-07-29",
+     "mean_move_after_without_largest": 0.054298850574712634,
+     "p_value_without_largest": 0.7732267732267732,
+     "mean_move_after": 0.05798584905660377,
+     "mean_move_before": 0.060056603773584905,
+     "mean_move_random": 0.06427105373490759,
+     "after_vs_random": 0.902207847653661,
+     "before_vs_random": 0.9344269353556018,
+     "big_move_share_after": 0.3490566037735849,
+     "big_move_share_random": 0.366694425402204,
+     "p_value": 0.6503496503496503,
+     "p_value_before": 0.6393606393606394
+    }
+   },
+   "verdict": "too few onsets to judge (7)",
+   "name": "Stock options fear (VIX)",
+   "firings": [
+    {
+     "date": "2026-01-20",
+     "swings": 1.9
+    },
+    {
+     "date": "2026-03-06",
+     "swings": 2.5
+    },
+    {
+     "date": "2026-03-27",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-06-05",
+     "swings": 4.2
+    },
+    {
+     "date": "2026-07-29",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-10-16",
+     "swings": 2.4
+    },
+    {
+     "date": "2026-10-30",
+     "swings": 1.5
+    }
+   ],
+   "trading_days": 216
+  },
+  "skew": {
+   "onsets": 10,
+   "horizons": {
+    "24": {
+     "onsets_with_markets": 10,
+     "pairs": 368,
+     "largest_onset": "2026-04-13",
+     "mean_move_after_without_largest": 0.026455782312925172,
+     "p_value_without_largest": 0.9240759240759241,
+     "mean_move_after": 0.03116576086956522,
+     "mean_move_before": 0.03285597826086956,
+     "mean_move_random": 0.035768136019349625,
+     "after_vs_random": 0.8713275092866276,
+     "before_vs_random": 0.9185823449982224,
+     "big_move_share_after": 0.18478260869565216,
+     "big_move_share_random": 0.2106606863118474,
+     "p_value": 0.7402597402597403,
+     "p_value_before": 0.6703296703296703
+    },
+    "72": {
+     "onsets_with_markets": 10,
+     "pairs": 325,
+     "largest_onset": "2026-03-09",
+     "mean_move_after_without_largest": 0.047686688311688305,
+     "p_value_without_largest": 0.8861138861138861,
+     "mean_move_after": 0.04969230769230769,
+     "mean_move_before": 0.04563999999999999,
+     "mean_move_random": 0.05889370828325817,
+     "after_vs_random": 0.843762587563769,
+     "before_vs_random": 0.774955446522191,
+     "big_move_share_after": 0.3169230769230769,
+     "big_move_share_random": 0.3346493407553871,
+     "p_value": 0.8251748251748252,
+     "p_value_before": 0.8271728271728271
+    },
+    "120": {
+     "onsets_with_markets": 10,
+     "pairs": 257,
+     "largest_onset": "2026-03-09",
+     "mean_move_after_without_largest": 0.06154564315352699,
+     "p_value_without_largest": 0.5484515484515484,
+     "mean_move_after": 0.06409533073929961,
+     "mean_move_before": 0.060614785992217896,
+     "mean_move_random": 0.06393063758633327,
+     "after_vs_random": 1.002576122484997,
+     "before_vs_random": 0.9481336066821235,
+     "big_move_share_after": 0.38910505836575876,
+     "big_move_share_random": 0.3630219085444575,
+     "p_value": 0.46253746253746253,
+     "p_value_before": 0.6413586413586414
+    }
+   },
+   "verdict": "no lead: moves after it fires look like random times",
+   "name": "S&P tail-risk index (SKEW)",
+   "firings": [
+    {
+     "date": "2026-03-09",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-04-13",
+     "swings": 3.6
+    },
+    {
+     "date": "2026-05-15",
+     "swings": 1.8
+    },
+    {
+     "date": "2026-06-05",
+     "swings": 2.8
+    },
+    {
+     "date": "2026-07-21",
+     "swings": 1.5
+    },
+    {
+     "date": "2026-08-05",
+     "swings": 1.9
+    },
+    {
+     "date": "2026-08-28",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-09-11",
+     "swings": 2.1
+    },
+    {
+     "date": "2026-10-08",
+     "swings": 2.0
+    },
+    {
+     "date": "2026-10-16",
+     "swings": 2.2
+    }
+   ],
+   "trading_days": 214
+  },
+  "brent_wti": {
+   "onsets": 7,
+   "horizons": {
+    "24": {
+     "onsets_with_markets": 7,
+     "pairs": 422,
+     "largest_onset": "2026-04-08",
+     "mean_move_after_without_largest": 0.035866366366366365,
+     "p_value_without_largest": 0.48951048951048953,
+     "mean_move_after": 0.0417345971563981,
+     "mean_move_before": 0.06031161137440756,
+     "mean_move_random": 0.035926960979889656,
+     "after_vs_random": 1.161651195038715,
+     "before_vs_random": 1.6787284459759166,
+     "big_move_share_after": 0.2796208530805687,
+     "big_move_share_random": 0.21134354198176689,
+     "p_value": 0.2077922077922078,
+     "p_value_before": 0.023976023976023976
+    },
+    "72": {
+     "onsets_with_markets": 7,
+     "pairs": 270,
+     "largest_onset": "2026-05-20",
+     "mean_move_after_without_largest": 0.06610358565737053,
+     "p_value_without_largest": 0.27472527472527475,
+     "mean_move_after": 0.06985925925925926,
+     "mean_move_before": 0.07152777777777776,
+     "mean_move_random": 0.05926545988332649,
+     "after_vs_random": 1.1787516606939077,
+     "before_vs_random": 1.2069049648579728,
+     "big_move_share_after": 0.3925925925925926,
+     "big_move_share_random": 0.33724488337557595,
+     "p_value": 0.18181818181818182,
+     "p_value_before": 0.1048951048951049
+    },
+    "120": {
+     "onsets_with_markets": 7,
+     "pairs": 224,
+     "largest_onset": "2026-03-02",
+     "mean_move_after_without_largest": 0.06410958904109589,
+     "p_value_without_largest": 0.48151848151848153,
+     "mean_move_after": 0.06472544642857142,
+     "mean_move_before": 0.07646874999999999,
+     "mean_move_random": 0.06443074833160906,
+     "after_vs_random": 1.0045738735711345,
+     "before_vs_random": 1.1868362851605312,
+     "big_move_share_after": 0.41964285714285715,
+     "big_move_share_random": 0.36847663574026757,
+     "p_value": 0.46053946053946054,
+     "p_value_before": 0.21178821178821178
+    }
+   },
+   "verdict": "too few onsets to judge (7)",
+   "name": "Brent minus WTI (seaborne oil premium)",
+   "firings": [
+    {
+     "date": "2026-03-02",
+     "swings": 3.7
+    },
+    {
+     "date": "2026-03-16",
+     "swings": 5.7
+    },
+    {
+     "date": "2026-03-26",
+     "swings": 3.1
+    },
+    {
+     "date": "2026-04-08",
+     "swings": 3.2
+    },
+    {
+     "date": "2026-04-22",
+     "swings": 2.0
+    },
+    {
+     "date": "2026-05-20",
+     "swings": 2.4
+    },
+    {
+     "date": "2026-09-23",
+     "swings": 4.4
+    }
+   ],
+   "trading_days": 200
+  },
+  "brent": {
+   "onsets": 13,
+   "horizons": {
+    "24": {
+     "onsets_with_markets": 13,
+     "pairs": 663,
+     "largest_onset": "2026-09-10",
+     "mean_move_after_without_largest": 0.03940291262135922,
+     "p_value_without_largest": 0.25674325674325676,
+     "mean_move_after": 0.04251960784313724,
+     "mean_move_before": 0.04151357466063349,
+     "mean_move_random": 0.03583351242150633,
+     "after_vs_random": 1.1865877769107027,
+     "before_vs_random": 1.1585125725972132,
+     "big_move_share_after": 0.2579185520361991,
+     "big_move_share_random": 0.2110554083097637,
+     "p_value": 0.12087912087912088,
+     "p_value_before": 0.23876123876123875
+    },
+    "72": {
+     "onsets_with_markets": 13,
+     "pairs": 528,
+     "largest_onset": "2026-01-08",
+     "mean_move_after_without_largest": 0.06438803088803088,
+     "p_value_without_largest": 0.2817182817182817,
+     "mean_move_after": 0.06646685606060605,
+     "mean_move_before": 0.055083333333333324,
+     "mean_move_random": 0.059717833082583285,
+     "after_vs_random": 1.1130152021539295,
+     "before_vs_random": 0.9223933704553386,
+     "big_move_share_after": 0.32954545454545453,
+     "big_move_share_random": 0.33892595154627764,
+     "p_value": 0.1978021978021978,
+     "p_value_before": 0.5994005994005994
+    },
+    "120": {
+     "onsets_with_markets": 13,
+     "pairs": 449,
+     "largest_onset": "2026-01-08",
+     "mean_move_after_without_largest": 0.0709501133786848,
+     "p_value_without_largest": 0.2137862137862138,
+     "mean_move_after": 0.07275055679287305,
+     "mean_move_before": 0.06174721603563473,
+     "mean_move_random": 0.06357661285736863,
+     "after_vs_random": 1.1442974629064586,
+     "before_vs_random": 0.9712253179351019,
+     "big_move_share_after": 0.37193763919821826,
+     "big_move_share_random": 0.3589474340231222,
+     "p_value": 0.17082917082917082,
+     "p_value_before": 0.6183816183816184
+    }
+   },
+   "verdict": "no lead: moves after it fires look like random times",
+   "name": "Brent crude",
+   "firings": [
+    {
+     "date": "2026-01-08",
+     "swings": 1.8
+    },
+    {
+     "date": "2026-01-23",
+     "swings": 1.5
+    },
+    {
+     "date": "2026-02-04",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-02-18",
+     "swings": 2.2
+    },
+    {
+     "date": "2026-03-02",
+     "swings": 3.6
+    },
+    {
+     "date": "2026-03-11",
+     "swings": 2.1
+    },
+    {
+     "date": "2026-03-24",
+     "swings": 1.8
+    },
+    {
+     "date": "2026-04-02",
+     "swings": 2.7
+    },
+    {
+     "date": "2026-04-13",
+     "swings": 1.5
+    },
+    {
+     "date": "2026-04-29",
+     "swings": 2.0
+    },
+    {
+     "date": "2026-07-08",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-07-23",
+     "swings": 2.1
+    },
+    {
+     "date": "2026-09-10",
+     "swings": 1.8
+    }
+   ],
+   "trading_days": 200
+  },
+  "gold": {
+   "onsets": 11,
+   "horizons": {
+    "24": {
+     "onsets_with_markets": 11,
+     "pairs": 572,
+     "largest_onset": "2026-03-10",
+     "mean_move_after_without_largest": 0.034792727272727274,
+     "p_value_without_largest": 0.5584415584415584,
+     "mean_move_after": 0.035651223776223775,
+     "mean_move_before": 0.04568706293706293,
+     "mean_move_random": 0.03600963668265865,
+     "after_vs_random": 0.9900467502742821,
+     "before_vs_random": 1.2687454566589584,
+     "big_move_share_after": 0.21503496503496503,
+     "big_move_share_random": 0.21217246353054908,
+     "p_value": 0.5004995004995005,
+     "p_value_before": 0.13186813186813187
+    },
+    "72": {
+     "onsets_with_markets": 11,
+     "pairs": 365,
+     "largest_onset": "2026-03-25",
+     "mean_move_after_without_largest": 0.061170926517571896,
+     "p_value_without_largest": 0.4115884115884116,
+     "mean_move_after": 0.07002602739726028,
+     "mean_move_before": 0.048783561643835606,
+     "mean_move_random": 0.059367966046088405,
+     "after_vs_random": 1.1795254589469655,
+     "before_vs_random": 0.8217152261198246,
+     "big_move_share_after": 0.4136986301369863,
+     "big_move_share_random": 0.33650485704387323,
+     "p_value": 0.11988011988011989,
+     "p_value_before": 0.7932067932067932
+    },
+    "120": {
+     "onsets_with_markets": 10,
+     "pairs": 232,
+     "largest_onset": "2026-05-06",
+     "mean_move_after_without_largest": 0.0733696682464455,
+     "p_value_without_largest": 0.18981018981018982,
+     "mean_move_after": 0.07891594827586208,
+     "mean_move_before": 0.06688362068965516,
+     "mean_move_random": 0.06380135159781633,
+     "after_vs_random": 1.2369008853185968,
+     "before_vs_random": 1.0483104043197782,
+     "big_move_share_after": 0.46120689655172414,
+     "big_move_share_random": 0.3611643655660757,
+     "p_value": 0.07892107892107893,
+     "p_value_before": 0.4385614385614386
+    }
+   },
+   "verdict": "no lead: moves after it fires look like random times",
+   "name": "Gold",
+   "firings": [
+    {
+     "date": "2026-01-05",
+     "swings": 2.1
+    },
+    {
+     "date": "2026-01-20",
+     "swings": 2.7
+    },
+    {
+     "date": "2026-01-28",
+     "swings": 3.2
+    },
+    {
+     "date": "2026-02-23",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-03-10",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-03-25",
+     "swings": 1.9
+    },
+    {
+     "date": "2026-05-06",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-06-12",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-08-05",
+     "swings": 2.0
+    },
+    {
+     "date": "2026-08-19",
+     "swings": 1.5
+    },
+    {
+     "date": "2026-09-03",
+     "swings": 1.5
+    }
+   ],
+   "trading_days": 200
+  },
+  "usdils": {
+   "onsets": 10,
+   "horizons": {
+    "24": {
+     "onsets_with_markets": 10,
+     "pairs": 397,
+     "largest_onset": "2026-09-11",
+     "mean_move_after_without_largest": 0.027077903682719544,
+     "p_value_without_largest": 0.932067932067932,
+     "mean_move_after": 0.02905541561712846,
+     "mean_move_before": 0.035112090680100745,
+     "mean_move_random": 0.036098284788167706,
+     "after_vs_random": 0.8048974012929346,
+     "before_vs_random": 0.9726803056196671,
+     "big_move_share_after": 0.16876574307304787,
+     "big_move_share_random": 0.21154776624950603,
+     "p_value": 0.8681318681318682,
+     "p_value_before": 0.5644355644355644
+    },
+    "72": {
+     "onsets_with_markets": 10,
+     "pairs": 356,
+     "largest_onset": "2026-06-08",
+     "mean_move_after_without_largest": 0.04634226190476191,
+     "p_value_without_largest": 0.9050949050949051,
+     "mean_move_after": 0.04769943820224719,
+     "mean_move_before": 0.05205196629213482,
+     "mean_move_random": 0.05935701689294409,
+     "after_vs_random": 0.8036023489569493,
+     "before_vs_random": 0.8769302942904862,
+     "big_move_share_after": 0.28370786516853935,
+     "big_move_share_random": 0.336541128583003,
+     "p_value": 0.8821178821178821,
+     "p_value_before": 0.6503496503496503
+    },
+    "120": {
+     "onsets_with_markets": 10,
+     "pairs": 314,
+     "largest_onset": "2026-06-08",
+     "mean_move_after_without_largest": 0.057828231292517004,
+     "p_value_without_largest": 0.7272727272727273,
+     "mean_move_after": 0.06411464968152866,
+     "mean_move_before": 0.05645222929936304,
+     "mean_move_random": 0.06510080194565404,
+     "after_vs_random": 0.9848519183381395,
+     "before_vs_random": 0.8671510582387172,
+     "big_move_share_after": 0.3343949044585987,
+     "big_move_share_random": 0.3650185857641761,
+     "p_value": 0.5224775224775224,
+     "p_value_before": 0.7762237762237763
+    }
+   },
+   "verdict": "no lead: moves after it fires look like random times",
+   "name": "Dollar in shekels (shekel weakens)",
+   "firings": [
+    {
+     "date": "2026-02-20",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-03-12",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-04-21",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-06-08",
+     "swings": 2.2
+    },
+    {
+     "date": "2026-07-08",
+     "swings": 2.3
+    },
+    {
+     "date": "2026-08-19",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-09-02",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-09-11",
+     "swings": 1.5
+    },
+    {
+     "date": "2026-09-29",
+     "swings": 1.8
+    },
+    {
+     "date": "2026-10-08",
+     "swings": 1.6
+    }
+   ],
+   "trading_days": 207
+  },
+  "defense_vs_spy": {
+   "onsets": 11,
+   "horizons": {
+    "24": {
+     "onsets_with_markets": 11,
+     "pairs": 378,
+     "largest_onset": "2026-06-17",
+     "mean_move_after_without_largest": 0.028782548476454298,
+     "p_value_without_largest": 0.8741258741258742,
+     "mean_move_after": 0.03022089947089947,
+     "mean_move_before": 0.035902116402116394,
+     "mean_move_random": 0.03602226102813199,
+     "after_vs_random": 0.8389506546326484,
+     "before_vs_random": 0.9966647116925346,
+     "big_move_share_after": 0.18783068783068782,
+     "big_move_share_random": 0.2121073924012811,
+     "p_value": 0.8101898101898102,
+     "p_value_before": 0.5484515484515484
+    },
+    "72": {
+     "onsets_with_markets": 10,
+     "pairs": 292,
+     "largest_onset": "2026-05-06",
+     "mean_move_after_without_largest": 0.04587924528301887,
+     "p_value_without_largest": 0.939060939060939,
+     "mean_move_after": 0.05276712328767124,
+     "mean_move_before": 0.056722602739726034,
+     "mean_move_random": 0.0593017828930215,
+     "after_vs_random": 0.8898066923697965,
+     "before_vs_random": 0.9565075445042146,
+     "big_move_share_after": 0.2671232876712329,
+     "big_move_share_random": 0.3362305047036226,
+     "p_value": 0.7622377622377622,
+     "p_value_before": 0.47352647352647353
+    },
+    "120": {
+     "onsets_with_markets": 10,
+     "pairs": 207,
+     "largest_onset": "2026-05-06",
+     "mean_move_after_without_largest": 0.061838709677419355,
+     "p_value_without_largest": 0.5684315684315684,
+     "mean_move_after": 0.06922463768115941,
+     "mean_move_before": 0.05299275362318841,
+     "mean_move_random": 0.06394171515576112,
+     "after_vs_random": 1.0826209073768065,
+     "before_vs_random": 0.8287665336173545,
+     "big_move_share_after": 0.36231884057971014,
+     "big_move_share_random": 0.36195721151031535,
+     "p_value": 0.3106893106893107,
+     "p_value_before": 0.8701298701298701
+    }
+   },
+   "verdict": "no lead: moves after it fires look like random times",
+   "name": "US defense ETF against the S&P (ITA/SPY)",
+   "firings": [
+    {
+     "date": "2026-01-02",
+     "swings": 3.4
+    },
+    {
+     "date": "2026-02-03",
+     "swings": 2.4
+    },
+    {
+     "date": "2026-02-12",
+     "swings": 2.3
+    },
+    {
+     "date": "2026-03-02",
+     "swings": 2.8
+    },
+    {
+     "date": "2026-05-06",
+     "swings": 2.2
+    },
+    {
+     "date": "2026-05-28",
+     "swings": 1.5
+    },
+    {
+     "date": "2026-06-05",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-06-17",
+     "swings": 2.4
+    },
+    {
+     "date": "2026-07-02",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-07-23",
+     "swings": 3.8
+    },
+    {
+     "date": "2026-10-16",
+     "swings": 1.8
+    }
+   ],
+   "trading_days": 199
+  },
+  "elbit": {
+   "onsets": 8,
+   "horizons": {
+    "24": {
+     "onsets_with_markets": 8,
+     "pairs": 276,
+     "largest_onset": "2026-03-31",
+     "mean_move_after_without_largest": 0.03426708074534162,
+     "p_value_without_largest": 0.5814185814185814,
+     "mean_move_after": 0.03894202898550723,
+     "mean_move_before": 0.05355797101449276,
+     "mean_move_random": 0.03599897011951148,
+     "after_vs_random": 1.0817539739671775,
+     "before_vs_random": 1.4877639787107209,
+     "big_move_share_after": 0.2717391304347826,
+     "big_move_share_random": 0.21199745243847656,
+     "p_value": 0.3306693306693307,
+     "p_value_before": 0.04595404595404595
+    },
+    "72": {
+     "onsets_with_markets": 8,
+     "pairs": 234,
+     "largest_onset": "2026-01-05",
+     "mean_move_after_without_largest": 0.07387837837837838,
+     "p_value_without_largest": 0.0919080919080919,
+     "mean_move_after": 0.0754465811965812,
+     "mean_move_before": 0.061123931623931614,
+     "mean_move_random": 0.05938018476191008,
+     "after_vs_random": 1.270568313303347,
+     "before_vs_random": 1.0293658039127571,
+     "big_move_share_after": 0.46153846153846156,
+     "big_move_share_random": 0.33780084134701466,
+     "p_value": 0.07392607392607392,
+     "p_value_before": 0.3126873126873127
+    },
+    "120": {
+     "onsets_with_markets": 7,
+     "pairs": 182,
+     "largest_onset": "2026-03-02",
+     "mean_move_after_without_largest": 0.07365536723163842,
+     "p_value_without_largest": 0.23776223776223776,
+     "mean_move_after": 0.0741510989010989,
+     "mean_move_before": 0.07949175824175823,
+     "mean_move_random": 0.06486795442810343,
+     "after_vs_random": 1.1431083275993306,
+     "before_vs_random": 1.2254395709342605,
+     "big_move_share_after": 0.41208791208791207,
+     "big_move_share_random": 0.3675922406437783,
+     "p_value": 0.22977022977022976,
+     "p_value_before": 0.14985014985014986
+    }
+   },
+   "verdict": "too few onsets to judge (8)",
+   "name": "Elbit Systems",
+   "firings": [
+    {
+     "date": "2026-01-05",
+     "swings": 2.7
+    },
+    {
+     "date": "2026-03-02",
+     "swings": 3.3
+    },
+    {
+     "date": "2026-03-17",
+     "swings": 6.2
+    },
+    {
+     "date": "2026-03-31",
+     "swings": 1.5
+    },
+    {
+     "date": "2026-05-26",
+     "swings": 4.2
+    },
+    {
+     "date": "2026-06-11",
+     "swings": 4.2
+    },
+    {
+     "date": "2026-07-02",
+     "swings": 2.0
+    },
+    {
+     "date": "2026-10-14",
+     "swings": 1.8
+    }
+   ],
+   "trading_days": 199
+  },
+  "tankers": {
+   "onsets": 13,
+   "horizons": {
+    "24": {
+     "onsets_with_markets": 13,
+     "pairs": 593,
+     "largest_onset": "2026-01-07",
+     "mean_move_after_without_largest": 0.03907672413793103,
+     "p_value_without_largest": 0.2777222777222777,
+     "mean_move_after": 0.03976222596964586,
+     "mean_move_before": 0.0394114671163575,
+     "mean_move_random": 0.03588841202448509,
+     "after_vs_random": 1.107940522487254,
+     "before_vs_random": 1.0981669261228049,
+     "big_move_share_after": 0.22934232715008432,
+     "big_move_share_random": 0.2114472773731196,
+     "p_value": 0.24575424575424576,
+     "p_value_before": 0.34465534465534464
+    },
+    "72": {
+     "onsets_with_markets": 13,
+     "pairs": 516,
+     "largest_onset": "2026-01-07",
+     "mean_move_after_without_largest": 0.05005247524752475,
+     "p_value_without_largest": 0.8931068931068931,
+     "mean_move_after": 0.05364825581395349,
+     "mean_move_before": 0.05330717054263566,
+     "mean_move_random": 0.05974437267248847,
+     "after_vs_random": 0.8979633296686673,
+     "before_vs_random": 0.8922542518750546,
+     "big_move_share_after": 0.2616279069767442,
+     "big_move_share_random": 0.33920606398402303,
+     "p_value": 0.7772227772227772,
+     "p_value_before": 0.6743256743256744
+    },
+    "120": {
+     "onsets_with_markets": 13,
+     "pairs": 429,
+     "largest_onset": "2026-01-07",
+     "mean_move_after_without_largest": 0.06329809976247029,
+     "p_value_without_largest": 0.4745254745254745,
+     "mean_move_after": 0.06549300699300699,
+     "mean_move_before": 0.07307226107226109,
+     "mean_move_random": 0.0638087900941469,
+     "after_vs_random": 1.0263947474380113,
+     "before_vs_random": 1.145175468214432,
+     "big_move_share_after": 0.32634032634032634,
+     "big_move_share_random": 0.3604694453002787,
+     "p_value": 0.39760239760239763,
+     "p_value_before": 0.22977022977022976
+    }
+   },
+   "verdict": "no lead: moves after it fires look like random times",
+   "name": "Frontline (crude tankers)",
+   "firings": [
+    {
+     "date": "2026-01-07",
+     "swings": 2.9
+    },
+    {
+     "date": "2026-02-06",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-02-18",
+     "swings": 1.8
+    },
+    {
+     "date": "2026-03-16",
+     "swings": 1.8
+    },
+    {
+     "date": "2026-03-24",
+     "swings": 1.5
+    },
+    {
+     "date": "2026-04-02",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-04-17",
+     "swings": 2.0
+    },
+    {
+     "date": "2026-06-12",
+     "swings": 1.9
+    },
+    {
+     "date": "2026-07-02",
+     "swings": 2.1
+    },
+    {
+     "date": "2026-08-06",
+     "swings": 1.5
+    },
+    {
+     "date": "2026-08-27",
+     "swings": 2.2
+    },
+    {
+     "date": "2026-10-01",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-10-12",
+     "swings": 2.0
+    }
+   ],
+   "trading_days": 199
+  },
+  "tel_aviv": {
+   "onsets": 10,
+   "horizons": {
+    "24": {
+     "onsets_with_markets": 10,
+     "pairs": 472,
+     "largest_onset": "2026-07-07",
+     "mean_move_after_without_largest": 0.03643507972665147,
+     "p_value_without_largest": 0.3886113886113886,
+     "mean_move_after": 0.03806673728813558,
+     "mean_move_before": 0.035538135593220326,
+     "mean_move_random": 0.03498411629610109,
+     "after_vs_random": 1.0881148737885382,
+     "before_vs_random": 1.0158363096106269,
+     "big_move_share_after": 0.2288135593220339,
+     "big_move_share_random": 0.2061784718052205,
+     "p_value": 0.2987012987012987,
+     "p_value_before": 0.5164835164835165
+    },
+    "72": {
+     "onsets_with_markets": 10,
+     "pairs": 425,
+     "largest_onset": "2026-06-01",
+     "mean_move_after_without_largest": 0.05645641646489104,
+     "p_value_without_largest": 0.5744255744255744,
+     "mean_move_after": 0.05730941176470587,
+     "mean_move_before": 0.06882941176470589,
+     "mean_move_random": 0.05861365682752065,
+     "after_vs_random": 0.9777484440758796,
+     "before_vs_random": 1.1742896705326986,
+     "big_move_share_after": 0.3458823529411765,
+     "big_move_share_random": 0.3347367686111664,
+     "p_value": 0.5334665334665335,
+     "p_value_before": 0.13486513486513488
+    },
+    "120": {
+     "onsets_with_markets": 10,
+     "pairs": 189,
+     "largest_onset": "2026-02-24",
+     "mean_move_after_without_largest": 0.06130434782608695,
+     "p_value_without_largest": 0.5754245754245755,
+     "mean_move_after": 0.06302910052910053,
+     "mean_move_before": 0.07578042328042327,
+     "mean_move_random": 0.06484459587256407,
+     "after_vs_random": 0.9720023647455304,
+     "before_vs_random": 1.1686467046436815,
+     "big_move_share_after": 0.3544973544973545,
+     "big_move_share_random": 0.36333434451410723,
+     "p_value": 0.5164835164835165,
+     "p_value_before": 0.19880119880119881
+    }
+   },
+   "verdict": "no lead: moves after it fires look like random times",
+   "name": "Tel Aviv 125 (falls)",
+   "firings": [
+    {
+     "date": "2026-02-05",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-02-24",
+     "swings": 2.0
+    },
+    {
+     "date": "2026-03-09",
+     "swings": 2.6
+    },
+    {
+     "date": "2026-03-27",
+     "swings": 3.2
+    },
+    {
+     "date": "2026-05-15",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-06-01",
+     "swings": 3.7
+    },
+    {
+     "date": "2026-06-15",
+     "swings": 1.9
+    },
+    {
+     "date": "2026-07-07",
+     "swings": 1.7
+    },
+    {
+     "date": "2026-07-27",
+     "swings": 1.6
+    },
+    {
+     "date": "2026-10-07",
+     "swings": 2.0
+    }
+   ],
+   "trading_days": 191
+  }
+ }
+}

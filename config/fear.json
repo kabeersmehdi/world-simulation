@@ -1,0 +1,28 @@
+{
+  "note": "Fear-gauge lead-lag test settings. See docs/fear-gauges.md. A gauge fires on a day its change is at least big_move_sd normal daily swings in the fear direction, after quiet_days trading days without a firing. The move in Polymarket's strike and ceasefire prices is measured from the US close (close_hour_utc) over each horizon, against the same measurement on random trading days of the same gauge.",
+  "history_start": "2023-09-01",
+  "since": "2026-01-01",
+  "close_hour_utc": 21,
+  "big_move_sd": 1.5,
+  "quiet_days": 5,
+  "swing_days": 252,
+  "min_history_days": 60,
+  "horizons": [24, 72, 120],
+  "random_draws": 1000,
+  "big_move": 0.05,
+  "alpha": 0.05,
+  "min_onsets": 10,
+  "gauges": [
+    {"id": "ovx", "name": "Oil options fear (OVX)", "ticker": "^OVX", "kind": "level", "direction": "up"},
+    {"id": "vix", "name": "Stock options fear (VIX)", "ticker": "^VIX", "kind": "level", "direction": "up"},
+    {"id": "skew", "name": "S&P tail-risk index (SKEW)", "ticker": "^SKEW", "kind": "level", "direction": "up"},
+    {"id": "brent_wti", "name": "Brent minus WTI (seaborne oil premium)", "spread": ["BZ=F", "CL=F"], "kind": "level", "direction": "up"},
+    {"id": "brent", "name": "Brent crude", "ticker": "BZ=F", "kind": "price", "direction": "up"},
+    {"id": "gold", "name": "Gold", "ticker": "GC=F", "kind": "price", "direction": "up"},
+    {"id": "usdils", "name": "Dollar in shekels (shekel weakens)", "ticker": "ILS=X", "kind": "price", "direction": "up"},
+    {"id": "defense_vs_spy", "name": "US defense ETF against the S&P (ITA/SPY)", "ratio": ["ITA", "SPY"], "kind": "price", "direction": "up"},
+    {"id": "elbit", "name": "Elbit Systems", "ticker": "ESLT", "kind": "price", "direction": "up"},
+    {"id": "tankers", "name": "Frontline (crude tankers)", "ticker": "FRO", "kind": "price", "direction": "up"},
+    {"id": "tel_aviv", "name": "Tel Aviv 125 (falls)", "ticker": "^TA125.TA", "kind": "price", "direction": "down"}
+  ]
+}

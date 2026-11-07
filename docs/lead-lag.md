@@ -55,7 +55,7 @@ Only the post id, time and indicator are kept. No post text is stored.
 | GPS jamming | No free hourly history. gpsjam.org keeps daily maps, but reading them needs an H3 hex library, which breaks the standard-library rule. |
 | NASA FIRMS fires | History needs a free key, and none is set. |
 | Airline cancellations | The repo has no airline collector, so there is nothing to test. |
-| US military moves | The aircraft feed is live only and the fleet tracker is weekly. 3 firings, all in the live log, none overlapping a market. |
+| US military moves | The aircraft feed is live only and the fleet tracker is weekly. 3 firings, all in the live log, none overlapping a market. Since 11/07/2026 every collect run logs the hourly tanker, bomber and surveillance counts to `data/signals/aircraft.jsonl` (zeros included) so this can be tested once the log is long enough. |
 
 **Markets.** 845 Polymarket markets on Israel and Iran security, with hourly prices: the 16 security markets in `config/markets.json` (election and coalition markets left out, since an air raid siren is not news about seat counts) plus 829 resolved strike, ceasefire, blockade and nuclear markets from the backtest that closed in 2026. 823 had enough hourly prices to use.
 

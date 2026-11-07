@@ -374,6 +374,25 @@
       }).join("") + "</div></div>";
   }
 
+  function leadsBlock() {
+    var L = D.leads;
+    if (!L || (!L.indicators && !L.gauges)) return "";
+    var IND = { airspace: "Airspace closures", home_front: "Home Front Command", reserves: "Reserve call-ups", late_night_cabinet: "Late-night cabinet",
+      us_advisory: "US departure orders", us_military_moves: "US military aircraft", gps_jamming: "GPS jamming", infrastructure_fire: "Fires at energy sites" };
+    function table(title, sub, block, names) {
+      if (!block) return "";
+      return '<h3 style="margin-top:12px">' + title + '</h3><p class="small muted">' + sub + " Run " + when(block.run_at) + ", " + block.markets + " markets.</p>" +
+        '<div class="tablewrap"><table><thead><tr><th>Signal</th><th class="num">Times it fired</th><th class="num">Crowd move after</th><th class="num">On a random day</th><th>Read</th></tr></thead><tbody>' +
+        block.rows.map(function (r) {
+          var f = r.first, cls = /moves before/.test(r.verdict) ? "ok" : /one event/.test(r.verdict) ? "warn" : "";
+          return "<tr><td>" + esc((names && names[r.id]) || r.name) + '</td><td class="num">' + r.onsets + '</td><td class="num">' + (f ? (f.after * 100).toFixed(1) + " pts / " + f.hours + "h" : "n/a") + '</td><td class="num">' + (f ? (f.random * 100).toFixed(1) + " pts" : "n/a") + '</td><td><span class="pill ' + cls + '">' + esc(r.verdict) + "</span></td></tr>";
+        }).join("") + "</tbody></table></div>";
+    }
+    return '<div class="card" style="margin-bottom:16px"><h3>Do public signals move before the crowd?</h3><p class="small muted">The only kind of edge this data could hold: a signal that moves hours or days before Polymarket\u2019s strike and ceasefire prices. Each row compares the price move after the signal fired with the move after random moments, from hourly Polymarket prices.</p>' +
+      table("Leading indicators", "Hebrew and Arabic Telegram, State Department advisories, aircraft.", L.indicators, IND) +
+      table("Fear gauges", "Option prices, oil, gold, the shekel, defense and tanker stocks: a firing is a day the gauge jumped at least " + (L.gauges ? L.gauges.big_move_sd : "") + " normal swings, measured from the US close.", L.gauges, null) + "</div>";
+  }
+
   function biasMapBlock() {
     var C = D.calibration;
     if (!C) return "";
@@ -431,7 +450,7 @@
     var h = '<h2>Accuracy: how good is the crowd?</h2>';
     if (!A) return h + '<div class="banner">No backtest yet. Run <code>python -m worldsim backtest</code>.</div>';
     h += '<p class="muted small">' + esc(A.note) + " Run " + when(A.run_at) + ". " + WORDS.brier + ": 0 is perfect, 0.25 is a coin flip.</p>";
-    h += biasMapBlock();
+    h += leadsBlock() + biasMapBlock();
     h += A.summary.map(function (s) {
       var hz = Object.keys(s.horizons).sort(function (a, b) { return b - a; });
       var cal = s.horizons["7"] && s.horizons["7"].calibration ? s.horizons["7"].calibration.filter(function (b) { return b.count; }) : [];

@@ -7,6 +7,7 @@
   live           live quotes for oil, defense, shipping and Israel, with a stress read
   watch          run collect every N minutes (default 15) until stopped
   prices         fetch daily prices and rerun the strike event study
+  fear           do oil and stock fear gauges move before Polymarket?
   backtest       score resolved Polymarket markets on our topics (how good is the baseline?)
   leadlag        do the indicators move before Polymarket? (--backfill rebuilds past firings first)
   new-forecast   write a forecast skeleton, optionally pre-filled from a Polymarket slug
@@ -19,7 +20,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from . import ROOT, actors, backfill, backtest, build, calibration, leadlag, eventstudy, live, prices, collectors, forecasts, markets, scoring, store, timing
+from . import ROOT, actors, backfill, backtest, build, calibration, fear, leadlag, eventstudy, live, prices, collectors, forecasts, markets, scoring, store, timing
 from .contracts import ContractError
 
 
@@ -171,6 +172,14 @@ def cmd_watch(args):
             return 0
 
 
+def cmd_fear(args):
+    result = fear.run(ROOT)
+    print(f"\n{result['markets']} markets with hourly prices. Firings since {result['since']}, moves measured from the US close.")
+    for gid, g in result["gauges"].items():
+        print(f"  {g['name']}: {g['onsets']} firings, {g['verdict']}")
+    return 0
+
+
 def cmd_prices(args):
     for r in prices.collect(ROOT):
         if not r["ok"]:
@@ -245,6 +254,7 @@ def main(argv=None):
     ll = sub.add_parser("leadlag")
     ll.add_argument("--backfill", action="store_true", help="rebuild past firings from Telegram and archived advisories first")
     sub.add_parser("prices")
+    sub.add_parser("fear", help="do oil and stock fear gauges move before Polymarket? (uses the lead-lag price cache)")
     sub.add_parser("live")
     w = sub.add_parser("watch")
     w.add_argument("--every", type=int, default=15, help="minutes between runs (default 15)")
@@ -253,7 +263,7 @@ def main(argv=None):
     n.add_argument("--market", help="Polymarket slug to pre-fill question, deadline and market price")
     args = p.parse_args(argv)
     return {"collect": cmd_collect, "build": cmd_build, "validate": cmd_validate,
-            "score": cmd_score, "backtest": cmd_backtest, "leadlag": cmd_leadlag, "prices": cmd_prices, "live": cmd_live, "watch": cmd_watch, "new-forecast": cmd_new_forecast}[args.cmd](args)
+            "score": cmd_score, "backtest": cmd_backtest, "leadlag": cmd_leadlag, "prices": cmd_prices, "fear": cmd_fear, "live": cmd_live, "watch": cmd_watch, "new-forecast": cmd_new_forecast}[args.cmd](args)
 
 
 if __name__ == "__main__":

@@ -5,6 +5,7 @@ Many military flights switch transponders off, so absence proves nothing.
 """
 
 import json
+from pathlib import Path
 
 from ..store import make_observation
 
@@ -38,11 +39,12 @@ def collect(source, text, observed_at, root):
         if cls and in_region(ac):
             spotted.append({"hex": ac.get("hex"), "type": ac.get("t"), "class": cls,
                             "callsign": (ac.get("flight") or "").strip(), "lat": ac.get("lat"), "lon": ac.get("lon")})
+    counts = {cls: sum(1 for s in spotted if s["class"] == cls) for cls in AIRCRAFT_CLASSES}
+    hour_key = observed_at[:13]  # one snapshot record per hour
+    log_counts(root, hour_key, counts)
     if not spotted:
         return []
-    counts = {cls: sum(1 for s in spotted if s["class"] == cls) for cls in AIRCRAFT_CLASSES}
     summary = ", ".join(f"{n} {cls}" for cls, n in counts.items() if n)
-    hour_key = observed_at[:13]  # one snapshot record per hour
     return [make_observation(
         collector="adsb", source_id=source["id"], key=hour_key, observed_at=observed_at,
         published_at=observed_at, title=f"Military aircraft in region: {summary}",
@@ -50,3 +52,19 @@ def collect(source, text, observed_at, root):
         indicators=["us_military_moves"] if len(spotted) >= MIN_AIRCRAFT_FOR_INDICATOR else [],
         tags=["aircraft"], data={"counts": counts, "aircraft": spotted[:40]}, root=root,
     )]
+
+
+
+def log_counts(root, hour_key, counts):
+    """One line per hour in data/signals/aircraft.jsonl, zeros included, so the counts can be tested as a lead later.
+
+    The observation store is not committed (it holds outlets' headlines); this small log is.
+    """
+    path = Path(root) / "data" / "signals" / "aircraft.jsonl"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        last = path.read_text(encoding="utf-8").rstrip("\n").rsplit("\n", 1)[-1]
+        if last and json.loads(last).get("hour") == hour_key:
+            return
+    with path.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps({"hour": hour_key, **counts}) + "\n")
