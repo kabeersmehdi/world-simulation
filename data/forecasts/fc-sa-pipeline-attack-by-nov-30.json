@@ -8,7 +8,7 @@
   "topic": "military",
   "created_at": "2026-11-07T05:41:56+00:00",
   "deadline": "2026-11-30T20:59:00+00:00",
-  "status": "open",
+  "status": "resolved",
   "illustrative": false,
   "reference_class": null,
   "exclusive_group": null,
@@ -30,5 +30,10 @@
       "view": "market"
     }
   ],
-  "resolution": null
+  "resolution": {
+    "outcome": true,
+    "resolved_at": "2026-11-20T17:19:52+00:00",
+    "source_url": "https://polymarket.com/market/military-action-against-saudi-oil-pipeline-east-west-by-november-30",
+    "post_mortem": "Resolved yes. Our last number was 13.1%. Brier 0.755. Polymarket closed the market resolved Yes on 11/13/2026. Saudi Arabia itself reported a drone attack on the East-West pipeline in the Madinah region on 11/09/2026 that caused a limited fire (Al Jazeera, aljazeera.com/news/2026/11/9/saudi-arabia-reports-new-attack-on-key-east-west-pipeline). Later Houthi claims on Nov 12, 13 and 17 were not confirmed by Saudi officials. Miss: we shaded the crowd's 21% down to 13.1% for horizon bias, and the strike came two days later. The pipeline was hit in April and September too, so the base rate was higher than the horizon map implied."
+  }
 }

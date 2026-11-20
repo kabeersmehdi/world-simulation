@@ -5,6 +5,11 @@ title: Change log
 
 # Change log
 
+## 2026-11-20
+- Pruned 27 dead Polymarket slugs that made `collect` report 30 failed sources. Removed 22 watchlist markets from `config/markets.json`: the by-Oct-31 and Oct 22/26 strike and concession markets, the Bank of Israel October decision, the midterm House and Senate control markets, the ceasefire-through-the-midterms market, and the eight Oct 27 election markets. The Gamma API lists all eight election markets as closed and resolved, not renamed. Resolved Yes: the Netanyahu bloc wins more seats, the election held as scheduled, Together third. Resolved No: Yashar most seats, Likud 20 to 24 seats, any coalition majority, Yisrael Beytenu under 5%, Netanyahu drops out.
+- Removed the past-dated ladder steps in `config/ladders.json` (Israel-Iran quiet at Oct 21, Oct 31 and Nov 15; blockade end, Hormuz deal and nuclear deal at Oct 31) and the one-step ladder `us-iran-no-strike-midterms`. `worldsim/timing.py` already skipped past steps, so the curves do not change.
+- Resolved fc-sa-pipeline-attack-by-nov-30 as yes. Polymarket closed the market resolved Yes on Nov 13, and Saudi Arabia itself reported a drone attack on the East-West pipeline near Madinah on Nov 9 (Al Jazeera). Our last number was 13.1%, so Brier 0.755: a miss. We shaded the crowd's 21% down for horizon bias, though the pipeline had already been hit in April and September.
+
 ## 2026-11-06
 - Resolved 17 forecasts: the Oct 27 election set (held as scheduled, Netanyahu bloc 53 vs 48, Likud largest with 27, Together third, no 61-seat bloc, Yisrael Beytenu 5.93%, Amcha under threshold), the five by-Oct-31 strike questions (all no), the Iran concessions by Oct 31 (fees, IAEA visit, uranium: all no), the blockade-end-by-Oct-31 (no) and the ceasefire-through-the-midterms (yes). Outcomes from each market's last saved price before archival, election ones cross-checked against the official CEC results certified Nov 4. Scorecard: 15 hits, 2 misses; the misses are the two bloc-seat calls, where our poll-weighted number (32% Netanyahu bloc wins more seats) lost to the market. fc-il-strike-iraq-by-oct-31 stays open: its market still trades at 19% past deadline, likely disputed.
 
